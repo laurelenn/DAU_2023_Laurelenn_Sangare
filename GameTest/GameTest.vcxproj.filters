@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="GameTest.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="App\app.cpp">
+      <Filter>NextAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="App\main.cpp">
+      <Filter>NextAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="App\SimpleController.cpp">
+      <Filter>NextAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="App\SimpleSound.cpp">
+      <Filter>NextAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="App\SimpleSprite.cpp">
+      <Filter>NextAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="stb_image\stb_image.cpp">
+      <Filter>stb_image</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\Player.cpp">
+      <Filter>Sources\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Map\BackgroundMap.cpp">
+      <Filter>Sources\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Map\LDMap.cpp">
+      <Filter>Sources\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Map\Map.cpp">
+      <Filter>Sources\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Map\MapGenerator.cpp">
+      <Filter>Sources\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Map\MapManager.cpp">
+      <Filter>Sources\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\CollisionComponent.cpp">
+      <Filter>Sources\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\GameManager.cpp">
+      <Filter>Sources\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\LDElement.cpp">
+      <Filter>Sources\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\LifeManager.cpp">
+      <Filter>Sources\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\Enemies\Enemy.cpp">
+      <Filter>Sources\Gameplay\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\Obstacles\Obstacle.cpp">
+      <Filter>Sources\Gameplay\Obstacles</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="App\app.h">
+      <Filter>NextAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="App\AppSettings.h">
+      <Filter>NextAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="App\main.h">
+      <Filter>NextAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="App\SimpleController.h">
+      <Filter>NextAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="App\SimpleSound.h">
+      <Filter>NextAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="App\SimpleSprite.h">
+      <Filter>NextAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>NextAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image\stb_image.h">
+      <Filter>stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Player.h">
+      <Filter>Sources\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Map\BackgroundMap.h">
+      <Filter>Sources\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Map\LDMap.h">
+      <Filter>Sources\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Map\Map.h">
+      <Filter>Sources\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Map\MapGenerator.h">
+      <Filter>Sources\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Map\MapManager.h">
+      <Filter>Sources\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\CollisionComponent.h">
+      <Filter>Sources\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\GameManager.h">
+      <Filter>Sources\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\LDElement.h">
+      <Filter>Sources\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\LifeManager.h">
+      <Filter>Sources\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\Enemies\Enemy.h">
+      <Filter>Sources\Gameplay\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\Obstacles\Obstacle.h">
+      <Filter>Sources\Gameplay\Obstacles</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="NextAPI">
+      <UniqueIdentifier>{f318918d-bb9f-4402-ae1c-4f72186d16f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stb_image">
+      <UniqueIdentifier>{61cfc19b-c57e-4021-b530-bac172fcba86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{a5273e41-7d05-4734-a708-f4e786440aaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ressources">
+      <UniqueIdentifier>{816c6364-f51c-4e79-b8f0-5afd4b060804}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ressources\Background">
+      <UniqueIdentifier>{bc2c7c20-79e7-4ed2-bb66-e48d6fc94ef6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ressources\HUD">
+      <UniqueIdentifier>{4c67b32a-ba67-480f-82d8-b936836b1a84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ressources\LDElements">
+      <UniqueIdentifier>{b2940cf2-6178-493b-826d-36bc9d2591cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ressources\LDElements\Enemies">
+      <UniqueIdentifier>{0055affa-89fe-45b7-a2ae-5734e325857a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ressources\LD">
+      <UniqueIdentifier>{699e0ee8-07aa-4eeb-bb6e-479094dd1350}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ressources\Player">
+      <UniqueIdentifier>{931a5d70-7e9b-40b0-9bc4-e079a6c9068d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Gameplay">
+      <UniqueIdentifier>{053de8dc-4f89-429e-99ec-1c91dc4936ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Map">
+      <UniqueIdentifier>{30f43e7f-3d96-413d-874b-947a28c44c4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Player">
+      <UniqueIdentifier>{48012269-b6c9-4bb7-94c1-3df62768285c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Gameplay\Enemies">
+      <UniqueIdentifier>{a61d8796-3933-4533-97e2-6fbed22375a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Gameplay\Obstacles">
+      <UniqueIdentifier>{090fdc6a-16fd-46a4-b348-20e158e8f292}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>NextAPI</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Ressources\Background\swamp.png">
+      <Filter>Ressources\Background</Filter>
+    </Image>
+    <Image Include="Ressources\HUD\hud_0.png">
+      <Filter>Ressources\HUD</Filter>
+    </Image>
+    <Image Include="Ressources\HUD\hud_1.png">
+      <Filter>Ressources\HUD</Filter>
+    </Image>
+    <Image Include="Ressources\HUD\hud_2.png">
+      <Filter>Ressources\HUD</Filter>
+    </Image>
+    <Image Include="Ressources\HUD\hud_3.png">
+      <Filter>Ressources\HUD</Filter>
+    </Image>
+    <Image Include="Ressources\HUD\hud_4.png">
+      <Filter>Ressources\HUD</Filter>
+    </Image>
+    <Image Include="Ressources\HUD\hud_5.png">
+      <Filter>Ressources\HUD</Filter>
+    </Image>
+    <Image Include="Ressources\HUD\hud_6.png">
+      <Filter>Ressources\HUD</Filter>
+    </Image>
+    <Image Include="Ressources\HUD\hud_7.png">
+      <Filter>Ressources\HUD</Filter>
+    </Image>
+    <Image Include="Ressources\HUD\hud_8.png">
+      <Filter>Ressources\HUD</Filter>
+    </Image>
+    <Image Include="Ressources\HUD\hud_9.png">
+      <Filter>Ressources\HUD</Filter>
+    </Image>
+    <Image Include="Ressources\HUD\hud_heartEmpty.png">
+      <Filter>Ressources\HUD</Filter>
+    </Image>
+    <Image Include="Ressources\HUD\hud_heartFull.png">
+      <Filter>Ressources\HUD</Filter>
+    </Image>
+    <Image Include="Ressources\HUD\hud_heartHalf.png">
+      <Filter>Ressources\HUD</Filter>
+    </Image>
+    <Image Include="Ressources\Interactables\Enemies\blockerMad.png">
+      <Filter>Ressources\LDElements\Enemies</Filter>
+    </Image>
+    <Image Include="Ressources\Interactables\Enemies\flyFly1.png">
+      <Filter>Ressources\LDElements\Enemies</Filter>
+    </Image>
+    <Image Include="Ressources\Interactables\Enemies\flyFly2.png">
+      <Filter>Ressources\LDElements\Enemies</Filter>
+    </Image>
+    <Image Include="Ressources\LD\grassCenter.png">
+      <Filter>Ressources\LD</Filter>
+    </Image>
+    <Image Include="Ressources\LD\grassMid.png">
+      <Filter>Ressources\LD</Filter>
+    </Image>
+    <Image Include="Ressources\Player\p1_spritesheet.png">
+      <Filter>Ressources\Player</Filter>
+    </Image>
+    <Image Include="Ressources\Player\p1_walk.png">
+      <Filter>Ressources\Player</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
