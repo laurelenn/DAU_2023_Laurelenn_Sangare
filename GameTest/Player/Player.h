@@ -1,8 +1,12 @@
 #pragma once
-class Player
+#include "../Gameplay/GameObject.h"
+class Player :
+    public GameObject
 {
 
 #pragma region VARIABLES
+
+
 #pragma endregion
 
 

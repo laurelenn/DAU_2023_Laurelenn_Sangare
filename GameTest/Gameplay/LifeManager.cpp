@@ -21,3 +21,13 @@ float LifeManager::Heal(float Heal)
 {
 	return ApplyDamage(-Heal);
 }
+
+void LifeManager::MakeItInvincible()
+{
+	m_bIsInvincible = true;
+}
+
+void LifeManager::MakeItVulnerable()
+{
+	m_bIsInvincible = false;
+}

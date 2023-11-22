@@ -1,0 +1,52 @@
+#include "stdafx.h"
+#include "CapsuleCollisionComponent.h"
+#include "../App/app.h"
+#include <cmath>
+
+CapsuleCollisionComponent::CapsuleCollisionComponent(float radius, float length) : 
+m_Circle1(radius), m_Circle2(radius), m_Rectangle((radius * 2.0f), (length - 2 * radius)) 
+{
+  m_ShapeType = ShapeType::Capsule;
+}
+
+void CapsuleCollisionComponent::SetCapsule(float radius, float length) {
+    m_Circle1.SetCircle(radius);
+    m_Circle2.SetCircle(radius);
+    m_Rectangle.SetRectangle(radius * 2.0f, length - 2 * radius);
+}
+
+
+std::vector<Vector2> CapsuleCollisionComponent::GetAxes() const
+{
+    std::vector<Vector2> axes1 = m_Circle1.GetAxes();
+    std::vector<Vector2> axes2 = m_Circle2.GetAxes();
+    std::vector<Vector2> axes3 = m_Rectangle.GetAxes();
+
+    axes1.insert(axes1.end(), axes2.begin(), axes2.end());
+    axes1.insert(axes1.end(), axes3.begin(), axes3.end());
+
+    return axes1;
+}
+
+
+Projection CapsuleCollisionComponent::Project(const std::vector<Vector2>& axes) const
+{
+    Projection projection1 = m_Circle1.Project(axes);
+    Projection projection2 = m_Circle2.Project(axes);
+    Projection projection3 = m_Rectangle.Project(axes);
+
+    Projection projection;
+    projection.min = fmin(projection1.min, fmin(projection2.min, projection3.min));
+    projection.max = fmax(projection1.max, fmax(projection2.max, projection3.max));
+
+    return projection;
+}
+#pragma region DrawDebug
+
+// Fonction principale pour dessiner la forme de collision en fonction du type de forme
+void CapsuleCollisionComponent::DrawDebugCollision() const 
+{
+    m_Circle1.DrawDebugCollision();
+    m_Circle2.DrawDebugCollision();
+    m_Rectangle.DrawDebugCollision();
+}

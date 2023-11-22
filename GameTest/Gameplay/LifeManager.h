@@ -40,6 +40,9 @@ public:
 	float ApplyDamage(float Damages);
 	float Heal(float Heal);
 
+	void MakeItInvincible();
+	void MakeItVulnerable();
+
 
 #pragma endregion
 

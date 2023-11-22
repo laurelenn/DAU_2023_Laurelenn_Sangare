@@ -1,5 +1,5 @@
 #pragma once
-class CollisionComponent
+class GameObject
 {
 
 #pragma region VARIABLES
@@ -7,6 +7,13 @@ class CollisionComponent
 
 
 #pragma region FUNCTIONS
+
+	void Init();
+
+	void Render();
+
+	void Shutdown();
+
 #pragma endregion
 
 };

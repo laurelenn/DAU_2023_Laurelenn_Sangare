@@ -39,13 +39,10 @@
     <ClCompile Include="Map\MapManager.cpp">
       <Filter>Sources\Map</Filter>
     </ClCompile>
-    <ClCompile Include="Gameplay\CollisionComponent.cpp">
-      <Filter>Sources\Gameplay</Filter>
-    </ClCompile>
     <ClCompile Include="Gameplay\GameManager.cpp">
       <Filter>Sources\Gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="Gameplay\LDElement.cpp">
+    <ClCompile Include="Gameplay\GameObject.cpp">
       <Filter>Sources\Gameplay</Filter>
     </ClCompile>
     <ClCompile Include="Gameplay\LifeManager.cpp">
@@ -56,6 +53,18 @@
     </ClCompile>
     <ClCompile Include="Gameplay\Obstacles\Obstacle.cpp">
       <Filter>Sources\Gameplay\Obstacles</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\Collisions\CollisionComponent.cpp">
+      <Filter>Sources\Gameplay\Collisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\Collisions\CircleCollisionComponent.cpp">
+      <Filter>Sources\Gameplay\Collisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\Collisions\CapsuleCollisionComponent.cpp">
+      <Filter>Sources\Gameplay\Collisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\Collisions\RectangleCollisionComponent.cpp">
+      <Filter>Sources\Gameplay\Collisions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -102,13 +111,10 @@
     <ClInclude Include="Map\MapManager.h">
       <Filter>Sources\Map</Filter>
     </ClInclude>
-    <ClInclude Include="Gameplay\CollisionComponent.h">
-      <Filter>Sources\Gameplay</Filter>
-    </ClInclude>
     <ClInclude Include="Gameplay\GameManager.h">
       <Filter>Sources\Gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="Gameplay\LDElement.h">
+    <ClInclude Include="Gameplay\GameObject.h">
       <Filter>Sources\Gameplay</Filter>
     </ClInclude>
     <ClInclude Include="Gameplay\LifeManager.h">
@@ -119,6 +125,18 @@
     </ClInclude>
     <ClInclude Include="Gameplay\Obstacles\Obstacle.h">
       <Filter>Sources\Gameplay\Obstacles</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\Collisions\CollisionComponent.h">
+      <Filter>Sources\Gameplay\Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\Collisions\CircleCollisionComponent.h">
+      <Filter>Sources\Gameplay\Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\Collisions\CapsuleCollisionComponent.h">
+      <Filter>Sources\Gameplay\Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\Collisions\RectangleCollisionComponent.h">
+      <Filter>Sources\Gameplay\Collisions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +184,9 @@
     </Filter>
     <Filter Include="Sources\Gameplay\Obstacles">
       <UniqueIdentifier>{090fdc6a-16fd-46a4-b348-20e158e8f292}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Gameplay\Collisions">
+      <UniqueIdentifier>{d6054444-6aed-4fa9-ae4b-88c59c119cae}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

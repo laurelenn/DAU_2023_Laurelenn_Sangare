@@ -1,7 +1,7 @@
 #pragma once
-#include "../LDElement.h"
+#include "../GameObject.h"
 class Enemy :
-    public LDElement
+    public GameObject
 {
 };
 

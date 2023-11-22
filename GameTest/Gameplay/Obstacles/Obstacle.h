@@ -1,7 +1,7 @@
 #pragma once
-#include "../LDElement.h"
+#include "../GameObject.h"
 class Obstacle :
-    public LDElement
+    public GameObject
 {
 
 #pragma region VARIABLES
