@@ -9,6 +9,8 @@ class Obstacle :
 
 
 #pragma region FUNCTIONS
+Obstacle();
+
 #pragma endregion
 
 };

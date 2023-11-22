@@ -16,11 +16,11 @@ void CapsuleCollisionComponent::SetCapsule(float radius, float length) {
 }
 
 
-std::vector<Vector2> CapsuleCollisionComponent::GetAxes() const
+std::vector<App::Vector2> CapsuleCollisionComponent::GetAxes() const
 {
-    std::vector<Vector2> axes1 = m_Circle1.GetAxes();
-    std::vector<Vector2> axes2 = m_Circle2.GetAxes();
-    std::vector<Vector2> axes3 = m_Rectangle.GetAxes();
+    std::vector<App::Vector2> axes1 = m_Circle1.GetAxes();
+    std::vector<App::Vector2> axes2 = m_Circle2.GetAxes();
+    std::vector<App::Vector2> axes3 = m_Rectangle.GetAxes();
 
     axes1.insert(axes1.end(), axes2.begin(), axes2.end());
     axes1.insert(axes1.end(), axes3.begin(), axes3.end());
@@ -29,7 +29,7 @@ std::vector<Vector2> CapsuleCollisionComponent::GetAxes() const
 }
 
 
-Projection CapsuleCollisionComponent::Project(const std::vector<Vector2>& axes) const
+Projection CapsuleCollisionComponent::Project(const std::vector<App::Vector2>& axes) const
 {
     Projection projection1 = m_Circle1.Project(axes);
     Projection projection2 = m_Circle2.Project(axes);

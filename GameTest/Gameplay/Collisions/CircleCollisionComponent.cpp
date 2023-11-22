@@ -10,13 +10,13 @@ void CircleCollisionComponent::SetCircle(float radius) {
 }
 
 
-std::vector<Vector2> CircleCollisionComponent::GetAxes() const
+std::vector<App::Vector2> CircleCollisionComponent::GetAxes() const
 {
     return { {1.0f, 0.0f}, {0.0f, 1.0f} };
 }
 
 
-Projection CircleCollisionComponent::Project(const std::vector<Vector2>& axes) const
+Projection CircleCollisionComponent::Project(const std::vector<App::Vector2>& axes) const
 {
     Projection projection;
     float positionOnAxis = m_Position.x * axes[0].x + m_Position.z * axes[0].z;

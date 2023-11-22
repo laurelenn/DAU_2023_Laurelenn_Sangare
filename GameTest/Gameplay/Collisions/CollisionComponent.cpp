@@ -3,13 +3,21 @@
 #include "../App/app.h"
 #include <cmath>
 
-void CollisionComponent::SetPosition(const Vector2& position) {
+void CollisionComponent::SetPosition(const App::Vector2& position) 
+{
     m_Position = position;
 }
 
+void CollisionComponent::SetPosition(const float x, const float z) 
+{
+    m_Position.x = x;
+    m_Position.z = z;
+}
+
+
 bool CollisionComponent::IsColliding(const CollisionComponent& other) const
 {
-    std::vector<Vector2> axes = GetAxes();
+    std::vector<App::Vector2> axes = GetAxes();
     axes.insert(axes.end(), other.GetAxes().begin(), other.GetAxes().end());
 
     Projection Projection1 = Project(axes);
@@ -22,6 +30,3 @@ bool CollisionComponent::IsColliding(const CollisionComponent& other) const
 
     return true; // Intersection détectée
 }
-
-// Fonction principale pour dessiner la forme de collision en fonction du type de forme
-void CollisionComponent::DrawDebugCollision() const {}

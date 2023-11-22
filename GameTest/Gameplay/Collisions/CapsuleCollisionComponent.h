@@ -27,15 +27,9 @@ public :
 
     CapsuleCollisionComponent(float radius, float length);
     void SetCapsule(float radius, float height);
-
-    private : 
-
-    std::vector<Vector2> GetAxes() const override;
-
-    Projection Project(const std::vector<Vector2>& axes) const override;
-    
-    // Debug
-   void DrawDebugCollision() const override;
+    std::vector<App::Vector2> GetAxes() const override;
+    Projection Project(const std::vector<App::Vector2>& axes) const override;
+    void DrawDebugCollision() const override;
   
 #pragma endregion
 

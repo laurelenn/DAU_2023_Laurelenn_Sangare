@@ -21,8 +21,8 @@ public :
 
     CircleCollisionComponent(float radius);
     void SetCircle(float radius);
-    std::vector<Vector2> GetAxes() const override;
-    Projection Project(const std::vector<Vector2>& axes) const override;
+    std::vector<App::Vector2> GetAxes() const override;
+    Projection Project(const std::vector<App::Vector2>& axes) const override;
    void DrawDebugCollision() const override;
   
 #pragma endregion

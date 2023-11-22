@@ -9,7 +9,7 @@ public CollisionComponent
 
 #pragma region VARIABLES
 
-Vector2 m_RectSize;
+App::Vector2 m_RectSize;
 
 #pragma endregion
 
@@ -20,8 +20,8 @@ public :
 
     RectangleCollisionComponent(float width, float height);
     void SetRectangle(float width, float height);
-    std::vector<Vector2> GetAxes() const override;
-    Projection Project(const std::vector<Vector2>& axes) const override;
+    std::vector<App::Vector2> GetAxes() const override;
+    Projection Project(const std::vector<App::Vector2>& axes) const override;
     void DrawDebugCollision() const override;
   
 #pragma endregion

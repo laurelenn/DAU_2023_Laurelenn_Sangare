@@ -16,18 +16,18 @@ void RectangleCollisionComponent::SetRectangle(float width, float height)
     m_RectSize.z = height;
 }
 
-std::vector<Vector2> RectangleCollisionComponent::GetAxes() const
+std::vector<App::Vector2> RectangleCollisionComponent::GetAxes() const
 {
     return { {1.0f, 0.0f}, {0.0f, 1.0f} };
 }
 
 
-Projection RectangleCollisionComponent::Project(const std::vector<Vector2>& axes) const
+Projection RectangleCollisionComponent::Project(const std::vector<App::Vector2>& axes) const
 {
     Projection projection;
     float halfWidth = m_RectSize.x * 0.5f;
     float halfHeight = m_RectSize.z * 0.5f;
-    Vector2 points[4] = {
+    App::Vector2 points[4] = {
         {m_Position.x - halfWidth, m_Position.z - halfHeight},
         {m_Position.x + halfWidth, m_Position.z - halfHeight},
         {m_Position.x - halfWidth, m_Position.z + halfHeight},
