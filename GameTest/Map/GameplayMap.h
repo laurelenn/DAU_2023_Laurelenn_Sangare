@@ -1,12 +1,11 @@
 #pragma once
 #include "Map.h"
-
-struct LDDatasMap
+struct GameplayDatasMap
 {
-    // To do : Create LD here
+    // To do : Create Gameplay here
 };
 
-class LDMap :
+class GameplayMap :
     public Map
 {
 
@@ -14,12 +13,11 @@ class LDMap :
 #pragma endregion
 
 #pragma region FUNCTIONS
-    LDMap(float Speed);
+    GameplayMap(float Speed);
 
     void Init();
     void Update(float deltaTime);
     void Render();
     void Destroy();
-#pragma endregion
 };
 

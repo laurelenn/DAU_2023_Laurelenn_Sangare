@@ -23,6 +23,8 @@ namespace App
 struct Vector2 {
     float x;
     float z;
+	Vector2(float x, float z) : x(x), z(z){}
+	Vector2() {x = 0.f, z = 0.f;}
 };
 
 

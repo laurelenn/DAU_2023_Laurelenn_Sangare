@@ -66,6 +66,9 @@
     <ClCompile Include="Gameplay\Collisions\RectangleCollisionComponent.cpp">
       <Filter>Sources\Gameplay\Collisions</Filter>
     </ClCompile>
+    <ClCompile Include="Map\GameplayMap.cpp">
+      <Filter>Sources\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -137,6 +140,9 @@
     </ClInclude>
     <ClInclude Include="Gameplay\Collisions\RectangleCollisionComponent.h">
       <Filter>Sources\Gameplay\Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Map\GameplayMap.h">
+      <Filter>Sources\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

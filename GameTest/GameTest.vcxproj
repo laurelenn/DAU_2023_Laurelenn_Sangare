@@ -192,6 +192,7 @@
     <ClInclude Include="Gameplay\LifeManager.h" />
     <ClInclude Include="Gameplay\Obstacles\Obstacle.h" />
     <ClInclude Include="Map\BackgroundMap.h" />
+    <ClInclude Include="Map\GameplayMap.h" />
     <ClInclude Include="Map\LDMap.h" />
     <ClInclude Include="Map\Map.h" />
     <ClInclude Include="Map\MapGenerator.h" />
@@ -218,6 +219,7 @@
     <ClCompile Include="Gameplay\Obstacles\Obstacle.cpp" />
     <ClCompile Include="GameTest.cpp" />
     <ClCompile Include="Map\BackgroundMap.cpp" />
+    <ClCompile Include="Map\GameplayMap.cpp" />
     <ClCompile Include="Map\LDMap.cpp" />
     <ClCompile Include="Map\Map.cpp" />
     <ClCompile Include="Map\MapGenerator.cpp" />

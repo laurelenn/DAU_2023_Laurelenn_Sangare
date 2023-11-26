@@ -7,12 +7,17 @@
 //------------------------------------------------------------------------
 #include "app\app.h"
 //------------------------------------------------------------------------
+#include "Gameplay/GameManager.h"
+
+GameManager* m_GameManager;
 
 //------------------------------------------------------------------------
 // Called before first update. Do any initial setup here.
 //------------------------------------------------------------------------
 void Init()
 {
+	m_GameManager = new GameManager();
+	m_GameManager->Init();
 }
 
 //------------------------------------------------------------------------
@@ -21,6 +26,7 @@ void Init()
 //------------------------------------------------------------------------
 void Update(float deltaTime)
 {
+	m_GameManager->Update(deltaTime);
 }
 
 //------------------------------------------------------------------------
@@ -29,6 +35,7 @@ void Update(float deltaTime)
 //------------------------------------------------------------------------
 void Render()
 {	
+	m_GameManager->Render();
 }
 //------------------------------------------------------------------------
 // Add your shutdown code here. Called when the APP_QUIT_KEY is pressed.
@@ -36,4 +43,6 @@ void Render()
 //------------------------------------------------------------------------
 void Shutdown()
 {	
+	m_GameManager->Shutdown();
+	delete m_GameManager;
 }

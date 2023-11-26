@@ -4,15 +4,17 @@
 #include <cmath>
 
 CapsuleCollisionComponent::CapsuleCollisionComponent(float radius, float length) : 
-m_Circle1(radius), m_Circle2(radius), m_Rectangle((radius * 2.0f), (length - 2 * radius)) 
+m_Circle1(radius), m_Circle2(radius), m_Rectangle((radius * 2.0f), (length)) 
 {
   m_ShapeType = ShapeType::Capsule;
+  m_RadiusCapsule = radius;
+  m_LengthCapsule = length;
 }
 
 void CapsuleCollisionComponent::SetCapsule(float radius, float length) {
     m_Circle1.SetCircle(radius);
     m_Circle2.SetCircle(radius);
-    m_Rectangle.SetRectangle(radius * 2.0f, length - 2 * radius);
+    m_Rectangle.SetRectangle(radius * 2.0f, length);
 }
 
 
