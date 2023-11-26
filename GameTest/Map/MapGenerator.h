@@ -17,9 +17,9 @@ class MapGenerator
 #pragma region FUNCTIONS
 public : 
 MapGenerator(){};
-LDMap* GenerateLDMap(bool isFirstMap, LDMap* previousMap);
-BackgroundMap* GenerateBgMap(bool isFirstMap, BackgroundMap* previousMap);
-GameplayMap* GenerateGameplayMap(bool isFirstMap);
+LDMap* GenerateLDMap(bool isFirstMap, LDMap* previousMap, float speed);
+BackgroundMap* GenerateBgMap(bool isFirstMap, BackgroundMap* previousMap, float speed);
+GameplayMap* GenerateGameplayMap(bool isFirstMap, float speed);
 #pragma endregion
 };
 

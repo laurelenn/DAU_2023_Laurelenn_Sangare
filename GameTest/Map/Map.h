@@ -11,6 +11,7 @@ float m_SpeedMap;
 #pragma region FUNCTIONS
 public : 
 
+Map(){m_SpeedMap = 10.f;};
 Map(float Speed) : m_SpeedMap(Speed){}
 ~Map() {};
 

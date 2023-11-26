@@ -20,7 +20,7 @@ void GameManager::Init()
 #pragma endregion
 
 #pragma region Map
-	m_MapManager = new MapManager(m_HeightMap, m_WidthMap);
+	m_MapManager = new MapManager(m_HeightMap, m_WidthMap, m_SpeedMap);
 
 #pragma endregion
 }

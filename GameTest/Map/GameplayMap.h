@@ -13,6 +13,7 @@ class GameplayMap :
 #pragma endregion
 
 #pragma region FUNCTIONS
+public : 
     GameplayMap(float Speed);
 
     void Init();

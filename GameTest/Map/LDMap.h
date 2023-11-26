@@ -14,6 +14,7 @@ class LDMap :
 #pragma endregion
 
 #pragma region FUNCTIONS
+public : 
     LDMap(float Speed);
 
     void Init();

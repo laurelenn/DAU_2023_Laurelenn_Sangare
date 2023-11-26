@@ -1,6 +1,10 @@
 #include "stdafx.h"
 #include "GameplayMap.h"
 
+GameplayMap::GameplayMap(float Speed)
+{
+}
+
 void GameplayMap::Init()
 {
 }

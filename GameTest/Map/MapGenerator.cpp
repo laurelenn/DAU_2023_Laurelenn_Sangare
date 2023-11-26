@@ -2,17 +2,17 @@
 
 #include "MapGenerator.h"
 
-LDMap* MapGenerator::GenerateLDMap(bool isFirstMap, LDMap* previousMap)
+LDMap* MapGenerator::GenerateLDMap(bool isFirstMap, LDMap* previousMap, float speed)
 {
     return nullptr;
 }
 
-BackgroundMap* MapGenerator::GenerateBgMap(bool isFirstMap, BackgroundMap* previousMap)
+BackgroundMap* MapGenerator::GenerateBgMap(bool isFirstMap, BackgroundMap* previousMap, float speed)
 {
     return nullptr;
 }
 
-GameplayMap* MapGenerator::GenerateGameplayMap(bool isFirstMap)
+GameplayMap* MapGenerator::GenerateGameplayMap(bool isFirstMap, float speed)
 {
     return nullptr;
 }

@@ -10,6 +10,7 @@ class MapManager
 #pragma region VARIABLES
 float m_Width;
 float m_Height;
+float m_SpeedMap;
 
 MapGenerator *m_MapGenerator = nullptr;
 
@@ -25,7 +26,7 @@ GameplayMap *m_NextGameplayMap = nullptr;
 
 #pragma region FUNCTIONS
 public : 
-    MapManager(float height, float width) : m_Height(height), m_Width(width) {}
+    MapManager(float height, float width, float speed) : m_Height(height), m_Width(width), m_SpeedMap(speed) {}
 
     void Init();
     void Update(float Deltatime);
