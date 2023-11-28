@@ -20,6 +20,11 @@ MapGenerator(){};
 LDMap* GenerateLDMap(bool isFirstMap, LDMap* previousMap, float speed);
 BackgroundMap* GenerateBgMap(bool isFirstMap, BackgroundMap* previousMap, float speed);
 GameplayMap* GenerateGameplayMap(bool isFirstMap, float speed);
+
+LDDatasMap SelectLDMap(bool isFirstMap);
+BackgroundDatasMap SelectBgMap(bool isFirstMap);
+GameplayDatasMap SelectGameplayMap(bool isFirstMap);
+
 #pragma endregion
 };
 

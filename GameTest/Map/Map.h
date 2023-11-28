@@ -19,10 +19,10 @@ Map(){m_SpeedMap = 10.f;};
 Map(float Speed) : m_SpeedMap(Speed){}
 ~Map() {};
 
-virtual void Init() const = 0;
-virtual void Update(float deltaTime) const = 0;
-virtual void Render() const = 0;
-virtual void Destroy() const = 0;
+virtual void Init() = 0;
+virtual void Update(float deltaTime) = 0;
+virtual void Render() = 0;
+virtual void Destroy() = 0;
 void SetPosition(float newX, float newZ);
 
 #pragma endregion

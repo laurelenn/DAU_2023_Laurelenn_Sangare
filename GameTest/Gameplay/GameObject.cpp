@@ -20,8 +20,8 @@ void GameObject::Update(float Deltatime) // ms
 {
 	if (m_bIsActivated)
 	{
-		int NewPosX = (int)(m_SpeedX * (Deltatime / 1000.f));
-		int NewPosZ = (int)(m_SpeedZ * (Deltatime / 1000.f));
+		float NewPosX = (m_SpeedX * (Deltatime / 1000.f));
+		float NewPosZ = (m_SpeedZ * (Deltatime / 1000.f));
 		SetPosition(m_Location.x+NewPosX, m_Location.z+NewPosZ);
 		if (m_Sprite)
 		{

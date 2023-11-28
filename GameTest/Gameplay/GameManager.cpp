@@ -10,7 +10,7 @@ GameManager::GameManager()
 void GameManager::Init()
 {
 #pragma region Player
-	m_Player = new Player(100.f, 100.f, 50.f);
+	m_Player = new Player(100, 100.f, 50.f);
 	m_Player->SetActivated(true); // To change
 	m_Player->m_SpriteColumns = 7;
 	m_Player->m_SpriteLines = 3;

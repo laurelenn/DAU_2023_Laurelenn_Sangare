@@ -18,8 +18,8 @@ void MapManager::Init()
 	// Set position of maps
 
 	//To do : Calculate good values
-	float InitialXPos = 0.f;
-	float InitialZPos = 0.f;
+	float InitialXPos = m_Width / 2.f;
+	float InitialZPos = m_Height / 2.f;
 
 	float InitialXPosNext = InitialXPos + m_Width/2.f;
 	float InitialZPosNext = InitialZPos;
