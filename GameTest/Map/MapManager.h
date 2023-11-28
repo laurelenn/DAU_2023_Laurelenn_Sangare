@@ -32,6 +32,7 @@ public :
     void Update(float Deltatime);
     void Render();
     void Destroy();
+    bool CheckEndMap(Map* map);
 #pragma endregion
 
 };

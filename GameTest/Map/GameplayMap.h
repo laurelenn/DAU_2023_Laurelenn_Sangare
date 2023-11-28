@@ -2,7 +2,7 @@
 #include "Map.h"
 struct GameplayDatasMap
 {
-    // To do : Create Gameplay here
+    // To do : Create Gameplay here with class, enums, initial pos
 };
 
 class GameplayMap :
@@ -10,6 +10,9 @@ class GameplayMap :
 {
 
 #pragma region VARIABLES
+
+// Array of game objects
+
 #pragma endregion
 
 #pragma region FUNCTIONS

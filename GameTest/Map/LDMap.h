@@ -3,7 +3,7 @@
 
 struct LDDatasMap
 {
-    // To do : Create LD here
+    // To do : Create LD here position & enum or class
 };
 
 class LDMap :
@@ -11,6 +11,9 @@ class LDMap :
 {
 
 #pragma region VARIABLES
+
+// Array of tiles
+
 #pragma endregion
 
 #pragma region FUNCTIONS
