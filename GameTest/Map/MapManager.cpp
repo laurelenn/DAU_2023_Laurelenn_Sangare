@@ -1,5 +1,7 @@
 #include "stdafx.h"
 
+#include <iostream>
+
 #include "../App/app.h"
 #include "MapManager.h"
 
@@ -10,8 +12,10 @@ void MapManager::Init()
 	// Generate Maps
 	LDMap* m_CurrentLDMap = m_MapGenerator->GenerateLDMap(true, nullptr, m_SpeedMap);
 	LDMap* m_NextLDMap = m_MapGenerator->GenerateLDMap(false, m_CurrentLDMap, m_SpeedMap);
+
 	BackgroundMap* m_CurrentBgMap = m_MapGenerator->GenerateBgMap(true, nullptr, m_SpeedMap*2);
 	BackgroundMap* m_NextBgMap = m_MapGenerator->GenerateBgMap(false, m_CurrentBgMap, m_SpeedMap*2);
+
 	GameplayMap* m_CurrentGameplayMap = m_MapGenerator->GenerateGameplayMap(true, m_SpeedMap);
 	GameplayMap* m_NextGameplayMap = m_MapGenerator->GenerateGameplayMap(false, m_SpeedMap);
 
@@ -32,7 +36,7 @@ void MapManager::Init()
 	}
 	else
 	{
-		App::Print(100.f, 100.f, "[MapManager] No current LD map (MapManager::Init)");
+		std::cout << "[MapManager] No current LD map (MapManager::Init)" << std::endl;
 	}
 
 	if (m_NextLDMap)
@@ -42,19 +46,19 @@ void MapManager::Init()
 	}
 	else
 	{
-		App::Print(100.f, 100.f, "[MapManager] No Next LD map (MapManager::Init)");
+		std::cout << "[MapManager] No Next LD map (MapManager::Init)" << std::endl;
 	}
 #pragma endregion
 
 #pragma region Bg
 	if (m_CurrentBgMap)
 	{
-	m_CurrentBgMap->Init();
+		m_CurrentBgMap->Init();
 		m_CurrentBgMap->SetPosition(InitialXPos, InitialZPos);
 	}
 	else
 	{
-		App::Print(100.f, 100.f, "[MapManager] No current Bg map (MapManager::Init)");
+		std::cout << "[MapManager] No current Bg map (MapManager::Init)" << std::endl;
 	}
 
 	if (m_NextBgMap)
@@ -64,7 +68,7 @@ void MapManager::Init()
 	}
 	else
 	{
-		App::Print(100.f, 100.f, "[MapManager] No Next Bg map (MapManager::Init)");
+		std::cout << "[MapManager] No Next Bg map (MapManager::Init)" << std::endl;
 	}
 #pragma endregion
 
@@ -76,7 +80,7 @@ void MapManager::Init()
 	}
 	else
 	{
-		App::Print(100.f, 100.f, "[MapManager] No current Gameplay map (MapManager::Init)");
+		std::cout << "[MapManager] No current Gameplay map (MapManager::Init)" << std::endl;
 	}
 
 	if (m_NextGameplayMap)
@@ -86,7 +90,7 @@ void MapManager::Init()
 	}
 	else
 	{
-		App::Print(100.f, 100.f, "[MapManager] No Next Gameplay map (MapManager::Init)");
+		std::cout << "[MapManager] No Next Gameplay map (MapManager::Init)" << std::endl;
 	}
 #pragma endregion
 }
@@ -106,7 +110,7 @@ void MapManager::Update(float Deltatime)
 	}
 	else
 	{
-		App::Print(100.f, 100.f, "[MapManager] No current LD map (MapManager::Update)");
+		std::cout << "[MapManager] No current LD map (MapManager::Update)" << std::endl;
 	}
 
 	if (m_NextLDMap)
@@ -115,7 +119,7 @@ void MapManager::Update(float Deltatime)
 	}
 	else
 	{
-		App::Print(100.f, 100.f, "[MapManager] No Next LD map (MapManager::Update)");
+		std::cout << "[MapManager] No Next LD map (MapManager::Update)" << std::endl;
 	}
 #pragma endregion
 
@@ -132,7 +136,7 @@ void MapManager::Update(float Deltatime)
 	}
 	else
 	{
-		App::Print(100.f, 100.f, "[MapManager] No current Bg map (MapManager::Update)");
+		std::cout << "[MapManager] No current Bg map (MapManager::Update)" << std::endl;
 	}
 
 	if (m_NextBgMap)
@@ -141,7 +145,7 @@ void MapManager::Update(float Deltatime)
 	}
 	else
 	{
-		App::Print(100.f, 100.f, "[MapManager] No Next Bg map (MapManager::Update)");
+		std::cout << "[MapManager] No Next Bg map (MapManager::Update)" << std::endl;
 	}
 	#pragma endregion
 
@@ -158,7 +162,7 @@ void MapManager::Update(float Deltatime)
 	}
 	else
 	{
-		App::Print(100.f, 100.f, "[MapManager] No current Gameplay map (MapManager::Update)");
+		std::cout << "[MapManager] No current Gameplay map (MapManager::Update)" << std::endl;
 	}
 
 	if (m_NextGameplayMap)
@@ -167,7 +171,7 @@ void MapManager::Update(float Deltatime)
 	}
 	else
 	{
-		App::Print(100.f, 100.f, "[MapManager] No Next Gameplay map (MapManager::Update)");
+		std::cout << "[MapManager] No Next Gameplay map (MapManager::Update)" << std::endl;
 	}
 	#pragma endregion
 }
@@ -217,27 +221,56 @@ void MapManager::Render()
 
 void MapManager::Destroy()
 {
-delete m_MapGenerator;
-delete m_CurrentLDMap;
-delete m_CurrentBgMap;
-delete m_CurrentGameplayMap;
+	delete m_MapGenerator;
 
-delete m_NextLDMap;
-delete m_NextBgMap;
-delete m_NextGameplayMap;
+	if (m_CurrentLDMap)
+	{
+		m_CurrentLDMap->Destroy();
+		delete m_CurrentLDMap;
+	}
+	
+	if (m_CurrentBgMap)
+	{
+		m_CurrentBgMap->Destroy();
+		delete m_CurrentBgMap;
+	}
+
+	if (m_CurrentGameplayMap)
+	{
+		m_CurrentGameplayMap->Destroy();
+		delete m_CurrentGameplayMap;
+	}
+
+	if (m_NextLDMap)
+	{
+		m_NextLDMap->Destroy();
+		delete m_NextLDMap;
+	}
+
+	if (m_NextBgMap)
+	{
+		m_NextBgMap->Destroy();
+		delete m_NextBgMap;
+	}
+
+	if (m_NextGameplayMap)
+	{
+		m_NextGameplayMap->Destroy();
+		delete m_NextGameplayMap;
+	}
 }
 
 bool MapManager::CheckEndMap(Map* map)
 {
-	// Check position.x of map, if == -size/2 (?) return true;
-	if (map)
+	// Check position.x of map, if == -size/2 (?) return true; // To do
+	/*if (map)
 	{
 		const bool Result = map->m_Position.x <= -m_Width/2;
 			return Result;
 	}
 	else
 	{
-		App::Print(100.f, 100.f, "[MapManager] Invalid map pointer (MapManager::CheckEndMap)");
-	}
+		std::cout << "[MapManager] Invalid map pointer (MapManager::CheckEndMap)" << std::endl;
+	}*/
 	return false;
 }

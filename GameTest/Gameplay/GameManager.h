@@ -1,6 +1,7 @@
 #pragma once
 
 //------------------------------------------------------------------------
+#include "../App/app.h"
 #include "../Player/Player.h"
 #include "../Map/MapManager.h"
 //#include "../InputManager.h"
@@ -12,9 +13,9 @@ class GameManager
 {
 
 #pragma region VARIABLES
-	float m_SpeedMap = 50.f;
-	float m_HeightMap = 100.f; // To do 
-	float m_WidthMap = 100.f; // To do
+	float m_SpeedMap = 5.f;
+	float m_HeightMap = 400.f; // To do 
+	float m_WidthMap = 800.f; // To do
 
 	Player* m_Player = nullptr;
 	MapManager* m_MapManager = nullptr;
