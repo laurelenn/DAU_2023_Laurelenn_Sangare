@@ -27,7 +27,8 @@ void MapManager::Init()
 #pragma region LD
 	if (m_CurrentLDMap)
 	{
-		m_CurrentLDMap->SetPosition(InitialXPos, InitialZPos);
+		m_CurrentLDMap->Init();
+		// m_CurrentLDMap->SetPosition(InitialXPos, InitialZPos); /: To do : Set position ??
 	}
 	else
 	{
@@ -36,7 +37,8 @@ void MapManager::Init()
 
 	if (m_NextLDMap)
 	{
-		m_NextLDMap->SetPosition(InitialXPosNext, InitialZPosNext);
+		//m_NextLDMap->SetPosition(InitialXPosNext, InitialZPosNext); // To do : Set position ??
+		m_NextLDMap->Init();
 	}
 	else
 	{
@@ -47,6 +49,7 @@ void MapManager::Init()
 #pragma region Bg
 	if (m_CurrentBgMap)
 	{
+	m_CurrentBgMap->Init();
 		m_CurrentBgMap->SetPosition(InitialXPos, InitialZPos);
 	}
 	else
@@ -56,6 +59,7 @@ void MapManager::Init()
 
 	if (m_NextBgMap)
 	{
+		m_NextBgMap->Init();
 		m_NextBgMap->SetPosition(InitialXPosNext, InitialZPosNext);
 	}
 	else
@@ -67,7 +71,8 @@ void MapManager::Init()
 #pragma region Gameplay
 	if (m_CurrentGameplayMap)
 	{
-		m_CurrentGameplayMap->SetPosition(InitialXPos, InitialZPos);
+		m_CurrentGameplayMap->Init();
+		// m_CurrentGameplayMap->SetPosition(InitialXPos, InitialZPos);	// To do : Set position ??
 	}
 	else
 	{
@@ -76,7 +81,8 @@ void MapManager::Init()
 
 	if (m_NextGameplayMap)
 	{
-		m_NextGameplayMap->SetPosition(InitialXPosNext, InitialZPosNext);
+		m_NextGameplayMap->Init();
+		// m_NextGameplayMap->SetPosition(InitialXPosNext, InitialZPosNext); // To do : Set position ??
 	}
 	else
 	{

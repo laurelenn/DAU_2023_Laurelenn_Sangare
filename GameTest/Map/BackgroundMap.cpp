@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "BackgroundMap.h"
+#include "../App/app.h"
 
 BackgroundMap::BackgroundMap(float Speed)
 {
@@ -16,7 +17,7 @@ void BackgroundMap::Init()
 {
 // To do : use datasbgmap filename
 
-	m_Sprite = new CSimpleSprite("../Ressources/Background/swamp.png", 1, 1);
+	m_Sprite = App::CreateSprite("../Ressources/Background/swamp.png", 1, 1);
 	m_Sprite->SetScale(2.f);
 }
 
@@ -44,4 +45,10 @@ void BackgroundMap::Render()
 void BackgroundMap::Destroy()
 {
 // To do 
+}
+
+void BackgroundMap::SetPosition(float newX, float newZ)
+{
+	Map::SetPosition(newX, newZ);
+	m_Sprite->SetPosition(newX, newZ);
 }

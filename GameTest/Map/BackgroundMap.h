@@ -27,6 +27,7 @@ public:
     void Update(float deltaTime) override;
     void Render() override;
     void Destroy() override;
+    void SetPosition(float newX, float newZ) override;
 #pragma endregion
 
 };

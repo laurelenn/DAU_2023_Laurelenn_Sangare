@@ -11,17 +11,24 @@ void GameManager::Init()
 {
 #pragma region Player
 	m_Player = new Player(100, 100.f, 50.f);
-	m_Player->SetActivated(true); // To change
-	m_Player->m_SpriteColumns = 7;
-	m_Player->m_SpriteLines = 3;
-	m_Player->m_SpriteFilename = ".\\Ressources\\Player\\p1_spritesheet.png";
-	m_Player->Init(App::Vector2(100.f, 100.f));
-
+	if (m_Player)
+	{
+		m_Player->SetActivated(true); // To change
+		m_Player->m_SpriteColumns = 7;
+		m_Player->m_SpriteLines = 3;
+		m_Player->m_SpriteFilename = ".\\Ressources\\Player\\p1_spritesheet.png";
+		m_Player->Init(App::Vector2(100.f, 100.f));
+	}
+	
 #pragma endregion
 
 #pragma region Map
 	m_MapManager = new MapManager(m_HeightMap, m_WidthMap, m_SpeedMap);
 
+	if (m_MapManager)
+	{
+		m_MapManager->Init();
+	}
 #pragma endregion
 }
 
@@ -31,9 +38,11 @@ void GameManager::Init()
 //------------------------------------------------------------------------
 void GameManager::Update(float deltaTime)
 {
-	m_Player->Update(deltaTime);
-	m_MapManager->Update(deltaTime);
-
+	if (m_Player && m_MapManager)
+	{
+		m_Player->Update(deltaTime);
+		m_MapManager->Update(deltaTime);
+	}
 }
 
 //------------------------------------------------------------------------
@@ -42,8 +51,11 @@ void GameManager::Update(float deltaTime)
 //------------------------------------------------------------------------
 void GameManager::Render()
 {
-	m_Player->Render();
-	m_MapManager->Render();
+	if (m_Player && m_MapManager)
+	{
+		m_Player->Render();
+		m_MapManager->Render();
+	}
 }
 //------------------------------------------------------------------------
 // Add your shutdown code here. Called when the APP_QUIT_KEY is pressed.
@@ -51,6 +63,9 @@ void GameManager::Render()
 //------------------------------------------------------------------------
 void GameManager::Shutdown()
 {
-	m_Player->Destroy();
-	m_MapManager->Destroy();
+	if (m_Player && m_MapManager)
+	{
+		m_Player->Destroy();
+		m_MapManager->Destroy();
+	}
 }
