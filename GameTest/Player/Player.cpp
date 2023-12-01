@@ -25,6 +25,6 @@ void Player::InitializeGameObjectDatas()
 		ANIM_DEATH
 	*/
 
-	m_Sprite->SetScale(0.75f);
+	m_Sprite->SetScale(1.f);
 	m_Sprite->SetAnimation(AnimPlayer::ANIM_RUN);
 }
