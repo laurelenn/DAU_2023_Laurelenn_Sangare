@@ -23,7 +23,7 @@ public :
     std::vector<App::Vector2> GetAxes() const override;
     Projection Project(const std::vector<App::Vector2>& axes) const override;
     void DrawDebugCollision() const override;
-  
+    void SetPosition(const float x, const float z) override;
 #pragma endregion
 
 

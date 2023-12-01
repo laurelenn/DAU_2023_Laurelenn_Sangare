@@ -10,7 +10,7 @@ GameManager::GameManager()
 void GameManager::Init()
 {
 #pragma region Player
-	m_Player = new Player(100, 100.f, 50.f);
+	m_Player = new Player(100, 35.f*m_ScalePlayer, 35.f*m_ScalePlayer, m_ScalePlayer); // Initialize player
 	if (m_Player)
 	{
 		m_Player->SetActivated(true); // To change

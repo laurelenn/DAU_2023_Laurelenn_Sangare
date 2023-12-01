@@ -22,13 +22,13 @@ class Player :
 LifeManager *m_LifeManager;
 CapsuleCollisionComponent *m_CapsuleCollision;
 float m_SpeedAnimationRun = 3.5f;
-
+float m_Scale = 1.f;
 #pragma endregion
 
 
 #pragma region FUNCTIONS
 public : 
-Player(int InitialLife, float Height, float Width);
+Player(int InitialLife, float Height, float Width, float Scale);
 
 void InitializeGameObjectDatas() override;
 #pragma endregion

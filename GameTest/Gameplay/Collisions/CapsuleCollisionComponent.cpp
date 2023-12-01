@@ -52,3 +52,10 @@ void CapsuleCollisionComponent::DrawDebugCollision() const
     m_Circle2.DrawDebugCollision();
     m_Rectangle.DrawDebugCollision();
 }
+
+void CapsuleCollisionComponent::SetPosition(const float x, const float z)
+{
+    m_Circle1.SetPosition(x,z-m_LengthCapsule/2);
+    m_Circle2.SetPosition(x,z+m_LengthCapsule / 2);
+    m_Rectangle.SetPosition(x,z);
+}

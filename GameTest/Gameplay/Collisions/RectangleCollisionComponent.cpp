@@ -60,3 +60,8 @@ void RectangleCollisionComponent::DrawDebugCollision() const
     App::DrawLine(m_Position.x + halfWidth, m_Position.z + halfHeight, m_Position.x - halfWidth, m_Position.z + halfHeight, 1.0f, 1.0f, 0.0f); // Jaune
     App::DrawLine(m_Position.x - halfWidth, m_Position.z + halfHeight, m_Position.x - halfWidth, m_Position.z - halfHeight, 1.0f, 1.0f, 0.0f); // Jaune
 }
+
+void RectangleCollisionComponent::SetPosition(const float x, const float z)
+{
+    CollisionComponent::SetPosition(x, z);
+}

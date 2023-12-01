@@ -43,3 +43,8 @@ void CircleCollisionComponent::DrawDebugCollision() const
         App::DrawLine(x1, y1, x2, y2, 1.0f, 1.0f, 0.0f); // Jaune
     }
 }
+
+void CircleCollisionComponent::SetPosition(const float x, const float z)
+{
+    CollisionComponent::SetPosition(x,z);
+}

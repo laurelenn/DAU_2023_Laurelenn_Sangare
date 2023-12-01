@@ -28,10 +28,7 @@ void GameObject::Update(float Deltatime) // ms
 			m_Sprite->Update(Deltatime);
 		}
 
-		if (m_Collision && m_Collision->m_bDrawdebug)
-		{
-			m_Collision->DrawDebugCollision();
-		}
+		
 	}
 }
 
@@ -40,6 +37,11 @@ void GameObject::Render()
 	if (m_Sprite)
 	{
 		m_Sprite->Draw();
+	}
+
+	if (m_Collision && m_Collision->m_bDrawdebug)
+	{
+		m_Collision->DrawDebugCollision();
 	}
 }
 

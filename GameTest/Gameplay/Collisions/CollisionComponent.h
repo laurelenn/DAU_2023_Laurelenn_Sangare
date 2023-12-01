@@ -35,7 +35,7 @@ public :
 
     bool IsColliding(const CollisionComponent& other) const;
     void SetPosition(const App::Vector2& position);
-    void SetPosition(const float x, const float z);
+    virtual void SetPosition(const float x, const float z);
 
     virtual void DrawDebugCollision() const = 0;
     virtual std::vector<App::Vector2> GetAxes() const = 0;
