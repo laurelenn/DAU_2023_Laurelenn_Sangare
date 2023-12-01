@@ -13,8 +13,8 @@ void MapManager::Init()
 	m_CurrentLDMap = m_MapGenerator->GenerateLDMap(true, nullptr, m_SpeedMap);
 	m_NextLDMap = m_MapGenerator->GenerateLDMap(false, m_CurrentLDMap, m_SpeedMap);
 
-	m_CurrentBgMap = m_MapGenerator->GenerateBgMap(true, nullptr, m_SpeedMap*2);
-	m_NextBgMap = m_MapGenerator->GenerateBgMap(false, m_CurrentBgMap, m_SpeedMap*2);
+	m_CurrentBgMap = m_MapGenerator->GenerateBgMap(true, nullptr, m_SpeedMap/2);
+	m_NextBgMap = m_MapGenerator->GenerateBgMap(false, m_CurrentBgMap, m_SpeedMap/2);
 
 	m_CurrentGameplayMap = m_MapGenerator->GenerateGameplayMap(true, m_SpeedMap);
 	m_NextGameplayMap = m_MapGenerator->GenerateGameplayMap(false, m_SpeedMap);
@@ -22,10 +22,10 @@ void MapManager::Init()
 	// Set position of maps
 
 	//To do : Calculate good values
-	float InitialXPos = (m_Width/2.f)*m_Scale;
-	float InitialZPos = (m_Height/2.f)*m_Scale;
+	float InitialXPos = (m_Width)*m_Scale;
+	float InitialZPos = (m_Height)*m_Scale;
 
-	float InitialXPosNext = InitialXPos + (m_Width) * m_Scale;
+	float InitialXPosNext = InitialXPos + (m_Width*m_Scale)*2.f;
 	float InitialZPosNext = InitialZPos;
 
 #pragma region LD

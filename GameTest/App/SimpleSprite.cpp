@@ -51,7 +51,10 @@ void CSimpleSprite::Update(float dt)
             m_animTime = m_animTime - duration;
         }
         int frame = (int)( m_animTime / anim.m_speed );
-        SetFrame(anim.m_frames[frame]);        
+        if (frame > -1 && frame < anim.m_frames.size())
+        {
+            SetFrame(anim.m_frames[frame]);
+        }
     }
 }
 
