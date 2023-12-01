@@ -30,6 +30,7 @@ void BackgroundMap::Update(float deltaTime)
 		m_Sprite->GetPosition(newX, newZ);
 		newX += ((m_SpeedMap/1000.f) * deltaTime);
 		m_Sprite->SetPosition(newX, newZ);
+		m_Position.x = newX;
 	}
 }
 

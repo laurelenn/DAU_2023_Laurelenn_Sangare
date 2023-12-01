@@ -20,8 +20,6 @@ void MapManager::Init()
 	m_NextGameplayMap = m_MapGenerator->GenerateGameplayMap(false, m_SpeedMap);
 
 	// Set position of maps
-
-	//To do : Calculate good values
 	float InitialXPos = (m_Width)*m_Scale;
 	float InitialZPos = (m_Height)*m_Scale;
 
@@ -104,7 +102,7 @@ void MapManager::Init()
 void MapManager::Update(float Deltatime)
 {
 #pragma region LD
-	if (CheckEndMap(m_CurrentLDMap))
+	/*if (CheckEndMap(m_CurrentLDMap))
 	{
 		delete m_CurrentLDMap;
 		m_CurrentLDMap = m_NextLDMap;
@@ -126,16 +124,39 @@ void MapManager::Update(float Deltatime)
 	else
 	{
 		std::cout << "[MapManager] No Next LD map (MapManager::Update)" << std::endl;
-	}
+	}*/
 #pragma endregion
 
 #pragma region Background
 	if (CheckEndMap(m_CurrentBgMap))
 	{
-		delete m_CurrentBgMap;
+		m_OldBgMap = m_CurrentBgMap;
 		m_CurrentBgMap = m_NextBgMap;
-		m_NextBgMap = m_MapGenerator->GenerateBgMap(false, m_CurrentBgMap, m_SpeedMap);
+		m_NextBgMap = m_MapGenerator->GenerateBgMap(false, m_CurrentBgMap, m_SpeedMap / 2);
+
+		m_NextBgMap->m_Scale = m_Scale;
+		m_NextBgMap->Init();
+
+		m_NextBgMap->SetPosition(m_CurrentBgMap->m_Position.x + (m_Width * m_Scale) * 2, (m_Height)*m_Scale);
 	}
+
+	
+
+	if (m_OldBgMap)
+	{
+		m_OldBgMap->Update(Deltatime);
+		if (m_OldBgMap->m_Position.x+ (m_Width * m_Scale) <= 0)
+		{
+			delete m_OldBgMap;
+			m_OldBgMap = nullptr;
+		}
+	}
+	else
+	{
+		std::cout << "[MapManager] No Old Bg map (MapManager::Update)" << std::endl;
+
+	}
+
 	if (m_CurrentBgMap)
 	{
 		m_CurrentBgMap->Update(Deltatime);
@@ -153,10 +174,12 @@ void MapManager::Update(float Deltatime)
 	{
 		std::cout << "[MapManager] No Next Bg map (MapManager::Update)" << std::endl;
 	}
+
+	
 	#pragma endregion
 
 #pragma region Gameplay
-	if (CheckEndMap(m_CurrentGameplayMap))
+	/*if (CheckEndMap(m_CurrentGameplayMap))
 	{
 		delete m_CurrentGameplayMap;
 		m_CurrentGameplayMap = m_NextGameplayMap;
@@ -178,7 +201,7 @@ void MapManager::Update(float Deltatime)
 	else
 	{
 		std::cout << "[MapManager] No Next Gameplay map (MapManager::Update)" << std::endl;
-	}
+	}*/
 	#pragma endregion
 }
 
@@ -200,6 +223,12 @@ void MapManager::Render()
 #pragma endregion
 
 #pragma region Bg
+
+	if (m_OldBgMap)
+	{
+		m_OldBgMap->Render();
+	}
+
 	if (m_CurrentBgMap)
 	{
 		m_CurrentBgMap->Render();
@@ -269,14 +298,14 @@ void MapManager::Destroy()
 bool MapManager::CheckEndMap(Map* map)
 {
 	// Check position.x of map, if == -size/2 (?) return true; // To do
-	/*if (map)
+	if (map)
 	{
-		const bool Result = map->m_Position.x <= -m_Width/2;
+		const bool Result = map->m_Position.x + (m_Width * m_Scale)/2.f <= 0;
 			return Result;
 	}
 	else
 	{
 		std::cout << "[MapManager] Invalid map pointer (MapManager::CheckEndMap)" << std::endl;
-	}*/
+	}
 	return false;
 }

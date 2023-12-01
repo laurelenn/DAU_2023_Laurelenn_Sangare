@@ -16,10 +16,15 @@ float m_Scale = 0.5f;
 
 MapGenerator *m_MapGenerator = nullptr;
 
+LDMap *m_OldLDMap = nullptr;
 LDMap *m_CurrentLDMap = nullptr;
 LDMap *m_NextLDMap = nullptr;
+
+BackgroundMap *m_OldBgMap = nullptr;
 BackgroundMap *m_CurrentBgMap = nullptr;
 BackgroundMap *m_NextBgMap = nullptr;
+
+GameplayMap *m_OldGameplayMap = nullptr;
 GameplayMap *m_CurrentGameplayMap = nullptr;
 GameplayMap *m_NextGameplayMap = nullptr;
 

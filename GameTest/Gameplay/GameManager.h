@@ -14,7 +14,7 @@ class GameManager
 {
 
 #pragma region VARIABLES
-	float m_SpeedMap = -500.f;
+	float m_SpeedMap = -400.f;
 	float m_HeightMap = APP_VIRTUAL_HEIGHT;
 	float m_WidthMap = APP_VIRTUAL_WIDTH / 1.25f;
 
