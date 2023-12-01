@@ -21,7 +21,7 @@ class Player :
 
 LifeManager *m_LifeManager;
 CapsuleCollisionComponent *m_CapsuleCollision;
-float m_SpeedAnimationRun = 5.f;
+float m_SpeedAnimationRun = 3.5f;
 
 #pragma endregion
 

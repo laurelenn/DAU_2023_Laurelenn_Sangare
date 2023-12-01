@@ -23,14 +23,14 @@ void BackgroundMap::Init()
 
 void BackgroundMap::Update(float deltaTime)
 {
-	/*if (m_Sprite)
+	if (m_Sprite)
 	{
 		float newX = 0.f;
 		float newZ = 0.f;
 		m_Sprite->GetPosition(newX, newZ);
-		newX = ((m_SpeedMap/1000.f) * deltaTime);
+		newX += ((m_SpeedMap/1000.f) * deltaTime);
 		m_Sprite->SetPosition(newX, newZ);
-	}*/
+	}
 }
 
 void BackgroundMap::Render()
