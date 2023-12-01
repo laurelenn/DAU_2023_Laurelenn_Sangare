@@ -11,6 +11,7 @@ class MapManager
 float m_Width;
 float m_Height;
 float m_SpeedMap;
+float m_Scale = 1.5f;
 
 MapGenerator *m_MapGenerator = nullptr;
 

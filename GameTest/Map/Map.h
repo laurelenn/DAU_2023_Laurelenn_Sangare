@@ -9,6 +9,7 @@ class Map
 public : 
 float m_SpeedMap;
 App::Vector2 m_Position;
+float m_Scale = 1.f;
 #pragma endregion
 
 

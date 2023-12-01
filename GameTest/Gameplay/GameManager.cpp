@@ -53,8 +53,9 @@ void GameManager::Render()
 {
 	if (m_Player && m_MapManager)
 	{
-		m_Player->Render();
 		m_MapManager->Render();
+		m_Player->Render();
+
 	}
 }
 //------------------------------------------------------------------------

@@ -10,27 +10,28 @@ void MapManager::Init()
 	MapGenerator* m_MapGenerator = new MapGenerator();
 
 	// Generate Maps
-	LDMap* m_CurrentLDMap = m_MapGenerator->GenerateLDMap(true, nullptr, m_SpeedMap);
-	LDMap* m_NextLDMap = m_MapGenerator->GenerateLDMap(false, m_CurrentLDMap, m_SpeedMap);
+	m_CurrentLDMap = m_MapGenerator->GenerateLDMap(true, nullptr, m_SpeedMap);
+	m_NextLDMap = m_MapGenerator->GenerateLDMap(false, m_CurrentLDMap, m_SpeedMap);
 
-	BackgroundMap* m_CurrentBgMap = m_MapGenerator->GenerateBgMap(true, nullptr, m_SpeedMap*2);
-	BackgroundMap* m_NextBgMap = m_MapGenerator->GenerateBgMap(false, m_CurrentBgMap, m_SpeedMap*2);
+	m_CurrentBgMap = m_MapGenerator->GenerateBgMap(true, nullptr, m_SpeedMap*2);
+	m_NextBgMap = m_MapGenerator->GenerateBgMap(false, m_CurrentBgMap, m_SpeedMap*2);
 
-	GameplayMap* m_CurrentGameplayMap = m_MapGenerator->GenerateGameplayMap(true, m_SpeedMap);
-	GameplayMap* m_NextGameplayMap = m_MapGenerator->GenerateGameplayMap(false, m_SpeedMap);
+	m_CurrentGameplayMap = m_MapGenerator->GenerateGameplayMap(true, m_SpeedMap);
+	m_NextGameplayMap = m_MapGenerator->GenerateGameplayMap(false, m_SpeedMap);
 
 	// Set position of maps
 
 	//To do : Calculate good values
-	float InitialXPos = m_Width / 2.f;
-	float InitialZPos = m_Height / 2.f;
+	float InitialXPos = (m_Width/2.f)*m_Scale;
+	float InitialZPos = (m_Height/2.f)*m_Scale;
 
-	float InitialXPosNext = InitialXPos + m_Width/2.f;
+	float InitialXPosNext = InitialXPos + (m_Width) * m_Scale;
 	float InitialZPosNext = InitialZPos;
 
 #pragma region LD
 	if (m_CurrentLDMap)
 	{
+		m_CurrentLDMap->m_Scale = m_Scale;
 		m_CurrentLDMap->Init();
 		// m_CurrentLDMap->SetPosition(InitialXPos, InitialZPos); /: To do : Set position ??
 	}
@@ -41,6 +42,7 @@ void MapManager::Init()
 
 	if (m_NextLDMap)
 	{
+		m_NextLDMap->m_Scale = m_Scale;
 		//m_NextLDMap->SetPosition(InitialXPosNext, InitialZPosNext); // To do : Set position ??
 		m_NextLDMap->Init();
 	}
@@ -53,6 +55,7 @@ void MapManager::Init()
 #pragma region Bg
 	if (m_CurrentBgMap)
 	{
+		m_CurrentBgMap->m_Scale = m_Scale;
 		m_CurrentBgMap->Init();
 		m_CurrentBgMap->SetPosition(InitialXPos, InitialZPos);
 	}
@@ -63,6 +66,7 @@ void MapManager::Init()
 
 	if (m_NextBgMap)
 	{
+		m_NextBgMap->m_Scale = m_Scale;
 		m_NextBgMap->Init();
 		m_NextBgMap->SetPosition(InitialXPosNext, InitialZPosNext);
 	}
@@ -75,6 +79,7 @@ void MapManager::Init()
 #pragma region Gameplay
 	if (m_CurrentGameplayMap)
 	{
+		m_CurrentGameplayMap->m_Scale = m_Scale;
 		m_CurrentGameplayMap->Init();
 		// m_CurrentGameplayMap->SetPosition(InitialXPos, InitialZPos);	// To do : Set position ??
 	}
@@ -85,6 +90,7 @@ void MapManager::Init()
 
 	if (m_NextGameplayMap)
 	{
+		m_NextGameplayMap->m_Scale = m_Scale;
 		m_NextGameplayMap->Init();
 		// m_NextGameplayMap->SetPosition(InitialXPosNext, InitialZPosNext); // To do : Set position ??
 	}
