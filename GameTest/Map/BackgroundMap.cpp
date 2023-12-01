@@ -17,7 +17,7 @@ void BackgroundMap::Init()
 {
 	// To do : use datasbgmap filename
 
-	m_Sprite = App::CreateSprite(".\\Ressources\\Background\\swamp.png", 1, 1);
+	m_Sprite = App::CreateSprite(".\\Ressources\\Background\\game_Background_4.png", 1, 1);
 	m_Sprite->SetScale(m_Scale);
 }
 

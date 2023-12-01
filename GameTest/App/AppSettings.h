@@ -4,9 +4,10 @@
 // We can use two coordinate systems. NATIVE and VIRTUAL.
 // VIRTUAL has coords from 0.0f to APP_VIRTUAL_[WIDTH/HEIGHT].
 // NATIVE has coords from -1.0f to 1.0f with 0.0f,0.0f as the center of the window.
-#define APP_USE_VIRTUAL_RES		true					// Set true to use virtual coords.					
-#define APP_VIRTUAL_WIDTH		(1000*1.5)					// This will be the effective x resolution regardless of actual screen/window res.
-#define APP_VIRTUAL_HEIGHT		(400*1.5)					// This will be the effective y resolution regardless of actual screen/window res.
+#define APP_USE_VIRTUAL_RES		true					// Set true to use virtual coords.	
+#define APP_VIRTUAL_SCALE       (0.5f)					// Scale of window
+#define APP_VIRTUAL_WIDTH		(1920.f*APP_VIRTUAL_SCALE*1.25f)					// This will be the effective x resolution regardless of actual screen/window res.
+#define APP_VIRTUAL_HEIGHT		(1080.f*APP_VIRTUAL_SCALE)					// This will be the effective y resolution regardless of actual screen/window res.
 
 #define APP_MAX_FRAME_RATE		(60.0f)					// Maximum update rate.
 #define APP_INIT_WINDOW_WIDTH	(APP_VIRTUAL_WIDTH)		// Initial window width.

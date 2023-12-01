@@ -4,6 +4,7 @@
 #include "MapGenerator.h"
 #include "GameplayMap.h"
 #include "LDMap.h"
+#include "../App/AppSettings.h"
 class MapManager
 {
 
@@ -11,7 +12,7 @@ class MapManager
 float m_Width;
 float m_Height;
 float m_SpeedMap;
-float m_Scale = 1.5f;
+float m_Scale = 0.5f;
 
 MapGenerator *m_MapGenerator = nullptr;
 
