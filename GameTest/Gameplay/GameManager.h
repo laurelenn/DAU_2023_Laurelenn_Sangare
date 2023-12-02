@@ -12,10 +12,6 @@
 //------------------------------------------------------------------------
 //------------------------------------------------------------------------
 
-#define HEIGHT_FLOOR_0      (100.f);
-#define HEIGHT_FLOOR_1      (200.f);
-#define HEIGHT_FLOOR_CAVE   (100.f);
-
 
 
 class GameManager
@@ -32,7 +28,6 @@ class GameManager
 
 	// Player
 	Player* m_Player = nullptr;
-	float m_ScalePlayer = 1.5f;
 	// InputManager* m_InputManager = nullptr;
 
 	// Game Data

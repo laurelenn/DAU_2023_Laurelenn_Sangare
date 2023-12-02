@@ -28,7 +28,7 @@ float m_Scale = 1.f;
 
 #pragma region FUNCTIONS
 public : 
-Player(int InitialLife, float Height, float Width, float Scale);
+Player(float InitialLife, float Height, float Width, float Scale);
 
 void InitializeGameObjectDatas() override;
 #pragma endregion

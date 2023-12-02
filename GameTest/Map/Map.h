@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../App/app.h"
+#include "../App/AppSettings.h"
 
 class Map
 {

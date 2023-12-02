@@ -1,10 +1,6 @@
 #pragma once
 #include "Map.h"
-
-struct GameplayDatasMap
-{
-    // To do : Create Gameplay here with class, enums, initial pos
-};
+#include "../Datas/Map_DatasGameplay.h"
 
 class GameplayMap :
     public Map

@@ -5,6 +5,8 @@
 #include "../App/app.h"
 #include <vector>
 
+class GameObject;
+
 struct Projection {
     float min;
     float max;
@@ -19,10 +21,11 @@ class CollisionComponent
 public : 
 
     bool m_bIsActivated = true;
-    bool m_bDrawdebug = false;
+    bool m_bDrawdebug = true;
 
     ShapeType m_ShapeType;
     App::Vector2 m_Position;
+    GameObject* m_Owner;
 
 #pragma endregion
 
@@ -35,6 +38,7 @@ public :
 
     bool IsColliding(const CollisionComponent& other) const;
     void SetPosition(const App::Vector2& position);
+    void SetOwner(GameObject* owner){m_Owner = owner;}
     virtual void SetPosition(const float x, const float z);
 
     virtual void DrawDebugCollision() const = 0;

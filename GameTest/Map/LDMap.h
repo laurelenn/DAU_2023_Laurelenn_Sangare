@@ -1,10 +1,6 @@
 #pragma once
 #include "Map.h"
-
-struct LDDatasMap
-{
-    // To do : Create LD here position & enum or class
-};
+#include "../Datas/Map_DatasLD.h"
 
 class LDMap :
     public Map

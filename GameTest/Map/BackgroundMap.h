@@ -1,11 +1,7 @@
 #pragma once
 #include "Map.h"
 #include "../App/SimpleSprite.h"
-
-struct BackgroundDatasMap
-{
-    // To do : Create Background Datas with type and filename
-};
+#include "../Datas/Map_DatasBackground.h"
 
 
 class BackgroundMap :

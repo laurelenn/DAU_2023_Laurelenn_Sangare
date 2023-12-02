@@ -17,8 +17,8 @@
 //---------------------------------------------------------------------------------
 // Initial setup globals.
 //---------------------------------------------------------------------------------
-extern int WINDOW_WIDTH = APP_INIT_WINDOW_WIDTH;
-extern int WINDOW_HEIGHT = APP_INIT_WINDOW_HEIGHT;
+int WINDOW_WIDTH = APP_INIT_WINDOW_WIDTH;
+int WINDOW_HEIGHT = APP_INIT_WINDOW_HEIGHT;
 HWND MAIN_WINDOW_HANDLE = nullptr;
 
 //---------------------------------------------------------------------------------

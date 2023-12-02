@@ -33,7 +33,7 @@ GameplayMap *m_NextGameplayMap = nullptr;
 
 #pragma region FUNCTIONS
 public : 
-    MapManager(float height, float width, float speed) : m_Height(height), m_Width(width), m_SpeedMap(speed) {}
+    MapManager(float height, float width, float speed, float scale) : m_Height(height), m_Width(width), m_SpeedMap(speed), m_Scale(scale) {}
 
     void Init();
     void Update(float Deltatime);

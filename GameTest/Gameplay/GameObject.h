@@ -2,6 +2,7 @@
 #include "../App/SimpleSprite.h"
 #include "../App/app.h"
 #include "../Gameplay/Collisions/CollisionComponent.h"
+#include "../Gameplay/LifeManager.h"
 
 #include <iostream>
 #include <memory>
@@ -16,13 +17,15 @@ float m_SpeedZ;
 
 
 public :
-	CSimpleSprite* m_Sprite;
-	const char* m_SpriteFilename;
-	int m_SpriteColumns;
-	int m_SpriteLines;
 
-	std::unique_ptr<CollisionComponent> m_Collision;
-	bool m_bIsActivated = false;
+CSimpleSprite* m_Sprite;
+const char* m_SpriteFilename;
+int m_SpriteColumns;
+int m_SpriteLines;
+LifeManager* m_LifeManager;
+
+std::unique_ptr<CollisionComponent> m_Collision;
+bool m_bIsActivated = false;
 
 #pragma endregion
 

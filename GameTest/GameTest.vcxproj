@@ -182,6 +182,9 @@
     <ClInclude Include="App\SimpleController.h" />
     <ClInclude Include="App\SimpleSound.h" />
     <ClInclude Include="App\SimpleSprite.h" />
+    <ClInclude Include="Datas\Map_DatasBackground.h" />
+    <ClInclude Include="Datas\Map_DatasGameplay.h" />
+    <ClInclude Include="Datas\Map_DatasLD.h" />
     <ClInclude Include="Gameplay\Collisions\CapsuleCollisionComponent.h" />
     <ClInclude Include="Gameplay\Collisions\CircleCollisionComponent.h" />
     <ClInclude Include="Gameplay\Collisions\CollisionComponent.h" />

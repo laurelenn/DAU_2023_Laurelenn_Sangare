@@ -10,20 +10,20 @@ GameManager::GameManager()
 void GameManager::Init()
 {
 #pragma region Player
-	m_Player = new Player(100, 35.f*m_ScalePlayer, 35.f*m_ScalePlayer, m_ScalePlayer); // Initialize player
+	m_Player = new Player(100, 35.f*PLAYER_SCALE, 35.f*PLAYER_SCALE, PLAYER_SCALE); // Initialize player
 	if (m_Player)
 	{
 		m_Player->SetActivated(true); // To change
 		m_Player->m_SpriteColumns = 7;
 		m_Player->m_SpriteLines = 3;
 		m_Player->m_SpriteFilename = ".\\Ressources\\Player\\p1_spritesheet.png";
-		m_Player->Init(App::Vector2(100.f, 100.f));
+		m_Player->Init(App::Vector2(100.f, HEIGHT_FLOOR_0));
 	}
 	
 #pragma endregion
 
 #pragma region Map
-	m_MapManager = new MapManager(m_HeightMap, m_WidthMap, m_SpeedMap);
+	m_MapManager = new MapManager(m_HeightMap, m_WidthMap, m_SpeedMap, APP_VIRTUAL_SCALE);
 
 	if (m_MapManager)
 	{

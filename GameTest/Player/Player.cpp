@@ -3,10 +3,9 @@
 #include "Player.h"
 #include "../../GameTest/App/main.h"
 
-Player::Player(int InitialLife, float Height, float Width, float Scale)
+Player::Player(float InitialLife, float Height, float Width, float Scale)
 {
 	m_CapsuleCollision = new CapsuleCollisionComponent(Width, Height);
-	m_CapsuleCollision->m_bDrawdebug = true;
 	m_Collision = std::unique_ptr<CollisionComponent>(m_CapsuleCollision);
 	m_LifeManager = new LifeManager(InitialLife, InitialLife);
 	m_Scale = Scale;

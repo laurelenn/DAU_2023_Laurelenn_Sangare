@@ -14,6 +14,11 @@ void GameObject::Init(App::Vector2 InitialLocation)
 {
 	InitializeGameObjectDatas();
 	SetPosition(InitialLocation.x, InitialLocation.z);
+	m_LifeManager = new LifeManager(100.f);
+	if (m_Collision)
+	{
+		m_Collision->SetOwner(this);
+	}
 }
 
 void GameObject::Update(float Deltatime) // ms
@@ -27,8 +32,6 @@ void GameObject::Update(float Deltatime) // ms
 		{
 			m_Sprite->Update(Deltatime);
 		}
-
-		
 	}
 }
 

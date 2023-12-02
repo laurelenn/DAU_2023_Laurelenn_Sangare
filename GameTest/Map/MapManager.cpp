@@ -20,10 +20,10 @@ void MapManager::Init()
 	m_NextGameplayMap = m_MapGenerator->GenerateGameplayMap(false, m_SpeedMap);
 
 	// Set position of maps
-	float InitialXPos = (m_Width)*m_Scale;
-	float InitialZPos = (m_Height)*m_Scale;
+	float InitialXPos = (m_Width)*0.5f;
+	float InitialZPos = (m_Height)*0.5f;
 
-	float InitialXPosNext = InitialXPos + (m_Width*m_Scale)*2.f;
+	float InitialXPosNext = InitialXPos + m_Width;
 	float InitialZPosNext = InitialZPos;
 
 #pragma region LD
@@ -137,7 +137,7 @@ void MapManager::Update(float Deltatime)
 		m_NextBgMap->m_Scale = m_Scale;
 		m_NextBgMap->Init();
 
-		m_NextBgMap->SetPosition(m_CurrentBgMap->m_Position.x + (m_Width * m_Scale) * 2, (m_Height)*m_Scale);
+		m_NextBgMap->SetPosition(m_CurrentBgMap->m_Position.x + m_Width, m_CurrentBgMap->m_Position.z);
 	}
 
 	
@@ -145,7 +145,7 @@ void MapManager::Update(float Deltatime)
 	if (m_OldBgMap)
 	{
 		m_OldBgMap->Update(Deltatime);
-		if (m_OldBgMap->m_Position.x+ (m_Width * m_Scale) <= 0)
+		if (m_OldBgMap->m_Position.x+ m_Width <= 0)
 		{
 			delete m_OldBgMap;
 			m_OldBgMap = nullptr;
@@ -300,7 +300,7 @@ bool MapManager::CheckEndMap(Map* map)
 	// Check position.x of map, if == -size/2 (?) return true; // To do
 	if (map)
 	{
-		const bool Result = map->m_Position.x + (m_Width * m_Scale)/2.f <= 0;
+		const bool Result = map->m_Position.x <= 0;
 			return Result;
 	}
 	else
