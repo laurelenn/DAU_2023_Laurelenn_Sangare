@@ -4,19 +4,26 @@
 #include "BackgroundMap.h"
 #include "GameplayMap.h"
 
+
+class GameManager;
+
 class MapGenerator
 {
 
 #pragma region VARIABLES
-// To do : Make list of LD Map
 
-// To do : Make list of Background Map
+	GameManager* m_GameManager = nullptr;
 
 #pragma endregion
 
 #pragma region FUNCTIONS
+
 public : 
+
 MapGenerator(){};
+
+void SetGameManager(GameManager* gameManager) { m_GameManager = gameManager;}
+
 LDMap* GenerateLDMap(bool isFirstMap, LDMap* previousMap, float speed);
 BackgroundMap* GenerateBgMap(bool isFirstMap, BackgroundMap* previousMap, float speed);
 GameplayMap* GenerateGameplayMap(bool isFirstMap, float speed);

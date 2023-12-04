@@ -60,7 +60,7 @@ void Player::Update(float Deltatime)
 		}
 		else // DOWN
 		{
-			m_CurrentSpeedJump = CLAMP(m_CurrentSpeedJump *= 0.9f, 1.f, m_InitialSpeedJump);
+			m_CurrentSpeedJump = CLAMP(m_CurrentSpeedJump *= 0.5f, 1.f, m_InitialSpeedJump);
 		}
 
 		jumpDistance = m_bIsJumpingDown ? -jumpDistance : jumpDistance; // Change direction if max height reached
@@ -95,8 +95,8 @@ void Player::EndJump()
 
 void Player::Death()
 {
-	if (m_LifeManager->m_bIsDead && m_GameManager)
+	if (m_LifeManager->m_bIsDead /* && m_GameManager*/)
 	{
-		m_GameManager->GameOver();
+		//m_GameManager->GameOver();
 	}
 }

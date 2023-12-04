@@ -3,12 +3,17 @@
 #include "BackgroundMap.h"
 #include "MapGenerator.h"
 #include "GameplayMap.h"
-#include "LDMap.h"
 #include "../App/AppSettings.h"
+
+class GameManager;
+
 class MapManager
 {
 
 #pragma region VARIABLES
+
+GameManager *m_GameManager = nullptr;
+
 float m_Width;
 float m_Height;
 float m_SpeedMap;
@@ -35,11 +40,14 @@ GameplayMap *m_NextGameplayMap = nullptr;
 public : 
     MapManager(float height, float width, float speed, float scale) : m_Height(height), m_Width(width), m_SpeedMap(speed), m_Scale(scale) {}
 
+    void SetGameManager(GameManager* gameManager) { m_GameManager = gameManager; }
+
     void Init();
     void Update(float Deltatime);
     void Render();
     void Destroy();
     bool CheckEndMap(Map* map);
+    void GameOver();
 #pragma endregion
 
 };

@@ -7,8 +7,8 @@
 
 void MapManager::Init()
 {
-	MapGenerator* m_MapGenerator = new MapGenerator();
-
+	m_MapGenerator = new MapGenerator();
+	m_MapGenerator->SetGameManager(m_GameManager);
 	// Generate Maps
 	m_CurrentLDMap = m_MapGenerator->GenerateLDMap(true, nullptr, m_SpeedMap);
 	m_NextLDMap = m_MapGenerator->GenerateLDMap(false, m_CurrentLDMap, m_SpeedMap);
@@ -135,17 +135,16 @@ void MapManager::Update(float Deltatime)
 		m_NextBgMap = m_MapGenerator->GenerateBgMap(false, m_CurrentBgMap, m_SpeedMap / 2);
 
 		m_NextBgMap->m_Scale = m_Scale;
+		m_NextBgMap->SetGameManager(m_GameManager);
 		m_NextBgMap->Init();
 
 		m_NextBgMap->SetPosition(m_CurrentBgMap->m_Position.x + m_Width, m_CurrentBgMap->m_Position.z);
 	}
 
-	
-
 	if (m_OldBgMap)
 	{
 		m_OldBgMap->Update(Deltatime);
-		if (m_OldBgMap->m_Position.x+ m_Width <= 0)
+		if (m_OldBgMap->m_Position.x + m_Width <= 0)
 		{
 			delete m_OldBgMap;
 			m_OldBgMap = nullptr;
@@ -308,4 +307,8 @@ bool MapManager::CheckEndMap(Map* map)
 		std::cout << "[MapManager] Invalid map pointer (MapManager::CheckEndMap)" << std::endl;
 	}
 	return false;
+}
+
+void MapManager::GameOver()
+{
 }

@@ -1,7 +1,8 @@
 #pragma once
-#include "../Gameplay/GameObject.h"
 #include "../Gameplay/LifeManager.h"
 #include "../Gameplay/Collisions/CapsuleCollisionComponent.h"
+#include "../Gameplay/GameObject.h"
+
 
 enum AnimPlayer
 {

@@ -18,7 +18,7 @@ enum GameObjectLDType
 
 struct GameplayDatasMap
 {
-    GameObjectType m_TypeGameObject;
+    GameObjectLDType m_TypeGameObject;
     FloorLevels m_FloorSpawn;
     // Make a tile system would be good
     float m_SpawnPositionX;

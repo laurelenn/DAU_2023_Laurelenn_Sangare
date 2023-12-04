@@ -6,6 +6,11 @@ LDMap* MapGenerator::GenerateLDMap(bool isFirstMap, LDMap* previousMap, float sp
 {
     // return SelectLDMap(isFirstMap); // To do
     auto newMap = new LDMap(speed);
+    if (newMap && m_GameManager)
+    {
+        newMap->SetGameManager(m_GameManager); 
+    }
+
     return newMap;
 }
 
@@ -13,6 +18,11 @@ BackgroundMap* MapGenerator::GenerateBgMap(bool isFirstMap, BackgroundMap* previ
 {
     // return SelectBgMap(isFirstMap); // To do
     auto newMap = new BackgroundMap(speed);
+    if (newMap && m_GameManager)
+    {
+        newMap->SetGameManager(m_GameManager);
+    }
+
     return newMap;
 }
 
@@ -20,7 +30,10 @@ GameplayMap* MapGenerator::GenerateGameplayMap(bool isFirstMap, float speed)
 {
     // return SelectGameplayMap(isFirstMap); // To do
     auto newMap = new GameplayMap(speed);
-
+   if (newMap && m_GameManager)
+   {
+        newMap->SetGameManager(m_GameManager);
+   }
     return newMap;
 }
 

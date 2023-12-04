@@ -7,8 +7,6 @@
 #include <iostream>
 #include <memory>
 
-class GameManager;
-
 enum GameObjectType 
 {
 	Pawn,
@@ -19,7 +17,7 @@ enum GameObjectType
 	Hole
 };
 
-
+class GameManager;
 
 class GameObject
 {
@@ -28,6 +26,7 @@ class GameObject
 
 public:
 
+GameManager *m_GameManager = nullptr;
 
 App::Vector2 m_Location;
 float m_SpeedX;
@@ -49,6 +48,7 @@ bool m_bIsActivated = false;
 
 public :
 ~GameObject() {};
+void SetGameManager(GameManager* gameManager){ m_GameManager  = gameManager;}
 
 void Init();
 void Init(App::Vector2 InitialLocation);

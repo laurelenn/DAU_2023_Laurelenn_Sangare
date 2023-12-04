@@ -3,14 +3,19 @@
 #include "../App/app.h"
 #include "../App/AppSettings.h"
 
+class GameManager;
+
 class Map
 {
 
 #pragma region VARIABLES
 public : 
-float m_SpeedMap;
-App::Vector2 m_Position;
-float m_Scale = 1.f;
+
+	GameManager* m_GameManager = nullptr;
+	float m_SpeedMap;
+	App::Vector2 m_Position;
+	float m_Scale = 1.f;
+
 #pragma endregion
 
 
@@ -20,6 +25,8 @@ public :
 Map(){m_SpeedMap = 10.f;};
 Map(float Speed) : m_SpeedMap(Speed){}
 ~Map() {};
+
+void SetGameManager(GameManager* gameManager) { m_GameManager = gameManager; }
 
 virtual void Init() = 0;
 virtual void Update(float deltaTime) = 0;
