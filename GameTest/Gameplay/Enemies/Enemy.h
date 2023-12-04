@@ -5,14 +5,21 @@ class Enemy :
     public GameObject
 {
 #pragma region VARIABLES
+public :
 
-LifeManager m_Life;
+float m_DamageCollisionPlayer;
+
 #pragma endregion
 
 
 #pragma region FUNCTIONS
     Enemy();
 
+    void InitializeGameObjectDatas() override;
+
+    void Update(float Deltatime) override;
+
+    void ApplyDamages(float damages);
 #pragma endregion
 
 };

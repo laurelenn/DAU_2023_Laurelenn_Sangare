@@ -51,9 +51,6 @@
     <ClCompile Include="Gameplay\Enemies\Enemy.cpp">
       <Filter>Sources\Gameplay\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Gameplay\Obstacles\Obstacle.cpp">
-      <Filter>Sources\Gameplay\Obstacles</Filter>
-    </ClCompile>
     <ClCompile Include="Gameplay\Collisions\CollisionComponent.cpp">
       <Filter>Sources\Gameplay\Collisions</Filter>
     </ClCompile>
@@ -126,9 +123,6 @@
     <ClInclude Include="Gameplay\Enemies\Enemy.h">
       <Filter>Sources\Gameplay\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="Gameplay\Obstacles\Obstacle.h">
-      <Filter>Sources\Gameplay\Obstacles</Filter>
-    </ClInclude>
     <ClInclude Include="Gameplay\Collisions\CollisionComponent.h">
       <Filter>Sources\Gameplay\Collisions</Filter>
     </ClInclude>
@@ -144,6 +138,9 @@
     <ClInclude Include="Map\GameplayMap.h">
       <Filter>Sources\Map</Filter>
     </ClInclude>
+    <ClInclude Include="Datas\Map_DatasBackground.h" />
+    <ClInclude Include="Datas\Map_DatasGameplay.h" />
+    <ClInclude Include="Datas\Map_DatasLD.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="NextAPI">
@@ -187,9 +184,6 @@
     </Filter>
     <Filter Include="Sources\Gameplay\Enemies">
       <UniqueIdentifier>{a61d8796-3933-4533-97e2-6fbed22375a5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Sources\Gameplay\Obstacles">
-      <UniqueIdentifier>{090fdc6a-16fd-46a4-b348-20e158e8f292}</UniqueIdentifier>
     </Filter>
     <Filter Include="Sources\Gameplay\Collisions">
       <UniqueIdentifier>{d6054444-6aed-4fa9-ae4b-88c59c119cae}</UniqueIdentifier>

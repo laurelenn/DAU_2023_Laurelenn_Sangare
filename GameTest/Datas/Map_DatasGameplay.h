@@ -2,7 +2,7 @@
 #include "../Gameplay/GameObject.h"
 #include "../App/AppSettings.h"
 
-enum GameObjectType
+enum GameObjectLDType
 {
     Monster1,
     Monster2,
@@ -10,7 +10,7 @@ enum GameObjectType
     Obstacle1,
     Obstacle2,
     Obstacle3,
-    Hole,
+    TileHole,
     PowerUp1,
     PowerUp2,
     PowerUp3

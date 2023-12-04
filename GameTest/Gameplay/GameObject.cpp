@@ -68,3 +68,15 @@ void GameObject::SetPosition(float x, float z)
 	m_Location.x = x;
 	m_Location.z = z;
 }
+
+void GameObject::ApplyDamages(float damages)
+{
+	if (damages >= 0)
+	{
+		m_LifeManager->ApplyDamage(damages);
+		if (m_LifeManager->m_bIsDead)
+		{
+			Death();
+		}
+	}
+}

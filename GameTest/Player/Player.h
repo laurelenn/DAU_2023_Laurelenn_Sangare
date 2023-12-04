@@ -7,6 +7,7 @@ enum AnimPlayer
 {
     ANIM_RUN,
     ANIM_JUMP,
+    ANIM_ONFLOOR,
     ANIM_CROUNCH,
     ANIM_HIT,
     ANIM_ATTACK,
@@ -23,7 +24,7 @@ LifeManager *m_LifeManager;
 CapsuleCollisionComponent *m_CapsuleCollision;
 float m_SpeedAnimationRun = 3.5f;
 float m_Scale = 1.f;
-float m_HeightJump = HEIGHT_FLOOR_0*1.5f; //  /2 ?
+float m_HeightJump = HEIGHT_FLOOR_0*1.5f;
 float m_InitialSpeedJump = 8.f;
 
 // Runtime
@@ -46,6 +47,8 @@ void Update(float Deltatime) override;
 
 void Jump();
 void EndJump();
+
+void Death() override;
 #pragma endregion
 
 };

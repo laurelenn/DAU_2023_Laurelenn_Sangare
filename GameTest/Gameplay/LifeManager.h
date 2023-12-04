@@ -18,6 +18,8 @@ public:
 	float m_InitialLife = 100.f;
 	float m_CurrentLife = 100.f;
 	bool m_bIsInvincible = false;
+	bool m_bIsDead = false;
+	bool m_bIsActivated = true;
 
 #pragma endregion
 

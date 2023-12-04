@@ -3,12 +3,15 @@
 #include "Player.h"
 #include "../../GameTest/App/main.h"
 
+
+
 Player::Player(float InitialLife, float Height, float Width, float Scale)
 {
 	m_CapsuleCollision = new CapsuleCollisionComponent(Width, Height);
 	m_Collision = std::unique_ptr<CollisionComponent>(m_CapsuleCollision);
 	m_LifeManager = new LifeManager(InitialLife, InitialLife);
 	m_Scale = Scale;
+	m_TypeObject = GameObjectType::Pawn;
 }
 
 void Player::InitializeGameObjectDatas()
@@ -17,6 +20,7 @@ void Player::InitializeGameObjectDatas()
 	m_Sprite->CreateAnimation(AnimPlayer::ANIM_RUN, m_SpeedAnimationRun/50.f, {2,8,9,8});
 	m_Sprite->CreateAnimation(AnimPlayer::ANIM_JUMP, m_SpeedAnimationRun/50.f, {13});
 	m_Sprite->CreateAnimation(AnimPlayer::ANIM_HIT, m_SpeedAnimationRun/50.f, {6});
+	m_Sprite->CreateAnimation(AnimPlayer::ANIM_ONFLOOR, m_SpeedAnimationRun/50.f, {12});
 	// To do : Create Other Animations
 
 	/*
@@ -59,7 +63,6 @@ void Player::Update(float Deltatime)
 			m_CurrentSpeedJump = CLAMP(m_CurrentSpeedJump *= 0.9f, 1.f, m_InitialSpeedJump);
 		}
 
-
 		jumpDistance = m_bIsJumpingDown ? -jumpDistance : jumpDistance; // Change direction if max height reached
 
 		m_Location.z = CLAMP(m_Location.z += jumpDistance, m_CurrentFloorLevel, m_HeightJumpCurrentLevel);
@@ -85,7 +88,15 @@ void Player::EndJump()
 	m_bIsJumping = false;
 	m_bIsJumpingDown = false;
 	m_Location.z = m_CurrentFloorLevel; // Doble check to restart at good location
-	m_Sprite->SetAnimation(AnimPlayer::ANIM_RUN);
 	m_CurrentSpeedJump = m_InitialSpeedJump;
 
+	m_Sprite->SetAnimation(AnimPlayer::ANIM_RUN);
+}
+
+void Player::Death()
+{
+	if (m_LifeManager->m_bIsDead && m_GameManager)
+	{
+		m_GameManager->GameOver();
+	}
 }

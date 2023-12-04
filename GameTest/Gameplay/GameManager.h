@@ -18,7 +18,6 @@ class GameManager
 {
 
 #pragma region VARIABLES
-
 	// Map
 	MapManager* m_MapManager = nullptr;
 	float m_SpeedMap = -400.f;
@@ -28,7 +27,7 @@ class GameManager
 
 	// Player
 	Player* m_Player = nullptr;
-	// InputManager* m_InputManager = nullptr;
+	bool m_bGameOver = false;
 
 	// Game Data
 	int m_Score;
@@ -48,6 +47,8 @@ public :
 	void Update(float DeltaTime);
 	void Render();
 	void Shutdown();
+
+	void GameOver();
 #pragma endregion
 
 };

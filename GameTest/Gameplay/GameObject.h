@@ -7,6 +7,20 @@
 #include <iostream>
 #include <memory>
 
+class GameManager;
+
+enum GameObjectType 
+{
+	Pawn,
+	Enemy,
+	Projectile,
+	Obstacle,
+	Tile,
+	Hole
+};
+
+
+
 class GameObject
 {
 
@@ -18,6 +32,7 @@ public:
 App::Vector2 m_Location;
 float m_SpeedX;
 float m_SpeedZ;
+GameObjectType m_TypeObject;
 
 CSimpleSprite* m_Sprite;
 const char* m_SpriteFilename;
@@ -43,6 +58,9 @@ void Render();
 void Destroy();
 void SetActivated(bool Activate){m_bIsActivated = Activate;}
 void SetPosition(float x, float z);
+
+void ApplyDamages(float damages);
+virtual void Death() = 0;
 
 #pragma endregion
 

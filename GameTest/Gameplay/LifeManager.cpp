@@ -5,14 +5,22 @@
 
 float LifeManager::ApplyDamage(float Damages)
 {
-	if (Damages >= 0 && m_bIsInvincible)
+	if (m_bIsActivated)
 	{
-		return m_CurrentLife;
-	}
-	else // if Heald (Damages < 0) or not Invincible
-	{
-		//m_CurrentLife -= std::clamp(m_CurrentLife - Damages, 0.f, m_MaxLife);
-		m_CurrentLife -= Damages;
+		if (Damages >= 0 && m_bIsInvincible)
+		{
+			return m_CurrentLife;
+		}
+		else // if Heald (Damages < 0) or not Invincible
+		{
+			//m_CurrentLife -= std::clamp(m_CurrentLife - Damages, 0.f, m_MaxLife);
+			m_CurrentLife -= Damages;
+		}
+
+		if (m_CurrentLife <= 0)
+		{
+			m_bIsDead = true;
+		}
 	}
 	return m_CurrentLife;
 }
