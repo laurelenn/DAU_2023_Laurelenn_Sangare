@@ -23,15 +23,16 @@ LifeManager *m_LifeManager;
 CapsuleCollisionComponent *m_CapsuleCollision;
 float m_SpeedAnimationRun = 3.5f;
 float m_Scale = 1.f;
-float m_HeightJump = HEIGHT_FLOOR_0; //  /2 ?
-float m_SpeedJump = 1.f;
+float m_HeightJump = HEIGHT_FLOOR_0*1.5f; //  /2 ?
+float m_InitialSpeedJump = 8.f;
 
 // Runtime
 float m_CurrentFloorLevel = HEIGHT_FLOOR_0;
 float m_HeightJumpCurrentLevel = HEIGHT_FLOOR_1;
+float m_HeightConstantSpeed = HEIGHT_FLOOR_1;
 bool m_bIsJumping = false;
 bool m_bIsJumpingDown = false;
-
+float m_CurrentSpeedJump;
 #pragma endregion
 
 

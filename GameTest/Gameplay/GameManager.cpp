@@ -17,7 +17,7 @@ void GameManager::Init()
 		m_Player->m_SpriteColumns = 7;
 		m_Player->m_SpriteLines = 3;
 		m_Player->m_SpriteFilename = ".\\Ressources\\Player\\p1_spritesheet.png";
-		m_Player->Init(App::Vector2(100.f, HEIGHT_FLOOR_0));
+		m_Player->Init(App::Vector2(200.f, HEIGHT_FLOOR_0));
 	}
 	
 #pragma endregion

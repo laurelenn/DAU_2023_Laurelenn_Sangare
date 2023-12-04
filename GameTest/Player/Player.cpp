@@ -40,12 +40,26 @@ void Player::Update(float Deltatime)
 
 	if (m_bIsJumping)
 	{
-		float jumpDistance = m_SpeedJump/10.f * Deltatime;
+		float jumpDistance = (m_CurrentSpeedJump/10.f) * Deltatime;
 
 		if (m_Location.z >= m_HeightJumpCurrentLevel && !m_bIsJumpingDown)
 		{
 			m_bIsJumpingDown = true;
 		}
+
+		if (!m_bIsJumpingDown) // UP
+		{
+			if (m_Location.z < m_HeightConstantSpeed)
+			{
+				m_CurrentSpeedJump = CLAMP(m_CurrentSpeedJump *= 0.7f, 1.f, m_InitialSpeedJump);
+			}
+		}
+		else // DOWN
+		{
+			m_CurrentSpeedJump = CLAMP(m_CurrentSpeedJump *= 0.9f, 1.f, m_InitialSpeedJump);
+		}
+
+
 		jumpDistance = m_bIsJumpingDown ? -jumpDistance : jumpDistance; // Change direction if max height reached
 
 		m_Location.z = CLAMP(m_Location.z += jumpDistance, m_CurrentFloorLevel, m_HeightJumpCurrentLevel);
@@ -59,8 +73,10 @@ void Player::Update(float Deltatime)
 
 void Player::Jump()
 {
+	m_CurrentSpeedJump = m_InitialSpeedJump;
 	m_bIsJumping =  true;
 	m_HeightJumpCurrentLevel = m_CurrentFloorLevel + m_HeightJump;
+	m_HeightConstantSpeed = m_HeightJumpCurrentLevel/1.5f;
 	m_Sprite->SetAnimation(AnimPlayer::ANIM_JUMP);
 }
 
@@ -70,5 +86,6 @@ void Player::EndJump()
 	m_bIsJumpingDown = false;
 	m_Location.z = m_CurrentFloorLevel; // Doble check to restart at good location
 	m_Sprite->SetAnimation(AnimPlayer::ANIM_RUN);
+	m_CurrentSpeedJump = m_InitialSpeedJump;
 
 }
