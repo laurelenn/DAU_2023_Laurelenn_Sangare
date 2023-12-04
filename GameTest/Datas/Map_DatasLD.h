@@ -1,5 +1,10 @@
 #pragma once
+
+// 0 = hole
+// 1 = ground
+// 2 = second floor
+
 struct LDDatasMap
 {
-    // To do : Create LD here position & enum or class
+   std::vector<int> LdComposition = {1, 1, 1, 1, 1, 1, 1, 1, 1};
 };

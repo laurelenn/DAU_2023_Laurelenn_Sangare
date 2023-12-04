@@ -31,7 +31,7 @@ void MapManager::Init()
 	{
 		m_CurrentLDMap->m_Scale = m_Scale;
 		m_CurrentLDMap->Init();
-		// m_CurrentLDMap->SetPosition(InitialXPos, InitialZPos); /: To do : Set position ??
+		// m_CurrentLDMap->SetPosition(InitialXPos, InitialZPos); // To do : Set position ??
 	}
 	else
 	{

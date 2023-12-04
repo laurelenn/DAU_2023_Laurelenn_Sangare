@@ -8,7 +8,7 @@
 #define APP_VIRTUAL_SCALE       (0.75f)					// Scale of window
 #define APP_VIRTUAL_WIDTH		(1920.f*APP_VIRTUAL_SCALE*1.25f)					// This will be the effective x resolution regardless of actual screen/window res.
 #define APP_VIRTUAL_HEIGHT		(1080.f*APP_VIRTUAL_SCALE)					// This will be the effective y resolution regardless of actual screen/window res.
-#define APP_VIRTUAL_TILESIZE    (240.f*APP_VIRTUAL_SCALE)					// Scale of LD tile
+#define APP_VIRTUAL_TILESIZE    (120.f*APP_VIRTUAL_SCALE)					// Scale of LD tile
 
 #define APP_MAX_FRAME_RATE		(60.0f)					// Maximum update rate.
 #define APP_INIT_WINDOW_WIDTH	(APP_VIRTUAL_WIDTH)		// Initial window width.
@@ -19,10 +19,10 @@
 #define APP_QUIT_KEY						(VK_ESCAPE)
 
 //////// GAMEPLAY SETTINGS /////
-#define PLAYER_SCALE        (2.f*APP_VIRTUAL_SCALE)
-#define HEIGHT_FLOOR_0      (APP_VIRTUAL_TILESIZE*APP_VIRTUAL_SCALE)
-#define HEIGHT_FLOOR_1      (2.f*APP_VIRTUAL_TILESIZE*APP_VIRTUAL_SCALE)
-#define HEIGHT_FLOOR_CAVE   (-APP_VIRTUAL_TILESIZE*APP_VIRTUAL_SCALE)
+#define PLAYER_SCALE        (1.5f*APP_VIRTUAL_SCALE)
+#define HEIGHT_FLOOR_0      (APP_VIRTUAL_TILESIZE+APP_VIRTUAL_TILESIZE/2.f)
+#define HEIGHT_FLOOR_1      (2.f*HEIGHT_FLOOR_0)
+#define HEIGHT_FLOOR_CAVE   (-HEIGHT_FLOOR_0)
 
 enum FloorLevels 
 {
@@ -32,8 +32,14 @@ enum FloorLevels
 };
 
 
+#define APP_KEYBOARD_JUMP_KEY		(VK_SPACE)
+
+
+#pragma region APP_PAD_EMUL from API
+
 // Pad emulation. (Uses keyboard if no pad is present) Maps the following keys to the pad inputs.
 // Note analog inputs are either 0 or 1 when emulated. 
+
 #define APP_PAD_EMUL_LEFT_THUMB_LEFT	('A')
 #define APP_PAD_EMUL_LEFT_THUMB_RIGHT	('D')
 #define APP_PAD_EMUL_LEFT_THUMB_UP		('W')
@@ -65,6 +71,8 @@ enum FloorLevels
 #define APP_PAD_EMUL_BUTTON_LEFT_SHOULDER	('3')
 #define APP_PAD_EMUL_BUTTON_RIGHT_SHOULDER	('4')
 
+#pragma endregion
+
 #ifdef _DEBUG
 #define APP_RENDER_UPDATE_TIMES				true
 #else
@@ -74,5 +82,8 @@ enum FloorLevels
 #define FRAND	(static_cast <float> (rand()) / static_cast <float> (RAND_MAX))
 #define FRAND_RANGE(_MIN_, _MAX_ ) (FRAND * ((_MAX_)-(_MIN_)) + (_MIN_))
 #define PI		(3.14159265359f)
+
+#define CLAMP(x, minVal, maxVal) ((x) < (minVal) ? (minVal) : ((x) > (maxVal) ? (maxVal) : (x)))
+
 
 #endif

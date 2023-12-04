@@ -28,3 +28,47 @@ void Player::InitializeGameObjectDatas()
 	m_Sprite->SetScale(m_Scale);
 	m_Sprite->SetAnimation(AnimPlayer::ANIM_RUN);
 }
+
+void Player::Update(float Deltatime)
+{
+	GameObject::Update(Deltatime);
+
+	if (App::IsKeyPressed(APP_KEYBOARD_JUMP_KEY) && !m_bIsJumping)
+	{
+		Jump();
+	}
+
+	if (m_bIsJumping)
+	{
+		float jumpDistance = m_SpeedJump/10.f * Deltatime;
+
+		if (m_Location.z >= m_HeightJumpCurrentLevel && !m_bIsJumpingDown)
+		{
+			m_bIsJumpingDown = true;
+		}
+		jumpDistance = m_bIsJumpingDown ? -jumpDistance : jumpDistance; // Change direction if max height reached
+
+		m_Location.z = CLAMP(m_Location.z += jumpDistance, m_CurrentFloorLevel, m_HeightJumpCurrentLevel);
+		
+		if (m_Location.z <= m_CurrentFloorLevel)
+		{
+			EndJump();
+		}
+	}
+}
+
+void Player::Jump()
+{
+	m_bIsJumping =  true;
+	m_HeightJumpCurrentLevel = m_CurrentFloorLevel + m_HeightJump;
+	m_Sprite->SetAnimation(AnimPlayer::ANIM_JUMP);
+}
+
+void Player::EndJump()
+{
+	m_bIsJumping = false;
+	m_bIsJumpingDown = false;
+	m_Location.z = m_CurrentFloorLevel; // Doble check to restart at good location
+	m_Sprite->SetAnimation(AnimPlayer::ANIM_RUN);
+
+}
