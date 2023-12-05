@@ -33,53 +33,67 @@ void Player::InitializeGameObjectDatas()
 	m_Sprite->SetAnimation(AnimPlayer::ANIM_RUN);
 }
 
-void Player::Update(float Deltatime)
+void Player::Update(float deltaTime)
 {
-	GameObject::Update(Deltatime);
+    GameObject::Update(deltaTime);
 
-	if (App::IsKeyPressed(APP_KEYBOARD_JUMP_KEY) && !m_bIsJumping)
-	{
-		Jump();
-	}
+    if (App::IsKeyPressed(APP_KEYBOARD_JUMP_KEY) && !m_bIsJumping)
+    {
+        Jump();
+    }
 
-	if (m_bIsJumping)
-	{
-		float jumpDistance = (m_CurrentSpeedJump/10.f) * Deltatime;
-
-		if (m_Location.z >= m_HeightJumpCurrentLevel && !m_bIsJumpingDown)
-		{
-			m_bIsJumpingDown = true;
-		}
-
-		if (!m_bIsJumpingDown) // UP
-		{
-			if (m_Location.z < m_HeightConstantSpeed)
-			{
-				m_CurrentSpeedJump = CLAMP(m_CurrentSpeedJump *= 0.7f, 1.f, m_InitialSpeedJump);
-			}
-		}
-		else // DOWN
-		{
-			m_CurrentSpeedJump = CLAMP(m_CurrentSpeedJump *= 0.5f, 1.f, m_InitialSpeedJump);
-		}
-
-		jumpDistance = m_bIsJumpingDown ? -jumpDistance : jumpDistance; // Change direction if max height reached
-
-		m_Location.z = CLAMP(m_Location.z += jumpDistance, m_CurrentFloorLevel, m_HeightJumpCurrentLevel);
-		
-		if (m_Location.z <= m_CurrentFloorLevel)
-		{
-			EndJump();
-		}
+    if (m_bIsJumping)
+    {
+		UpdateJump(deltaTime);
 	}
 }
+
+void Player::UpdateJump(float Deltatime)
+{
+    if (m_bIsJumping)
+    {
+        float jumpDistance = (m_CurrentSpeedJump / 10.f) * Deltatime;
+
+        if (m_Location.z >= m_HeightJumpCurrentLevel && !m_bIsJumpingDown)
+        {
+            m_bIsJumpingDown = true;
+        }
+
+        // Gestion de la phase de descente et accélération
+        if (m_bIsJumpingDown)
+        {
+            // Vérifier le délai d'inertie
+            if (m_CurrentTimerJumpInertia < m_DelayJumpInertia)
+            {
+                m_CurrentTimerJumpInertia += Deltatime/1000.f; // Incrémentation du minuteur
+                m_CurrentSpeedJump = CLAMP(m_CurrentSpeedJump *= 0.8f, 0.3f, m_InitialSpeedJump);
+            }
+            else // Si le délai est écoulé, accélération pendant la descente
+            {
+                m_CurrentSpeedJump = CLAMP(m_CurrentSpeedJump *= 1.05f, 0.5f, m_InitialSpeedJump);
+            }
+        }
+
+        jumpDistance = m_bIsJumpingDown ? -jumpDistance : jumpDistance; // Change direction if max height reached
+
+        m_Location.z = CLAMP(m_Location.z += jumpDistance, m_CurrentFloorLevel, m_HeightJumpCurrentLevel);
+
+        if (m_Location.z <= m_CurrentFloorLevel)
+        {
+            m_CurrentTimerJumpInertia = 0.0f;
+            EndJump();
+        }
+    }
+}
+
+
 
 void Player::Jump()
 {
 	m_CurrentSpeedJump = m_InitialSpeedJump;
 	m_bIsJumping =  true;
 	m_HeightJumpCurrentLevel = m_CurrentFloorLevel + m_HeightJump;
-	m_HeightConstantSpeed = m_HeightJumpCurrentLevel/1.5f;
+	m_HeightConstantSpeed = m_HeightJumpCurrentLevel*0.95f;
 	m_Sprite->SetAnimation(AnimPlayer::ANIM_JUMP);
 }
 
