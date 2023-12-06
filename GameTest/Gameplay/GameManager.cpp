@@ -37,11 +37,18 @@ void GameManager::Init()
 //------------------------------------------------------------------------
 void GameManager::Update(float deltaTime)
 {
-	if (m_Player && m_MapManager)
-	{
-		m_Player->Update(deltaTime);
-		m_MapManager->Update(deltaTime);
-	}
+	// if (!m_bGameOver)
+	//{
+
+	
+		if (m_Player && m_MapManager)
+		{
+			m_Player->Update(deltaTime);
+			m_MapManager->Update(deltaTime);
+
+			
+		}
+	//}
 }
 
 //------------------------------------------------------------------------
@@ -55,6 +62,13 @@ void GameManager::Render()
 		m_MapManager->Render();
 		m_Player->Render();
 
+	}
+
+	if (m_bGameOver)
+	{
+		char textBuffer[64];
+		sprintf(textBuffer, "GAME OVER");
+		App::Print(APP_VIRTUAL_WIDTH /2, APP_VIRTUAL_HEIGHT /2, textBuffer, 1.0f, 0.0f, 0.0f, GLUT_BITMAP_HELVETICA_10);
 	}
 }
 //------------------------------------------------------------------------
@@ -72,5 +86,5 @@ void GameManager::Shutdown()
 
 void GameManager::GameOver()
 {
-
+	m_bGameOver = true;
 }

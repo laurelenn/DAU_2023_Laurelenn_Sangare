@@ -31,7 +31,7 @@ bool CollisionComponent::IsColliding(const CollisionComponent& other) const
             return false; // Aucune intersection
         }
 
-        return true; // Intersection détectée
+         return true; // Intersection détectée
     }
     return false;
 }

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 
 #include "Player.h"
+#include "../Gameplay/GameManager.h"
 
 
 
@@ -114,8 +115,8 @@ void Player::EndJump()
 
 void Player::Death()
 {
-	if (m_LifeManager->m_bIsDead /* && m_GameManager*/)
+	if (m_LifeManager->m_bIsDead && m_GameManager)
 	{
-		//m_GameManager->GameOver();
+		m_GameManager->GameOver();
 	}
 }
