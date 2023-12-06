@@ -1,21 +1,26 @@
 #include "stdafx.h"
 
 #include "Player.h"
-#include "../../GameTest/App/main.h"
 
 
 
-Player::Player(float InitialLife, float Height, float Width, float Scale)
+Player::Player(float InitialLife, float Scale)
 {
-	m_CapsuleCollision = new CapsuleCollisionComponent(Width, Height);
+	m_CapsuleCollision = new CapsuleCollisionComponent(35.f * PLAYER_SCALE, 35.f * PLAYER_SCALE);
 	m_Collision = std::unique_ptr<CollisionComponent>(m_CapsuleCollision);
 	m_LifeManager = new LifeManager(InitialLife, InitialLife);
 	m_Scale = Scale;
 	m_TypeObject = GameObjectType::Pawn;
 }
 
+
 void Player::InitializeGameObjectDatas()
 {
+
+	m_SpriteColumns = 7;
+	m_SpriteLines = 3;
+	m_SpriteFilename = ".\\.\\Ressources\\Player\\p1_spritesheet.png";
+
 	m_Sprite = App::CreateSprite(m_SpriteFilename, m_SpriteColumns, m_SpriteLines);
 	m_Sprite->CreateAnimation(AnimPlayer::ANIM_RUN, m_SpeedAnimationRun/50.f, {2,8,9,8});
 	m_Sprite->CreateAnimation(AnimPlayer::ANIM_JUMP, m_SpeedAnimationRun/50.f, {13});

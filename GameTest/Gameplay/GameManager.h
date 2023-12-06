@@ -18,6 +18,8 @@ class GameManager
 {
 
 #pragma region VARIABLES
+
+public : 
 	// Map
 	MapManager* m_MapManager = nullptr;
 	float m_SpeedMap = -400.f;

@@ -11,13 +11,9 @@ GameManager::GameManager()
 void GameManager::Init()
 {
 #pragma region Player
-	m_Player = new Player(100, 35.f*PLAYER_SCALE, 35.f*PLAYER_SCALE, PLAYER_SCALE); // Initialize player
+	m_Player = new Player(100, PLAYER_SCALE); // Initialize player
 	if (m_Player)
 	{
-		m_Player->SetActivated(true); // To change
-		m_Player->m_SpriteColumns = 7;
-		m_Player->m_SpriteLines = 3;
-		m_Player->m_SpriteFilename = ".\\Ressources\\Player\\p1_spritesheet.png";
 		m_Player->SetGameManager(this);
 		m_Player->Init(App::Vector2(APP_VIRTUAL_WIDTH - APP_VIRTUAL_WIDTH/1.25f, HEIGHT_FLOOR_0));
 	}

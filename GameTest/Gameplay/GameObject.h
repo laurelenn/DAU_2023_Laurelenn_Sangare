@@ -3,6 +3,7 @@
 #include "../App/app.h"
 #include "../Gameplay/Collisions/CollisionComponent.h"
 #include "../Gameplay/LifeManager.h"
+#include "../App/AppSettings.h"
 
 #include <iostream>
 #include <memory>
@@ -34,13 +35,14 @@ float m_SpeedZ;
 GameObjectType m_TypeObject;
 
 CSimpleSprite* m_Sprite;
+float m_Scale = 1.f;
 const char* m_SpriteFilename;
 int m_SpriteColumns;
 int m_SpriteLines;
 LifeManager* m_LifeManager;
 
 std::unique_ptr<CollisionComponent> m_Collision;
-bool m_bIsActivated = false;
+bool m_bIsActivated = true;
 
 #pragma endregion
 

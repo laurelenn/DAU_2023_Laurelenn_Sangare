@@ -4,6 +4,7 @@
 class Enemy :
     public GameObject
 {
+
 #pragma region VARIABLES
 public :
 
@@ -15,7 +16,7 @@ float m_DamageCollisionPlayer;
 #pragma region FUNCTIONS
     Enemy();
 
-    void InitializeGameObjectDatas() override;
+    void InitializeGameObjectDatas() override; // To do : Should be virtual
 
     void Update(float Deltatime) override;
 

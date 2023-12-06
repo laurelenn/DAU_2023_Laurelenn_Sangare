@@ -10,6 +10,7 @@ class Map
 
 #pragma region VARIABLES
 public : 
+	App::Vector2 m_MinMaxPosZ = App::Vector2(HEIGHT_FLOOR_0, HEIGHT_FLOOR_1);
 
 	GameManager* m_GameManager = nullptr;
 	float m_SpeedMap;

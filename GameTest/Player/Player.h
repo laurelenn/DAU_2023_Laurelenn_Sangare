@@ -21,10 +21,8 @@ class Player :
 
 #pragma region VARIABLES
 
-LifeManager *m_LifeManager;
 CapsuleCollisionComponent *m_CapsuleCollision;
 float m_SpeedAnimationRun = 3.5f;
-float m_Scale = 1.f;
 float m_HeightJump = HEIGHT_FLOOR_0*1.5f;
 float m_InitialSpeedJump = 3.f;
 float m_DelayJumpInertia = 0.25f;
@@ -42,7 +40,7 @@ float m_CurrentTimerJumpInertia;
 
 #pragma region FUNCTIONS
 public : 
-Player(float InitialLife, float Height, float Width, float Scale);
+Player(float InitialLife, float Scale);
 
 void InitializeGameObjectDatas() override;
 

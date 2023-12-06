@@ -1,6 +1,7 @@
 #pragma once
 #include "Map.h"
 #include "../Datas/Map_DatasGameplay.h"
+#include "../Gameplay/GameObject.h"
 
 struct GameplayDatasMap;
 
@@ -12,6 +13,7 @@ class GameplayMap :
 
 // Array of game objects
     std::vector<GameplayDatasMap> m_DatasGameplayMap;
+    std::vector<GameObject*> m_GameObjectGameplayMap = {};
 #pragma endregion
 
 #pragma region FUNCTIONS
@@ -22,5 +24,6 @@ public :
     void Update(float deltaTime) override;
     void Render() override;
     void Destroy() override;
+    GameObject* SpawnNewObjectFormData(GameplayDatasMap data);
 };
 

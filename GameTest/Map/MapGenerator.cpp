@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include <random>
 
 #include "MapGenerator.h"
 
@@ -28,7 +29,6 @@ BackgroundMap* MapGenerator::GenerateBgMap(bool isFirstMap, BackgroundMap* previ
 
 GameplayMap* MapGenerator::GenerateGameplayMap(bool isFirstMap, float speed)
 {
-    // return SelectGameplayMap(isFirstMap); // To do
     auto newMap = new GameplayMap(speed, SelectGameplayMap(isFirstMap));
    if (newMap && m_GameManager)
    {
@@ -49,7 +49,15 @@ BackgroundDatasMap MapGenerator::SelectBgMap(bool isFirstMap)
 
 std::vector<GameplayDatasMap> MapGenerator::SelectGameplayMap(bool isFirstMap)
 {
-    return std::vector<GameplayDatasMap>();
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> distrib(0, Map_DatasGameplay::m_ArrayLD_Easy.size() - 1);
+    int randomIndex = distrib(gen);
+
+    // Utilisation de l'index aléatoire pour sélectionner un tableau
+    std::vector<GameplayDatasMap> selectedLD = Map_DatasGameplay::m_ArrayLD_Easy[randomIndex];
+
+    return selectedLD;
 }
 
 

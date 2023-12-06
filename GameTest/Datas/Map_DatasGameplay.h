@@ -41,25 +41,19 @@ struct GameplayDatasMap
 class Map_DatasGameplay
 {
 
-
+public : 
 #pragma region VARIABLES
 
     #pragma region LD ARRAYS
-    std::vector<GameplayDatasMap> m_LD_Easy_1=
-        {
-            GameplayDatasMap(Monster1, Floor_Level0, 5.0f, 300.0f),
-            GameplayDatasMap(Monster1, Floor_Level0, 5.0f, 500.0f)
-        };
-        
-         std::vector<GameplayDatasMap> m_LD_Easy_2 =
-        {
-            GameplayDatasMap(Monster1, Floor_Level1, 5.0f, 300.0f),
-            GameplayDatasMap(Monster1, Floor_Level1, 20.0f, 500.0f)
-        };
+    static const std::vector<GameplayDatasMap> m_LD_Easy_1;
+    static const std::vector<GameplayDatasMap> m_LD_Easy_2;
+    static const std::vector<GameplayDatasMap> m_LD_Easy_3;
+    static const std::vector<GameplayDatasMap> m_LD_Easy_4;
+    static const std::vector<GameplayDatasMap> m_LD_Easy_5;
 
     #pragma endregion
 
-       std::vector<std::vector<GameplayDatasMap>> m_ArrayLD_Easy = { m_LD_Easy_1, m_LD_Easy_2 };
+    static const std::vector<std::vector<GameplayDatasMap>> m_ArrayLD_Easy;
 
 
 #pragma endregion

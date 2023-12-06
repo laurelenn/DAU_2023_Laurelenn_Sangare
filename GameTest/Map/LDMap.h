@@ -10,7 +10,6 @@ class LDMap :
 
 // Array of tiles
 LDDatasMap m_DatasLdMap;
-App::Vector2 m_MinMaxPosZ = App::Vector2(HEIGHT_FLOOR_0, HEIGHT_FLOOR_1);
 
 #pragma endregion
 

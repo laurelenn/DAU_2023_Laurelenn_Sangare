@@ -72,6 +72,9 @@
     <ClCompile Include="Datas\Map_DatasGameplay.cpp">
       <Filter>Sources\Datas</Filter>
     </ClCompile>
+    <ClCompile Include="Gameplay\Enemies\BlockerGreen.cpp">
+      <Filter>Sources\Gameplay\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -150,6 +153,9 @@
     </ClInclude>
     <ClInclude Include="Datas\Map_DatasGameplay.h">
       <Filter>Sources\Datas</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\Enemies\BlockerGreen.h">
+      <Filter>Sources\Gameplay\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
