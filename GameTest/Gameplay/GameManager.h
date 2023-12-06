@@ -22,7 +22,7 @@ class GameManager
 public : 
 	// Map
 	MapManager* m_MapManager = nullptr;
-	float m_SpeedMap = -400.f;
+	float m_SpeedMap = -300.f;
 	float m_HeightMap = APP_VIRTUAL_HEIGHT;
 	float m_WidthMap = APP_VIRTUAL_WIDTH / 1.25f;
 

@@ -3,12 +3,14 @@
 
 BlockerGreen::BlockerGreen()
 {
-	m_RectangleCollision = new RectangleCollisionComponent(35.f, 35.f);
 	m_Collision = std::unique_ptr<CollisionComponent>(m_RectangleCollision);
 	m_LifeManager = new LifeManager(10.f, 10.f);
-	m_Scale = APP_VIRTUAL_SCALE;
+	m_Scale = 1.5f;
+	m_RectangleCollision = new RectangleCollisionComponent(35.f * m_Scale, 35.f * m_Scale);
 	m_TypeObject = GameObjectType::Obstacle;
 	m_DamageCollisionPlayer = 200.f;
+	m_SpeedX = 0.f;
+	m_SpeedZ = 0.f;
 }
 
 void BlockerGreen::InitializeGameObjectDatas()
@@ -18,7 +20,7 @@ void BlockerGreen::InitializeGameObjectDatas()
 	m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Enemies\\blockerMad.png";
 
 	m_Sprite = App::CreateSprite(m_SpriteFilename, m_SpriteColumns, m_SpriteLines);
-	m_Sprite->CreateAnimation(AnimBlockerGreen::Idle, m_SpeedAnim / 50.f, { 1 });
+	m_Sprite->CreateAnimation(AnimBlockerGreen::Idle, m_SpeedAnim / 50.f, { 0 });
 
 	// To do : Create Other Animations
 

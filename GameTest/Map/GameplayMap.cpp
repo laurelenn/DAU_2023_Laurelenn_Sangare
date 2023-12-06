@@ -54,26 +54,30 @@ void GameplayMap::Init()
 
 			// Final position on spawn
 			positionNewObject.z = CLAMP(baseZPos+deltaZ, m_MinMaxPosZ.x, m_MinMaxPosZ.z);
-			positionNewObject.x = m_Position.x + DataGameplay.m_SpawnPositionX;
+			positionNewObject.x = m_Position.x + DataGameplay.m_SpawnPositionX + (APP_VIRTUAL_WIDTH - APP_VIRTUAL_WIDTH / 1.25f); // to do : Distance with player but should use reference
 
 			newGameObject->Init(positionNewObject);
 			newGameObject->SetGameManager(m_GameManager);
+
+			m_GameObjectGameplayMap.push_back(newGameObject);
 		}
 	}
 }
 
 void GameplayMap::Update(float deltaTime)
 {
+	float NewPosX = ((m_SpeedMap / 1000.f) * deltaTime) * -1.f;
+	SetPosition(m_Position.x - NewPosX, m_Position.z); // Update the map speed
+
 	for (auto& gameObject : m_GameObjectGameplayMap)
 	{
 		if (gameObject && gameObject->m_bIsActivated)
 		{
-			float NewPosX = ((m_SpeedMap / 1000.f) * deltaTime);
-			SetPosition(gameObject->m_Location.x + NewPosX, gameObject->m_Location.z); // Update the map speed
-
+			gameObject->SetPosition(gameObject->m_Location.x - NewPosX, gameObject->m_Location.z); // Move the objects with the map
 			gameObject->Update(deltaTime);
 		}
 	}
+	
 }
 
 void GameplayMap::Render()

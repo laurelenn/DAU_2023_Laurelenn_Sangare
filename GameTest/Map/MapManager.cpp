@@ -79,7 +79,7 @@ void MapManager::Init()
 	{
 		m_CurrentGameplayMap->m_Scale = m_Scale;
 		m_CurrentGameplayMap->Init();
-		// m_CurrentGameplayMap->SetPosition(InitialXPos, InitialZPos);	// To do : Set position ??
+		m_CurrentGameplayMap->SetPosition(InitialXPos, InitialZPos);
 	}
 	else
 	{
@@ -90,7 +90,7 @@ void MapManager::Init()
 	{
 		m_NextGameplayMap->m_Scale = m_Scale;
 		m_NextGameplayMap->Init();
-		// m_NextGameplayMap->SetPosition(InitialXPosNext, InitialZPosNext); // To do : Set position ??
+		m_NextGameplayMap->SetPosition(InitialXPosNext, InitialZPosNext);
 	}
 	else
 	{
@@ -178,12 +178,34 @@ void MapManager::Update(float Deltatime)
 	#pragma endregion
 
 #pragma region Gameplay
-	/*if (CheckEndMap(m_CurrentGameplayMap))
+	if (CheckEndMap(m_CurrentGameplayMap))
 	{
-		delete m_CurrentGameplayMap;
+		m_OldGameplayMap = m_CurrentGameplayMap;
 		m_CurrentGameplayMap = m_NextGameplayMap;
-		m_NextGameplayMap = m_MapGenerator->GenerateGameplayMap(false, m_SpeedMap);
+		m_NextGameplayMap = m_MapGenerator->GenerateGameplayMap(false, m_SpeedMap / 2);
+
+		m_NextGameplayMap->m_Scale = m_Scale;
+		m_NextGameplayMap->SetGameManager(m_GameManager);
+		m_NextGameplayMap->Init();
+
+		m_NextGameplayMap->SetPosition(m_CurrentGameplayMap->m_Position.x + m_Width, m_CurrentGameplayMap->m_Position.z);
 	}
+
+	if (m_OldGameplayMap)
+	{
+		m_OldGameplayMap->Update(Deltatime);
+		if (m_OldGameplayMap->m_Position.x + m_Width <= 0)
+		{
+			delete m_OldGameplayMap;
+			m_OldGameplayMap = nullptr;
+		}
+	}
+	else
+	{
+		std::cout << "[MapManager] No Old Gameplay map (MapManager::Update)" << std::endl;
+
+	}
+
 	if (m_CurrentGameplayMap)
 	{
 		m_CurrentGameplayMap->Update(Deltatime);
@@ -200,7 +222,7 @@ void MapManager::Update(float Deltatime)
 	else
 	{
 		std::cout << "[MapManager] No Next Gameplay map (MapManager::Update)" << std::endl;
-	}*/
+	}
 	#pragma endregion
 }
 
@@ -240,6 +262,13 @@ void MapManager::Render()
 #pragma endregion
 
 #pragma region Gameplay
+
+
+	if (m_OldGameplayMap)
+	{
+		m_OldGameplayMap->Render();
+	}
+
 	if (m_CurrentGameplayMap)
 	{
 		m_CurrentGameplayMap->Render();
@@ -256,6 +285,25 @@ void MapManager::Render()
 void MapManager::Destroy()
 {
 	delete m_MapGenerator;
+
+	if (m_OldLDMap)
+	{
+		m_OldLDMap->Destroy();
+		delete m_OldLDMap;
+	}
+
+	if (m_OldBgMap)
+	{
+		m_OldBgMap->Destroy();
+		delete m_OldBgMap;
+	}
+
+	if (m_OldGameplayMap)
+	{
+		m_OldGameplayMap->Destroy();
+		delete m_OldGameplayMap;
+	}
+
 
 	if (m_CurrentLDMap)
 	{
