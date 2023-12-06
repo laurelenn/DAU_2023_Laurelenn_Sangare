@@ -30,7 +30,7 @@ GameplayMap* GenerateGameplayMap(bool isFirstMap, float speed);
 
 LDDatasMap SelectLDMap(bool isFirstMap);
 BackgroundDatasMap SelectBgMap(bool isFirstMap);
-GameplayDatasMap SelectGameplayMap(bool isFirstMap);
+std::vector<GameplayDatasMap> SelectGameplayMap(bool isFirstMap);
 
 #pragma endregion
 };

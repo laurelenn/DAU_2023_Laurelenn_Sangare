@@ -1,16 +1,9 @@
 #include "stdafx.h"
 #include "GameplayMap.h"
 
-GameplayMap::GameplayMap(float Speed)
-{
-	m_SpeedMap = Speed;
-}
-
-GameplayMap::GameplayMap(float Speed, GameplayDatasMap Datas)
-{
-	m_SpeedMap = Speed;
-	m_DatasGameplayMap = Datas;
-}
+GameplayMap::GameplayMap(float Speed, std::vector<GameplayDatasMap> Datas)
+	: Map(Speed), m_DatasGameplayMap(Datas)
+{}
 
 void GameplayMap::Init()
 {

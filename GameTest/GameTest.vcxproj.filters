@@ -66,6 +66,12 @@
     <ClCompile Include="Map\GameplayMap.cpp">
       <Filter>Sources\Map</Filter>
     </ClCompile>
+    <ClCompile Include="Datas\Map_DatasBackground.cpp">
+      <Filter>Sources\Datas</Filter>
+    </ClCompile>
+    <ClCompile Include="Datas\Map_DatasGameplay.cpp">
+      <Filter>Sources\Datas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -138,9 +144,13 @@
     <ClInclude Include="Map\GameplayMap.h">
       <Filter>Sources\Map</Filter>
     </ClInclude>
-    <ClInclude Include="Datas\Map_DatasBackground.h" />
-    <ClInclude Include="Datas\Map_DatasGameplay.h" />
     <ClInclude Include="Datas\Map_DatasLD.h" />
+    <ClInclude Include="Datas\Map_DatasBackground.h">
+      <Filter>Sources\Datas</Filter>
+    </ClInclude>
+    <ClInclude Include="Datas\Map_DatasGameplay.h">
+      <Filter>Sources\Datas</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="NextAPI">
@@ -187,6 +197,9 @@
     </Filter>
     <Filter Include="Sources\Gameplay\Collisions">
       <UniqueIdentifier>{d6054444-6aed-4fa9-ae4b-88c59c119cae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Datas">
+      <UniqueIdentifier>{295b1ef9-d323-4a28-9403-ea1ef073570f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

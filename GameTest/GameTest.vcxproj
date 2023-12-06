@@ -210,6 +210,8 @@
     <ClCompile Include="App\SimpleController.cpp" />
     <ClCompile Include="App\SimpleSound.cpp" />
     <ClCompile Include="App\SimpleSprite.cpp" />
+    <ClCompile Include="Datas\Map_DatasBackground.cpp" />
+    <ClCompile Include="Datas\Map_DatasGameplay.cpp" />
     <ClCompile Include="Gameplay\Collisions\CapsuleCollisionComponent.cpp" />
     <ClCompile Include="Gameplay\Collisions\CircleCollisionComponent.cpp" />
     <ClCompile Include="Gameplay\Collisions\CollisionComponent.cpp" />

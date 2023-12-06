@@ -29,7 +29,7 @@ BackgroundMap* MapGenerator::GenerateBgMap(bool isFirstMap, BackgroundMap* previ
 GameplayMap* MapGenerator::GenerateGameplayMap(bool isFirstMap, float speed)
 {
     // return SelectGameplayMap(isFirstMap); // To do
-    auto newMap = new GameplayMap(speed);
+    auto newMap = new GameplayMap(speed, SelectGameplayMap(isFirstMap));
    if (newMap && m_GameManager)
    {
         newMap->SetGameManager(m_GameManager);
@@ -47,9 +47,9 @@ BackgroundDatasMap MapGenerator::SelectBgMap(bool isFirstMap)
     return BackgroundDatasMap(); // To do
 }
 
-GameplayDatasMap MapGenerator::SelectGameplayMap(bool isFirstMap)
+std::vector<GameplayDatasMap> MapGenerator::SelectGameplayMap(bool isFirstMap)
 {
-    return GameplayDatasMap(); // To do
+    return std::vector<GameplayDatasMap>();
 }
 
 
