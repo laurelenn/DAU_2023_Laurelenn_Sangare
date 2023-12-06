@@ -13,8 +13,8 @@ void MapManager::Init()
 	m_CurrentLDMap = m_MapGenerator->GenerateLDMap(true, nullptr, m_SpeedMap);
 	m_NextLDMap = m_MapGenerator->GenerateLDMap(false, m_CurrentLDMap, m_SpeedMap);
 
-	m_CurrentBgMap = m_MapGenerator->GenerateBgMap(true, nullptr, m_SpeedMap/2);
-	m_NextBgMap = m_MapGenerator->GenerateBgMap(false, m_CurrentBgMap, m_SpeedMap/2);
+	m_CurrentBgMap = m_MapGenerator->GenerateBgMap(true, nullptr, m_SpeedMap);
+	m_NextBgMap = m_MapGenerator->GenerateBgMap(false, m_CurrentBgMap, m_SpeedMap);
 
 	m_CurrentGameplayMap = m_MapGenerator->GenerateGameplayMap(true, m_SpeedMap);
 	m_NextGameplayMap = m_MapGenerator->GenerateGameplayMap(false, m_SpeedMap);
@@ -132,7 +132,7 @@ void MapManager::Update(float Deltatime)
 	{
 		m_OldBgMap = m_CurrentBgMap;
 		m_CurrentBgMap = m_NextBgMap;
-		m_NextBgMap = m_MapGenerator->GenerateBgMap(false, m_CurrentBgMap, m_SpeedMap / 2);
+		m_NextBgMap = m_MapGenerator->GenerateBgMap(false, m_CurrentBgMap, m_SpeedMap);
 
 		m_NextBgMap->m_Scale = m_Scale;
 		m_NextBgMap->SetGameManager(m_GameManager);
@@ -182,7 +182,7 @@ void MapManager::Update(float Deltatime)
 	{
 		m_OldGameplayMap = m_CurrentGameplayMap;
 		m_CurrentGameplayMap = m_NextGameplayMap;
-		m_NextGameplayMap = m_MapGenerator->GenerateGameplayMap(false, m_SpeedMap / 2);
+		m_NextGameplayMap = m_MapGenerator->GenerateGameplayMap(false, m_SpeedMap);
 
 		m_NextGameplayMap->m_Scale = m_Scale;
 		m_NextGameplayMap->SetGameManager(m_GameManager);

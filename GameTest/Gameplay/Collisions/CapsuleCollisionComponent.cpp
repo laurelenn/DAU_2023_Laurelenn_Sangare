@@ -20,14 +20,17 @@ void CapsuleCollisionComponent::SetCapsule(float radius, float length) {
 
 std::vector<App::Vector2> CapsuleCollisionComponent::GetAxes() const
 {
-    std::vector<App::Vector2> axes1 = m_Circle1.GetAxes();
-    std::vector<App::Vector2> axes2 = m_Circle2.GetAxes();
-    std::vector<App::Vector2> axes3 = m_Rectangle.GetAxes();
+    std::vector<App::Vector2> axes;
 
-    axes1.insert(axes1.end(), axes2.begin(), axes2.end());
-    axes1.insert(axes1.end(), axes3.begin(), axes3.end());
+    std::vector<App::Vector2> circleAxes1 = m_Circle1.GetAxes();
+    std::vector<App::Vector2> circleAxes2 = m_Circle2.GetAxes();
+    std::vector<App::Vector2> rectangleAxes = m_Rectangle.GetAxes();
 
-    return axes1;
+    axes.insert(axes.end(), circleAxes1.begin(), circleAxes1.end());
+    axes.insert(axes.end(), circleAxes2.begin(), circleAxes2.end());
+    axes.insert(axes.end(), rectangleAxes.begin(), rectangleAxes.end());
+
+    return axes;
 }
 
 

@@ -25,7 +25,7 @@ CapsuleCollisionComponent *m_CapsuleCollision;
 float m_SpeedAnimationRun = 3.5f;
 float m_HeightJump = HEIGHT_FLOOR_0*1.5f;
 float m_InitialSpeedJump = 3.f;
-float m_DelayJumpInertia = 0.25f;
+float m_DelayJumpInertia = 0.5f;
 
 // Runtime
 float m_CurrentFloorLevel = HEIGHT_FLOOR_0;

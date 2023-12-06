@@ -54,7 +54,7 @@ void GameplayMap::Init()
 
 			// Final position on spawn
 			positionNewObject.z = CLAMP(baseZPos+deltaZ, m_MinMaxPosZ.x, m_MinMaxPosZ.z);
-			positionNewObject.x = m_Position.x + DataGameplay.m_SpawnPositionX + (APP_VIRTUAL_WIDTH - APP_VIRTUAL_WIDTH / 1.25f); // to do : Distance with player but should use reference
+			positionNewObject.x = m_Position.x + DataGameplay.m_SpawnPositionX + (APP_VIRTUAL_WIDTH*1.25);
 
 			newGameObject->Init(positionNewObject);
 			newGameObject->SetGameManager(m_GameManager);
@@ -77,7 +77,6 @@ void GameplayMap::Update(float deltaTime)
 			gameObject->Update(deltaTime);
 		}
 	}
-	
 }
 
 void GameplayMap::Render()

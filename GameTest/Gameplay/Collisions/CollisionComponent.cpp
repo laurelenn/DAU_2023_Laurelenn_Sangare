@@ -17,16 +17,21 @@ void CollisionComponent::SetPosition(const float x, const float z)
 
 bool CollisionComponent::IsColliding(const CollisionComponent& other) const
 {
-    std::vector<App::Vector2> axes = GetAxes();
-    axes.insert(axes.end(), other.GetAxes().begin(), other.GetAxes().end());
+    if (&other)
+    {
+        std::vector<App::Vector2> axesOwner = GetAxes();
+        std::vector<App::Vector2> axesOther = other.GetAxes();
+        axesOwner.insert(axesOwner.end(), axesOther.begin(), axesOther.end());
 
-    Projection Projection1 = Project(axes);
-    Projection Projection2 = other.Project(axes);
+        Projection Projection1 = Project(axesOwner);
+        Projection Projection2 = other.Project(axesOwner);
 
-    // Vérification de la séparation des intervalles sur tous les axes
-    if (Projection1.max < Projection2.min || Projection2.max < Projection1.min) {
-        return false; // Aucune intersection
+        // Vérification de la séparation des intervalles sur tous les axes
+        if (Projection1.max < Projection2.min || Projection2.max < Projection1.min) {
+            return false; // Aucune intersection
+        }
+
+        return true; // Intersection détectée
     }
-
-    return true; // Intersection détectée
+    return false;
 }
