@@ -20,8 +20,10 @@ class Player :
 {
 
 #pragma region VARIABLES
+public : 
+    CapsuleCollisionComponent* m_CapsuleCollision;
 
-CapsuleCollisionComponent *m_CapsuleCollision;
+private : 
 float m_SpeedAnimationRun = 3.5f;
 float m_HeightJump = HEIGHT_FLOOR_0*1.5f;
 float m_InitialSpeedJump = 3.f;
@@ -35,6 +37,7 @@ bool m_bIsJumping = false;
 bool m_bIsJumpingDown = false;
 float m_CurrentSpeedJump;
 float m_CurrentTimerJumpInertia;
+
 #pragma endregion
 
 

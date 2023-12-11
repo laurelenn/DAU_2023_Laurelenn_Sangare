@@ -17,7 +17,7 @@ void Enemy::Update(float Deltatime)
 	{
 		if (m_Collision)
 		{
-			const bool CollideWithPlayer = m_Collision->IsColliding(*m_GameManager->m_Player->m_Collision);
+			const bool CollideWithPlayer = m_Collision->IsColliding(*m_GameManager->m_Player->m_CapsuleCollision);
 			if (CollideWithPlayer)
 			{
 				m_GameManager->m_Player->ApplyDamages(m_DamageCollisionPlayer);

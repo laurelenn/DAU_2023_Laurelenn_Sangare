@@ -2,6 +2,8 @@
 #include <vector>
 #include "CollisionComponent.h"
 
+class CapsuleCollisionComponent;
+class CircleCollisionComponent;
 
 class CircleCollisionComponent :
 public CollisionComponent
@@ -9,7 +11,7 @@ public CollisionComponent
 
 #pragma region VARIABLES
 
-// Circle
+public : 
 float m_Radius;
 
 #pragma endregion
@@ -17,16 +19,15 @@ float m_Radius;
 
 #pragma region FUNCTIONS
 
-public :
-
     CircleCollisionComponent(float radius);
     void SetCircle(float radius);
     std::vector<App::Vector2> GetAxes() const override;
-    Projection Project(const std::vector<App::Vector2>& axes) const override;
    void DrawDebugCollision() const override;
    void SetPosition(const float x, const float z) override;
 
-  
+   bool IsColliding(const RectangleCollisionComponent& other) const;
+   bool IsColliding(const CapsuleCollisionComponent& other) const;
+   bool IsColliding(const CircleCollisionComponent& other) const;
 #pragma endregion
 
 

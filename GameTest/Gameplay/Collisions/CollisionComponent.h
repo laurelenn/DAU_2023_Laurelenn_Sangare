@@ -6,6 +6,9 @@
 #include <vector>
 
 class GameObject;
+class CircleCollisionComponent;
+class RectangleCollisionComponent;
+class CapsuleCollisionComponent;
 
 struct Projection {
     float min;
@@ -36,14 +39,17 @@ public :
 
     virtual ~CollisionComponent() {}
 
-    bool IsColliding(const CollisionComponent& other) const;
     void SetPosition(const App::Vector2& position);
     void SetOwner(GameObject* owner){m_Owner = owner;}
     virtual void SetPosition(const float x, const float z);
 
     virtual void DrawDebugCollision() const = 0;
     virtual std::vector<App::Vector2> GetAxes() const = 0;
-    virtual Projection Project(const std::vector<App::Vector2>& axes) const = 0;
+
+
+    virtual bool IsColliding(const CircleCollisionComponent& other) const = 0;
+    virtual bool IsColliding(const RectangleCollisionComponent& other) const = 0;
+    virtual bool IsColliding(const CapsuleCollisionComponent& other) const = 0;
 
 #pragma endregion
 

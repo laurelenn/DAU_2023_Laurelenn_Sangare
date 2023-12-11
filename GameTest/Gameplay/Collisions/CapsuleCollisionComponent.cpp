@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "RectangleCollisionComponent.h"
+#include "CircleCollisionComponent.h"
 #include "CapsuleCollisionComponent.h"
 #include "../App/app.h"
 #include <cmath>
@@ -34,18 +36,6 @@ std::vector<App::Vector2> CapsuleCollisionComponent::GetAxes() const
 }
 
 
-Projection CapsuleCollisionComponent::Project(const std::vector<App::Vector2>& axes) const
-{
-    Projection projection1 = m_Circle1.Project(axes);
-    Projection projection2 = m_Circle2.Project(axes);
-    Projection projection3 = m_Rectangle.Project(axes);
-
-    Projection projection;
-    projection.min = fmin(projection1.min, fmin(projection2.min, projection3.min));
-    projection.max = fmax(projection1.max, fmax(projection2.max, projection3.max));
-
-    return projection;
-}
 #pragma region DrawDebug
 
 // Fonction principale pour dessiner la forme de collision en fonction du type de forme
@@ -61,4 +51,51 @@ void CapsuleCollisionComponent::SetPosition(const float x, const float z)
     m_Circle1.SetPosition(x,z-m_LengthCapsule/2);
     m_Circle2.SetPosition(x,z+m_LengthCapsule / 2);
     m_Rectangle.SetPosition(x,z);
+}
+
+
+bool CapsuleCollisionComponent::IsColliding(const RectangleCollisionComponent& other) const
+{
+    if (&other)
+    {
+        return other.IsColliding(*this);
+    }
+    return false;
+}
+
+bool CapsuleCollisionComponent::IsColliding(const CapsuleCollisionComponent& other) const
+{
+    if (&other)
+    {
+        if (m_Rectangle.IsColliding(other.m_Rectangle) 
+            || m_Rectangle.IsColliding(other.m_Circle1) 
+            || m_Rectangle.IsColliding(other.m_Circle2)) 
+        {
+            return true;
+        }
+
+        if (m_Circle1.IsColliding(other.m_Rectangle)
+            || m_Circle1.IsColliding(other.m_Circle1)
+            || m_Circle1.IsColliding(other.m_Circle2)) 
+        {
+            return true;
+        }
+
+        if (m_Circle2.IsColliding(other.m_Rectangle)
+            || m_Circle2.IsColliding(other.m_Circle1)
+            || m_Circle2.IsColliding(other.m_Circle2)) 
+        {
+            return true; 
+        }
+    }
+    return false;
+}
+
+bool CapsuleCollisionComponent::IsColliding(const CircleCollisionComponent& other) const
+{
+    if (&other)
+    {
+        return other.IsColliding(*this);
+    }
+    return false;
 }
