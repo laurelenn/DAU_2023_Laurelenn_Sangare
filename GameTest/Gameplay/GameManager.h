@@ -11,7 +11,12 @@
 //------------------------------------------------------------------------
 //------------------------------------------------------------------------
 //------------------------------------------------------------------------
-
+enum EGameState 
+{
+	PreStart, 
+	Started,
+	GameOver
+};
 
 
 class GameManager
@@ -20,6 +25,9 @@ class GameManager
 #pragma region VARIABLES
 
 public : 
+
+	EGameState m_GameState = PreStart;
+
 	// Map
 	MapManager* m_MapManager = nullptr;
 	float m_SpeedMap = -350.f;
@@ -29,7 +37,6 @@ public :
 
 	// Player
 	Player* m_Player = nullptr;
-	bool m_bGameOver = false;
 
 	// Game Data
 	int m_Score;

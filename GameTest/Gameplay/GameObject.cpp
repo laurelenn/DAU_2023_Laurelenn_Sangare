@@ -3,6 +3,7 @@
 #include <type_traits>
 #include "../App/app.h"
 #include "../Gameplay/Collisions/CollisionComponent.h"
+#include "../Map/GameplayMap.h"
 #include "GameObject.h"
 
 void GameObject::Init()
@@ -31,6 +32,15 @@ void GameObject::Update(float Deltatime) // ms
 		if (m_Sprite)
 		{
 			m_Sprite->Update(Deltatime);
+		}
+
+		if (ReachEndMap())
+		{
+			if (m_OwnerGameplayMap)
+			{
+				m_OwnerGameplayMap->GameObjectReachEnd(this);
+				Destroy();
+			}
 		}
 	}
 }
@@ -67,6 +77,11 @@ void GameObject::SetPosition(float x, float z)
 	}
 	m_Location.x = x;
 	m_Location.z = z;
+}
+
+bool GameObject::ReachEndMap()
+{
+	return m_Location.x <= 0;
 }
 
 void GameObject::ApplyDamages(float damages)

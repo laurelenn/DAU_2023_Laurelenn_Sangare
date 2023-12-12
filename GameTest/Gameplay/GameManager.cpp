@@ -45,8 +45,6 @@ void GameManager::Update(float deltaTime)
 		{
 			m_Player->Update(deltaTime);
 			m_MapManager->Update(deltaTime);
-
-			
 		}
 	//}
 }
@@ -57,18 +55,19 @@ void GameManager::Update(float deltaTime)
 //------------------------------------------------------------------------
 void GameManager::Render()
 {
+	// To do : Use Game States
+
 	if (m_Player && m_MapManager)
 	{
 		m_MapManager->Render();
 		m_Player->Render();
-
 	}
 
-	if (m_bGameOver)
+	if (m_GameState == EGameState::GameOver)
 	{
 		char textBuffer[64];
 		sprintf(textBuffer, "GAME OVER");
-		App::Print(APP_VIRTUAL_WIDTH /2, APP_VIRTUAL_HEIGHT /2, textBuffer, 1.0f, 0.0f, 0.0f, GLUT_BITMAP_HELVETICA_10);
+		App::Print(APP_VIRTUAL_WIDTH /2, APP_VIRTUAL_HEIGHT /2, textBuffer, 1.0f, 0.0f, 0.0f, GLUT_BITMAP_HELVETICA_18);
 	}
 }
 //------------------------------------------------------------------------
@@ -86,5 +85,5 @@ void GameManager::Shutdown()
 
 void GameManager::GameOver()
 {
-	m_bGameOver = true;
+	m_GameState = EGameState::GameOver;
 }

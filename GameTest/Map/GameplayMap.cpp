@@ -1,11 +1,14 @@
 #include "stdafx.h"
 #include <random>
+#include <algorithm>
 
 #include "GameplayMap.h"
+#include "../Gameplay/GameManager.h"
 
 ///-------- All Gameplay Object includes ------///
 #include "../Gameplay/Enemies/Enemy.h"
 #include "../Gameplay/Enemies/BlockerGreen.h"
+#include "../Gameplay/Enemies/SlimeBlue.h"
 ///-------------------------------------------///
 
 
@@ -25,6 +28,7 @@ void GameplayMap::Init()
 		if (newGameObject)
 		{
 			App::Vector2 positionNewObject;
+			newGameObject->m_OwnerGameplayMap = this;
 
 			// Z Pos
 			float baseZPos = 0.f;
@@ -53,8 +57,9 @@ void GameplayMap::Init()
 			float deltaZ = distrib(gen);
 
 			// Final position on spawn
+			const float PositionXPlayer = m_GameManager->m_Player->m_Location.x;
 			positionNewObject.z = CLAMP(baseZPos+deltaZ, m_MinMaxPosZ.x, m_MinMaxPosZ.z);
-			positionNewObject.x = m_Position.x + DataGameplay.m_SpawnPositionX + (APP_VIRTUAL_WIDTH*1.25);
+			positionNewObject.x = m_Position.x + CLAMP(DataGameplay.m_SpawnPositionX*APP_VIRTUAL_SCALE, PositionXPlayer+600.f, m_Width);
 
 			newGameObject->Init(positionNewObject);
 			newGameObject->SetGameManager(m_GameManager);
@@ -107,14 +112,34 @@ GameObject* GameplayMap::SpawnNewObjectFormData(GameplayDatasMap data)
 
 	switch (data.m_TypeGameObject)
 	{
-		case Monster1 : 
+		case Monster_BlockerGreen :
 			newGameObject = new BlockerGreen();
 			break;
-
+		case Monster_SlimeBlue :
+			newGameObject = new SlimeBlue();
+			break;
 		default : 
 		break;
 	}
 
-
 	return newGameObject;
+}
+
+void GameplayMap::GameObjectReachEnd(GameObject* gameObject)
+{
+
+	if (gameObject)
+	{
+		auto it = std::find(m_GameObjectGameplayMap.begin(), m_GameObjectGameplayMap.end(), gameObject);
+
+		if (it != m_GameObjectGameplayMap.end())
+		{
+			m_GameObjectGameplayMap.erase(it);
+		}
+	}
+
+	if (m_GameObjectGameplayMap.empty())
+	{
+		Destroy();
+	}
 }

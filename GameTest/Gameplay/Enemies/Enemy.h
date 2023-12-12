@@ -9,6 +9,7 @@ class Enemy :
 public :
 
 float m_DamageCollisionPlayer;
+float m_SpeedAnimIdle = 200.f;
 
 #pragma endregion
 

@@ -1,24 +1,24 @@
 #pragma once
 #include "../Gameplay/Enemies/Enemy.h"
-#include "../Gameplay/Collisions/RectangleCollisionComponent.h"
+#include "../Gameplay/Collisions/CircleCollisionComponent.h"
 
-enum AnimBlockerGreen 
+enum AnimSlimeBlue 
 {
-    IdleBlockerGreen
+    IdleSlimeBlue
 };
 
-class BlockerGreen :
+class SlimeBlue :
     public Enemy
 {
 #pragma region VARIABLES
 
-RectangleCollisionComponent *m_RectangleCollision;
+CircleCollisionComponent * m_SphereCollision;
 
 #pragma endregion
 
 #pragma region FUNCTIONS
 public : 
-    BlockerGreen();
+    SlimeBlue();
 
     void InitializeGameObjectDatas() override;
 

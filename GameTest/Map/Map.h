@@ -17,6 +17,9 @@ public :
 	App::Vector2 m_Position;
 	float m_Scale = 1.f;
 
+	float m_Width = APP_VIRTUAL_WIDTH/1.25f;
+	float m_Height = APP_VIRTUAL_HEIGHT;
+
 #pragma endregion
 
 

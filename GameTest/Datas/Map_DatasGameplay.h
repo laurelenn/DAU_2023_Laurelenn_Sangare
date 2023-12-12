@@ -9,8 +9,8 @@
 enum GameObjectLDType
 {
     None,
-    Monster1,
-    Monster2,
+    Monster_BlockerGreen,
+    Monster_SlimeBlue,
     Monster3,
     Obstacle1,
     Obstacle2,
@@ -27,7 +27,6 @@ struct GameplayDatasMap
     FloorLevels m_FloorSpawn = Floor_Level0;
     float m_DeltaPosZ = 0.f;
     float m_SpawnPositionX = 0.f;
-    // To do : Associate with some LD types
 
     GameplayDatasMap() = default;
 
@@ -45,6 +44,7 @@ public :
 #pragma region VARIABLES
 
     #pragma region LD ARRAYS
+    static const std::vector<GameplayDatasMap> m_LD_FirstMap;
     static const std::vector<GameplayDatasMap> m_LD_Easy_1;
     static const std::vector<GameplayDatasMap> m_LD_Easy_2;
     static const std::vector<GameplayDatasMap> m_LD_Easy_3;
@@ -54,6 +54,7 @@ public :
     #pragma endregion
 
     static const std::vector<std::vector<GameplayDatasMap>> m_ArrayLD_Easy;
+    static const std::vector<std::vector<GameplayDatasMap>> m_ArrayLD_FirstMaps;
 
 
 #pragma endregion

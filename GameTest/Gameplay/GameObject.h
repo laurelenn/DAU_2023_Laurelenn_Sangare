@@ -19,7 +19,7 @@ enum GameObjectType
 };
 
 class GameManager;
-
+class GameplayMap;
 class GameObject
 {
 
@@ -28,6 +28,7 @@ class GameObject
 public:
 
 GameManager *m_GameManager = nullptr;
+GameplayMap *m_OwnerGameplayMap = nullptr;
 
 App::Vector2 m_Location;
 float m_SpeedX;
@@ -60,6 +61,7 @@ void Render();
 void Destroy();
 void SetActivated(bool Activate){m_bIsActivated = Activate;}
 void SetPosition(float x, float z);
+bool ReachEndMap();
 
 void ApplyDamages(float damages);
 virtual void Death() = 0;

@@ -178,7 +178,7 @@ void MapManager::Update(float Deltatime)
 	#pragma endregion
 
 #pragma region Gameplay
-	if (CheckEndMap(m_CurrentGameplayMap))
+	if (CheckEndMap(m_CurrentGameplayMap)) // To do : Rework here ! 
 	{
 		m_OldGameplayMap = m_CurrentGameplayMap;
 		m_CurrentGameplayMap = m_NextGameplayMap;
@@ -194,16 +194,11 @@ void MapManager::Update(float Deltatime)
 	if (m_OldGameplayMap)
 	{
 		m_OldGameplayMap->Update(Deltatime);
-		if (m_OldGameplayMap->m_Position.x + m_Width <= 0)
-		{
-			delete m_OldGameplayMap;
-			m_OldGameplayMap = nullptr;
-		}
 	}
 	else
 	{
+		delete m_OldLDMap;
 		std::cout << "[MapManager] No Old Gameplay map (MapManager::Update)" << std::endl;
-
 	}
 
 	if (m_CurrentGameplayMap)

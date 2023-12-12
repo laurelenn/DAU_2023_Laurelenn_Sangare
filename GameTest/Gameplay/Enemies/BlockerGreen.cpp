@@ -11,6 +11,7 @@ BlockerGreen::BlockerGreen()
 	m_DamageCollisionPlayer = 200.f;
 	m_SpeedX = 0.f;
 	m_SpeedZ = 0.f;
+	m_SpeedAnimIdle = 0.f;
 }
 
 void BlockerGreen::InitializeGameObjectDatas()
@@ -20,14 +21,18 @@ void BlockerGreen::InitializeGameObjectDatas()
 	m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Enemies\\blockerMad.png";
 
 	m_Sprite = App::CreateSprite(m_SpriteFilename, m_SpriteColumns, m_SpriteLines);
-	m_Sprite->CreateAnimation(AnimBlockerGreen::Idle, m_SpeedAnim / 50.f, { 0 });
+	m_Sprite->CreateAnimation(AnimBlockerGreen::IdleBlockerGreen, m_SpeedAnimIdle / 50.f, { 0 });
 
 	// To do : Create Other Animations
 
 	m_Sprite->SetScale(m_Scale);
-	m_Sprite->SetAnimation(AnimBlockerGreen::Idle);
+	m_Sprite->SetAnimation(AnimBlockerGreen::IdleBlockerGreen);
 }
 
+void BlockerGreen::Update(float deltaTime)
+{
+	Enemy::Update(deltaTime);
+}
 
 void BlockerGreen::Death()
 {

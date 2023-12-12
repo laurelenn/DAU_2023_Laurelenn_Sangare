@@ -25,5 +25,6 @@ public :
     void Render() override;
     void Destroy() override;
     GameObject* SpawnNewObjectFormData(GameplayDatasMap data);
+    void GameObjectReachEnd(GameObject* gameObject);
 };
 

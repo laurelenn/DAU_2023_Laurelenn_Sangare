@@ -13,9 +13,10 @@ void Enemy::InitializeGameObjectDatas()
 
 void Enemy::Update(float Deltatime)
 {
-	if (m_GameManager && m_GameManager->m_Player && m_GameManager->m_Player->m_bIsActivated)
+	GameObject::Update(Deltatime);
+	if (this && m_GameManager && m_GameManager->m_Player && m_GameManager->m_Player->m_bIsActivated)
 	{
-		if (m_Collision)
+		if (this && m_Collision)
 		{
 			const bool CollideWithPlayer = m_Collision->IsColliding(*m_GameManager->m_Player->m_CapsuleCollision);
 			if (CollideWithPlayer)
@@ -28,5 +29,8 @@ void Enemy::Update(float Deltatime)
 
 void Enemy::ApplyDamages(float damages)
 {
-
+	if (m_LifeManager)
+	{
+		ApplyDamages(damages);
+	}
 }

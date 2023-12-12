@@ -49,13 +49,25 @@ BackgroundDatasMap MapGenerator::SelectBgMap(bool isFirstMap)
 
 std::vector<GameplayDatasMap> MapGenerator::SelectGameplayMap(bool isFirstMap)
 {
+
+    std::vector<GameplayDatasMap> selectedLD;
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<> distrib(0, Map_DatasGameplay::m_ArrayLD_Easy.size() - 1);
-    int randomIndex = distrib(gen);
 
-    // Utilisation de l'index aléatoire pour sélectionner un tableau
-    std::vector<GameplayDatasMap> selectedLD = Map_DatasGameplay::m_ArrayLD_Easy[randomIndex];
+    if (isFirstMap)
+    {
+        std::uniform_int_distribution<> distrib(0, Map_DatasGameplay::m_ArrayLD_FirstMaps.size() - 1);
+        const int randomIndex = distrib(gen);
+        selectedLD = Map_DatasGameplay::m_ArrayLD_FirstMaps[randomIndex];
+
+    }
+    else
+    {
+        std::uniform_int_distribution<> distrib(0, Map_DatasGameplay::m_ArrayLD_Easy.size() - 1);
+        const int randomIndex = distrib(gen);
+        selectedLD = Map_DatasGameplay::m_ArrayLD_Easy[randomIndex];
+
+    }
 
     return selectedLD;
 }
