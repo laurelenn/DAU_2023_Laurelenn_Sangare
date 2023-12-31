@@ -93,6 +93,7 @@ void GameplayMap::Render()
 			gameObject->Render();
 		}
 	}
+	DrawMapBoundary(1,0,0,0,0,1);
 }
 
 void GameplayMap::Destroy()

@@ -38,6 +38,7 @@ virtual void Render() = 0;
 virtual void Destroy() = 0;
 virtual void SetPosition(float newX, float newZ);
 
+void DrawMapBoundary(float rStart, float gStart, float bStart, float rEnd, float gEnd, float bEnd);
 #pragma endregion
 
 

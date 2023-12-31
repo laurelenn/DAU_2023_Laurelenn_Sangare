@@ -29,6 +29,40 @@ namespace App
 		glEnd();
 	}
 	
+	void DrawLineWithThickness(float sx, float sy, float ex, float ey, float thickness, float r, float g, float b) {
+#if APP_USE_VIRTUAL_RES
+		APP_VIRTUAL_TO_NATIVE_COORDS(sx, sy);
+		APP_VIRTUAL_TO_NATIVE_COORDS(ex, ey);
+#endif
+
+		// Calcul de la moitié de l'épaisseur
+		float halfThickness = thickness * 0.5f / 300.f;
+
+		// Calcul du vecteur entre les points de début et de fin
+		float dx = ex - sx;
+		float dy = ey - sy;
+		float length = sqrt(dx * dx + dy * dy);
+
+		// Normalisation du vecteur
+		dx /= length;
+		dy /= length;
+
+		// Calcul des vecteurs perpendiculaires pour former un rectangle
+		float vx = -dy * halfThickness;
+		float vy = dx * halfThickness;
+
+		glBegin(GL_QUADS);
+		glColor3f(r, g, b); // Couleur spécifiée
+
+		// Sommets du rectangle pour former la ligne
+		glVertex2f(sx - vx, sy - vy);
+		glVertex2f(ex - vx, ey - vy);
+		glVertex2f(ex + vx, ey + vy);
+		glVertex2f(sx + vx, sy + vy);
+
+		glEnd();
+	}
+
 	CSimpleSprite *CreateSprite(const char *fileName, int columns, int rows)
 	{
 		return new CSimpleSprite(fileName, columns, rows);
