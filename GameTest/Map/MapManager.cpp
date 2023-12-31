@@ -89,8 +89,8 @@ void MapManager::Init()
 	if (m_NextGameplayMap)
 	{
 		m_NextGameplayMap->m_Scale = m_Scale;
-		m_NextGameplayMap->Init();
 		m_NextGameplayMap->SetPosition(InitialXPosNext, InitialZPosNext);
+		m_NextGameplayMap->Init();
 	}
 	else
 	{

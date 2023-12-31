@@ -54,8 +54,6 @@ std::vector<GameplayDatasMap> MapGenerator::SelectGameplayMap(bool isFirstMap)
     std::random_device rd;
     std::mt19937 gen(rd());
 
-    isFirstMap = true; // TO DO : Delete
-
     if (isFirstMap)
     {
         std::uniform_int_distribution<> distrib(0, Map_DatasGameplay::m_ArrayLD_FirstMaps.size() - 1);
