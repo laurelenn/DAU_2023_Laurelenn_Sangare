@@ -60,9 +60,14 @@ void GameObject::Render()
 
 void GameObject::Destroy()
 {
-delete m_Sprite;
-m_Collision.reset(nullptr);
-delete this;
+	m_GameManager = nullptr;
+	m_OwnerGameplayMap = nullptr;
+
+	delete m_Sprite;
+	delete m_LifeManager;
+	m_Collision.reset();
+
+	m_bIsActivated = false;
 }
 
 void GameObject::SetPosition(float x, float z)

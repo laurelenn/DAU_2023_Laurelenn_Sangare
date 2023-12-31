@@ -29,6 +29,8 @@ void GameManager::Init()
 		m_MapManager->Init();
 	}
 #pragma endregion
+
+	m_GameState = EGameState::Started;
 }
 
 //------------------------------------------------------------------------
@@ -37,10 +39,8 @@ void GameManager::Init()
 //------------------------------------------------------------------------
 void GameManager::Update(float deltaTime)
 {
-	// if (!m_bGameOver)
-	//{
-
-	
+	/*if (m_GameState != EGameState::GameOver)
+	{*/
 		if (m_Player && m_MapManager)
 		{
 			m_Player->Update(deltaTime);
