@@ -26,8 +26,8 @@ public :
 private : 
 float m_SpeedAnimationRun = 3.5f;
 float m_HeightJump = HEIGHT_FLOOR_0*1.5f;
-float m_InitialSpeedJump = 3.f;
-float m_DelayJumpInertia = 0.5f;
+float m_InitialSpeedJump = 3.5f;
+float m_DelayJumpInertia = 0.2f;
 
 // Runtime
 float m_CurrentFloorLevel = HEIGHT_FLOOR_0;

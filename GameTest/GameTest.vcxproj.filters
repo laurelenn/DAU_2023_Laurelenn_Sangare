@@ -78,6 +78,12 @@
     <ClCompile Include="Gameplay\Enemies\SlimeBlue.cpp">
       <Filter>Sources\Gameplay\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="HUD\LifeHUD.cpp">
+      <Filter>Sources\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD\ScoreHUD.cpp">
+      <Filter>Sources\HUD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -163,6 +169,12 @@
     <ClInclude Include="Gameplay\Enemies\SlimeBlue.h">
       <Filter>Sources\Gameplay\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="HUD\LifeHUD.h">
+      <Filter>Sources\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD\ScoreHUD.h">
+      <Filter>Sources\HUD</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="NextAPI">
@@ -212,6 +224,12 @@
     </Filter>
     <Filter Include="Sources\Datas">
       <UniqueIdentifier>{295b1ef9-d323-4a28-9403-ea1ef073570f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\HUD">
+      <UniqueIdentifier>{29e14434-9dc1-4055-a662-9b8a789b2087}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Gameplay\Projectiles">
+      <UniqueIdentifier>{8f8b44c3-1524-44fd-8462-2f4d3e2bb1c8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

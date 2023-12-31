@@ -10,6 +10,7 @@ public :
 
 float m_DamageCollisionPlayer;
 float m_SpeedAnimIdle = 200.f;
+int m_ScoreOnKill = 100;
 
 #pragma endregion
 

@@ -195,6 +195,8 @@
     <ClInclude Include="Gameplay\GameManager.h" />
     <ClInclude Include="Gameplay\GameObject.h" />
     <ClInclude Include="Gameplay\LifeManager.h" />
+    <ClInclude Include="HUD\LifeHUD.h" />
+    <ClInclude Include="HUD\ScoreHUD.h" />
     <ClInclude Include="Map\BackgroundMap.h" />
     <ClInclude Include="Map\GameplayMap.h" />
     <ClInclude Include="Map\LDMap.h" />
@@ -225,6 +227,8 @@
     <ClCompile Include="Gameplay\GameObject.cpp" />
     <ClCompile Include="Gameplay\LifeManager.cpp" />
     <ClCompile Include="GameTest.cpp" />
+    <ClCompile Include="HUD\LifeHUD.cpp" />
+    <ClCompile Include="HUD\ScoreHUD.cpp" />
     <ClCompile Include="Map\BackgroundMap.cpp" />
     <ClCompile Include="Map\GameplayMap.cpp" />
     <ClCompile Include="Map\LDMap.cpp" />

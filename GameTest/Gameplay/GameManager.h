@@ -5,9 +5,9 @@
 #include "../App/AppSettings.h"
 #include "../Player/Player.h"
 #include "../Map/MapManager.h"
-//#include "../InputManager.h"
-//#include "../HUD/LifeHUD.h"
-//#include "../HUD/ScoreHUD.h"
+#include "../HUD/LifeHUD.h"
+#include "../HUD/ScoreHUD.h"
+
 //------------------------------------------------------------------------
 //------------------------------------------------------------------------
 //------------------------------------------------------------------------
@@ -15,7 +15,8 @@ enum EGameState
 {
 	PreStart, 
 	Started,
-	GameOver
+	GameOver,
+	WaitingForRestart
 };
 
 
@@ -34,17 +35,17 @@ public :
 	float m_HeightMap = APP_VIRTUAL_HEIGHT;
 	float m_WidthMap = APP_VIRTUAL_WIDTH / 1.25f;
 
-
 	// Player
 	Player* m_Player = nullptr;
 
 	// Game Data
-	int m_Score;
-	float m_GameTime;
-	int m_DistanceReached;
+	int m_Score = 0;
+	float m_GameTime = 0.f;
+	int m_DistanceReached = 0;
+	int m_KillBonus = 0;
 
-// LifeHUD* m_LifeHUD; // To do 
-// ScoreHUD* m_ScoreHUD; // To do
+ LifeHUD* m_LifeHUD;
+ ScoreHUD* m_ScoreHUD;
 #pragma endregion
 
 

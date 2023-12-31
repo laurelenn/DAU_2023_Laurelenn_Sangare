@@ -30,7 +30,20 @@ void GameManager::Init()
 	}
 #pragma endregion
 
-	m_GameState = EGameState::Started;
+#pragma region Score
+	m_GameTime = 0.0f;
+	m_DistanceReached = 0;
+	m_KillBonus = 0;
+	m_Score = 0;
+#pragma endregion
+
+#pragma region Life
+
+	m_LifeHUD = new LifeHUD(10.f*APP_VIRTUAL_SCALE, 50.f, 10.f, m_Player->m_LifeManager->m_InitialLife, 0.0f, APP_VIRTUAL_HEIGHT*APP_VIRTUAL_SCALE);
+
+#pragma endregion
+	
+	m_GameState = EGameState::Started; // To do : Move after gamre state manager
 }
 
 //------------------------------------------------------------------------
@@ -39,12 +52,25 @@ void GameManager::Init()
 //------------------------------------------------------------------------
 void GameManager::Update(float deltaTime)
 {
-	/*if (m_GameState != EGameState::GameOver)
+	/*if (m_GameState == EGameState::Started)
 	{*/
 		if (m_Player && m_MapManager)
 		{
 			m_Player->Update(deltaTime);
 			m_MapManager->Update(deltaTime);
+		}
+
+		if (m_ScoreHUD)
+		{
+			m_GameTime += deltaTime;
+			m_DistanceReached = m_GameTime*m_SpeedMap;
+			m_Score = m_DistanceReached + m_KillBonus;
+			//m_ScoreHUD->Update(m_Score);
+		}
+
+		if (m_LifeHUD && m_Player && m_Player->m_LifeManager)
+		{
+			m_LifeHUD->Update(m_Player->m_LifeManager->m_CurrentLife);
 		}
 	//}
 }
@@ -61,6 +87,11 @@ void GameManager::Render()
 	{
 		m_MapManager->Render();
 		m_Player->Render();
+	}
+
+	if (m_LifeHUD)
+	{
+		m_LifeHUD->Render();
 	}
 
 	if (m_GameState == EGameState::GameOver)
