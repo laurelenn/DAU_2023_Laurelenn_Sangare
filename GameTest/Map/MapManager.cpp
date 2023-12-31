@@ -186,9 +186,9 @@ void MapManager::Update(float Deltatime)
 
 		m_NextGameplayMap->m_Scale = m_Scale;
 		m_NextGameplayMap->SetGameManager(m_GameManager);
+		m_NextGameplayMap->SetPosition(m_CurrentGameplayMap->m_Position.x + m_Width, m_CurrentGameplayMap->m_Position.z);
 		m_NextGameplayMap->Init();
 
-		m_NextGameplayMap->SetPosition(m_CurrentGameplayMap->m_Position.x + m_Width, m_CurrentGameplayMap->m_Position.z);
 	}
 
 	if (m_OldGameplayMap)

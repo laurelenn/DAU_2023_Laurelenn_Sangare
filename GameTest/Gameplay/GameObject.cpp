@@ -86,7 +86,7 @@ void GameObject::SetPosition(float x, float z)
 
 bool GameObject::ReachEndMap()
 {
-	return m_Location.x <= 0;
+	return m_Location.x <= 0-m_Width;
 }
 
 void GameObject::ApplyDamages(float damages)

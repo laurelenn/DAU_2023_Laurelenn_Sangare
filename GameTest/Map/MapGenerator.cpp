@@ -29,7 +29,7 @@ BackgroundMap* MapGenerator::GenerateBgMap(bool isFirstMap, BackgroundMap* previ
 
 GameplayMap* MapGenerator::GenerateGameplayMap(bool isFirstMap, float speed)
 {
-    auto newMap = new GameplayMap(speed, SelectGameplayMap(isFirstMap));
+   auto newMap = new GameplayMap(speed, SelectGameplayMap(isFirstMap));
    if (newMap && m_GameManager)
    {
         newMap->SetGameManager(m_GameManager);
@@ -53,6 +53,8 @@ std::vector<GameplayDatasMap> MapGenerator::SelectGameplayMap(bool isFirstMap)
     std::vector<GameplayDatasMap> selectedLD;
     std::random_device rd;
     std::mt19937 gen(rd());
+
+    isFirstMap = true; // TO DO : Delete
 
     if (isFirstMap)
     {

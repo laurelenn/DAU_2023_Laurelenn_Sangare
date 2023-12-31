@@ -5,7 +5,9 @@ SlimeBlue::SlimeBlue()
 {
 	m_LifeManager = new LifeManager(10.f, 10.f);
 	m_Scale = 1.5f;
-	m_SphereCollision = new CircleCollisionComponent(27.f * m_Scale);
+	m_Width = 27.f*m_Scale;
+	m_Height = 27.f*m_Scale;
+	m_SphereCollision = new CircleCollisionComponent(m_Width);
 	m_Collision = std::unique_ptr<CollisionComponent>(m_SphereCollision);
 	m_TypeObject = GameObjectType::Enemy;
 	m_DamageCollisionPlayer = 200.f;

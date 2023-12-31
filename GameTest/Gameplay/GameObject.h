@@ -29,20 +29,24 @@ public:
 
 GameManager *m_GameManager = nullptr;
 GameplayMap *m_OwnerGameplayMap = nullptr;
+LifeManager* m_LifeManager;
+std::unique_ptr<CollisionComponent> m_Collision;
+
+GameObjectType m_TypeObject;
 
 App::Vector2 m_Location;
 float m_SpeedX;
 float m_SpeedZ;
-GameObjectType m_TypeObject;
+
+float m_Scale = 1.f;
+float m_Width;
+float m_Height;
 
 CSimpleSprite* m_Sprite;
-float m_Scale = 1.f;
 const char* m_SpriteFilename;
 int m_SpriteColumns;
 int m_SpriteLines;
-LifeManager* m_LifeManager;
 
-std::unique_ptr<CollisionComponent> m_Collision;
 bool m_bIsActivated = true;
 
 #pragma endregion

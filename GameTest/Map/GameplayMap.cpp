@@ -59,8 +59,7 @@ void GameplayMap::Init()
 			// Final position on spawn
 			const float PositionXPlayer = m_GameManager->m_Player->m_Location.x;
 			positionNewObject.z = CLAMP(baseZPos+deltaZ, m_MinMaxPosZ.x, m_MinMaxPosZ.z);
-			positionNewObject.x = m_Position.x + CLAMP(DataGameplay.m_SpawnPositionX*APP_VIRTUAL_SCALE, PositionXPlayer+600.f, m_Width);
-
+			positionNewObject.x = m_Position.x + CLAMP(DataGameplay.m_SpawnPositionX*APP_VIRTUAL_SCALE, 0.0f, m_Width);
 			newGameObject->Init(positionNewObject);
 			newGameObject->SetGameManager(m_GameManager);
 

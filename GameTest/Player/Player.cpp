@@ -7,7 +7,9 @@
 
 Player::Player(float InitialLife, float Scale)
 {
-	m_CapsuleCollision = new CapsuleCollisionComponent(35.f * PLAYER_SCALE, 35.f * PLAYER_SCALE);
+	m_Width = 35.f * PLAYER_SCALE;
+	m_Height = 35.f *PLAYER_SCALE;
+	m_CapsuleCollision = new CapsuleCollisionComponent(m_Width, m_Height);
 	m_Collision = std::unique_ptr<CollisionComponent>(m_CapsuleCollision);
 	m_LifeManager = new LifeManager(InitialLife, InitialLife);
 	m_Scale = Scale;
