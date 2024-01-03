@@ -10,7 +10,7 @@ BlockerGreen::BlockerGreen()
 	m_RectangleCollision = new RectangleCollisionComponent(m_Width, m_Height);
 	m_Collision = std::unique_ptr<CollisionComponent>(m_RectangleCollision);
 	m_TypeObject = GameObjectType::Obstacle;
-	m_DamageCollisionPlayer = 10.f;
+	m_DamageCollisionPlayer = 5.f;
 	m_SpeedX = 0.f;
 	m_SpeedZ = 0.f;
 	m_SpeedAnimIdle = 0.f;

@@ -18,7 +18,7 @@ class LifeHUD
 		float m_Width = 1.0f; // Defined at constructor in game Manager
 		float m_Height = 1.0f; // Defined at constructor in game Manager
 		float m_InitialLife = 100.f;
-		const float m_DiffXLabel = 5.f * APP_VIRTUAL_SCALE;
+		const float m_DiffXLabel = 100.f * APP_VIRTUAL_SCALE;
 
 		CSimpleSprite* m_SpriteBgGauge = nullptr;
 		const char* m_SpriteBgGaugeFilename = ".\\.\\.\\Ressources\\HUD\\lifebar_bg.png";

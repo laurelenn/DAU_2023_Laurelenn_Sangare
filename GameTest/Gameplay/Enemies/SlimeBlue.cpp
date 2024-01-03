@@ -10,7 +10,7 @@ SlimeBlue::SlimeBlue()
 	m_SphereCollision = new CircleCollisionComponent(m_Width);
 	m_Collision = std::unique_ptr<CollisionComponent>(m_SphereCollision);
 	m_TypeObject = GameObjectType::Enemy;
-	m_DamageCollisionPlayer = 20.f;
+	m_DamageCollisionPlayer = 10.f;
 	m_SpeedX = -150.f;
 	m_SpeedZ = 0.f;
 	m_SpeedAnimIdle = 7.f;

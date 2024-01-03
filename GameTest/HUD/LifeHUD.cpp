@@ -10,8 +10,6 @@
 void LifeHUD::Init()
 {
 
-
-
     // Create Animations
     m_SpriteBgGauge = App::CreateSprite(m_SpriteBgGaugeFilename, 1, 1);
     m_SpriteBgGauge->CreateAnimation(IdleLifeHUD, 1, { 0 });
@@ -31,7 +29,7 @@ void LifeHUD::Init()
     m_Width = (m_SpriteBgGauge->GetWidth() + m_DiffXLabel + m_SpriteBgValue->GetWidth()) * m_ScaleX;
     m_Height = m_SpriteBgGauge->GetHeight() * m_ScaleY;
 
-   const float WidthGauge = m_SpriteBgGauge->GetWidth()* m_ScaleX;
+   const float WidthGauge = (m_SpriteBgGauge->GetWidth()* m_ScaleX)/2.f;
 
 
    // Set positions
@@ -43,18 +41,18 @@ void LifeHUD::Init()
     m_SpriteGauge->SetPosition(m_Location.x+ WidthGauge+m_DiffXLabel, m_Location.z);
     
     m_SpriteBgValue->SetAnimation(AnimLifeHUD::IdleLifeHUD);
-    m_SpriteBgValue->SetPosition(m_Location.x-m_DiffXLabel, m_Location.z);
+    m_SpriteBgValue->SetPosition(m_Location.x, m_Location.z);
 
 
     // Value
     m_CurrentLife = m_InitialLife;
-    m_HealthPercentage = CLAMP((m_CurrentLife / m_InitialLife), 0, 1);
+    m_HealthPercentage = CLAMP((m_CurrentLife / m_InitialLife), 0.00000f, 1.00000f);
 }
 
 void LifeHUD::Update(float currentLife)
 {
     m_CurrentLife = currentLife;
-    m_HealthPercentage = CLAMP((m_CurrentLife / m_InitialLife), 0, 1);
+    m_HealthPercentage = CLAMP((m_CurrentLife / m_InitialLife), 0.00000f, 1.00000f);
 
     if (m_SpriteBgGauge)
     {
@@ -78,15 +76,15 @@ void LifeHUD::Render()
    const char* text = "HP: ";
    char textBuffer[64];
    sprintf(textBuffer, "%s %d %%", text, (int)m_CurrentLife);
-   App::Print(m_Location.x-m_DiffXLabel, m_Location.z- m_Location.z/100, textBuffer, 1.0f, 1.0f, 1.0f, GLUT_BITMAP_HELVETICA_18);
+   App::Print(m_Location.x*0.5f + 10.f*m_ScaleX, m_Location.z - m_Location.z/100.f, textBuffer, 1.0f, 1.0f, 1.0f, GLUT_BITMAP_HELVETICA_18);
 
 }
 
 void LifeHUD::DrawHealthBar() {
 
     m_SpriteGauge->SetScales(m_ScaleX*m_HealthPercentage, m_ScaleY, true);
-    const float DiffWithCenter = ((m_SpriteGauge->GetWidth() * m_ScaleX) * (1 - m_HealthPercentage))/2;
-    float NewPosX = m_Location.x + m_DiffXLabel + m_SpriteGauge->GetWidth() * m_ScaleX - DiffWithCenter;
+    const float DiffWithCenter = m_SpriteGauge->GetWidth() * (m_ScaleX * (1.0000f - m_HealthPercentage));
+    float NewPosX = m_Location.x + m_DiffXLabel + ((m_SpriteBgGauge->GetWidth() * m_ScaleX) / 2.f) - DiffWithCenter/2.000f;
     m_SpriteGauge->SetPosition(NewPosX, m_Location.z);
 
     if (m_SpriteBgGauge)

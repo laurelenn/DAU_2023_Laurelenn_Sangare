@@ -19,9 +19,10 @@ void Enemy::Update(float Deltatime)
 		if (this && m_Collision)
 		{
 			const bool CollideWithPlayer = m_Collision->IsColliding(*m_GameManager->m_Player->m_CapsuleCollision);
-			if (CollideWithPlayer)
+			if (CollideWithPlayer && !m_bAlreadyHitPlayer)
 			{
-				m_GameManager->m_Player->ApplyDamages(m_DamageCollisionPlayer);
+				m_GameManager->m_Player->ApplyDamages(m_DamageCollisionPlayer); 
+				m_bAlreadyHitPlayer = true;
 			}
 		}
 	}
