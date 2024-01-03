@@ -83,9 +83,17 @@ void LifeHUD::Render()
 void LifeHUD::DrawHealthBar() {
 
     m_SpriteGauge->SetScales(m_ScaleX*m_HealthPercentage, m_ScaleY, true);
-    const float DiffWithCenter = m_SpriteGauge->GetWidth() * (m_ScaleX * (1.0000f - m_HealthPercentage));
-    float NewPosX = m_Location.x + m_DiffXLabel + ((m_SpriteBgGauge->GetWidth() * m_ScaleX) / 2.f) - DiffWithCenter/2.000f;
+
+    const float DiffWithCenter = m_SpriteGauge->GetWidth() * (m_ScaleX * (1.f - m_HealthPercentage));
+    const float LimitMin = (m_SpriteBgValue->GetWidth() * m_ScaleX) + m_DiffXLabel + m_Location.x;
+    const float LimitMax = m_Location.x + ((m_SpriteBgGauge->GetWidth() * m_ScaleX) / 2.f) + m_DiffXLabel;
+
+    float NewPosX = m_Location.x + m_DiffXLabel + ((m_SpriteBgGauge->GetWidth() * m_ScaleX) / 2.f) - (DiffWithCenter / 2.f);
+    NewPosX = CLAMP( NewPosX , LimitMin, LimitMax );
+
     m_SpriteGauge->SetPosition(NewPosX, m_Location.z);
+    m_SpriteGauge->SetColor(1.f-m_HealthPercentage+0.8, m_HealthPercentage+0.8, 0.f);
+
 
     if (m_SpriteBgGauge)
     {                                 
