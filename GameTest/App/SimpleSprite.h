@@ -22,6 +22,7 @@ public:
     void SetPosition(float x, float y) { m_xpos = x; m_ypos = y; }   
     void SetAngle(float a)  { m_angle = a; }
     void SetScale(float s) { m_scale = s; }
+    void SetScales(float sx, float sy, bool override) { m_scalex = sx; m_scaley = sy; m_OverrideScales = override; }
     void SetFrame(unsigned int f);
     void SetAnimation(int id);
 	void GetPosition(float &x, float &y) { x = m_xpos; y = m_ypos; }
@@ -40,6 +41,7 @@ public:
         m_animations.push_back(anim);        
     };
 
+    bool m_OverrideScales = false;
 private:
     void CalculateUVs();
     GLuint m_texture;
@@ -51,6 +53,8 @@ private:
     int   m_texHeight = 0;
     float m_angle = 0.0F;
     float m_scale = 1.0F;
+    float m_scalex = 1.0F;
+    float m_scaley = 1.0F;
     float m_points[8];    
     float m_uvcoords[8];
     unsigned int   m_frame;

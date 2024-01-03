@@ -39,8 +39,11 @@ void GameManager::Init()
 
 #pragma region Life
 
-	m_LifeHUD = new LifeHUD(10.f*APP_VIRTUAL_SCALE, 50.f, 10.f, m_Player->m_LifeManager->m_InitialLife, 0.0f, APP_VIRTUAL_HEIGHT*APP_VIRTUAL_SCALE);
-
+	m_LifeHUD = new LifeHUD(0.8f, 0.8f, m_Player->m_LifeManager->m_InitialLife, 100.0f, APP_VIRTUAL_HEIGHT*APP_VIRTUAL_SCALE + 100.0f);
+	if (m_LifeHUD)
+	{
+		m_LifeHUD->Init();
+	}
 #pragma endregion
 	
 	m_GameState = EGameState::Started; // To do : Move after gamre state manager

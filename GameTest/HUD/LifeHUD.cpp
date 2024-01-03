@@ -1,73 +1,108 @@
 #include "stdafx.h"
 #include "LifeHUD.h"
+#include "../App/app.h"
+#include "../App/app.h"
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
+void LifeHUD::Init()
+{
+
+
+
+    // Create Animations
+    m_SpriteBgGauge = App::CreateSprite(m_SpriteBgGaugeFilename, 1, 1);
+    m_SpriteBgGauge->CreateAnimation(IdleLifeHUD, 1, { 0 });
+    m_SpriteBgGauge->SetAnimation(AnimLifeHUD::IdleLifeHUD);
+   
+    m_SpriteGauge = App::CreateSprite(m_SpriteGaugeFilename, 1, 1);
+    m_SpriteGauge->CreateAnimation(IdleLifeHUD, 1, { 0 });
+    m_SpriteGauge->SetScales(m_ScaleX, m_ScaleY, true);
+
+    m_SpriteBgValue = App::CreateSprite(m_SpriteBgValueFilename, 1, 1);
+    m_SpriteBgValue->CreateAnimation(IdleLifeHUD, 1, { 0 });
+    m_SpriteBgValue->SetScales(m_ScaleX, m_ScaleY, true); // Arbitraire
+
+
+    // Determinate Width & Height & Positions
+
+    m_Width = (m_SpriteBgGauge->GetWidth() + m_DiffXLabel + m_SpriteBgValue->GetWidth()) * m_ScaleX;
+    m_Height = m_SpriteBgGauge->GetHeight() * m_ScaleY;
+
+   const float WidthGauge = m_SpriteBgGauge->GetWidth()* m_ScaleX;
+
+
+   // Set positions
+
+    m_SpriteBgGauge->SetScales(m_ScaleX, m_ScaleY, true);
+    m_SpriteBgGauge->SetPosition(m_Location.x + WidthGauge+m_DiffXLabel, m_Location.z);
+   
+    m_SpriteGauge->SetAnimation(AnimLifeHUD::IdleLifeHUD);
+    m_SpriteGauge->SetPosition(m_Location.x+ WidthGauge+m_DiffXLabel, m_Location.z);
+    
+    m_SpriteBgValue->SetAnimation(AnimLifeHUD::IdleLifeHUD);
+    m_SpriteBgValue->SetPosition(m_Location.x-m_DiffXLabel, m_Location.z);
+
+
+    // Value
+    m_CurrentLife = m_InitialLife;
+    m_HealthPercentage = CLAMP((m_CurrentLife / m_InitialLife), 0, 1);
+}
 
 void LifeHUD::Update(float currentLife)
 {
     m_CurrentLife = currentLife;
-    m_HealthPercentage = (m_InitialLife <= 0.0f) ? (m_CurrentLife / m_InitialLife) * 100.0f : 0.0f;
+    m_HealthPercentage = CLAMP((m_CurrentLife / m_InitialLife), 0, 1);
+
+    if (m_SpriteBgGauge)
+    {
+        m_SpriteBgGauge->Update(0.1);
+    }
+
+    if (m_SpriteGauge)
+    {
+        m_SpriteGauge->Update(0.1);
+    }
+
+    if (m_SpriteBgValue)
+    {
+        m_SpriteBgValue->Update(0.1);
+    }
 }
 
 void LifeHUD::Render()
 {
-   DrawHealthBar(m_Location.x, m_Location.z, m_Width*m_Scale, m_Height* m_Scale, m_HealthPercentage);
-   const char* text = "Life : ";
+   DrawHealthBar();
+   const char* text = "HP: ";
    char textBuffer[64];
-   sprintf(textBuffer, "%s %f", text, m_CurrentLife);
-   App::Print(m_Location.x+m_Width+5, m_Location.z, textBuffer, 1.0f, 0.0f, 1.0f, GLUT_BITMAP_TIMES_ROMAN_24);
+   sprintf(textBuffer, "%s %d %%", text, (int)m_CurrentLife);
+   App::Print(m_Location.x-m_DiffXLabel, m_Location.z- m_Location.z/100, textBuffer, 1.0f, 1.0f, 1.0f, GLUT_BITMAP_HELVETICA_18);
 
 }
 
-void LifeHUD::DrawHealthBar(float x, float y, float width, float height, float healthPercentage) {
-#if APP_USE_VIRTUAL_RES
-    APP_VIRTUAL_TO_NATIVE_COORDS(x, y);
-    width /= APP_VIRTUAL_WIDTH;
-    height /= APP_VIRTUAL_HEIGHT;
-#endif
+void LifeHUD::DrawHealthBar() {
 
-    const float borderRadius = height * 0.5f;
-    const float remainingWidth = width * (healthPercentage / 100.0f);
+    m_SpriteGauge->SetScales(m_ScaleX*m_HealthPercentage, m_ScaleY, true);
+    const float DiffWithCenter = ((m_SpriteGauge->GetWidth() * m_ScaleX) * (1 - m_HealthPercentage))/2;
+    float NewPosX = m_Location.x + m_DiffXLabel + m_SpriteGauge->GetWidth() * m_ScaleX - DiffWithCenter;
+    m_SpriteGauge->SetPosition(NewPosX, m_Location.z);
 
-    glBegin(GL_QUADS);
-
-    // Fond noir de la jauge
-    glColor3f(0.0f, 0.0f, 0.0f);
-    DrawRoundedRect(x, y, width, height, borderRadius);
-
-    // Barre de vie en fonction du pourcentage restant
-    glColor3f(1.0f - healthPercentage / 100.0f, healthPercentage / 100.0f, 0.0f);
-    DrawRoundedRect(x, y, remainingWidth, height, borderRadius);
-
-    glEnd();
-}
-
-void LifeHUD::DrawRoundedRect(float x, float y, float width, float height, float borderRadius) {
-    const int segments = 30;
-
-    // Dessiner le rectangle arrondi
-    glBegin(GL_TRIANGLE_FAN);
-    glVertex2f(x + borderRadius, y + borderRadius);
-    for (int i = 0; i <= segments; ++i) {
-        float angle = static_cast<float>(i) / static_cast<float>(segments) * 90.0f;
-        float vx = x + width - borderRadius + borderRadius * cosf(angle * 3.1415926f / 180.0f);
-        float vy = y + borderRadius + borderRadius * sinf(angle * 3.1415926f / 180.0f);
-        glVertex2f(vx, vy);
+    if (m_SpriteBgGauge)
+    {                                 
+        m_SpriteBgGauge->Draw();
     }
-    glEnd();
 
-    glBegin(GL_TRIANGLE_FAN);
-    glVertex2f(x + width - borderRadius, y + borderRadius);
-    for (int i = 0; i <= segments; ++i) {
-        float angle = static_cast<float>(i) / static_cast<float>(segments) * 90.0f;
-        float vx = x + width - borderRadius + borderRadius * cosf(angle * 3.1415926f / 180.0f);
-        float vy = y + height - borderRadius + borderRadius * sinf(angle * 3.1415926f / 180.0f);
-        glVertex2f(vx, vy);
+    if (m_SpriteGauge)
+    {
+        m_SpriteGauge->Draw();
     }
-    glEnd();
+    
+    if (m_SpriteBgValue)
+    {
+        m_SpriteBgValue->Draw();
+    }
 
-    glBegin(GL_QUADS);
-    glVertex2f(x + borderRadius, y);
-    glVertex2f(x + width - borderRadius, y);
-    glVertex2f(x + width - borderRadius, y + height);
-    glVertex2f(x + borderRadius, y + height);
-    glEnd();
 }
+

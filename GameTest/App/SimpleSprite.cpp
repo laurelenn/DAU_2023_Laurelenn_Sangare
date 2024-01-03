@@ -83,11 +83,12 @@ void CSimpleSprite::CalculateUVs()
 void CSimpleSprite::Draw()
 {            
 #if APP_USE_VIRTUAL_RES
-    float scalex = (m_scale / APP_VIRTUAL_WIDTH) * 2.0f;
-    float scaley = (m_scale / APP_VIRTUAL_HEIGHT) * 2.0f;
+    float scalex = m_OverrideScales ? (m_scalex /APP_VIRTUAL_WIDTH) *2.0f : (m_scale / APP_VIRTUAL_WIDTH) * 2.0f;
+    float scaley = m_OverrideScales ? (m_scaley / APP_VIRTUAL_HEIGHT) * 2.0f : (m_scale / APP_VIRTUAL_HEIGHT) * 2.0f;
 #else
-    float scalex = m_scale;
-    float scaley = m_scale;
+    float scalex = m_OverrideScales ? m_scalex : m_scale;
+    float scaley = m_OverrideScales ? m_scaley : m_scale;
+    
 #endif
     float x = m_xpos;
     float y = m_ypos;
