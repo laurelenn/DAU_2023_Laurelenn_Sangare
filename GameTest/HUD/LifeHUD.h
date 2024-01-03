@@ -15,20 +15,17 @@ class LifeHUD
 
 		float m_ScaleX = 1.0f * APP_VIRTUAL_SCALE;
 		float m_ScaleY = 1.0f * APP_VIRTUAL_SCALE;
-		float m_Width = 1.0f; // Defined at constructor in game Manager
-		float m_Height = 1.0f; // Defined at constructor in game Manager
 		float m_InitialLife = 100.f;
-		const float m_DiffXLabel = 100.f * APP_VIRTUAL_SCALE;
+		const float m_DiffXLabel = 5.f * APP_VIRTUAL_SCALE;
 
 		CSimpleSprite* m_SpriteBgGauge = nullptr;
 		const char* m_SpriteBgGaugeFilename = ".\\.\\.\\Ressources\\HUD\\lifebar_bg.png";
-
 
 		CSimpleSprite* m_SpriteGauge = nullptr;
 		const char* m_SpriteGaugeFilename = ".\\.\\.\\Ressources\\HUD\\lifebar_fill.png";
 
 		CSimpleSprite* m_SpriteBgValue = nullptr;
-		const char* m_SpriteBgValueFilename = ".\\.\\.\\Ressources\\HUD\\label_HP_bg.png";
+		const char* m_SpriteBgValueFilename = ".\\.\\.\\Ressources\\HUD\\hud_heartFull.png";
 
 		// Runtime
 		float m_CurrentLife = 100.f;
@@ -44,9 +41,10 @@ class LifeHUD
 		LifeHUD(float scalex = 50.f, float scaley = 10.f, float initialLife = 100.0f, float locX = 0.f, float locY = 0.f)
 			: m_ScaleX(scalex), m_ScaleY(scaley), m_InitialLife(initialLife), m_Location(locX, locY) {}
 	void Init();
-	void Update(float deltaTime);
+	void Update(float currentLife);
 	void Render();
 	void DrawHealthBar();
+	float GetPosGaugeX(){return m_SpriteBgGauge ? m_Location.x + (m_SpriteBgGauge->GetWidth() * m_ScaleX) / 2.f + m_DiffXLabel : 0.f;}
 	#pragma endregion
 
 };
