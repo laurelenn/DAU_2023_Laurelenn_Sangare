@@ -27,7 +27,7 @@ void ScoreHUD::Render()
 {
 
     char textBuffer[64];
-    sprintf(textBuffer, "%05d", m_Score);
+    sprintf(textBuffer, "%03d %03d", m_Score / 1000, m_Score % 1000);
     const float WidthGauge = (m_Sprite->GetWidth() * m_ScaleX) / 1.5f;
     
     if (m_Sprite)

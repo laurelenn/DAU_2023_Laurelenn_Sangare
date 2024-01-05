@@ -67,7 +67,7 @@ void LifeHUD::Render()
    float PosX = 0.f;
    if ((int)m_CurrentLife >= 100)
    {
-    PosX = m_Location.x * 0.5f + m_SpriteBgValue->GetWidth() * 0.25 * m_ScaleX;
+    PosX = m_Location.x * 0.5f + m_SpriteBgValue->GetWidth() * 0.2 * m_ScaleX;
    }
    else if ((int)m_CurrentLife >= 10)
    {
