@@ -12,6 +12,8 @@ float m_DamageCollisionPlayer;
 float m_SpeedAnimIdle = 200.f;
 int m_ScoreOnKill = 100;
 bool m_bAlreadyHitPlayer = false;
+bool m_bAlreadyHitByPlayer = false;
+
 #pragma endregion
 
 

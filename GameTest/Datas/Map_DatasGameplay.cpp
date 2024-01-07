@@ -16,7 +16,8 @@ const std::vector<GameplayDatasMap> Map_DatasGameplay::m_LD_FirstMap =
 const std::vector<GameplayDatasMap> Map_DatasGameplay::m_LD_Easy_1 =
 {
     GameplayDatasMap(Monster_SlimeBlue, Floor_Level0, .0f, 200.0f),
-    GameplayDatasMap(Monster_SlimeBlue, Floor_Level0, .0f, 900.0f)
+    GameplayDatasMap(Monster_SlimeBlue, Floor_Level0, .0f, 900.0f),
+    GameplayDatasMap(PowerUpLife, Floor_Level1, .0f, 900.0f)
 };
 
 
@@ -24,7 +25,9 @@ const std::vector<GameplayDatasMap> Map_DatasGameplay::m_LD_Easy_2 =
 {
     GameplayDatasMap(Monster_SlimeBlue, Floor_Level0, .0f, 400.0f),
     GameplayDatasMap(Monster_SlimeBlue, Floor_Level0, .0f, 1000.0f),
-    GameplayDatasMap(Monster_BlockerGreen, Floor_Level0, .0f, 1000.0f)
+    GameplayDatasMap(Monster_BlockerGreen, Floor_Level0, .0f, 1000.0f),
+    GameplayDatasMap(PowerUpLife, Floor_Level0, .0f, 900.0f),
+
 };
 
 const std::vector<std::vector<GameplayDatasMap>> Map_DatasGameplay::m_ArrayLD_Easy = 

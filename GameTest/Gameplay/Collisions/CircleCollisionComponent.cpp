@@ -49,6 +49,7 @@ bool CircleCollisionComponent::IsColliding(const RectangleCollisionComponent& ot
     {
         return other.IsColliding(*this);
     }
+    return false;
 }
 
 bool CircleCollisionComponent::IsColliding(const CapsuleCollisionComponent& other) const
@@ -78,4 +79,5 @@ bool CircleCollisionComponent::IsColliding(const CircleCollisionComponent& other
 
         return distanceSquared < (sumRadius * sumRadius);
     }
+    return false;
 }

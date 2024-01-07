@@ -15,7 +15,8 @@ enum GameObjectType
 	Projectile,
 	Obstacle,
 	Tile,
-	Hole
+	Hole,
+	PowerUpBonus
 };
 
 class GameManager;

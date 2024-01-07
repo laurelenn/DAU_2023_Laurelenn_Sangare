@@ -30,8 +30,16 @@ void Enemy::Update(float Deltatime)
 
 void Enemy::ApplyDamages(float damages)
 {
-	if (m_LifeManager)
+	if (m_LifeManager && !m_LifeManager->m_bIsDead)
 	{
 		ApplyDamages(damages);
+
+		if (m_LifeManager->m_bIsDead)
+		{
+			if (m_GameManager)
+			{
+				m_GameManager->m_KillBonus+=m_ScoreOnKill;
+			}
+		}
 	}
 }

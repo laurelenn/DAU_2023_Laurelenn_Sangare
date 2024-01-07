@@ -16,9 +16,11 @@ enum GameObjectLDType
     Obstacle2,
     Obstacle3,
     TileHole,
-    PowerUp1,
-    PowerUp2,
-    PowerUp3
+    PowerUpUFO,
+    PowerUpLife,
+    PowerUpShield,
+    PowerUpRate,
+    PowerUpDamage
 };
 
 struct GameplayDatasMap

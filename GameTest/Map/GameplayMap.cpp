@@ -1,13 +1,14 @@
 #include "stdafx.h"
-#include <random>
 #include <algorithm>
+#include <random>
 
-#include "GameplayMap.h"
 #include "../Gameplay/GameManager.h"
+#include "GameplayMap.h"
 
 ///-------- All Gameplay Object includes ------///
-#include "../Gameplay/Enemies/Enemy.h"
+#include "../Gameplay/PowerUp/PowerUp.h"
 #include "../Gameplay/Enemies/BlockerGreen.h"
+#include "../Gameplay/Enemies/Enemy.h"
 #include "../Gameplay/Enemies/SlimeBlue.h"
 ///-------------------------------------------///
 
@@ -24,7 +25,7 @@ void GameplayMap::Init()
 	for (auto& DataGameplay : m_DatasGameplayMap)
 	{
 
-		auto newGameObject = SpawnNewObjectFormData(DataGameplay);
+		GameObject* newGameObject = SpawnNewObjectFromData(DataGameplay);
 		if (newGameObject)
 		{
 			App::Vector2 positionNewObject;
@@ -54,7 +55,7 @@ void GameplayMap::Init()
 			std::mt19937 gen(rd());
 			std::uniform_real_distribution<> distrib(-DataGameplay.m_DeltaPosZ, DataGameplay.m_DeltaPosZ);
 
-			float deltaZ = distrib(gen);
+			double deltaZ = distrib(gen);
 
 			// Final position on spawn
 			const float PositionXPlayer = m_GameManager->m_Player->m_Location.x;
@@ -106,10 +107,9 @@ void GameplayMap::Destroy()
 	}
 }
 
-GameObject* GameplayMap::SpawnNewObjectFormData(GameplayDatasMap data)
+GameObject* GameplayMap::SpawnNewObjectFromData(GameplayDatasMap data)
 {
 	GameObject* newGameObject = nullptr;
-
 	switch (data.m_TypeGameObject)
 	{
 		case Monster_BlockerGreen :
@@ -118,7 +118,22 @@ GameObject* GameplayMap::SpawnNewObjectFormData(GameplayDatasMap data)
 		case Monster_SlimeBlue :
 			newGameObject = new SlimeBlue();
 			break;
-		default : 
+		case PowerUpUFO : 
+			newGameObject = new PowerUp(PowerUpType::UFO);
+			break;
+		case PowerUpLife:
+			newGameObject = new PowerUp(PowerUpType::BonusLife);
+			break;
+		case PowerUpShield:
+			newGameObject = new PowerUp(PowerUpType::Shield);
+			break;
+		case PowerUpRate:
+			newGameObject = new PowerUp(PowerUpType::FireRate);
+			break;
+		case PowerUpDamage:
+			newGameObject = new PowerUp(PowerUpType::FireDamage);
+			break;
+		default :
 		break;
 	}
 

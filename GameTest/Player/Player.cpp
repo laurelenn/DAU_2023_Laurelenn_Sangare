@@ -41,6 +41,29 @@ void Player::InitializeGameObjectDatas()
 	m_Sprite->SetAnimation(AnimPlayer::ANIM_RUN);
 }
 
+void Player::ActivatePowerUp(PowerUpType type)
+{
+	switch (type) // TO DO
+	{
+		case PowerUpType::UFO:
+		break;
+		case PowerUpType::Shield:
+			break;
+		case PowerUpType::FireRate:
+			break;
+		case PowerUpType::FireDamage:
+			break;
+		default:
+		case PowerUpType::BonusLife:
+			if (m_LifeManager && !m_LifeManager->m_bIsDead)
+			{
+				m_LifeManager->Heal(30);
+			}
+			break;
+	}
+
+}
+
 void Player::Update(float deltaTime)
 {
     GameObject::Update(deltaTime);

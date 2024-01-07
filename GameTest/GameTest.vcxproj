@@ -119,6 +119,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -160,6 +161,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -195,6 +197,7 @@
     <ClInclude Include="Gameplay\GameManager.h" />
     <ClInclude Include="Gameplay\GameObject.h" />
     <ClInclude Include="Gameplay\LifeManager.h" />
+    <ClInclude Include="Gameplay\PowerUp\PowerUp.h" />
     <ClInclude Include="HUD\LifeHUD.h" />
     <ClInclude Include="HUD\ScoreHUD.h" />
     <ClInclude Include="Map\BackgroundMap.h" />
@@ -226,6 +229,7 @@
     <ClCompile Include="Gameplay\GameManager.cpp" />
     <ClCompile Include="Gameplay\GameObject.cpp" />
     <ClCompile Include="Gameplay\LifeManager.cpp" />
+    <ClCompile Include="Gameplay\PowerUp\PowerUp.cpp" />
     <ClCompile Include="GameTest.cpp" />
     <ClCompile Include="HUD\LifeHUD.cpp" />
     <ClCompile Include="HUD\ScoreHUD.cpp" />

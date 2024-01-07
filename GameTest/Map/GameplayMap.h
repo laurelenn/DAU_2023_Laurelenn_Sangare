@@ -24,7 +24,7 @@ public :
     void Update(float deltaTime) override;
     void Render() override;
     void Destroy() override;
-    GameObject* SpawnNewObjectFormData(GameplayDatasMap data);
+    GameObject* SpawnNewObjectFromData(GameplayDatasMap data);
     void GameObjectReachEnd(GameObject* gameObject);
 };
 

@@ -45,17 +45,17 @@ void LifeHUD::Update(float currentLife)
 
     if (m_SpriteBgGauge)
     {
-        m_SpriteBgGauge->Update(0.1);
+        m_SpriteBgGauge->Update(0.1f);
     }
 
     if (m_SpriteGauge)
     {
-        m_SpriteGauge->Update(0.1);
+        m_SpriteGauge->Update(0.1f);
     }
 
     if (m_SpriteBgValue)
     {
-        m_SpriteBgValue->Update(0.1);
+        m_SpriteBgValue->Update(0.1f);
     }
 }
 
@@ -67,15 +67,15 @@ void LifeHUD::Render()
    float PosX = 0.f;
    if ((int)m_CurrentLife >= 100)
    {
-    PosX = m_Location.x * 0.5f + m_SpriteBgValue->GetWidth() * 0.2 * m_ScaleX;
+    PosX = m_Location.x * 0.5f + m_SpriteBgValue->GetWidth() * 0.2f * m_ScaleX;
    }
    else if ((int)m_CurrentLife >= 10)
    {
-     PosX = m_Location.x * 0.5f + m_SpriteBgValue->GetWidth() * 0.35 * m_ScaleX;
+     PosX = m_Location.x * 0.5f + m_SpriteBgValue->GetWidth() * 0.35f * m_ScaleX;
    }
    else
    {
-       PosX = m_Location.x * 0.5f + m_SpriteBgValue->GetWidth() * 0.45 * m_ScaleX;
+       PosX = m_Location.x * 0.5f + m_SpriteBgValue->GetWidth() * 0.45f * m_ScaleX;
    }
    App::Print(PosX, m_Location.z - m_Location.z/120.f, textBuffer, 1.0f, 1.0f, 1.0f, GLUT_BITMAP_HELVETICA_18);
 
@@ -93,7 +93,7 @@ void LifeHUD::DrawHealthBar() {
     //NewPosX = CLAMP( NewPosX , LimitMin, LimitMax );
 
     m_SpriteGauge->SetPosition(NewPosX, m_Location.z);
-    m_SpriteGauge->SetColor(1.f-m_HealthPercentage+0.8, m_HealthPercentage*1.8, 0.f);
+    m_SpriteGauge->SetColor(1.f-m_HealthPercentage+0.8f, m_HealthPercentage*1.8f, 0.f);
 
 
     if (m_SpriteBgGauge)

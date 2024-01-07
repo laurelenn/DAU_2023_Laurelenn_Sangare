@@ -74,7 +74,7 @@ void GameManager::Update(float deltaTime)
 		if (m_ScoreHUD)
 		{
 			m_GameTime += deltaTime;
-			m_DistanceReached = -1*m_GameTime*0.0001*m_SpeedMap;
+			m_DistanceReached = -1.f*m_GameTime*0.0001f*m_SpeedMap;
 			m_Score = m_DistanceReached + m_KillBonus;
 			m_ScoreHUD->Update(m_Score);
 		}

@@ -84,6 +84,9 @@
     <ClCompile Include="HUD\ScoreHUD.cpp">
       <Filter>Sources\HUD</Filter>
     </ClCompile>
+    <ClCompile Include="Gameplay\PowerUp\PowerUp.cpp">
+      <Filter>Sources\Gameplay\PowerUp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -175,6 +178,9 @@
     <ClInclude Include="HUD\ScoreHUD.h">
       <Filter>Sources\HUD</Filter>
     </ClInclude>
+    <ClInclude Include="Gameplay\PowerUp\PowerUp.h">
+      <Filter>Sources\Gameplay\PowerUp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="NextAPI">
@@ -230,6 +236,9 @@
     </Filter>
     <Filter Include="Sources\Gameplay\Projectiles">
       <UniqueIdentifier>{8f8b44c3-1524-44fd-8462-2f4d3e2bb1c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Gameplay\PowerUp">
+      <UniqueIdentifier>{07707582-64e2-4adf-beca-393170fdb6f4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

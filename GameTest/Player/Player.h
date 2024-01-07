@@ -2,7 +2,7 @@
 #include "../Gameplay/LifeManager.h"
 #include "../Gameplay/Collisions/CapsuleCollisionComponent.h"
 #include "../Gameplay/GameObject.h"
-
+#include "../Gameplay/PowerUp/PowerUp.h"
 
 enum AnimPlayer
 {
@@ -46,6 +46,8 @@ public :
 Player(float InitialLife, float Scale);
 
 void InitializeGameObjectDatas() override;
+
+void ActivatePowerUp(PowerUpType type);
 
 void Update(float Deltatime) override;
 void UpdateJump(float Deltatime);
