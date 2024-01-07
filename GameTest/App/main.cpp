@@ -106,15 +106,15 @@ void Display()
 {
 	glClear(GL_COLOR_BUFFER_BIT);   // Clear the color buffer with current clearing color
 
-	gUserRenderProfiler.Start();	
+	//gUserRenderProfiler.Start();	
 	Render();						// Call user defined render.
-	gUserRenderProfiler.Stop();
-	if (gRenderUpdateTimes)
-	{
-		gUpdateDeltaTime.Print	 (10, 40, "Update");
-		gUserRenderProfiler.Print(10, 25, "User Render");
-		gUserUpdateProfiler.Print(10, 10, "User Update");
-	}
+	//gUserRenderProfiler.Stop();
+	//if (gRenderUpdateTimes)
+	//{
+	//	gUpdateDeltaTime.Print	 (10, 40, "Update");
+	//	gUserRenderProfiler.Print(10, 25, "User Render");
+	//	gUserUpdateProfiler.Print(10, 10, "User Update");
+	//}
 	glFlush();  // Render now						 
 }
 

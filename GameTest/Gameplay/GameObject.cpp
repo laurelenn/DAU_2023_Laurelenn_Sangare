@@ -39,8 +39,8 @@ void GameObject::Update(float Deltatime) // ms
 			if (m_OwnerGameplayMap)
 			{
 				m_OwnerGameplayMap->GameObjectReachEnd(this);
-				Destroy();
 			}
+			Destroy();
 		}
 	}
 }
@@ -86,7 +86,14 @@ void GameObject::SetPosition(float x, float z)
 
 bool GameObject::ReachEndMap()
 {
-	return m_Location.x <= 0-m_Width;
+	if (m_SpeedX < 0)
+	{
+		return m_Location.x <= 0 - m_Width;
+	}
+	else
+	{
+		return m_Location.x >= APP_INIT_WINDOW_WIDTH*APP_VIRTUAL_SCALE + m_Width;
+	}
 }
 
 void GameObject::ApplyDamages(float damages)

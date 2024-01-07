@@ -118,7 +118,6 @@ void Player::UpdateJump(float Deltatime)
 }
 
 
-
 void Player::Jump()
 {
 	m_CurrentSpeedJump = m_InitialSpeedJump;

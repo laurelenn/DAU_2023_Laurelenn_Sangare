@@ -12,7 +12,7 @@ enum GameObjectType
 {
 	Pawn,
 	Enemy,
-	Projectile,
+	ProjectileElement,
 	Obstacle,
 	Tile,
 	Hole,
