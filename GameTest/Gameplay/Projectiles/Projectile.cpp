@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "../Projectiles/Projectile.h"
 #include "../GameManager.h"
+#include "../Gameplay/Collisions/CircleCollisionComponent.h"
+#include "../Gameplay/Collisions/CapsuleCollisionComponent.h"
+#include "../Gameplay/Collisions/RectangleCollisionComponent.h"
 
 Projectile::Projectile(ProjectileType type, float Damage, float Scale, float Speed)
 {
@@ -63,7 +66,52 @@ void Projectile::Update(float deltaTime)
 	{
 	case ProjectileType::PlayerProjectile:
 	
-		// TO DO : For each game object in Gameplay map ! Need de check if it's an enemy and if it's
+		if (m_GameManager && m_GameManager->m_MapManager)
+		{
+			if (m_GameManager->m_MapManager->m_OldGameplayMap)
+			{
+				for (GameObject* object : m_GameManager->m_MapManager->m_OldGameplayMap->m_GameObjectGameplayMap)
+				{
+					if (object->m_TypeObject == Enemy && object->m_bIsActivated)
+					{
+
+						if (std::find(m_HitObjects.begin(), m_HitObjects.end(), object) == m_HitObjects.end())
+						{
+							if (this && m_Collision)
+							{
+								bool CollideWithEnemy = false;
+
+								switch (object->m_Collision->m_ShapeType)
+								{
+									default:
+									case ShapeType::Circle:
+										//CircleCollisionComponent* castedCircle = ;
+										CollideWithEnemy = m_Collision->IsColliding(*dynamic_cast<CircleCollisionComponent*>(object->m_Collision.get()));
+										break;
+
+									case ShapeType::Rectangle:
+										//RectangleCollisionComponent* casterRect = ;
+										CollideWithEnemy = m_Collision->IsColliding(*dynamic_cast<RectangleCollisionComponent*>(object->m_Collision.get()));
+										break;
+
+									case ShapeType::Capsule:
+										//CapsuleCollisionComponent* castedCapsule = ;
+										CollideWithEnemy = m_Collision->IsColliding(*dynamic_cast<CapsuleCollisionComponent*>(object->m_Collision.get()));
+										break;
+								}
+								
+								if (CollideWithEnemy && object->m_LifeManager)
+								{
+									m_HitObjects.push_back(object);
+									object->m_LifeManager->ApplyDamage(m_Damages);
+									Destroy();
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 
 		break;
 	case ProjectileType::EnemyProjectile:

@@ -33,6 +33,7 @@ enum FloorLevels
 
 
 #define APP_KEYBOARD_JUMP_KEY		(VK_SPACE)
+#define APP_KEYBOARD_FIRE_KEY		(VK_RETURN)
 
 
 #pragma region APP_PAD_EMUL from API

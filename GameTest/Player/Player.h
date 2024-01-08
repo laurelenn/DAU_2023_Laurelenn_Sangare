@@ -3,6 +3,7 @@
 #include "../Gameplay/Collisions/CapsuleCollisionComponent.h"
 #include "../Gameplay/GameObject.h"
 #include "../Gameplay/PowerUp/PowerUp.h"
+#include "../Gameplay/Projectiles/ProjectileSpawner.h"
 
 enum AnimPlayer
 {
@@ -22,6 +23,7 @@ class Player :
 #pragma region VARIABLES
 public : 
     CapsuleCollisionComponent* m_CapsuleCollision;
+    ProjectileSpawner* m_ProjectileSpawner;
 
 private : 
 float m_SpeedAnimationRun = 3.5f;

@@ -13,6 +13,8 @@ class GameplayMap :
 
 // Array of game objects
     std::vector<GameplayDatasMap> m_DatasGameplayMap;
+
+    public : 
     std::vector<GameObject*> m_GameObjectGameplayMap = {};
 #pragma endregion
 

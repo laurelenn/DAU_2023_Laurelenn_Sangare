@@ -18,6 +18,7 @@ float m_Scale = 0.5f;
 
 MapGenerator *m_MapGenerator = nullptr;
 
+public : 
 LDMap *m_OldLDMap = nullptr;
 LDMap *m_CurrentLDMap = nullptr;
 LDMap *m_NextLDMap = nullptr;

@@ -77,6 +77,11 @@ void Player::Update(float deltaTime)
     {
 		UpdateJump(deltaTime);
 	}
+
+	if (App::IsKeyPressed(APP_KEYBOARD_FIRE_KEY && m_ProjectileSpawner && m_ProjectileSpawner->bCanLaunchSalvo))
+	{
+		m_ProjectileSpawner->bIsFiring = true;
+	}
 }
 
 void Player::UpdateJump(float Deltatime)
