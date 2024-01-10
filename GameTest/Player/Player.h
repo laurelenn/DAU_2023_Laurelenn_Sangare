@@ -54,6 +54,8 @@ void ActivatePowerUp(PowerUpType type);
 void Update(float Deltatime) override;
 void UpdateJump(float Deltatime);
 
+void Render();
+
 void Jump();
 void EndJump();
 

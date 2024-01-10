@@ -23,7 +23,7 @@ bool m_bAlreadyHitByPlayer = false;
     void InitializeGameObjectDatas() override; // To do : Should be virtual
 
     void Update(float Deltatime) override;
-
+public : 
     void ApplyDamages(float damages);
 #pragma endregion
 

@@ -2,7 +2,7 @@
 
 #include "Player.h"
 #include "../Gameplay/GameManager.h"
-
+#include "../Gameplay/Projectiles/ProjectileSpawner.h"
 
 
 Player::Player(float InitialLife, float Scale)
@@ -39,6 +39,8 @@ void Player::InitializeGameObjectDatas()
 
 	m_Sprite->SetScale(m_Scale);
 	m_Sprite->SetAnimation(AnimPlayer::ANIM_RUN);
+
+	m_ProjectileSpawner = new ProjectileSpawner(this, App::Vector2{}, 3.f, 3, 0.5f, false, ProjectileType::PlayerProjectile, PLAYER_SCALE, 10, 500.f);
 }
 
 void Player::ActivatePowerUp(PowerUpType type)
@@ -68,7 +70,7 @@ void Player::Update(float deltaTime)
 {
     GameObject::Update(deltaTime);
 
-    if (App::IsKeyPressed(APP_KEYBOARD_JUMP_KEY) && !m_bIsJumping)
+     if (App::IsKeyPressed(APP_KEYBOARD_JUMP_KEY) && !m_bIsJumping)
     {
         Jump();
     }
@@ -78,9 +80,14 @@ void Player::Update(float deltaTime)
 		UpdateJump(deltaTime);
 	}
 
-	if (App::IsKeyPressed(APP_KEYBOARD_FIRE_KEY && m_ProjectileSpawner && m_ProjectileSpawner->bCanLaunchSalvo))
+	if (m_ProjectileSpawner)
 	{
-		m_ProjectileSpawner->bIsFiring = true;
+		if (App::IsKeyPressed(APP_KEYBOARD_FIRE_KEY) && m_ProjectileSpawner->bCanLaunchSalvo)
+		{
+			m_ProjectileSpawner->bIsFiring = true;
+		}
+		m_ProjectileSpawner->Update(deltaTime);
+
 	}
 }
 
@@ -122,6 +129,15 @@ void Player::UpdateJump(float Deltatime)
     }
 }
 
+void Player::Render()
+{
+	GameObject::Render();
+	if (m_ProjectileSpawner)
+	{
+		m_ProjectileSpawner->Render();
+	}
+}
+
 
 void Player::Jump()
 {
@@ -147,5 +163,11 @@ void Player::Death()
 	if (m_LifeManager->m_bIsDead && m_GameManager)
 	{
 		m_GameManager->GameOver();
+	}
+
+	if (m_ProjectileSpawner)
+	{
+		m_ProjectileSpawner->Death();
+		delete m_ProjectileSpawner;
 	}
 }

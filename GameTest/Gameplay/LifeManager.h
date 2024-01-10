@@ -14,9 +14,9 @@ public:
 
 
 #pragma region VARIABLES
-	float m_MaxLife = 100.f;
-	float m_InitialLife = 100.f;
-	float m_CurrentLife = 100.f;
+	float m_MaxLife;
+	float m_InitialLife;
+	float m_CurrentLife;
 	bool m_bIsInvincible = false;
 	bool m_bIsDead = false;
 	bool m_bIsActivated = true;
@@ -25,19 +25,9 @@ public:
 
 #pragma region FUNCTIONS
 
-	inline LifeManager() {};
-	inline LifeManager(float MaxLife)
-	{
-		m_MaxLife = MaxLife;
-		m_InitialLife = m_MaxLife;
-		m_CurrentLife = m_MaxLife;
-	};
-	inline LifeManager(float MaxLife, float InitialLife)
-	{
-		m_MaxLife = MaxLife;
-		m_InitialLife = m_MaxLife;
-		m_CurrentLife = m_InitialLife;
-	}
+	LifeManager(float MaxLife) : m_MaxLife(MaxLife), m_InitialLife(MaxLife), m_CurrentLife(MaxLife){};
+	
+	LifeManager(float MaxLife, float InitialLife) : m_MaxLife(MaxLife), m_InitialLife(InitialLife), m_CurrentLife(InitialLife){};
 
 	float ApplyDamage(float Damages);
 	float Heal(float Heal);

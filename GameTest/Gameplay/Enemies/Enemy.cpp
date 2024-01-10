@@ -4,7 +4,7 @@
 
 Enemy::Enemy() : GameObject()
 {
-	m_TypeObject = GameObjectType::Enemy;
+	m_TypeObject = GameObjectType::EnemyElement;
 }
 
 void Enemy::InitializeGameObjectDatas()
@@ -30,9 +30,9 @@ void Enemy::Update(float Deltatime)
 
 void Enemy::ApplyDamages(float damages)
 {
-	if (m_LifeManager && !m_LifeManager->m_bIsDead)
+	if (this && m_LifeManager && !m_LifeManager->m_bIsDead)
 	{
-		ApplyDamages(damages);
+		m_LifeManager->ApplyDamage(damages);
 
 		if (m_LifeManager->m_bIsDead)
 		{
@@ -40,6 +40,7 @@ void Enemy::ApplyDamages(float damages)
 			{
 				m_GameManager->m_KillBonus+=m_ScoreOnKill;
 			}
+			Death();
 		}
 	}
 }

@@ -4,33 +4,37 @@
 #include "../Gameplay/Collisions/CircleCollisionComponent.h"
 #include "../Gameplay/Collisions/CapsuleCollisionComponent.h"
 #include "../Gameplay/Collisions/RectangleCollisionComponent.h"
+#include "../Gameplay/Enemies/Enemy.h"
 
 Projectile::Projectile(ProjectileType type, float Damage, float Scale, float Speed)
 {
 	m_ProjectileType = type;
 	m_Damages = Damage;
-	m_Scale = Scale;
-	m_SphereCollision = new CircleCollisionComponent(m_Width);
-	m_Collision = std::unique_ptr<CollisionComponent>(m_SphereCollision);
+	m_Scale = Scale*APP_VIRTUAL_SCALE;
 	m_TypeObject = GameObjectType::ProjectileElement;
 	m_SpeedX = Speed;
 	m_SpeedZ = 0.f;
 
 	switch (m_ProjectileType)
 	{
-	case ProjectileType::PlayerProjectile: // TODO
-		m_Width = 100.f * m_Scale;
-		m_Height = 100.f * m_Scale;		
+	case ProjectileType::PlayerProjectile:
+		m_Width = 20.f * m_Scale;
+		m_Height = 20.f * m_Scale;		
+		m_bUseMultiplierGameManager = false;
+
 		break;
 
 	case ProjectileType::EnemyProjectile:
-		m_Width = 100.f * m_Scale;
-		m_Height = 100.f * m_Scale;		
+		m_Width = 20.f * m_Scale;
+		m_Height = 20.f * m_Scale;		
 		break;
 
 	default:
 		break;
 	}
+	m_SphereCollision = new CircleCollisionComponent(m_Width);
+	m_Collision = std::unique_ptr<CollisionComponent>(m_SphereCollision);
+
 }
 
 void Projectile::InitializeGameObjectDatas()
@@ -41,10 +45,10 @@ void Projectile::InitializeGameObjectDatas()
 	switch (m_ProjectileType)
 	{
 		case ProjectileType::PlayerProjectile:
-			m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Projectiles\\ProjectileUFO.png";
+			m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Projectiles\\laserYellowBurst.png";
 			break;
 		case ProjectileType::EnemyProjectile:
-			m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Projectiles\\ProjectileShield.png";
+			m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Projectiles\\laserPurple.png";
 			break;
 		
 		default:
@@ -66,50 +70,21 @@ void Projectile::Update(float deltaTime)
 	{
 	case ProjectileType::PlayerProjectile:
 	
-		if (m_GameManager && m_GameManager->m_MapManager)
+		if (this && m_GameManager && m_GameManager->m_MapManager)
 		{
-			if (m_GameManager->m_MapManager->m_OldGameplayMap)
+			if (m_GameManager && m_GameManager->m_MapManager->m_OldGameplayMap)
 			{
-				for (GameObject* object : m_GameManager->m_MapManager->m_OldGameplayMap->m_GameObjectGameplayMap)
-				{
-					if (object->m_TypeObject == Enemy && object->m_bIsActivated)
-					{
+				CheckMapCollision(m_GameManager->m_MapManager->m_OldGameplayMap);
+			}
 
-						if (std::find(m_HitObjects.begin(), m_HitObjects.end(), object) == m_HitObjects.end())
-						{
-							if (this && m_Collision)
-							{
-								bool CollideWithEnemy = false;
+			if (m_GameManager && m_GameManager->m_MapManager->m_CurrentGameplayMap)
+			{
+				CheckMapCollision(m_GameManager->m_MapManager->m_CurrentGameplayMap);
+			}
 
-								switch (object->m_Collision->m_ShapeType)
-								{
-									default:
-									case ShapeType::Circle:
-										//CircleCollisionComponent* castedCircle = ;
-										CollideWithEnemy = m_Collision->IsColliding(*dynamic_cast<CircleCollisionComponent*>(object->m_Collision.get()));
-										break;
-
-									case ShapeType::Rectangle:
-										//RectangleCollisionComponent* casterRect = ;
-										CollideWithEnemy = m_Collision->IsColliding(*dynamic_cast<RectangleCollisionComponent*>(object->m_Collision.get()));
-										break;
-
-									case ShapeType::Capsule:
-										//CapsuleCollisionComponent* castedCapsule = ;
-										CollideWithEnemy = m_Collision->IsColliding(*dynamic_cast<CapsuleCollisionComponent*>(object->m_Collision.get()));
-										break;
-								}
-								
-								if (CollideWithEnemy && object->m_LifeManager)
-								{
-									m_HitObjects.push_back(object);
-									object->m_LifeManager->ApplyDamage(m_Damages);
-									Destroy();
-								}
-							}
-						}
-					}
-				}
+			if (m_GameManager && m_GameManager->m_MapManager->m_NextGameplayMap)
+			{
+				CheckMapCollision(m_GameManager->m_MapManager->m_NextGameplayMap);
 			}
 		}
 
@@ -141,5 +116,50 @@ void Projectile::Update(float deltaTime)
 
 void Projectile::Death()
 {
-	Destroy();
+	GameObject::Death();
+}
+
+
+void Projectile::CheckMapCollision(GameplayMap* map)
+{
+	if (map)
+	{
+		for (GameObject* object : map->m_GameObjectGameplayMap)
+		{
+			if (object->m_TypeObject == EnemyElement && object->m_bIsActivated)
+			{
+
+				if (std::find(m_HitObjects.begin(), m_HitObjects.end(), object) == m_HitObjects.end())
+				{
+					if (this && m_Collision)
+					{
+						bool CollideWithEnemy = false;
+
+						switch (object->m_Collision->m_ShapeType)
+						{
+						default:
+						case ShapeType::Circle:
+							CollideWithEnemy = m_Collision->IsColliding(*dynamic_cast<CircleCollisionComponent*>(object->m_Collision.get()));
+							break;
+
+						case ShapeType::Rectangle:
+							CollideWithEnemy = m_Collision->IsColliding(*dynamic_cast<RectangleCollisionComponent*>(object->m_Collision.get()));
+							break;
+
+						case ShapeType::Capsule:
+							CollideWithEnemy = m_Collision->IsColliding(*dynamic_cast<CapsuleCollisionComponent*>(object->m_Collision.get()));
+							break;
+						}
+
+						if (CollideWithEnemy && object->m_LifeManager && !object->m_LifeManager->m_bIsDead)
+						{
+							m_HitObjects.push_back(object);
+							dynamic_cast<Enemy*>(object)->ApplyDamages(m_Damages);
+							Death();							
+						}
+					}
+				}
+			}
+		}
+	}
 }

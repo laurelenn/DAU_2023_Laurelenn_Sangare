@@ -2,6 +2,9 @@
 #include "../Gameplay/GameObject.h"
 #include "../Gameplay/Collisions/CircleCollisionComponent.h"
 
+
+class GameplayMap;
+
 enum ProjectileType
 {
     PlayerProjectile,
@@ -29,6 +32,8 @@ public :
     void InitializeGameObjectDatas() override;
 
     void Update(float deltaTime) override;
+
+    void CheckMapCollision(GameplayMap* map);
 
     void Death() override;
 #pragma endregion

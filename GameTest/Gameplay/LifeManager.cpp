@@ -18,7 +18,7 @@ float LifeManager::ApplyDamage(float Damages)
 			//m_CurrentLife -= Damages;
 		}
 
-		if (m_CurrentLife <= 0)
+		if (m_CurrentLife <= 0 && !m_bIsDead)
 		{
 			m_bIsDead = true;
 		}

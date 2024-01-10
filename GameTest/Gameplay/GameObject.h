@@ -11,7 +11,7 @@
 enum GameObjectType 
 {
 	Pawn,
-	Enemy,
+	EnemyElement,
 	ProjectileElement,
 	Obstacle,
 	Tile,
@@ -38,6 +38,9 @@ GameObjectType m_TypeObject;
 App::Vector2 m_Location;
 float m_SpeedX;
 float m_SpeedZ;
+float m_MinZ = HEIGHT_FLOOR_0;
+float m_MaxZ = 3.f*HEIGHT_FLOOR_0;
+bool m_bUseMultiplierGameManager = false;
 
 float m_Scale = 1.f;
 float m_Width;
@@ -49,7 +52,6 @@ int m_SpriteColumns;
 int m_SpriteLines;
 
 bool m_bIsActivated = true;
-
 #pragma endregion
 
 #pragma region FUNCTIONS
@@ -69,7 +71,7 @@ void SetPosition(float x, float z);
 bool ReachEndMap();
 
 void ApplyDamages(float damages);
-virtual void Death() = 0;
+virtual void Death();
 
 #pragma endregion
 
