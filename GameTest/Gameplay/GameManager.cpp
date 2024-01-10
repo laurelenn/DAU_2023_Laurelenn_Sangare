@@ -53,7 +53,7 @@ void GameManager::Init()
 	}
 	#pragma endregion
 
-	
+	m_SpeedMulti = m_InitialSpeedMulti;
 	m_GameState = EGameState::Started; // To do : Move after gamre state manager
 }
 
@@ -78,6 +78,9 @@ void GameManager::Update(float deltaTime)
 			m_Score = m_DistanceReached + m_KillBonus;
 			m_ScoreHUD->Update(m_Score);
 		}
+
+		
+		m_SpeedMulti = CLAMP(m_InitialSpeedMulti, m_InitialSpeedMulti + (m_AdditionalSpeedMulti*(int)(m_DistanceReached/m_StepSpeedMulti)), m_MaxMultiSpeed);
 
 		if (m_LifeHUD && m_Player && m_Player->m_LifeManager)
 		{

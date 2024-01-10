@@ -21,7 +21,7 @@ void BlockerGreen::InitializeGameObjectDatas()
 {
 	m_SpriteColumns = 1;
 	m_SpriteLines = 1;
-	m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Enemies\\blockerMad.png";
+	m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Enemies\\blockerMad2.png";
 
 	m_Sprite = App::CreateSprite(m_SpriteFilename, m_SpriteColumns, m_SpriteLines);
 	m_Sprite->CreateAnimation(AnimBlockerGreen::IdleBlockerGreen, m_SpeedAnimIdle / 50.f, { 0 });

@@ -44,8 +44,15 @@ public :
 	int m_DistanceReached = 0;
 	int m_KillBonus = 0;
 
- LifeHUD* m_LifeHUD;
- ScoreHUD* m_ScoreHUD;
+	LifeHUD* m_LifeHUD;
+	ScoreHUD* m_ScoreHUD;
+
+	float m_SpeedMulti = 1.f;
+ private : 
+	float m_InitialSpeedMulti = 1.f;
+	float m_AdditionalSpeedMulti = 0.2f;
+	float m_StepSpeedMulti =  1000.0;
+	float m_MaxMultiSpeed = 2.6;
 #pragma endregion
 
 

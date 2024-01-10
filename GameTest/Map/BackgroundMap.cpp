@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "BackgroundMap.h"
 #include "../App/app.h"
+#include "../Gameplay/GameManager.h"
 
 BackgroundMap::BackgroundMap(float Speed)
 {
@@ -28,7 +29,7 @@ void BackgroundMap::Update(float deltaTime)
 		float newX = 0.f;
 		float newZ = 0.f;
 		m_Sprite->GetPosition(newX, newZ);
-		newX += ((m_SpeedMap/1000.f) * deltaTime);
+		newX += ((m_SpeedMap*m_GameManager->m_SpeedMulti /1000.f) * deltaTime);
 		m_Sprite->SetPosition(newX, newZ);
 		m_Position.x = newX;
 	}

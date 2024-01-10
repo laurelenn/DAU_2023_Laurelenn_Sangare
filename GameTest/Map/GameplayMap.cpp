@@ -59,7 +59,7 @@ void GameplayMap::Init()
 
 			// Final position on spawn
 			const float PositionXPlayer = m_GameManager->m_Player->m_Location.x;
-			positionNewObject.z = CLAMP(baseZPos+deltaZ, m_MinMaxPosZ.x, m_MinMaxPosZ.z);
+			positionNewObject.z = CLAMP(baseZPos+deltaZ, m_MinMaxPosZ.x,  m_MinMaxPosZ.z);
 			positionNewObject.x = m_Position.x + CLAMP(DataGameplay.m_SpawnPositionX*APP_VIRTUAL_SCALE, 0.0f, m_Width);
 			newGameObject->Init(positionNewObject);
 			newGameObject->SetGameManager(m_GameManager);
@@ -70,8 +70,8 @@ void GameplayMap::Init()
 }
 
 void GameplayMap::Update(float deltaTime)
-{
-	float NewPosX = ((m_SpeedMap / 1000.f) * deltaTime) * -1.f;
+{ 
+    float NewPosX = ((m_SpeedMap*m_GameManager->m_SpeedMulti) / 1000.f) * deltaTime * -1.f;
 	SetPosition(m_Position.x - NewPosX, m_Position.z); // Update the map speed
 
 	for (auto& gameObject : m_GameObjectGameplayMap)
