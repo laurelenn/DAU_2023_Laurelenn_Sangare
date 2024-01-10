@@ -5,6 +5,20 @@
 #include "../Gameplay/PowerUp/PowerUp.h"
 #include "../Gameplay/Projectiles/ProjectileSpawner.h"
 
+struct PowerUpEffect {
+    PowerUpType type = PowerUpType::BonusLife;
+    float duration = 5.f;
+    float currentDelay = 0.f;
+    bool activated = false;
+
+    PowerUpEffect( PowerUpType pType = PowerUpType::BonusLife, float pDuration = 5.f) : type(pType), duration(pDuration) 
+    {
+        currentDelay = 0.f;
+        activated = false;
+    }
+
+};
+
 enum AnimPlayer
 {
     ANIM_RUN,
@@ -40,6 +54,11 @@ bool m_bIsJumpingDown = false;
 float m_CurrentSpeedJump;
 float m_CurrentTimerJumpInertia;
 
+// PowerUps
+PowerUpEffect m_PowerUpEffectDamage = PowerUpEffect(PowerUpType::FireDamage, 5.f);
+PowerUpEffect m_PowerUpEffectRate = PowerUpEffect(PowerUpType::FireRate, 5.f);
+PowerUpEffect m_PowerUpEffectShield = PowerUpEffect(PowerUpType::Shield, 5.f);
+
 #pragma endregion
 
 
@@ -50,9 +69,11 @@ Player(float InitialLife, float Scale);
 void InitializeGameObjectDatas() override;
 
 void ActivatePowerUp(PowerUpType type);
+void DeactivatePowerUp(PowerUpType type);
 
 void Update(float Deltatime) override;
 void UpdateJump(float Deltatime);
+void UpdatePowerUp(float Deltatime);
 
 void Render();
 

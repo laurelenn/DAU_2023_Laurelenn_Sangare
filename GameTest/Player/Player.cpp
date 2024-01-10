@@ -45,15 +45,57 @@ void Player::InitializeGameObjectDatas()
 
 void Player::ActivatePowerUp(PowerUpType type)
 {
-	switch (type) // TO DO
+	switch (type)
 	{
 		case PowerUpType::UFO:
+		// TODO : spawn UFO
 		break;
 		case PowerUpType::Shield:
+			if (!m_PowerUpEffectShield.activated)
+			{
+				m_PowerUpEffectShield.activated = true;
+				m_PowerUpEffectShield.currentDelay = 0.f;
+				if (m_LifeManager)
+				{
+					m_LifeManager->MakeItInvincible();
+				}
+			}
+			else
+			{
+				m_PowerUpEffectShield.currentDelay = 0.f;
+			}
 			break;
 		case PowerUpType::FireRate:
+			if (!m_PowerUpEffectRate.activated)
+			{
+				m_PowerUpEffectRate.activated = true;
+				m_PowerUpEffectRate.currentDelay = 0.f;
+				if (m_ProjectileSpawner)
+				{
+					m_ProjectileSpawner->m_NbProjBySalvo *= 2;
+					m_ProjectileSpawner->m_DelayProjectiles /= 2;
+				}
+			}
+			else
+			{
+				m_PowerUpEffectRate.currentDelay = 0.f;
+			}
 			break;
 		case PowerUpType::FireDamage:
+			if (!m_PowerUpEffectDamage.activated)
+			{
+				m_PowerUpEffectDamage.activated = true;
+				m_PowerUpEffectDamage.currentDelay = 0.f;
+				if (m_ProjectileSpawner)
+				{
+					m_ProjectileSpawner->m_DamageProjectile *= 2;
+					m_ProjectileSpawner->m_ScaleProjectile *= 2;
+				}
+			}
+			else
+			{
+				m_PowerUpEffectDamage.currentDelay = 0.f;
+			}
 			break;
 		default:
 		case PowerUpType::BonusLife:
@@ -64,6 +106,52 @@ void Player::ActivatePowerUp(PowerUpType type)
 			break;
 	}
 
+}
+
+void Player::DeactivatePowerUp(PowerUpType type)
+{
+	switch (type)
+	{
+	case PowerUpType::Shield:
+		if (m_PowerUpEffectShield.activated)
+		{
+			m_PowerUpEffectShield.activated = false;
+			m_PowerUpEffectShield.currentDelay = 0.f;
+			if (m_LifeManager)
+			{
+				m_LifeManager->MakeItVulnerable();
+			}
+		}
+		break;
+	case PowerUpType::FireRate:
+		if (m_PowerUpEffectRate.activated)
+		{
+			m_PowerUpEffectRate.activated = false;
+			m_PowerUpEffectRate.currentDelay = 0.f;
+			if (m_ProjectileSpawner)
+			{
+				m_ProjectileSpawner->m_NbProjBySalvo /= 2;
+				m_ProjectileSpawner->m_DelayProjectiles *= 2;
+			}
+		}
+		break;
+	case PowerUpType::FireDamage:
+		if (m_PowerUpEffectDamage.activated)
+		{
+			m_PowerUpEffectDamage.activated = false;
+			m_PowerUpEffectDamage.currentDelay = 0.f;
+			if (m_ProjectileSpawner)
+			{
+				m_ProjectileSpawner->m_DamageProjectile /= 2;
+				m_ProjectileSpawner->m_ScaleProjectile /= 2;
+			}
+		}
+		break;
+	default:
+	case PowerUpType::UFO:
+	case PowerUpType::BonusLife:
+		break;
+	}
 }
 
 void Player::Update(float deltaTime)
@@ -82,13 +170,22 @@ void Player::Update(float deltaTime)
 
 	if (m_ProjectileSpawner)
 	{
-		if (App::IsKeyPressed(APP_KEYBOARD_FIRE_KEY) && m_ProjectileSpawner->bCanLaunchSalvo)
+		if (App::IsKeyPressed(APP_KEYBOARD_FIRE_KEY))
 		{
-			m_ProjectileSpawner->bIsFiring = true;
+			if (m_ProjectileSpawner->bCanLaunchSalvo)
+			{
+				m_ProjectileSpawner->bIsFiring = true;
+			}
+		}
+		else
+		{
+			m_ProjectileSpawner->bIsFiring = false;
 		}
 		m_ProjectileSpawner->Update(deltaTime);
 
 	}
+
+	UpdatePowerUp(deltaTime);
 }
 
 void Player::UpdateJump(float Deltatime)
@@ -129,12 +226,50 @@ void Player::UpdateJump(float Deltatime)
     }
 }
 
+void Player::UpdatePowerUp(float Deltatime)
+{
+	if (m_PowerUpEffectShield.activated)
+	{
+		m_PowerUpEffectShield.currentDelay += Deltatime/1000.f;
+		if (m_PowerUpEffectShield.currentDelay >= m_PowerUpEffectShield.duration)
+		{
+			DeactivatePowerUp(m_PowerUpEffectShield.type);
+		}
+	}
+
+
+	if (m_PowerUpEffectRate.activated)
+	{
+		m_PowerUpEffectRate.currentDelay += Deltatime / 1000.f;
+		if (m_PowerUpEffectRate.currentDelay >= m_PowerUpEffectRate.duration)
+		{
+			DeactivatePowerUp(m_PowerUpEffectRate.type);
+		}
+	}
+
+	if (m_PowerUpEffectDamage.activated)
+	{
+		m_PowerUpEffectDamage.currentDelay+=Deltatime / 1000.f;
+		if (m_PowerUpEffectDamage.currentDelay >= m_PowerUpEffectDamage.duration)
+		{
+			DeactivatePowerUp(m_PowerUpEffectDamage.type);
+		}
+	}	
+}
+
 void Player::Render()
 {
 	GameObject::Render();
 	if (m_ProjectileSpawner)
 	{
 		m_ProjectileSpawner->Render();
+	}
+	if (m_PowerUpEffectShield.activated)
+	{
+		char textBuffer[64];
+		sprintf(textBuffer, "INVINCIBLE");
+		App::Print(m_Location.x, m_Location.z, textBuffer, 1.0f, 1.0f, 1.0f, GLUT_BITMAP_TIMES_ROMAN_24);
+
 	}
 }
 

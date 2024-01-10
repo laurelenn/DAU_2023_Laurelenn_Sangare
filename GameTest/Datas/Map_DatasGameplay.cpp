@@ -17,7 +17,8 @@ const std::vector<GameplayDatasMap> Map_DatasGameplay::m_LD_Easy_1 =
 {
     GameplayDatasMap(Monster_SlimeBlue, Floor_Level0, .0f, 200.0f),
     GameplayDatasMap(Monster_SlimeBlue, Floor_Level0, .0f, 900.0f),
-    GameplayDatasMap(PowerUpLife, Floor_Level1, .0f, 900.0f)
+    GameplayDatasMap(PowerUpDamage, Floor_Level1, .0f, 900.0f),
+    GameplayDatasMap(PowerUpRate, Floor_Level1, .0f, 950.0f)
 };
 
 
