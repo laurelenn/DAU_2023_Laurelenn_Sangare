@@ -93,6 +93,7 @@ void Player::Render()
 		sprintf(textBuffer, "INVINCIBLE");
 		App::Print(m_Location.x, m_Location.z, textBuffer, 1.0f, 1.0f, 1.0f, GLUT_BITMAP_TIMES_ROMAN_24);
 
+		App::DrawCircle(30, m_CapsuleCollision->m_Rectangle.m_RectSize.z+5.f, m_Location, 0.28f, 0.8f, 0.87f);
 	}
 }
 
@@ -143,8 +144,8 @@ void Player::ActivatePowerUp(PowerUpType type)
 				if (m_ProjectileSpawner)
 				{
 					m_ProjectileSpawner->m_DamageProjectile *= 2;
-					m_ProjectileSpawner->m_ScaleProjectile *= 2;
-					m_ProjectileSpawner->m_FilenameProjectile = ".\\.\\.\\Ressources\\Interactables\\Projectiles\\playerProjectileBig.png";
+					m_ProjectileSpawner->m_ScaleProjectile *= 1.5;
+					m_ProjectileSpawner->m_FilenameProjectile = ".\\.\\Ressources\\Interactables\\Projectiles\\playerProjectileBig.png";
 				}
 			}
 			else
@@ -229,9 +230,9 @@ void Player::DeactivatePowerUp(PowerUpType type)
 			m_PowerUpEffectDamage.currentDelay = 0.f;
 			if (m_ProjectileSpawner)
 			{
-				m_ProjectileSpawner->m_DamageProjectile /= 2;
-				m_ProjectileSpawner->m_ScaleProjectile /= 2;
-				m_ProjectileSpawner->m_FilenameProjectile = ".\\.\\.\\Ressources\\Interactables\\Projectiles\\playerProjectileSimple.png";
+				m_ProjectileSpawner->m_DamageProjectile /= 2.f;
+				m_ProjectileSpawner->m_ScaleProjectile /= 1.5f;
+				m_ProjectileSpawner->m_FilenameProjectile = ".\\.\\Ressources\\Interactables\\Projectiles\\playerProjectileSimple.png";
 			}
 		}
 		break;

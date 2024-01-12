@@ -27,14 +27,35 @@ const std::vector<GameplayDatasMap> Map_DatasGameplay::m_LD_Easy_2 =
     GameplayDatasMap(Monster_SlimeBlue, Floor_Level0, .0f, 400.0f),
     GameplayDatasMap(Monster_SlimeBlue, Floor_Level0, .0f, 1000.0f),
     GameplayDatasMap(Monster_BlockerGreen, Floor_Level0, .0f, 1100.0f),
-    GameplayDatasMap(PowerUpLife, Floor_Level0, .0f, 900.0f),
+    GameplayDatasMap(PowerUpShield, Floor_Level0, .0f, 900.0f),
+    GameplayDatasMap(PowerUpShield, Floor_Level1, .0f, 500.0f),
+
+};
+
+const std::vector<GameplayDatasMap> Map_DatasGameplay::m_LD_Easy_3 =
+{
+    GameplayDatasMap(Monster_BlockerGreen, Floor_Level0, .0f, 1400.0f),
+    GameplayDatasMap(Monster_BlockerGreen, Floor_Level0, .0f, 1100.0f),
+    GameplayDatasMap(PowerUpDamage, Floor_Level1, .0f, 900.0f),
+    GameplayDatasMap(PowerUpLife, Floor_Level1, .0f, 500.0f),
+
+};
+
+const std::vector<GameplayDatasMap> Map_DatasGameplay::m_LD_Easy_4 =
+{
+    GameplayDatasMap(Monster_BlockerGreen, Floor_Level0, .0f, 1500.0f),
+    GameplayDatasMap(Monster_SlimeBlue, Floor_Level0, .0f, 1000.0f),
+    GameplayDatasMap(Monster_BlockerGreen, Floor_Level0, .0f, 1100.0f),
+    GameplayDatasMap(PowerUpRate, Floor_Level0, .0f, 700.0f)
 
 };
 
 const std::vector<std::vector<GameplayDatasMap>> Map_DatasGameplay::m_ArrayLD_Easy = 
 { 
     Map_DatasGameplay::m_LD_Easy_1,
-    Map_DatasGameplay::m_LD_Easy_2 
+    Map_DatasGameplay::m_LD_Easy_2, 
+    Map_DatasGameplay::m_LD_Easy_3, 
+    Map_DatasGameplay::m_LD_Easy_4 
 };
 
 const std::vector<std::vector<GameplayDatasMap>> Map_DatasGameplay::m_ArrayLD_FirstMaps =

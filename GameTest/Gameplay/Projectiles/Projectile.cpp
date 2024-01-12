@@ -48,20 +48,25 @@ void Projectile::InitializeGameObjectDatas()
 {
 
 
-	if (m_SpriteFilename == "")
-	{
+	
 		switch (m_ProjectileType)
 		{
 		case ProjectileType::PlayerProjectile:
-			m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Projectiles\\playerProjectileSimple.png";
+			if (m_SpriteFilename == "")
+			{
+				m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Projectiles\\playerProjectileSimple.png";
+			}
 			m_SpriteColumns = 1;
 			m_SpriteLines = 4;
 			m_Sprite = App::CreateSprite(m_SpriteFilename, m_SpriteColumns, m_SpriteLines);
-			m_Sprite->CreateAnimation(0, 10, { 0,1,2,3 });
+			m_Sprite->CreateAnimation(0, 0.1, { 0,1,2,3 });
 			break;
 
 		case ProjectileType::EnemyProjectile:
+			if(m_SpriteFilename == "")
+			{
 			m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Projectiles\\enemyProjectile.png";
+			}
 			m_SpriteColumns = 1;
 			m_SpriteLines = 5;
 			m_Sprite = App::CreateSprite(m_SpriteFilename, m_SpriteColumns, m_SpriteLines);
@@ -71,11 +76,9 @@ void Projectile::InitializeGameObjectDatas()
 		default:
 			break;
 		}
-	}
-	std::cout << m_SpeedX << std::endl;
 
-	m_Sprite->SetScale(m_Scale);
-	m_Sprite->SetAnimation(0);
+		m_Sprite->SetScale(m_Scale);
+		m_Sprite->SetAnimation(0);
 }
 
 void Projectile::Update(float deltaTime)
