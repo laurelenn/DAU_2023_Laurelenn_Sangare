@@ -10,6 +10,7 @@
 #include "SimpleSound.h"
 #include "SimpleController.h"
 #include "SimpleSprite.h"
+#include <cmath>
 
 //---------------------------------------------------------------------------------
 // Utils and externals for system info.
@@ -118,5 +119,25 @@ namespace App
 	const CController &GetController( int pad )
 	{
 		return CSimpleControllers::GetInstance().GetController(pad);
+	}
+
+	void DrawCircle(int segments, float radius, Vector2 pos, float r, float g, float b)
+	{
+		DrawCircle(segments, radius, pos.x, pos.z, r, g, b);
+	}
+
+	void DrawCircle(int segments, float radius, float posX, float posY, float r, float g, float b)
+	{
+		for (int i = 0; i < segments; ++i) {
+			float theta1 = static_cast<float>(i) / static_cast<float>(segments) * 2.0f * 3.1415926f;
+			float theta2 = static_cast<float>(i + 1) / static_cast<float>(segments) * 2.0f * 3.1415926f;
+
+			float x1 = posX + radius * std::cos(theta1);
+			float y1 = posY + radius * std::sin(theta1);
+			float x2 = posX + radius * std::cos(theta2);
+			float y2 = posY + radius * std::sin(theta2);
+
+			App::DrawLine(x1, y1, x2, y2, r, g, b); // Jaune
+		}
 	}
 }

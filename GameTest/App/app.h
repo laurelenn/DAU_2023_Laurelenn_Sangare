@@ -119,5 +119,8 @@ struct Vector2 {
 	//-------------------------------------------------------------------------------------------
 	const CController &GetController( int pad = 0 );
 
+	void DrawCircle(int segments, float radius, float posX, float posY, float r, float g, float b);
+
+	void DrawCircle(int segments, float radius, Vector2 pos, float r, float g, float b);
 };
 #endif //_APP_H

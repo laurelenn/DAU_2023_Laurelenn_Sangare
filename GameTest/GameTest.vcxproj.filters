@@ -90,7 +90,9 @@
     <ClCompile Include="Gameplay\Projectiles\Projectile.cpp">
       <Filter>Sources\Gameplay\Projectiles</Filter>
     </ClCompile>
-    <ClCompile Include="Gameplay\Projectiles\ProjectileSpawner.cpp" />
+    <ClCompile Include="Gameplay\Projectiles\ProjectileSpawner.cpp">
+      <Filter>Sources\Gameplay\Projectiles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -188,7 +190,9 @@
     <ClInclude Include="Gameplay\Projectiles\Projectile.h">
       <Filter>Sources\Gameplay\Projectiles</Filter>
     </ClInclude>
-    <ClInclude Include="Gameplay\Projectiles\ProjectileSpawner.h" />
+    <ClInclude Include="Gameplay\Projectiles\ProjectileSpawner.h">
+      <Filter>Sources\Gameplay\Projectiles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="NextAPI">

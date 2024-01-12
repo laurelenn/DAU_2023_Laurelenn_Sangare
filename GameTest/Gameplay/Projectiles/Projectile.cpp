@@ -6,27 +6,32 @@
 #include "../Gameplay/Collisions/RectangleCollisionComponent.h"
 #include "../Gameplay/Enemies/Enemy.h"
 
-Projectile::Projectile(ProjectileType type, float Damage, float Scale, float Speed)
+Projectile::Projectile(ProjectileType Type, float Damage, float Scale, float Speed, const char* OverridedFilename)
 {
-	m_ProjectileType = type;
+	std::cout << m_SpeedX << std::endl;
+
+	m_SpriteFilename = OverridedFilename;
+	m_ProjectileType = Type;
 	m_Damages = Damage;
-	m_Scale = Scale*APP_VIRTUAL_SCALE;
+	m_Scale = Scale * APP_VIRTUAL_SCALE;
 	m_TypeObject = GameObjectType::ProjectileElement;
 	m_SpeedX = Speed;
 	m_SpeedZ = 0.f;
+	std::cout << m_SpeedX << std::endl;
+
 
 	switch (m_ProjectileType)
 	{
 	case ProjectileType::PlayerProjectile:
 		m_Width = 20.f * m_Scale;
-		m_Height = 20.f * m_Scale;		
+		m_Height = 20.f * m_Scale;
 		m_bUseMultiplierGameManager = false;
 
 		break;
 
 	case ProjectileType::EnemyProjectile:
 		m_Width = 20.f * m_Scale;
-		m_Height = 20.f * m_Scale;		
+		m_Height = 20.f * m_Scale;
 		break;
 
 	default:
@@ -34,29 +39,40 @@ Projectile::Projectile(ProjectileType type, float Damage, float Scale, float Spe
 	}
 	m_SphereCollision = new CircleCollisionComponent(m_Width);
 	m_Collision = std::unique_ptr<CollisionComponent>(m_SphereCollision);
+	std::cout << m_SpeedX << std::endl;
 
 }
 
+
 void Projectile::InitializeGameObjectDatas()
 {
-	m_SpriteColumns = 1;
-	m_SpriteLines = 1;
 
-	switch (m_ProjectileType)
+
+	if (m_SpriteFilename == "")
 	{
+		switch (m_ProjectileType)
+		{
 		case ProjectileType::PlayerProjectile:
-			m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Projectiles\\laserYellowBurst.png";
+			m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Projectiles\\playerProjectileSimple.png";
+			m_SpriteColumns = 1;
+			m_SpriteLines = 4;
+			m_Sprite = App::CreateSprite(m_SpriteFilename, m_SpriteColumns, m_SpriteLines);
+			m_Sprite->CreateAnimation(0, 10, { 0,1,2,3 });
 			break;
-		case ProjectileType::EnemyProjectile:
-			m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Projectiles\\laserPurple.png";
-			break;
-		
-		default:
-		break;
-	}
 
-	m_Sprite = App::CreateSprite(m_SpriteFilename, m_SpriteColumns, m_SpriteLines);
-	m_Sprite->CreateAnimation(0, 1, {0});
+		case ProjectileType::EnemyProjectile:
+			m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Projectiles\\enemyProjectile.png";
+			m_SpriteColumns = 1;
+			m_SpriteLines = 5;
+			m_Sprite = App::CreateSprite(m_SpriteFilename, m_SpriteColumns, m_SpriteLines);
+			m_Sprite->CreateAnimation(0, 10, { 0,1,2,3,4 });
+			break;
+
+		default:
+			break;
+		}
+	}
+	std::cout << m_SpeedX << std::endl;
 
 	m_Sprite->SetScale(m_Scale);
 	m_Sprite->SetAnimation(0);
@@ -65,6 +81,9 @@ void Projectile::InitializeGameObjectDatas()
 void Projectile::Update(float deltaTime)
 {
 	GameObject::Update(deltaTime);
+
+	std::cout << "Speed Projectile : " << std::endl;
+	std::cout << m_SpeedX << std::endl;
 
 	switch (m_ProjectileType)
 	{
@@ -87,8 +106,8 @@ void Projectile::Update(float deltaTime)
 				CheckMapCollision(m_GameManager->m_MapManager->m_NextGameplayMap);
 			}
 		}
-
 		break;
+
 	case ProjectileType::EnemyProjectile:
 		if (this && m_GameManager && m_GameManager->m_Player && m_GameManager->m_Player->m_bIsActivated)
 		{
@@ -113,6 +132,7 @@ void Projectile::Update(float deltaTime)
 		break;
 	}
 }
+
 
 void Projectile::Death()
 {

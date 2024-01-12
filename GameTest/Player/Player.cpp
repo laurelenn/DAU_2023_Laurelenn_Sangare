@@ -19,7 +19,6 @@ Player::Player(float InitialLife, float Scale)
 
 void Player::InitializeGameObjectDatas()
 {
-
 	m_SpriteColumns = 7;
 	m_SpriteLines = 3;
 	m_SpriteFilename = ".\\.\\Ressources\\Player\\p1_spritesheet.png";
@@ -40,9 +39,64 @@ void Player::InitializeGameObjectDatas()
 	m_Sprite->SetScale(m_Scale);
 	m_Sprite->SetAnimation(AnimPlayer::ANIM_RUN);
 
-	m_ProjectileSpawner = new ProjectileSpawner(this, App::Vector2{}, 3.f, 3, 0.5f, false, ProjectileType::PlayerProjectile, PLAYER_SCALE, 10, 500.f);
+	m_ProjectileSpawner = new ProjectileSpawner(this, App::Vector2{}, 3.f, 3, 0.5f, false, ProjectileType::PlayerProjectile, PLAYER_SCALE*2.f, 10, 500.f);
 }
 
+
+
+void Player::Update(float deltaTime)
+{
+	GameObject::Update(deltaTime);
+
+	if (App::IsKeyPressed(APP_KEYBOARD_JUMP_KEY) && !m_bIsJumping)
+	{
+		Jump();
+	}
+
+	if (m_bIsJumping)
+	{
+		UpdateJump(deltaTime);
+	}
+
+	if (m_ProjectileSpawner)
+	{
+		if (App::IsKeyPressed(APP_KEYBOARD_FIRE_KEY))
+		{
+			if (m_ProjectileSpawner->bCanLaunchSalvo)
+			{
+				m_ProjectileSpawner->bIsFiring = true;
+			}
+		}
+		else
+		{
+			m_ProjectileSpawner->bIsFiring = false;
+		}
+		m_ProjectileSpawner->Update(deltaTime);
+	}
+
+	UpdatePowerUp(deltaTime);
+}
+
+
+
+
+void Player::Render()
+{
+	GameObject::Render();
+	if (m_ProjectileSpawner)
+	{
+		m_ProjectileSpawner->Render();
+	}
+	if (m_PowerUpEffectShield.activated)
+	{
+		char textBuffer[64];
+		sprintf(textBuffer, "INVINCIBLE");
+		App::Print(m_Location.x, m_Location.z, textBuffer, 1.0f, 1.0f, 1.0f, GLUT_BITMAP_TIMES_ROMAN_24);
+
+	}
+}
+
+#pragma region POWERUP
 void Player::ActivatePowerUp(PowerUpType type)
 {
 	switch (type)
@@ -90,6 +144,7 @@ void Player::ActivatePowerUp(PowerUpType type)
 				{
 					m_ProjectileSpawner->m_DamageProjectile *= 2;
 					m_ProjectileSpawner->m_ScaleProjectile *= 2;
+					m_ProjectileSpawner->m_FilenameProjectile = ".\\.\\.\\Ressources\\Interactables\\Projectiles\\playerProjectileBig.png";
 				}
 			}
 			else
@@ -107,6 +162,38 @@ void Player::ActivatePowerUp(PowerUpType type)
 	}
 
 }
+
+void Player::UpdatePowerUp(float Deltatime)
+{
+	if (m_PowerUpEffectShield.activated)
+	{
+		m_PowerUpEffectShield.currentDelay += Deltatime / 1000.f;
+		if (m_PowerUpEffectShield.currentDelay >= m_PowerUpEffectShield.duration)
+		{
+			DeactivatePowerUp(m_PowerUpEffectShield.type);
+		}
+	}
+
+
+	if (m_PowerUpEffectRate.activated)
+	{
+		m_PowerUpEffectRate.currentDelay += Deltatime / 1000.f;
+		if (m_PowerUpEffectRate.currentDelay >= m_PowerUpEffectRate.duration)
+		{
+			DeactivatePowerUp(m_PowerUpEffectRate.type);
+		}
+	}
+
+	if (m_PowerUpEffectDamage.activated)
+	{
+		m_PowerUpEffectDamage.currentDelay += Deltatime / 1000.f;
+		if (m_PowerUpEffectDamage.currentDelay >= m_PowerUpEffectDamage.duration)
+		{
+			DeactivatePowerUp(m_PowerUpEffectDamage.type);
+		}
+	}
+}
+
 
 void Player::DeactivatePowerUp(PowerUpType type)
 {
@@ -144,6 +231,7 @@ void Player::DeactivatePowerUp(PowerUpType type)
 			{
 				m_ProjectileSpawner->m_DamageProjectile /= 2;
 				m_ProjectileSpawner->m_ScaleProjectile /= 2;
+				m_ProjectileSpawner->m_FilenameProjectile = ".\\.\\.\\Ressources\\Interactables\\Projectiles\\playerProjectileSimple.png";
 			}
 		}
 		break;
@@ -154,126 +242,11 @@ void Player::DeactivatePowerUp(PowerUpType type)
 	}
 }
 
-void Player::Update(float deltaTime)
-{
-    GameObject::Update(deltaTime);
-
-     if (App::IsKeyPressed(APP_KEYBOARD_JUMP_KEY) && !m_bIsJumping)
-    {
-        Jump();
-    }
-
-    if (m_bIsJumping)
-    {
-		UpdateJump(deltaTime);
-	}
-
-	if (m_ProjectileSpawner)
-	{
-		if (App::IsKeyPressed(APP_KEYBOARD_FIRE_KEY))
-		{
-			if (m_ProjectileSpawner->bCanLaunchSalvo)
-			{
-				m_ProjectileSpawner->bIsFiring = true;
-			}
-		}
-		else
-		{
-			m_ProjectileSpawner->bIsFiring = false;
-		}
-		m_ProjectileSpawner->Update(deltaTime);
-
-	}
-
-	UpdatePowerUp(deltaTime);
-}
-
-void Player::UpdateJump(float Deltatime)
-{
-    if (m_bIsJumping)
-    {
-        float jumpDistance = (m_CurrentSpeedJump / 10.f) * Deltatime;
-
-        if (m_Location.z >= m_HeightJumpCurrentLevel && !m_bIsJumpingDown)
-        {
-            m_bIsJumpingDown = true;
-        }
-
-        // Gestion de la phase de descente et accélération
-        if (m_bIsJumpingDown)
-        {
-            // Vérifier le délai d'inertie
-            if (m_CurrentTimerJumpInertia < m_DelayJumpInertia)
-            {
-                m_CurrentTimerJumpInertia += Deltatime/1000.f; // Incrémentation du minuteur
-                m_CurrentSpeedJump = CLAMP(m_CurrentSpeedJump *= 0.8f, 0.3f, m_InitialSpeedJump);
-            }
-            else // Si le délai est écoulé, accélération pendant la descente
-            {
-                m_CurrentSpeedJump = CLAMP(m_CurrentSpeedJump *= 1.05f, 0.5f, m_InitialSpeedJump);
-            }
-        }
-
-        jumpDistance = m_bIsJumpingDown ? -jumpDistance : jumpDistance; // Change direction if max height reached
-
-        m_Location.z = CLAMP(m_Location.z += jumpDistance, m_CurrentFloorLevel, m_HeightJumpCurrentLevel);
-
-        if (m_Location.z <= m_CurrentFloorLevel)
-        {
-            m_CurrentTimerJumpInertia = 0.0f;
-            EndJump();
-        }
-    }
-}
-
-void Player::UpdatePowerUp(float Deltatime)
-{
-	if (m_PowerUpEffectShield.activated)
-	{
-		m_PowerUpEffectShield.currentDelay += Deltatime/1000.f;
-		if (m_PowerUpEffectShield.currentDelay >= m_PowerUpEffectShield.duration)
-		{
-			DeactivatePowerUp(m_PowerUpEffectShield.type);
-		}
-	}
+#pragma endregion
 
 
-	if (m_PowerUpEffectRate.activated)
-	{
-		m_PowerUpEffectRate.currentDelay += Deltatime / 1000.f;
-		if (m_PowerUpEffectRate.currentDelay >= m_PowerUpEffectRate.duration)
-		{
-			DeactivatePowerUp(m_PowerUpEffectRate.type);
-		}
-	}
 
-	if (m_PowerUpEffectDamage.activated)
-	{
-		m_PowerUpEffectDamage.currentDelay+=Deltatime / 1000.f;
-		if (m_PowerUpEffectDamage.currentDelay >= m_PowerUpEffectDamage.duration)
-		{
-			DeactivatePowerUp(m_PowerUpEffectDamage.type);
-		}
-	}	
-}
-
-void Player::Render()
-{
-	GameObject::Render();
-	if (m_ProjectileSpawner)
-	{
-		m_ProjectileSpawner->Render();
-	}
-	if (m_PowerUpEffectShield.activated)
-	{
-		char textBuffer[64];
-		sprintf(textBuffer, "INVINCIBLE");
-		App::Print(m_Location.x, m_Location.z, textBuffer, 1.0f, 1.0f, 1.0f, GLUT_BITMAP_TIMES_ROMAN_24);
-
-	}
-}
-
-
+#pragma region JUMP
 void Player::Jump()
 {
 	m_CurrentSpeedJump = m_InitialSpeedJump;
@@ -281,6 +254,44 @@ void Player::Jump()
 	m_HeightJumpCurrentLevel = m_CurrentFloorLevel + m_HeightJump;
 	m_HeightConstantSpeed = m_HeightJumpCurrentLevel*0.95f;
 	m_Sprite->SetAnimation(AnimPlayer::ANIM_JUMP);
+}
+
+void Player::UpdateJump(float Deltatime)
+{
+	if (m_bIsJumping)
+	{
+		float jumpDistance = (m_CurrentSpeedJump / 10.f) * Deltatime;
+
+		if (m_Location.z >= m_HeightJumpCurrentLevel && !m_bIsJumpingDown)
+		{
+			m_bIsJumpingDown = true;
+		}
+
+		// Gestion de la phase de descente et accélération
+		if (m_bIsJumpingDown)
+		{
+			// Vérifier le délai d'inertie
+			if (m_CurrentTimerJumpInertia < m_DelayJumpInertia)
+			{
+				m_CurrentTimerJumpInertia += Deltatime / 1000.f; // Incrémentation du minuteur
+				m_CurrentSpeedJump = CLAMP(m_CurrentSpeedJump *= 0.8f, 0.3f, m_InitialSpeedJump);
+			}
+			else // Si le délai est écoulé, accélération pendant la descente
+			{
+				m_CurrentSpeedJump = CLAMP(m_CurrentSpeedJump *= 1.05f, 0.5f, m_InitialSpeedJump);
+			}
+		}
+
+		jumpDistance = m_bIsJumpingDown ? -jumpDistance : jumpDistance; // Change direction if max height reached
+
+		m_Location.z = CLAMP(m_Location.z += jumpDistance, m_CurrentFloorLevel, m_HeightJumpCurrentLevel);
+
+		if (m_Location.z <= m_CurrentFloorLevel)
+		{
+			m_CurrentTimerJumpInertia = 0.0f;
+			EndJump();
+		}
+	}
 }
 
 void Player::EndJump()
@@ -292,6 +303,8 @@ void Player::EndJump()
 
 	m_Sprite->SetAnimation(AnimPlayer::ANIM_RUN);
 }
+#pragma endregion
+
 
 void Player::Death()
 {

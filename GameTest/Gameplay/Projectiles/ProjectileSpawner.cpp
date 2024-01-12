@@ -105,7 +105,7 @@ void ProjectileSpawner::LaunchSalvo()
 
 void ProjectileSpawner::SpawnProjectile()
 {
-	Projectile* proj = new Projectile(m_TypeProjectile, m_DamageProjectile, m_ScaleProjectile, m_SpeedProjectile);
+	Projectile* proj = new Projectile(m_TypeProjectile, m_DamageProjectile, m_ScaleProjectile, m_SpeedProjectile, m_FilenameProjectile);
 	proj->SetGameManager(m_Owner->m_GameManager);
 	proj->Init(App::Vector2{m_Location.x, m_Location.z});
 	m_ProjectilesSpawned.push_back(proj);

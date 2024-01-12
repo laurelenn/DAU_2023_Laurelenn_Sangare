@@ -27,7 +27,7 @@ class Projectile :
 #pragma region FUNCTIONS
 
 public :  
-    Projectile(ProjectileType type, float Damage, float Scale, float Speed);
+    Projectile(ProjectileType type, float Damage, float Scale, float Speed, const char* overridedFilename);
 
     void InitializeGameObjectDatas() override;
 

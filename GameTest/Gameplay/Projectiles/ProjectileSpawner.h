@@ -24,6 +24,7 @@ ProjectileType m_TypeProjectile = PlayerProjectile;
 float m_ScaleProjectile = 1.f;
 int m_DamageProjectile = 10;
 float m_SpeedProjectile = 20.f;
+const char* m_FilenameProjectile = "";
 
 // Runtime
 bool bIsWaitingNextProj = false;
@@ -46,6 +47,12 @@ ProjectileSpawner(GameObject* owner, App::Vector2 deltaPos, float delaySalvo, in
     : m_Owner(owner), m_DeltaPos(deltaPos), m_DelaySalvo(delaySalvo), m_NbProjBySalvo(nbProjBySalvo), m_DelayProjectiles(delayProjectiles),
     m_bIsAutomatic(isAutomatic), m_TypeProjectile(type), m_ScaleProjectile(scale),
     m_DamageProjectile(damage), m_SpeedProjectile(speed), CurrentTimerSalvo(delaySalvo){};
+    
+ProjectileSpawner(GameObject* owner, App::Vector2 deltaPos, float delaySalvo, int nbProjBySalvo, float delayProjectiles, bool isAutomatic,
+    ProjectileType type, float scale, int damage, float speed, const char* filename)
+    : m_Owner(owner), m_DeltaPos(deltaPos), m_DelaySalvo(delaySalvo), m_NbProjBySalvo(nbProjBySalvo), m_DelayProjectiles(delayProjectiles),
+    m_bIsAutomatic(isAutomatic), m_TypeProjectile(type), m_ScaleProjectile(scale),
+    m_DamageProjectile(damage), m_SpeedProjectile(speed), m_FilenameProjectile(filename), CurrentTimerSalvo(delaySalvo) {};
 
 void InitializeGameObjectDatas();
 
