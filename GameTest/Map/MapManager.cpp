@@ -224,20 +224,6 @@ void MapManager::Update(float Deltatime)
 void MapManager::Render()
 {
 
-#pragma region LD
-
-	if (m_CurrentLDMap)
-	{
-		m_CurrentLDMap->Render();
-	}
-
-	if (m_NextLDMap)
-	{
-		m_NextLDMap->Render();
-	}
-
-#pragma endregion
-
 #pragma region Bg
 
 	if (m_OldBgMap)
@@ -254,6 +240,20 @@ void MapManager::Render()
 	{
 		m_NextBgMap->Render();
 	}
+#pragma endregion
+
+#pragma region LD
+
+	if (m_CurrentLDMap)
+	{
+		m_CurrentLDMap->Render();
+	}
+
+	if (m_NextLDMap)
+	{
+		m_NextLDMap->Render();
+	}
+
 #pragma endregion
 
 #pragma region Gameplay

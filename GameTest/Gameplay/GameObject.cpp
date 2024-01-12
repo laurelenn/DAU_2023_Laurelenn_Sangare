@@ -58,7 +58,7 @@ void GameObject::Render()
 		m_Sprite->Draw();
 	}
 
-	if (m_Collision && m_Collision->m_bDrawdebug)
+	if (m_Collision && m_Collision->m_bDrawdebug && m_Collision->m_bIsActivated)
 	{
 		m_Collision->DrawDebugCollision();
 	}
@@ -69,8 +69,17 @@ void GameObject::Destroy()
 	m_GameManager = nullptr;
 	m_OwnerGameplayMap = nullptr;
 
-	delete m_Sprite;
-	delete m_LifeManager;
+	if (m_Sprite)
+	{
+		delete m_Sprite;
+		m_Sprite = nullptr;
+	}
+
+	if (m_LifeManager)
+	{
+		delete m_LifeManager;
+		m_LifeManager = nullptr;
+	}
 	m_Collision.reset();
 
 	m_bIsActivated = false;

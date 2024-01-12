@@ -93,7 +93,7 @@ void Player::Render()
 		sprintf(textBuffer, "INVINCIBLE");
 		App::Print(m_Location.x, m_Location.z, textBuffer, 1.0f, 1.0f, 1.0f, GLUT_BITMAP_TIMES_ROMAN_24);
 
-		App::DrawCircle(30, m_CapsuleCollision->m_Rectangle.m_RectSize.z+5.f, m_Location, 0.28f, 0.8f, 0.87f);
+		App::DrawCircle(30, m_CapsuleCollision->m_Rectangle.m_RectSize.z+15.f, m_Location, 0.28f, 0.8f, 0.87f);
 	}
 }
 
@@ -313,10 +313,15 @@ void Player::Death()
 	{
 		m_GameManager->GameOver();
 	}
+	Destroy();
+}
 
+void Player::Destroy()
+{	
 	if (m_ProjectileSpawner)
 	{
 		m_ProjectileSpawner->Death();
 		delete m_ProjectileSpawner;
 	}
+	GameObject::Destroy();
 }

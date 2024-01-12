@@ -77,8 +77,11 @@ void Projectile::InitializeGameObjectDatas()
 			break;
 		}
 
-		m_Sprite->SetScale(m_Scale);
-		m_Sprite->SetAnimation(0);
+		if (m_Sprite)
+		{
+			m_Sprite->SetScale(m_Scale);
+			m_Sprite->SetAnimation(0);
+		}
 }
 
 void Projectile::Update(float deltaTime)
@@ -139,7 +142,7 @@ void Projectile::Update(float deltaTime)
 
 void Projectile::Death()
 {
-	GameObject::Death();
+ 	GameObject::Death();
 }
 
 

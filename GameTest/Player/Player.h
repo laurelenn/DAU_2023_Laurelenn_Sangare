@@ -81,6 +81,7 @@ void Jump();
 void EndJump();
 
 void Death() override;
+void Destroy();
 #pragma endregion
 
 };
