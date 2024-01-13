@@ -30,6 +30,8 @@ enum AnimPlayer
     ANIM_DEATH
 };
 
+class PowerUpUFO;
+
 class Player :
     public GameObject
 {
@@ -58,7 +60,7 @@ float m_CurrentTimerJumpInertia;
 PowerUpEffect m_PowerUpEffectDamage = PowerUpEffect(PowerUpType::FireDamage, 5.f);
 PowerUpEffect m_PowerUpEffectRate = PowerUpEffect(PowerUpType::FireRate, 5.f);
 PowerUpEffect m_PowerUpEffectShield = PowerUpEffect(PowerUpType::Shield, 5.f);
-
+PowerUpUFO* m_PowerUpEffectUFO = nullptr;
 #pragma endregion
 
 

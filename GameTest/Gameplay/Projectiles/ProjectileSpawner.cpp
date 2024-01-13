@@ -130,8 +130,10 @@ void ProjectileSpawner::Death()
 		if (proj)
 		{
 			proj->Destroy();
+			delete proj;
+			proj = nullptr;
 		}
 	}
+	m_ProjectilesSpawned.clear();
 	GameObject::Death();
-
 }

@@ -16,7 +16,7 @@ enum GameObjectLDType
     Obstacle2,
     Obstacle3,
     TileHole,
-    PowerUpUFO,
+    PowerUpSpecialUFO,
     PowerUpLife,
     PowerUpShield,
     PowerUpRate,

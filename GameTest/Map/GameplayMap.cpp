@@ -118,7 +118,7 @@ GameObject* GameplayMap::SpawnNewObjectFromData(GameplayDatasMap data)
 		case Monster_SlimeBlue :
 			newGameObject = new SlimeBlue();
 			break;
-		case PowerUpUFO : 
+		case PowerUpSpecialUFO:
 			newGameObject = new PowerUp(PowerUpType::UFO);
 			break;
 		case PowerUpLife:

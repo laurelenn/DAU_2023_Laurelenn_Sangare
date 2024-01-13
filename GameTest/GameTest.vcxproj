@@ -198,6 +198,7 @@
     <ClInclude Include="Gameplay\GameObject.h" />
     <ClInclude Include="Gameplay\LifeManager.h" />
     <ClInclude Include="Gameplay\PowerUp\PowerUp.h" />
+    <ClInclude Include="Gameplay\PowerUp\PowerUpUFO.h" />
     <ClInclude Include="Gameplay\Projectiles\Projectile.h" />
     <ClInclude Include="Gameplay\Projectiles\ProjectileSpawner.h" />
     <ClInclude Include="HUD\LifeHUD.h" />
@@ -232,6 +233,7 @@
     <ClCompile Include="Gameplay\GameObject.cpp" />
     <ClCompile Include="Gameplay\LifeManager.cpp" />
     <ClCompile Include="Gameplay\PowerUp\PowerUp.cpp" />
+    <ClCompile Include="Gameplay\PowerUp\PowerUpUFO.cpp" />
     <ClCompile Include="Gameplay\Projectiles\Projectile.cpp" />
     <ClCompile Include="Gameplay\Projectiles\ProjectileSpawner.cpp" />
     <ClCompile Include="GameTest.cpp" />

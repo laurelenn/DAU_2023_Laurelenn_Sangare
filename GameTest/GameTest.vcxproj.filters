@@ -93,6 +93,9 @@
     <ClCompile Include="Gameplay\Projectiles\ProjectileSpawner.cpp">
       <Filter>Sources\Gameplay\Projectiles</Filter>
     </ClCompile>
+    <ClCompile Include="Gameplay\PowerUp\PowerUpUFO.cpp">
+      <Filter>Sources\Gameplay\PowerUp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -192,6 +195,9 @@
     </ClInclude>
     <ClInclude Include="Gameplay\Projectiles\ProjectileSpawner.h">
       <Filter>Sources\Gameplay\Projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\PowerUp\PowerUpUFO.h">
+      <Filter>Sources\Gameplay\PowerUp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

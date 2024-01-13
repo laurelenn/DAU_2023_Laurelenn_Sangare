@@ -17,7 +17,6 @@ Projectile::Projectile(ProjectileType Type, float Damage, float Scale, float Spe
 	m_TypeObject = GameObjectType::ProjectileElement;
 	m_SpeedX = Speed;
 	m_SpeedZ = 0.f;
-	std::cout << m_SpeedX << std::endl;
 
 
 	switch (m_ProjectileType)
@@ -39,14 +38,11 @@ Projectile::Projectile(ProjectileType Type, float Damage, float Scale, float Spe
 	}
 	m_SphereCollision = new CircleCollisionComponent(m_Width);
 	m_Collision = std::unique_ptr<CollisionComponent>(m_SphereCollision);
-	std::cout << m_SpeedX << std::endl;
-
 }
 
 
 void Projectile::InitializeGameObjectDatas()
 {
-
 
 	
 		switch (m_ProjectileType)

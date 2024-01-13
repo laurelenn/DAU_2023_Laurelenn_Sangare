@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "../Gameplay/GameManager.h"
 #include "../Gameplay/Projectiles/ProjectileSpawner.h"
+#include "../Gameplay/PowerUp/PowerUpUFO.h"
 
 
 Player::Player(float InitialLife, float Scale)
@@ -89,11 +90,16 @@ void Player::Render()
 	}
 	if (m_PowerUpEffectShield.activated)
 	{
-		char textBuffer[64];
+		/*char textBuffer[64];
 		sprintf(textBuffer, "INVINCIBLE");
-		App::Print(m_Location.x, m_Location.z, textBuffer, 1.0f, 1.0f, 1.0f, GLUT_BITMAP_TIMES_ROMAN_24);
+		App::Print(m_Location.x, m_Location.z, textBuffer, 1.0f, 1.0f, 1.0f, GLUT_BITMAP_TIMES_ROMAN_24);*/
 
-		App::DrawCircle(30, m_CapsuleCollision->m_Rectangle.m_RectSize.z+15.f, m_Location, 0.28f, 0.8f, 0.87f);
+		App::DrawCircle(30, m_CapsuleCollision->m_Rectangle.m_RectSize.z+20.f, m_Location, 0.28f, 0.8f, 0.87f);
+	}
+
+	if (m_PowerUpEffectUFO)
+	{
+		m_PowerUpEffectUFO->Render();
 	}
 }
 
@@ -103,7 +109,15 @@ void Player::ActivatePowerUp(PowerUpType type)
 	switch (type)
 	{
 		case PowerUpType::UFO:
-		// TODO : spawn UFO
+			if (m_PowerUpEffectUFO == nullptr)
+			{
+				m_PowerUpEffectUFO = new PowerUpUFO();
+				if (m_PowerUpEffectUFO)
+				{
+					m_PowerUpEffectUFO->SetGameManager(m_GameManager);
+					m_PowerUpEffectUFO->Init(App::Vector2(0.f - m_PowerUpEffectUFO->m_Width, HEIGHT_FLOOR_1));
+				}
+			}
 		break;
 		case PowerUpType::Shield:
 			if (!m_PowerUpEffectShield.activated)
@@ -192,6 +206,11 @@ void Player::UpdatePowerUp(float Deltatime)
 		{
 			DeactivatePowerUp(m_PowerUpEffectDamage.type);
 		}
+	}
+
+	if (m_PowerUpEffectUFO)
+	{
+		m_PowerUpEffectUFO->Update(Deltatime);
 	}
 }
 
@@ -322,6 +341,7 @@ void Player::Destroy()
 	{
 		m_ProjectileSpawner->Death();
 		delete m_ProjectileSpawner;
+		m_ProjectileSpawner = nullptr;
 	}
 	GameObject::Destroy();
 }
