@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Enemy.h"
 #include "../GameManager.h"
+#include <algorithm>
+#include <random>
 
 Enemy::Enemy() : GameObject()
 {
@@ -21,12 +23,24 @@ void Enemy::Update(float Deltatime)
 			const bool CollideWithPlayer = m_Collision->IsColliding(*m_GameManager->m_Player->m_CapsuleCollision);
 			if (CollideWithPlayer && !m_bAlreadyHitPlayer)
 			{
-				m_GameManager->m_Player->ApplyDamages(m_DamageCollisionPlayer); 
+ 				m_GameManager->m_Player->ApplyDamages(m_DamageCollisionPlayer); 
 				m_bAlreadyHitPlayer = true;
 				m_GameManager->m_MalusScore += m_MalusScoreOnHit;
 			}
 		}
 	}
+}
+
+void Enemy::RandomSpeedDirection()
+{
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dis(0, 1);
+
+	// Génération aléatoire de 0 ou 1
+	int randomDirection = dis(gen);
+
+	m_SpeedZ = randomDirection == 0 ? -m_SpeedZ : m_SpeedZ;
 }
 
 void Enemy::ApplyDamages(float damages)

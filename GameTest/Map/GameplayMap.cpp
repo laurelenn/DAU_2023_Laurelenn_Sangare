@@ -10,6 +10,8 @@
 #include "../Gameplay/Enemies/BlockerGreen.h"
 #include "../Gameplay/Enemies/Enemy.h"
 #include "../Gameplay/Enemies/SlimeBlue.h"
+#include "../Gameplay/Enemies/Pike.h"
+#include "../Gameplay/Enemies/Ghost.h"
 ///-------------------------------------------///
 
 
@@ -117,6 +119,12 @@ GameObject* GameplayMap::SpawnNewObjectFromData(GameplayDatasMap data)
 			break;
 		case Monster_SlimeBlue :
 			newGameObject = new SlimeBlue();
+			break;
+		case Monster_Ghost :
+			newGameObject = new Ghost();
+			break;
+		case Obstacle_Pikes :
+			newGameObject = new Pike();
 			break;
 		case PowerUpSpecialUFO:
 			newGameObject = new PowerUp(PowerUpType::UFO);

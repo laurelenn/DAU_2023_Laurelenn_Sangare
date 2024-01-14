@@ -24,6 +24,8 @@ int m_MalusScoreOnHit = 0;
     void InitializeGameObjectDatas() override;
 
     void Update(float Deltatime) override;
+
+    void RandomSpeedDirection();
 public : 
     void ApplyDamages(float damages);
 #pragma endregion

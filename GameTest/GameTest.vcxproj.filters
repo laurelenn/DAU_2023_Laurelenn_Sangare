@@ -96,6 +96,12 @@
     <ClCompile Include="Gameplay\PowerUp\PowerUpUFO.cpp">
       <Filter>Sources\Gameplay\PowerUp</Filter>
     </ClCompile>
+    <ClCompile Include="Gameplay\Enemies\Pike.cpp">
+      <Filter>Sources\Gameplay\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\Enemies\Ghost.cpp">
+      <Filter>Sources\Gameplay\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -198,6 +204,12 @@
     </ClInclude>
     <ClInclude Include="Gameplay\PowerUp\PowerUpUFO.h">
       <Filter>Sources\Gameplay\PowerUp</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\Enemies\Pike.h">
+      <Filter>Sources\Gameplay\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\Enemies\Ghost.h">
+      <Filter>Sources\Gameplay\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -20,13 +20,13 @@ BlockerGreen::BlockerGreen()
 
 void BlockerGreen::InitializeGameObjectDatas()
 {
-	m_LifeManager = new LifeManager(10.f, 10.f);
-	m_SpriteColumns = 1;
+	m_LifeManager = new LifeManager(10.f);
+	m_SpriteColumns = 3;
 	m_SpriteLines = 1;
-	m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Enemies\\blockerMad2.png";
+	m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Enemies\\blockerMad.png";
 
 	m_Sprite = App::CreateSprite(m_SpriteFilename, m_SpriteColumns, m_SpriteLines);
-	m_Sprite->CreateAnimation(AnimBlockerGreen::IdleBlockerGreen, m_SpeedAnimIdle / 50.f, { 0 });
+	m_Sprite->CreateAnimation(AnimBlockerGreen::IdleBlockerGreen, 1, { 2 });
 
 	// To do : Create Other Animations
 

@@ -19,7 +19,7 @@ SlimeBlue::SlimeBlue()
 
 void SlimeBlue::InitializeGameObjectDatas()
 {
-	m_LifeManager = new LifeManager(10.f, 10.f);
+	m_LifeManager = new LifeManager(20.f);
 	m_SpriteColumns = 5;
 	m_SpriteLines = 1;
 	m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Enemies\\slime_blue.png";
