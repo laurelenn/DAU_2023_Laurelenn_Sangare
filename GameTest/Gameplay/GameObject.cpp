@@ -93,7 +93,7 @@ void GameObject::SetPosition(float x, float z)
 	}
 	if (m_Collision)
 	{
-		m_Collision->SetPosition(x, z);
+		m_Collision->SetPosition(x, z + m_DeltaZSprite);
 	}
 	m_Location.x = x;
 	m_Location.z = z;

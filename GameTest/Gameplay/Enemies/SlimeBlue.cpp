@@ -3,7 +3,7 @@
 
 SlimeBlue::SlimeBlue()
 {
-	m_Scale = 1.5f*APP_VIRTUAL_SCALE;
+	m_Scale = 2.f*APP_VIRTUAL_SCALE;
 	m_Width = 27.f*m_Scale;
 	m_Height = 27.f*m_Scale;
 	m_SphereCollision = new CircleCollisionComponent(m_Width);
@@ -14,7 +14,7 @@ SlimeBlue::SlimeBlue()
 	m_SpeedZ = 0.f;
 	m_SpeedAnimIdle = 7.f;
 	m_ScoreOnKill = 10;
-	m_DeltaZSprite = -5.f*m_Scale;
+	m_DeltaZSprite = -10.f*m_Scale;
 }
 
 void SlimeBlue::InitializeGameObjectDatas()
