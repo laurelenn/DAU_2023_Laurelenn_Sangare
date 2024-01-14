@@ -41,6 +41,7 @@ float m_SpeedZ;
 float m_MinZ = HEIGHT_FLOOR_0;
 float m_MaxZ = 3.f*HEIGHT_FLOOR_0;
 bool m_bUseMultiplierGameManager = false;
+float m_DeltaZSprite = 0.0f;
 
 float m_Scale = 1.f;
 float m_Width;
