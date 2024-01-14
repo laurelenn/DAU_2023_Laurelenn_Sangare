@@ -5,7 +5,7 @@
 
 PowerUpUFO::PowerUpUFO()
 {
-	m_Scale = 1.5f * APP_VIRTUAL_SCALE;
+	m_Scale = 2.f * APP_VIRTUAL_SCALE;
 	m_TypeObject = GameObjectType::ProjectileElement;
 	m_SpeedX = 400.f;
 	m_SpeedZ = 0.f;

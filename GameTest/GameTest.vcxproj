@@ -191,6 +191,7 @@
     <ClInclude Include="Gameplay\Collisions\CircleCollisionComponent.h" />
     <ClInclude Include="Gameplay\Collisions\CollisionComponent.h" />
     <ClInclude Include="Gameplay\Collisions\RectangleCollisionComponent.h" />
+    <ClInclude Include="Gameplay\Enemies\Bee.h" />
     <ClInclude Include="Gameplay\Enemies\BlockerGreen.h" />
     <ClInclude Include="Gameplay\Enemies\Enemy.h" />
     <ClInclude Include="Gameplay\Enemies\Ghost.h" />
@@ -228,6 +229,7 @@
     <ClCompile Include="Gameplay\Collisions\CircleCollisionComponent.cpp" />
     <ClCompile Include="Gameplay\Collisions\CollisionComponent.cpp" />
     <ClCompile Include="Gameplay\Collisions\RectangleCollisionComponent.cpp" />
+    <ClCompile Include="Gameplay\Enemies\Bee.cpp" />
     <ClCompile Include="Gameplay\Enemies\BlockerGreen.cpp" />
     <ClCompile Include="Gameplay\Enemies\Enemy.cpp" />
     <ClCompile Include="Gameplay\Enemies\Ghost.cpp" />

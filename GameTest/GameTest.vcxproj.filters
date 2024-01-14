@@ -102,6 +102,9 @@
     <ClCompile Include="Gameplay\Enemies\Ghost.cpp">
       <Filter>Sources\Gameplay\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Gameplay\Enemies\Bee.cpp">
+      <Filter>Sources\Gameplay\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -174,7 +177,6 @@
     <ClInclude Include="Map\GameplayMap.h">
       <Filter>Sources\Map</Filter>
     </ClInclude>
-    <ClInclude Include="Datas\Map_DatasLD.h" />
     <ClInclude Include="Datas\Map_DatasBackground.h">
       <Filter>Sources\Datas</Filter>
     </ClInclude>
@@ -209,6 +211,12 @@
       <Filter>Sources\Gameplay\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Gameplay\Enemies\Ghost.h">
+      <Filter>Sources\Gameplay\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Datas\Map_DatasLD.h">
+      <Filter>Sources\Datas</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\Enemies\Bee.h">
       <Filter>Sources\Gameplay\Enemies</Filter>
     </ClInclude>
   </ItemGroup>

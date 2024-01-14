@@ -12,6 +12,7 @@
 #include "../Gameplay/Enemies/SlimeBlue.h"
 #include "../Gameplay/Enemies/Pike.h"
 #include "../Gameplay/Enemies/Ghost.h"
+#include "../Gameplay/Enemies/Bee.h"
 ///-------------------------------------------///
 
 
@@ -122,6 +123,9 @@ GameObject* GameplayMap::SpawnNewObjectFromData(GameplayDatasMap data)
 			break;
 		case Monster_Ghost :
 			newGameObject = new Ghost();
+			break;
+		case Monster_Bee :
+			newGameObject = new Bee();
 			break;
 		case Obstacle_Pikes :
 			newGameObject = new Pike();

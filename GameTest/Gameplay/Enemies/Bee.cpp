@@ -1,30 +1,30 @@
 #include "stdafx.h"
-#include "../Gameplay/Enemies/Ghost.h"
+#include "../Gameplay/Enemies/Bee.h"
 #include <algorithm>
 #include <random>
 
-Ghost::Ghost()
+Bee::Bee()
 {
 	m_Scale = 1.f;
 	m_Width = 25.f * m_Scale;
 	m_Height = 40.f * m_Scale;
-	m_CapsuleCollision = new CapsuleCollisionComponent(m_Width, m_Height);
-	m_Collision = std::unique_ptr<CollisionComponent>(m_CapsuleCollision);
+	m_CircleCollision = new CircleCollisionComponent(m_Width);
+	m_Collision = std::unique_ptr<CollisionComponent>(m_CircleCollision);
 	m_TypeObject = GameObjectType::EnemyElement;
-	m_DamageCollisionPlayer = 15.f;
-	m_SpeedX = 0.f;
-	m_SpeedZ = 100.f;
-	m_MaxZ = HEIGHT_FLOOR_1;
-	m_MinZ = HEIGHT_FLOOR_0+m_DeltaZSprite,
-	m_MalusScoreOnHit = 20;
+	m_DamageCollisionPlayer = 10.f;
+	m_SpeedX = -250.f;
+	m_SpeedZ = 250.f;
+	m_MaxZ = HEIGHT_FLOOR_0*3.5f;
+	m_MinZ = HEIGHT_FLOOR_0,
+	m_MalusScoreOnHit = 10;
 }
 
-void Ghost::InitializeGameObjectDatas()
+void Bee::InitializeGameObjectDatas()
 {
 	m_LifeManager = new LifeManager(30.f);
 	m_SpriteColumns = 4;
 	m_SpriteLines = 1;
-	m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Enemies\\Ghost.png";
+	m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Enemies\\Bee.png";
 
 	// Random for animation
 	std::random_device rd;
@@ -34,7 +34,7 @@ void Ghost::InitializeGameObjectDatas()
 	m_SpeedAnimIdle = randomSpeedAnim;
 
 	m_Sprite = App::CreateSprite(m_SpriteFilename, m_SpriteColumns, m_SpriteLines);
-	m_Sprite->CreateAnimation(0, m_SpeedAnimIdle/20.f, { 1,2 });
+	m_Sprite->CreateAnimation(0, m_SpeedAnimIdle / 20.f, { 1,2 });
 
 	// To do : Create Other Animations
 
@@ -51,12 +51,12 @@ void Ghost::InitializeGameObjectDatas()
 	RandomSpeedDirection();
 }
 
-void Ghost::Update(float deltaTime)
-{ 
+void Bee::Update(float deltaTime)
+{
 	Enemy::Update(deltaTime);
 }
 
-void Ghost::Death()
+void Bee::Death()
 {
 	Enemy::Death();
 }
