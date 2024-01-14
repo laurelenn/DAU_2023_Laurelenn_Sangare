@@ -13,6 +13,7 @@
 #include "../Gameplay/Enemies/Pike.h"
 #include "../Gameplay/Enemies/Ghost.h"
 #include "../Gameplay/Enemies/Bee.h"
+#include "../Gameplay/Enemies/Snake.h"
 ///-------------------------------------------///
 
 
@@ -126,6 +127,9 @@ GameObject* GameplayMap::SpawnNewObjectFromData(GameplayDatasMap data)
 			break;
 		case Monster_Bee :
 			newGameObject = new Bee();
+			break;
+			case Monster_Snake :
+			newGameObject = new Snake();
 			break;
 		case Obstacle_Pikes :
 			newGameObject = new Pike();

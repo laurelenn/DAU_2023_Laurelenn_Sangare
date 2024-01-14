@@ -197,6 +197,7 @@
     <ClInclude Include="Gameplay\Enemies\Ghost.h" />
     <ClInclude Include="Gameplay\Enemies\Pike.h" />
     <ClInclude Include="Gameplay\Enemies\SlimeBlue.h" />
+    <ClInclude Include="Gameplay\Enemies\Snake.h" />
     <ClInclude Include="Gameplay\GameManager.h" />
     <ClInclude Include="Gameplay\GameObject.h" />
     <ClInclude Include="Gameplay\LifeManager.h" />
@@ -235,6 +236,7 @@
     <ClCompile Include="Gameplay\Enemies\Ghost.cpp" />
     <ClCompile Include="Gameplay\Enemies\Pike.cpp" />
     <ClCompile Include="Gameplay\Enemies\SlimeBlue.cpp" />
+    <ClCompile Include="Gameplay\Enemies\Snake.cpp" />
     <ClCompile Include="Gameplay\GameManager.cpp" />
     <ClCompile Include="Gameplay\GameObject.cpp" />
     <ClCompile Include="Gameplay\LifeManager.cpp" />

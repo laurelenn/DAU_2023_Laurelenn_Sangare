@@ -5,7 +5,7 @@ Pike::Pike()
 {
 	m_Scale = 1.5f;
 	m_Width = 50.f * m_Scale;
-	m_Height = 25.f * m_Scale;
+	m_Height = 30.f * m_Scale;
 	m_RectangleCollision = new RectangleCollisionComponent(m_Width, m_Height);
 	m_Collision = std::unique_ptr<CollisionComponent>(m_RectangleCollision);
 	m_TypeObject = GameObjectType::Obstacle;

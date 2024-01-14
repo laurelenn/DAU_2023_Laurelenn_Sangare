@@ -42,9 +42,9 @@ const std::vector<GameplayDatasMap> Map_DatasGameplay::m_LD_Easy_3 =
 
 const std::vector<GameplayDatasMap> Map_DatasGameplay::m_LD_Easy_4 =
 {
-    GameplayDatasMap(Monster_Ghost, Floor_Level0, .0f, 1000.0f),
-    GameplayDatasMap(Monster_Ghost, Floor_Level0, .0f, 1100.0f),
-    GameplayDatasMap(PowerUpLife, Floor_Level0, 20.0f, 700.0f)
+    GameplayDatasMap(Monster_Snake, Floor_Level0, 10.0f, 800.0f),
+    GameplayDatasMap(Monster_Snake, Floor_Level0, 30.0f, 1200.0f),
+    GameplayDatasMap(PowerUpLife, Floor_Level0, 20.0f, 900.0f)
 
 };
 

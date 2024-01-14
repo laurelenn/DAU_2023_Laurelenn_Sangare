@@ -105,6 +105,9 @@
     <ClCompile Include="Gameplay\Enemies\Bee.cpp">
       <Filter>Sources\Gameplay\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Gameplay\Enemies\Snake.cpp">
+      <Filter>Sources\Gameplay\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -217,6 +220,9 @@
       <Filter>Sources\Datas</Filter>
     </ClInclude>
     <ClInclude Include="Gameplay\Enemies\Bee.h">
+      <Filter>Sources\Gameplay\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\Enemies\Snake.h">
       <Filter>Sources\Gameplay\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
