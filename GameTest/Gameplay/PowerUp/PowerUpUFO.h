@@ -1,6 +1,8 @@
 #pragma once
 #include "..\GameObject.h"
 
+class Player;
+
 class PowerUpUFO :
     public GameObject
 {
@@ -8,6 +10,9 @@ class PowerUpUFO :
 #pragma region VARIABLES
     RectangleCollisionComponent* m_RectangleCollision;
     std::vector<GameObject*> m_HitObjects;
+
+    public : 
+    Player* m_Player;
 
 #pragma endregion
 
@@ -21,6 +26,8 @@ public:
     void Update(float Deltatime) override;
 
     void CheckCollisionEnemies(GameplayMap* map);
+
+    void Death() override;
 #pragma endregion
 
 };

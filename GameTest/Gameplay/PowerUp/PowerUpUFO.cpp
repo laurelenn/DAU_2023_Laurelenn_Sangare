@@ -16,6 +16,7 @@ PowerUpUFO::PowerUpUFO()
 
 	m_RectangleCollision = new RectangleCollisionComponent(m_Width, m_Height);
 	m_Collision = std::unique_ptr<RectangleCollisionComponent>(m_RectangleCollision);
+	m_DeltaZSprite = -35.f*m_Scale;
 }
 
 void PowerUpUFO::InitializeGameObjectDatas()
@@ -95,4 +96,15 @@ void PowerUpUFO::CheckCollisionEnemies(GameplayMap* map)
 			}
 		}
 	}
+}
+
+void PowerUpUFO::Death()
+{
+	if (m_Player)
+	{
+		m_Player->m_PowerUpEffectUFO = nullptr;
+		delete m_Player->m_PowerUpEffectUFO;
+	}
+	
+	GameObject::Death();
 }

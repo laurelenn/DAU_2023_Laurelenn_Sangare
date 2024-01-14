@@ -15,6 +15,7 @@ float m_Width;
 float m_Height;
 float m_SpeedMap;
 float m_Scale = 0.5f;
+float m_DiffSpeedLayers = 1.15f;
 
 MapGenerator *m_MapGenerator = nullptr;
 
@@ -43,6 +44,7 @@ public :
     void Init();
     void Update(float Deltatime);
     void Render();
+    void RenderLD();
     void Destroy();
     bool CheckEndMap(Map* map);
     void GameOver();

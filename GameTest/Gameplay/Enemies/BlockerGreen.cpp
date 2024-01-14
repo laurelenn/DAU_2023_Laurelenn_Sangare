@@ -14,6 +14,8 @@ BlockerGreen::BlockerGreen()
 	m_SpeedZ = 0.f;
 	m_SpeedAnimIdle = 0.f;
 	m_ScoreOnKill = 5;
+	m_DeltaZSprite = -10.f * m_Scale;
+
 }
 
 void BlockerGreen::InitializeGameObjectDatas()

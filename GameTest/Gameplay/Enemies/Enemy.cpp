@@ -23,6 +23,7 @@ void Enemy::Update(float Deltatime)
 			{
 				m_GameManager->m_Player->ApplyDamages(m_DamageCollisionPlayer); 
 				m_bAlreadyHitPlayer = true;
+				m_GameManager->m_MalusScore += m_MalusScoreOnHit;
 			}
 		}
 	}

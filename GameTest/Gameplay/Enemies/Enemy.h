@@ -13,6 +13,7 @@ float m_SpeedAnimIdle = 200.f;
 int m_ScoreOnKill = 100;
 bool m_bAlreadyHitPlayer = false;
 bool m_bAlreadyHitByPlayer = false;
+int m_MalusScoreOnHit = 0;
 
 #pragma endregion
 
@@ -20,7 +21,7 @@ bool m_bAlreadyHitByPlayer = false;
 #pragma region FUNCTIONS
     Enemy();
 
-    void InitializeGameObjectDatas() override; // To do : Should be virtual
+    void InitializeGameObjectDatas() override;
 
     void Update(float Deltatime) override;
 public : 

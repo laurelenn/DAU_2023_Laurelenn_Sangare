@@ -44,6 +44,7 @@ void GameManager::Init()
 		m_DistanceReached = 0;
 		m_KillBonus = 0;
 		m_Score = 0;
+		m_MalusScore = 0;
 
 		m_ScoreHUD = new ScoreHUD(0.8f, 0.8f, m_LifeHUD->GetPosGaugeX(), (APP_VIRTUAL_HEIGHT + 100.f) * APP_VIRTUAL_SCALE);
 		if (m_ScoreHUD)
@@ -75,7 +76,7 @@ void GameManager::Update(float deltaTime)
 		{
 			m_GameTime += deltaTime;
 			m_DistanceReached = -1.f*m_GameTime*0.0001f*m_SpeedMap;
-			m_Score = m_DistanceReached + m_KillBonus;
+			m_Score = m_DistanceReached + m_KillBonus - m_MalusScore;
 			m_ScoreHUD->Update(m_Score);
 		}
 
@@ -101,6 +102,7 @@ void GameManager::Render()
 	{
 		m_MapManager->Render();
 		m_Player->Render();
+		m_MapManager->RenderLD();
 	}
 
 	if (m_ScoreHUD)

@@ -46,6 +46,7 @@ void BackgroundMap::Render()
 void BackgroundMap::Destroy()
 {
 	delete m_Sprite;
+	m_Sprite = nullptr;
 }
 
 void BackgroundMap::SetPosition(float newX, float newZ)

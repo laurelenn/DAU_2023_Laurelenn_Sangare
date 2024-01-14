@@ -14,7 +14,7 @@ SlimeBlue::SlimeBlue()
 	m_SpeedZ = 0.f;
 	m_SpeedAnimIdle = 7.f;
 	m_ScoreOnKill = 10;
-	m_DeltaZSprite = -10.f*m_Scale;
+	m_DeltaZSprite = -20.f*m_Scale;
 }
 
 void SlimeBlue::InitializeGameObjectDatas()

@@ -115,6 +115,7 @@ void Player::ActivatePowerUp(PowerUpType type)
 				if (m_PowerUpEffectUFO)
 				{
 					m_PowerUpEffectUFO->SetGameManager(m_GameManager);
+					m_PowerUpEffectUFO->m_Player = this;
 					m_PowerUpEffectUFO->Init(App::Vector2(0.f - m_PowerUpEffectUFO->m_Width, HEIGHT_FLOOR_1));
 				}
 			}

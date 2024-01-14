@@ -43,6 +43,7 @@ public :
 	float m_GameTime = 0.f;
 	int m_DistanceReached = 0;
 	int m_KillBonus = 0;
+	int m_MalusScore = 0;
 
 	LifeHUD* m_LifeHUD;
 	ScoreHUD* m_ScoreHUD;
