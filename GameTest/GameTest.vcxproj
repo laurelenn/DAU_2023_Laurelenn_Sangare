@@ -195,6 +195,7 @@
     <ClInclude Include="Gameplay\Enemies\BlockerGreen.h" />
     <ClInclude Include="Gameplay\Enemies\Enemy.h" />
     <ClInclude Include="Gameplay\Enemies\Ghost.h" />
+    <ClInclude Include="Gameplay\Enemies\LazyBee.h" />
     <ClInclude Include="Gameplay\Enemies\Pike.h" />
     <ClInclude Include="Gameplay\Enemies\SlimeBlue.h" />
     <ClInclude Include="Gameplay\Enemies\Snake.h" />
@@ -234,6 +235,7 @@
     <ClCompile Include="Gameplay\Enemies\BlockerGreen.cpp" />
     <ClCompile Include="Gameplay\Enemies\Enemy.cpp" />
     <ClCompile Include="Gameplay\Enemies\Ghost.cpp" />
+    <ClCompile Include="Gameplay\Enemies\LazyBee.cpp" />
     <ClCompile Include="Gameplay\Enemies\Pike.cpp" />
     <ClCompile Include="Gameplay\Enemies\SlimeBlue.cpp" />
     <ClCompile Include="Gameplay\Enemies\Snake.cpp" />

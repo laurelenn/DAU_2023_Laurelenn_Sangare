@@ -7,6 +7,7 @@ class Bee :
 {
 #pragma region VARIABLES
 
+protected :
     CircleCollisionComponent* m_CircleCollision;
 
 #pragma endregion

@@ -32,8 +32,6 @@ void Player::InitializeGameObjectDatas()
 	// To do : Create Other Animations
 
 	/*
-		ANIM_CROUNCH,
-		ANIM_ATTACK,
 		ANIM_DEATH
 	*/
 
@@ -90,10 +88,6 @@ void Player::Render()
 	}
 	if (m_PowerUpEffectShield.activated)
 	{
-		/*char textBuffer[64];
-		sprintf(textBuffer, "INVINCIBLE");
-		App::Print(m_Location.x, m_Location.z, textBuffer, 1.0f, 1.0f, 1.0f, GLUT_BITMAP_TIMES_ROMAN_24);*/
-
 		App::DrawCircle(30, m_CapsuleCollision->m_Rectangle.m_RectSize.z+20.f, m_Location, 0.28f, 0.8f, 0.87f);
 	}
 
@@ -159,7 +153,7 @@ void Player::ActivatePowerUp(PowerUpType type)
 				if (m_ProjectileSpawner)
 				{
 					m_ProjectileSpawner->m_DamageProjectile *= 2;
-					m_ProjectileSpawner->m_ScaleProjectile *= 1.5;
+					m_ProjectileSpawner->m_ScaleProjectile *= 1.5f;
 					m_ProjectileSpawner->m_FilenameProjectile = ".\\.\\Ressources\\Interactables\\Projectiles\\playerProjectileBig.png";
 				}
 			}
@@ -215,7 +209,6 @@ void Player::UpdatePowerUp(float Deltatime)
 	}
 }
 
-
 void Player::DeactivatePowerUp(PowerUpType type)
 {
 	switch (type)
@@ -250,7 +243,7 @@ void Player::DeactivatePowerUp(PowerUpType type)
 			m_PowerUpEffectDamage.currentDelay = 0.f;
 			if (m_ProjectileSpawner)
 			{
-				m_ProjectileSpawner->m_DamageProjectile /= 2.f;
+				m_ProjectileSpawner->m_DamageProjectile /= 2;
 				m_ProjectileSpawner->m_ScaleProjectile /= 1.5f;
 				m_ProjectileSpawner->m_FilenameProjectile = ".\\.\\Ressources\\Interactables\\Projectiles\\playerProjectileSimple.png";
 			}
@@ -264,7 +257,6 @@ void Player::DeactivatePowerUp(PowerUpType type)
 }
 
 #pragma endregion
-
 
 
 #pragma region JUMP
@@ -322,7 +314,10 @@ void Player::EndJump()
 	m_Location.z = m_CurrentFloorLevel; // Doble check to restart at good location
 	m_CurrentSpeedJump = m_InitialSpeedJump;
 
-	m_Sprite->SetAnimation(AnimPlayer::ANIM_RUN);
+	if (m_Sprite)
+	{
+		m_Sprite->SetAnimation(AnimPlayer::ANIM_RUN);
+	}
 }
 #pragma endregion
 

@@ -1,9 +1,9 @@
 #include "stdafx.h"
-#include "../Gameplay/Enemies/Bee.h"
+#include "LazyBee.h"
 #include <algorithm>
 #include <random>
 
-Bee::Bee()
+LazyBee::LazyBee()
 {
 	m_Scale = 1.f;
 	m_Width = 25.f * m_Scale;
@@ -11,23 +11,20 @@ Bee::Bee()
 	m_CircleCollision = new CircleCollisionComponent(m_Width);
 	m_Collision = std::unique_ptr<CollisionComponent>(m_CircleCollision);
 	m_TypeObject = GameObjectType::EnemyElement;
-	m_DamageCollisionPlayer = 10.f;
-	m_SpeedX = -250.f;
-	m_SpeedZ = 250.f;
-	m_MaxZ = HEIGHT_FLOOR_0*3.5f;
-	m_MinZ = HEIGHT_FLOOR_0,
-	m_MalusScoreOnHit = 10;
+	m_DamageCollisionPlayer = 5.f;
+	m_SpeedX = -200.f;
+	m_SpeedZ = 0.f;
+	m_MalusScoreOnHit = 5;
 }
 
-void Bee::InitializeGameObjectDatas()
+void LazyBee::InitializeGameObjectDatas()
 {
+
 	m_LifeManager = new LifeManager(30.f);
 	m_SpriteColumns = 4;
 	m_SpriteLines = 1;
-	m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Enemies\\Bee.png";
-
+	m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Enemies\\Bee2.png";
 	m_SpeedAnimIdle = 3.f;
-
 
 	m_Sprite = App::CreateSprite(m_SpriteFilename, m_SpriteColumns, m_SpriteLines);
 	m_Sprite->CreateAnimation(0, m_SpeedAnimIdle / 20.f, { 1,2 });
@@ -36,16 +33,4 @@ void Bee::InitializeGameObjectDatas()
 
 	m_Sprite->SetScale(m_Scale);
 	m_Sprite->SetAnimation(0);
-
-	RandomSpeedDirection();
-}
-
-void Bee::Update(float deltaTime)
-{
-	Enemy::Update(deltaTime);
-}
-
-void Bee::Death()
-{
-	Enemy::Death();
 }

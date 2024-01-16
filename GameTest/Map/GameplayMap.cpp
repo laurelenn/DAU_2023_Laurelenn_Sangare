@@ -13,6 +13,7 @@
 #include "../Gameplay/Enemies/Pike.h"
 #include "../Gameplay/Enemies/Ghost.h"
 #include "../Gameplay/Enemies/Bee.h"
+#include "../Gameplay/Enemies/LazyBee.h"
 #include "../Gameplay/Enemies/Snake.h"
 ///-------------------------------------------///
 
@@ -92,7 +93,7 @@ void GameplayMap::Render()
 {
 	for (auto& gameObject : m_GameObjectGameplayMap)
 	{
-		if (gameObject && gameObject->m_bIsActivated)
+		if (gameObject)
 		{
 			gameObject->Render();
 		}
@@ -127,6 +128,9 @@ GameObject* GameplayMap::SpawnNewObjectFromData(GameplayDatasMap data)
 			break;
 		case Monster_Bee :
 			newGameObject = new Bee();
+			break;
+			case Monster_BeeLazy :
+			newGameObject = new LazyBee();
 			break;
 			case Monster_Snake :
 			newGameObject = new Snake();

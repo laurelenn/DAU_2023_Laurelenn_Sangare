@@ -24,7 +24,7 @@ class CollisionComponent
 public : 
 
     bool m_bIsActivated = true;
-    bool m_bDrawdebug = true;
+    bool m_bDrawdebug = false;
 
     ShapeType m_ShapeType;
     App::Vector2 m_Position;

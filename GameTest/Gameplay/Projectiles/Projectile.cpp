@@ -18,7 +18,6 @@ Projectile::Projectile(ProjectileType Type, float Damage, float Scale, float Spe
 	m_SpeedX = Speed;
 	m_SpeedZ = 0.f;
 
-
 	switch (m_ProjectileType)
 	{
 	case ProjectileType::PlayerProjectile:
@@ -29,8 +28,9 @@ Projectile::Projectile(ProjectileType Type, float Damage, float Scale, float Spe
 		break;
 
 	case ProjectileType::EnemyProjectile:
-		m_Width = 20.f * m_Scale;
-		m_Height = 20.f * m_Scale;
+		m_Width = 15.f * m_Scale;
+		m_Height = 15.f * m_Scale;
+		m_bUseMultiplierGameManager = true;
 		break;
 
 	default:
@@ -38,13 +38,12 @@ Projectile::Projectile(ProjectileType Type, float Damage, float Scale, float Spe
 	}
 	m_SphereCollision = new CircleCollisionComponent(m_Width);
 	m_Collision = std::unique_ptr<CollisionComponent>(m_SphereCollision);
+	m_Collision->m_bDrawdebug = true;
 }
 
 
 void Projectile::InitializeGameObjectDatas()
-{
-
-	
+{	
 		switch (m_ProjectileType)
 		{
 		case ProjectileType::PlayerProjectile:
@@ -61,12 +60,12 @@ void Projectile::InitializeGameObjectDatas()
 		case ProjectileType::EnemyProjectile:
 			if(m_SpriteFilename == "")
 			{
-			m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Projectiles\\enemyProjectile.png";
+				m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Projectiles\\enemyProjectile.png";
 			}
 			m_SpriteColumns = 1;
 			m_SpriteLines = 5;
 			m_Sprite = App::CreateSprite(m_SpriteFilename, m_SpriteColumns, m_SpriteLines);
-			m_Sprite->CreateAnimation(0, 10, { 0,1,2,3,4 });
+			m_Sprite->CreateAnimation(0, 0.1, {0,1,2,3});
 			break;
 
 		default:
@@ -83,9 +82,6 @@ void Projectile::InitializeGameObjectDatas()
 void Projectile::Update(float deltaTime)
 {
 	GameObject::Update(deltaTime);
-
-	std::cout << "Speed Projectile : " << std::endl;
-	std::cout << m_SpeedX << std::endl;
 
 	switch (m_ProjectileType)
 	{

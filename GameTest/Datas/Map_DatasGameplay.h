@@ -15,6 +15,7 @@ enum GameObjectLDType
     Monster_BlockerRed,
     Monster_Snake,
     Monster_Bee,
+    Monster_BeeLazy,
     Obstacle_Pikes,
     PowerUpSpecialUFO,
     PowerUpLife,

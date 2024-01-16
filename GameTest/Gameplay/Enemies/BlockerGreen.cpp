@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "../Gameplay/Enemies/BlockerGreen.h"
+#include "../Map/GameplayMap.h"
 
 BlockerGreen::BlockerGreen()
 {
@@ -32,6 +33,14 @@ void BlockerGreen::InitializeGameObjectDatas()
 
 	m_Sprite->SetScale(m_Scale);
 	m_Sprite->SetAnimation(AnimBlockerGreen::IdleBlockerGreen);
+
+	m_ProjectileSpawner = new ProjectileSpawner(this, App::Vector2{}, 1.8f, 1, 0.1f, true, ProjectileType::EnemyProjectile, m_Scale * 1.f, 2.f, -600.f);
+	if (m_ProjectileSpawner && m_OwnerGameplayMap)
+	{
+		m_ProjectileSpawner->m_OwnerGameplayMap;
+		m_OwnerGameplayMap->m_GameObjectGameplayMap.push_back(m_ProjectileSpawner);
+
+	}
 }
 
 void BlockerGreen::Update(float deltaTime)
@@ -39,7 +48,17 @@ void BlockerGreen::Update(float deltaTime)
 	Enemy::Update(deltaTime);
 }
 
+void BlockerGreen::Render()
+{
+	Enemy::Render();
+}
+
 void BlockerGreen::Death()
 {
+	if (m_ProjectileSpawner)
+	{
+		m_ProjectileSpawner->m_Owner = nullptr;
+		m_ProjectileSpawner = nullptr;
+	}
 	Enemy::Death();
 }

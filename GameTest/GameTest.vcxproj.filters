@@ -108,6 +108,7 @@
     <ClCompile Include="Gameplay\Enemies\Snake.cpp">
       <Filter>Sources\Gameplay\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Gameplay\Enemies\LazyBee.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -225,6 +226,7 @@
     <ClInclude Include="Gameplay\Enemies\Snake.h">
       <Filter>Sources\Gameplay\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="Gameplay\Enemies\LazyBee.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="NextAPI">

@@ -58,13 +58,11 @@ void InitializeGameObjectDatas();
 
 void Update(float deltaTime);
 
-void Render();
-
-void UpdateAutomaticSpawner(float deltaTime);
-
-void UpdateManualSpawner(float deltaTime);
+void UpdateSpawner(float deltaTime);
 
 void SpawnProjectile();
+
+void Render();
 
 void Death() override;
 

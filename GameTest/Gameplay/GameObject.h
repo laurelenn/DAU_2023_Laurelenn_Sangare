@@ -65,7 +65,7 @@ void Init();
 void Init(App::Vector2 InitialLocation);
 virtual void InitializeGameObjectDatas() = 0;
 virtual void Update(float Deltatime);
-void Render();
+virtual void Render();
 void Destroy();
 void SetActivated(bool Activate){m_bIsActivated = Activate;}
 void SetPosition(float x, float z);

@@ -20,12 +20,12 @@ SlimeBlue::SlimeBlue()
 void SlimeBlue::InitializeGameObjectDatas()
 {
 	m_LifeManager = new LifeManager(20.f);
-	m_SpriteColumns = 5;
+	m_SpriteColumns = 4;
 	m_SpriteLines = 1;
 	m_SpriteFilename = ".\\.\\.\\Ressources\\Interactables\\Enemies\\slime_blue.png";
 
 	m_Sprite = App::CreateSprite(m_SpriteFilename, m_SpriteColumns, m_SpriteLines);
-	m_Sprite->CreateAnimation(AnimSlimeBlue::IdleSlimeBlue, m_SpeedAnimIdle / 50.f, {0,1,4,1});
+	m_Sprite->CreateAnimation(AnimSlimeBlue::IdleSlimeBlue, m_SpeedAnimIdle / 50.f, {0,1,3,1});
 
 	// To do : Create Other Animations
 

@@ -78,7 +78,7 @@ void Update(float Deltatime) override;
 void UpdateJump(float Deltatime);
 void UpdatePowerUp(float Deltatime);
 
-void Render();
+void Render() override;
 
 void Jump();
 void EndJump();
