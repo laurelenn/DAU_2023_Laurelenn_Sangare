@@ -38,7 +38,6 @@ Projectile::Projectile(ProjectileType Type, float Damage, float Scale, float Spe
 	}
 	m_SphereCollision = new CircleCollisionComponent(m_Width);
 	m_Collision = std::unique_ptr<CollisionComponent>(m_SphereCollision);
-	m_Collision->m_bDrawdebug = true;
 }
 
 
