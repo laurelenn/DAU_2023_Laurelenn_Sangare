@@ -24,7 +24,7 @@ void GameObject::Init(App::Vector2 InitialLocation)
 
 void GameObject::Update(float Deltatime) // ms
 {
-	if (m_bIsActivated)
+	if (m_bIsActivated && !m_bIsWaitingEndDeath)
 	{
 		float NewPosX = m_bUseMultiplierGameManager ? (((m_SpeedX * m_GameManager->m_SpeedMulti) / 1000.f) * Deltatime) : ((m_SpeedX / 1000.f) * Deltatime);
 		float NewPosZ = ((m_SpeedZ / 1000.f) * Deltatime);
@@ -49,11 +49,26 @@ void GameObject::Update(float Deltatime) // ms
 
 		if (ReachEndMap())
 		{
+			m_bIsDeathEndOfMap = true;
 			if (m_OwnerGameplayMap)
 			{
 				m_OwnerGameplayMap->GameObjectReachEnd(this);
 			}
 			Death();
+		}
+	}
+	else if (m_bIsWaitingEndDeath)
+	{
+		m_CurrentDeathTimer+=Deltatime;
+		if (m_SpriteDeath)
+		{
+			m_Sprite->Update(Deltatime);
+		}
+
+		if (m_CurrentDeathTimer >= m_DeathDuration)
+		{
+			m_bIsWaitingEndDeath = false;
+			Destroy();
 		}
 	}
 }
@@ -75,6 +90,12 @@ void GameObject::Destroy()
 {
 	m_GameManager = nullptr;
 	m_OwnerGameplayMap = nullptr;
+
+	if (m_SpriteDeath)
+	{
+		delete m_SpriteDeath;
+		m_SpriteDeath = nullptr;
+	}
 
 	if (m_Sprite)
 	{
@@ -124,10 +145,6 @@ void GameObject::ApplyDamages(float damages)
 { 
    	if (damages >= 0)
 	{
-	if (m_TypeObject == EnemyElement)
-	{ 
-	int i = 1;
-	}
 		m_LifeManager->ApplyDamage(damages);
 		if (m_LifeManager->m_bIsDead)
 		{
@@ -142,5 +159,13 @@ void GameObject::Death()
 	{
 		m_Collision->m_bIsActivated = false;
 	}
-	Destroy();
+
+	if (m_bIsDeathEndOfMap)
+	{
+		m_bIsWaitingEndDeath = true;
+	}
+	else
+	{
+		Destroy();
+	}
 }

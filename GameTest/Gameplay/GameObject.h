@@ -8,6 +8,16 @@
 #include <iostream>
 #include <memory>
 
+enum AnimImpact
+{
+	ImpactBlop,
+	ImpactCircleExplode,
+	ImpactCircleStart,
+	ImpactCircle,
+	ImpactExplosion,
+	ImpactSimple
+};
+
 enum GameObjectType 
 {
 	Pawn,
@@ -48,11 +58,24 @@ float m_Width;
 float m_Height;
 
 CSimpleSprite* m_Sprite;
-const char* m_SpriteFilename;
-int m_SpriteColumns;
-int m_SpriteLines;
+const char* m_SpriteFilename = ".\\.\\Ressources\\Interactables\\Impacts.png";;
+int m_SpriteColumns = 5;
+int m_SpriteLines = 6;
 
+
+CSimpleSprite* m_SpriteDeath;
+const char* m_SpriteFilenameDeath;
+int m_SpriteColumnsDeath;
+int m_SpriteLinesDeath;
+float m_DeathDuration = 2.f;
+float m_ScaleDeath;
+
+
+bool m_CurrentDeathTimer = 0.0f;
+bool m_bIsWaitingEndDeath = false;
 bool m_bIsActivated = true;
+bool m_bIsDeathEndOfMap = false;
+
 #pragma endregion
 
 #pragma region FUNCTIONS
