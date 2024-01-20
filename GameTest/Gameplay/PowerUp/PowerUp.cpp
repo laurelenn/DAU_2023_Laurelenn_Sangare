@@ -41,7 +41,6 @@ void PowerUp::InitializeGameObjectDatas()
 		default:
 		break;
 	}
-	m_SpriteDeath->SetColor(255.f, 255.f, 255);
 
 	m_Sprite = App::CreateSprite(m_SpriteFilename, m_SpriteColumns, m_SpriteLines);
 	m_Sprite->CreateAnimation(0, 1, {0});
@@ -49,6 +48,8 @@ void PowerUp::InitializeGameObjectDatas()
 	m_Sprite->SetScale(m_Scale);
 	m_Sprite->SetAnimation(0);
 
+	m_ScaleDeath = 1.5f;
+	m_SpriteDeath->SetScale(m_ScaleDeath);
 	m_SpriteDeath->SetAnimation(ImpactCircle);
 }
 

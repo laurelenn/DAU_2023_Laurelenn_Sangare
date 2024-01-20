@@ -17,20 +17,32 @@
 
 namespace App
 {	
-	void DrawLine(float sx, float sy, float ex, float ey, float r, float g, float b)
+
+	void DrawLineGlobal(float sx, float sy, float ex, float ey, float r, float g, float b, float a)
 	{
-#if APP_USE_VIRTUAL_RES		
-		APP_VIRTUAL_TO_NATIVE_COORDS(sx, sy);
-		APP_VIRTUAL_TO_NATIVE_COORDS(ex, ey);
-#endif
+		#if APP_USE_VIRTUAL_RES		
+			APP_VIRTUAL_TO_NATIVE_COORDS(sx, sy);
+			APP_VIRTUAL_TO_NATIVE_COORDS(ex, ey);
+		#endif
 		glBegin(GL_LINES);
-		glColor3f(r, g, b); // Yellow
+		glColor4f(r, g, b, a);
 		glVertex2f(sx, sy);
 		glVertex2f(ex, ey);
 		glEnd();
 	}
-	
-	void DrawLineWithThickness(float sx, float sy, float ex, float ey, float thickness, float r, float g, float b) {
+
+	void DrawLine(float sx, float sy, float ex, float ey, float r, float g, float b)
+	{
+		DrawLineGlobal(sx, sy, ex, ey, r, g, b, 1.f);
+	}
+
+	void DrawLineWithThickness(float sx, float sy, float ex, float ey, float thickness, float r, float g, float b)
+	{
+		DrawLineWithThicknessFull(sx, sy, ex, ey, thickness, r, g, b, 1.f);
+	}
+
+	void DrawLineWithThicknessFull(float sx, float sy, float ex, float ey, float thickness, float r, float g, float b, float a) 
+	{
 #if APP_USE_VIRTUAL_RES
 		APP_VIRTUAL_TO_NATIVE_COORDS(sx, sy);
 		APP_VIRTUAL_TO_NATIVE_COORDS(ex, ey);
@@ -53,7 +65,7 @@ namespace App
 		float vy = dx * halfThickness;
 
 		glBegin(GL_QUADS);
-		glColor3f(r, g, b); // Couleur spécifiée
+		glColor4f(r, g, b, a); // Couleur spécifiée
 
 		// Sommets du rectangle pour former la ligne
 		glVertex2f(sx - vx, sy - vy);
@@ -121,12 +133,7 @@ namespace App
 		return CSimpleControllers::GetInstance().GetController(pad);
 	}
 
-	void DrawCircle(int segments, float radius, Vector2 pos, float r, float g, float b)
-	{
-		DrawCircle(segments, radius, pos.x, pos.z, r, g, b);
-	}
-
-	void DrawCircle(int segments, float radius, float posX, float posY, float r, float g, float b)
+	void DrawCircleReal(int segments, float radius, float posX, float posY, float thickness, float r, float g, float b, float a)
 	{
 		for (int i = 0; i < segments; ++i) {
 			float theta1 = static_cast<float>(i) / static_cast<float>(segments) * 2.0f * 3.1415926f;
@@ -137,7 +144,26 @@ namespace App
 			float x2 = posX + radius * std::cos(theta2);
 			float y2 = posY + radius * std::sin(theta2);
 
-			App::DrawLine(x1, y1, x2, y2, r, g, b); // Jaune
+			App::DrawLineWithThicknessFull(x1, y1, x2, y2, thickness, r, g, b, a);
 		}
 	}
+
+
+	void DrawCircleGlobal(int segments, float radius, float posX, float posY, float r, float g, float b)
+	{
+		DrawCircleReal(segments, radius, posX, posY, 0.5f, r, g, b, 1.f);
+	}
+
+	void DrawCircleThinkness(int segments, float radius, Vector2 pos, float thickness, float r, float g, float b, float a)
+	{
+		DrawCircleReal(segments, radius, pos.x, pos.z, thickness, r, g, b, a);
+	}
+
+	void DrawCircle(int segments, float radius, Vector2 pos, float r, float g, float b)
+	{
+		DrawCircleGlobal(segments, radius, pos.x, pos.z, r, g, b);
+	}
+
+
+	
 }

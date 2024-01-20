@@ -88,7 +88,7 @@ void Player::Render()
 	}
 	if (m_PowerUpEffectShield.activated)
 	{
-		App::DrawCircle(30, m_CapsuleCollision->m_Rectangle.m_RectSize.z+20.f, m_Location, 0.28f, 0.8f, 0.87f);
+		App::DrawCircleReal(30, m_CapsuleCollision->m_Rectangle.m_RectSize.z+20.f, m_Location.x, m_Location.z, 2.f, 0.28f, 0.8f, 0.87f, 0.5f);
 	}
 
 	if (m_PowerUpEffectUFO)

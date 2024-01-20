@@ -119,8 +119,15 @@ struct Vector2 {
 	//-------------------------------------------------------------------------------------------
 	const CController &GetController( int pad = 0 );
 
-	void DrawCircle(int segments, float radius, float posX, float posY, float r, float g, float b);
+	void DrawLineGlobal(float sx, float sy, float ex, float ey, float r, float g, float b, float a);
+	void DrawLine(float sx, float sy, float ex, float ey, float r, float g, float b);
+	void DrawLineWithThickness(float sx, float sy, float ex, float ey, float thickness, float r, float g, float b);
+	void DrawLineWithThicknessFull(float sx, float sy, float ex, float ey, float thickness, float r, float g, float b, float a);
 
+	void DrawCircleReal(int segments, float radius, float posX, float posY, float thickness, float r, float g, float b, float a);
+	void DrawCircleGlobal(int segments, float radius, float posX, float posY, float r, float g, float b);
+	void DrawCircleThinkness(int segments, float radius, Vector2 pos, float thickness, float r, float g, float b, float a);
 	void DrawCircle(int segments, float radius, Vector2 pos, float r, float g, float b);
+
 };
 #endif //_APP_H
