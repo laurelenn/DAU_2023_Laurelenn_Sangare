@@ -1,5 +1,6 @@
 #pragma once
 #include "../App/SimpleSprite.h"
+//#include "../App/SimpleSound.h"
 #include "../App/app.h"
 #include "../Gameplay/Collisions/CollisionComponent.h"
 #include "../Gameplay/LifeManager.h"
@@ -7,6 +8,8 @@
 
 #include <iostream>
 #include <memory>
+#include <windows.h>
+
 
 enum AnimImpact
 {
@@ -75,7 +78,9 @@ int m_SpriteLinesDeath = 6;
 float m_DeathDuration = 0.4f;
 float m_ScaleDeath = APP_VIRTUAL_SCALE*3.f;
 float m_DeltaZSpriteDeath = 0.0f;
-
+//CSimpleSound m_DeathSound;
+const char* m_SoundFilenameDeath = ".\\.\\Ressources\\Sounds\\DeathMonster.wav";
+bool m_bPlayDeathSound = true;
 
 float m_CurrentDeathTimer = 0.0f;
 bool m_bIsWaitingEndDeath = false;

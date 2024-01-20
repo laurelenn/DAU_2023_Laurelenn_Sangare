@@ -34,6 +34,9 @@ void GameObject::InitializeGameObjectDatas()
 
 	m_SpriteDeath->SetScale(m_ScaleDeath);
 	m_SpriteDeath->SetAnimation(AnimImpact::ImpactBlop);
+
+	//m_DeathSound.Initialize(WindowFromDC(wglGetCurrentDC()));
+	//m_DeathSound.LoadWaveFile(m_SoundFilenameDeath);
 }
 
 void GameObject::Update(float Deltatime) // ms
@@ -142,6 +145,8 @@ void GameObject::Destroy()
 	m_Collision.reset();
 
 	m_bIsActivated = false;
+
+	//m_DeathSound.Shutdown();
 }
 
 void GameObject::SetPosition(float x, float z)
@@ -195,6 +200,11 @@ void GameObject::ApplyDamages(float damages)
 
 void GameObject::Death()
 {
+	//if (m_bPlayDeathSound)
+	//{
+	//	m_DeathSound.PlaySound(m_SoundFilenameDeath, 0);
+	//}
+
 	if (m_Collision)
 	{
 		m_Collision->m_bIsActivated = false;

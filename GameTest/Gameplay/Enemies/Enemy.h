@@ -15,6 +15,7 @@ bool m_bAlreadyHitPlayer = false;
 bool m_bAlreadyHitByPlayer = false;
 int m_MalusScoreOnHit = 0;
 
+
 #pragma endregion
 
 
