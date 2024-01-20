@@ -53,6 +53,15 @@ public :
     static const std::vector<GameplayDatasMap> m_LD_Easy_3;
     static const std::vector<GameplayDatasMap> m_LD_Easy_4;
     static const std::vector<GameplayDatasMap> m_LD_Easy_5;
+    static const std::vector<GameplayDatasMap> m_LD_Easy_5;
+    static const std::vector<GameplayDatasMap> m_LD_Easy_6;
+    static const std::vector<GameplayDatasMap> m_LD_Easy_7;
+    static const std::vector<GameplayDatasMap> m_LD_Easy_8;
+    static const std::vector<GameplayDatasMap> m_LD_Easy_9;
+    static const std::vector<GameplayDatasMap> m_LD_Easy_10;
+    static const std::vector<GameplayDatasMap> m_LD_Easy_11;
+    static const std::vector<GameplayDatasMap> m_LD_Easy_12;
+    static const std::vector<GameplayDatasMap> m_LD_Easy_13;
 
     #pragma endregion
 
