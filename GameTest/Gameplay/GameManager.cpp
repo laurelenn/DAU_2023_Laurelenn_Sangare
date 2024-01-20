@@ -64,30 +64,72 @@ void GameManager::Init()
 //------------------------------------------------------------------------
 void GameManager::Update(float deltaTime)
 {
-	/*if (m_GameState == EGameState::Started)
-	{*/
-		if (m_Player && m_MapManager)
-		{
-			m_Player->Update(deltaTime);
-			m_MapManager->Update(deltaTime);
-		}
+	switch (m_GameState)
+	{
+		case  EGameState::PreStart:
+			UpdatePreStart(deltaTime);
+		break;
 
-		if (m_ScoreHUD)
-		{
-			m_GameTime += deltaTime;
-			m_DistanceReached = -1.f*m_GameTime*0.0001f*m_SpeedMap;
-			m_Score = CLAMP(m_DistanceReached + m_KillBonus - m_MalusScore, 0, 9999999);
-			m_ScoreHUD->Update(m_Score);
-		}
+		default:
+		case  EGameState::Started:
+			UpdateStarted(deltaTime);
+		break;
 
-		
-		m_SpeedMulti = CLAMP(m_InitialSpeedMulti, m_InitialSpeedMulti + (m_AdditionalSpeedMulti*(int)(m_DistanceReached/m_StepSpeedMulti)), m_MaxMultiSpeed);
+		case  EGameState::GameOver:
+			UpdateGameOver(deltaTime);
+		break;
 
-		if (m_LifeHUD && m_Player && m_Player->m_LifeManager)
+		case  EGameState::WaitingForRestart:
+			UpdateWaitingForRestart(deltaTime);
+		break;
+	}
+}
+
+void GameManager::UpdatePreStart(float DeltaTime)
+{
+}
+
+void GameManager::UpdateStarted(float DeltaTime)
+{
+
+	if (m_Player && m_MapManager)
+	{
+		m_Player->Update(DeltaTime);
+		m_MapManager->Update(DeltaTime);
+	}
+
+	if (m_ScoreHUD)
+	{
+		m_GameTime += DeltaTime;
+		m_DistanceReached = -1.f * m_GameTime * 0.0001f * m_SpeedMap;
+		m_Score = CLAMP(m_DistanceReached + m_KillBonus - m_MalusScore, 0, 9999999);
+		m_ScoreHUD->Update(m_Score);
+	}
+
+
+	m_SpeedMulti = CLAMP(m_InitialSpeedMulti, m_InitialSpeedMulti + (m_AdditionalSpeedMulti * (int)(m_DistanceReached / m_StepSpeedMulti)), m_MaxMultiSpeed);
+
+	if (m_LifeHUD && m_Player && m_Player->m_LifeManager)
+	{
+		m_LifeHUD->Update(m_Player->m_LifeManager->m_CurrentLife);
+	}
+
+	if (m_bAskForGameOver)
+	{
+		m_CurrentDurationGameOver+=DeltaTime/1000.f;
+		if (m_CurrentDurationGameOver >= m_DurationBeforeGameOver)
 		{
-			m_LifeHUD->Update(m_Player->m_LifeManager->m_CurrentLife);
+			GameOver();
 		}
-	//}
+	}
+}
+
+void GameManager::UpdateGameOver(float DeltaTime)
+{
+}
+
+void GameManager::UpdateWaitingForRestart(float DeltaTime)
+{
 }
 
 //------------------------------------------------------------------------
@@ -100,7 +142,8 @@ void GameManager::Render()
 
 	if (m_Player && m_MapManager)
 	{
-		m_MapManager->Render();
+		m_MapManager->RenderBg();
+		m_MapManager->RenderGD();
 		m_Player->Render();
 		m_MapManager->RenderLD();
 	}
@@ -135,7 +178,15 @@ void GameManager::Shutdown()
 	}
 }
 
+void GameManager::StartGame()
+{
+}
+
 void GameManager::GameOver()
 {
 	m_GameState = EGameState::GameOver;
+}
+
+void GameManager::Restart(bool m_bFirstTime)
+{
 }

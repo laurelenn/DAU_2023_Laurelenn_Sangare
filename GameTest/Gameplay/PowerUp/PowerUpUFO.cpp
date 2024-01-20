@@ -21,7 +21,6 @@ PowerUpUFO::PowerUpUFO()
 
 void PowerUpUFO::InitializeGameObjectDatas()
 {
-
 	m_SpriteFilename = ".\\.\\.\\Ressources\\Player\\UFO_Ship.png";
 	m_SpriteColumns = 1;
 	m_SpriteLines = 1;

@@ -27,7 +27,7 @@ class PowerUp :
 public :  
     PowerUp(PowerUpType type);
 
-    void InitializeGameObjectDatas() override;
+    void InitializeGameObjectDatas();
 
     void Update(float deltaTime) override;
 

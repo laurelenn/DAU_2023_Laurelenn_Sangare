@@ -21,6 +21,7 @@ BlockerGreen::BlockerGreen()
 
 void BlockerGreen::InitializeGameObjectDatas()
 {
+	Enemy::InitializeGameObjectDatas();
 	m_LifeManager = new LifeManager(10.f);
 	m_SpriteColumns = 3;
 	m_SpriteLines = 1;

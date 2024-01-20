@@ -16,6 +16,8 @@ PowerUp::PowerUp(PowerUpType type) : m_PowerUpType(type)
 
 void PowerUp::InitializeGameObjectDatas()
 {
+	
+	GameObject::InitializeGameObjectDatas();
 	m_SpriteColumns = 1;
 	m_SpriteLines = 1;
 
@@ -39,12 +41,15 @@ void PowerUp::InitializeGameObjectDatas()
 		default:
 		break;
 	}
+	m_SpriteDeath->SetColor(255.f, 255.f, 255);
 
 	m_Sprite = App::CreateSprite(m_SpriteFilename, m_SpriteColumns, m_SpriteLines);
 	m_Sprite->CreateAnimation(0, 1, {0});
 
 	m_Sprite->SetScale(m_Scale);
 	m_Sprite->SetAnimation(0);
+
+	m_SpriteDeath->SetAnimation(ImpactCircle);
 }
 
 void PowerUp::Update(float deltaTime)
@@ -60,7 +65,7 @@ void PowerUp::Update(float deltaTime)
 				m_GameManager->m_Player->ActivatePowerUp(m_PowerUpType);
 				m_bAlreadyHitPlayer = true;
 				// To do : Play sound
-				Destroy();
+				Death();
 			}
 		}
 	}
@@ -68,5 +73,5 @@ void PowerUp::Update(float deltaTime)
 
 void PowerUp::Death()
 {
-	Destroy();
+	GameObject::Death();
 }

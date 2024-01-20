@@ -43,7 +43,8 @@ public :
 
     void Init();
     void Update(float Deltatime);
-    void Render();
+    void RenderBg();
+    void RenderGD();
     void RenderLD();
     void Destroy();
     bool CheckEndMap(Map* map);

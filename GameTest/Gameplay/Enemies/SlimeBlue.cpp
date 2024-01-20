@@ -19,6 +19,7 @@ SlimeBlue::SlimeBlue()
 
 void SlimeBlue::InitializeGameObjectDatas()
 {
+	Enemy::InitializeGameObjectDatas();
 	m_LifeManager = new LifeManager(20.f);
 	m_SpriteColumns = 4;
 	m_SpriteLines = 1;

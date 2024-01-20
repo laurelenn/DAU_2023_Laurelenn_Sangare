@@ -12,7 +12,7 @@ Player::Player(float InitialLife, float Scale)
 	m_Height = 35.f *PLAYER_SCALE;
 	m_CapsuleCollision = new CapsuleCollisionComponent(m_Width, m_Height);
 	m_Collision = std::unique_ptr<CollisionComponent>(m_CapsuleCollision);
-	m_LifeManager = new LifeManager(InitialLife, InitialLife);
+	m_LifeManager = new LifeManager(InitialLife);
 	m_Scale = Scale;
 	m_TypeObject = GameObjectType::Pawn;
 }
@@ -20,6 +20,8 @@ Player::Player(float InitialLife, float Scale)
 
 void Player::InitializeGameObjectDatas()
 {
+	GameObject::InitializeGameObjectDatas();
+
 	m_SpriteColumns = 7;
 	m_SpriteLines = 3;
 	m_SpriteFilename = ".\\.\\Ressources\\Player\\p1_spritesheet.png";
@@ -27,18 +29,16 @@ void Player::InitializeGameObjectDatas()
 	m_Sprite = App::CreateSprite(m_SpriteFilename, m_SpriteColumns, m_SpriteLines);
 	m_Sprite->CreateAnimation(AnimPlayer::ANIM_RUN, m_SpeedAnimationRun/50.f, {2,8,9,8});
 	m_Sprite->CreateAnimation(AnimPlayer::ANIM_JUMP, m_SpeedAnimationRun/50.f, {13});
-	m_Sprite->CreateAnimation(AnimPlayer::ANIM_HIT, m_SpeedAnimationRun/50.f, {6});
-	m_Sprite->CreateAnimation(AnimPlayer::ANIM_ONFLOOR, m_SpeedAnimationRun/50.f, {12});
-	// To do : Create Other Animations
-
-	/*
-		ANIM_DEATH
-	*/
+	m_Sprite->CreateAnimation(AnimPlayer::ANIM_HIT, 6.f/50.f, {6,16});
 
 	m_Sprite->SetScale(m_Scale);
 	m_Sprite->SetAnimation(AnimPlayer::ANIM_RUN);
 
-	m_ProjectileSpawner = new ProjectileSpawner(this, App::Vector2{}, 3.f, 3, 0.5f, false, ProjectileType::PlayerProjectile, PLAYER_SCALE*2.f, 10, 500.f);
+	m_SpriteDeath->SetScale(m_Scale*3.f);
+	m_DeltaZSpriteDeath = 25.f;
+	m_SpriteDeath->SetAnimation(AnimImpact::ImpactExplosion);
+
+	m_ProjectileSpawner = new ProjectileSpawner(this, App::Vector2{}, 2.f, 3, 0.5f, false, ProjectileType::PlayerProjectile, PLAYER_SCALE*2.f, 10, 500.f);
 }
 
 
@@ -258,7 +258,6 @@ void Player::DeactivatePowerUp(PowerUpType type)
 
 #pragma endregion
 
-
 #pragma region JUMP
 void Player::Jump()
 {
@@ -324,11 +323,11 @@ void Player::EndJump()
 
 void Player::Death()
 {
+	GameObject::Death();
 	if (m_LifeManager->m_bIsDead && m_GameManager)
 	{
-		m_GameManager->GameOver();
+		m_GameManager->AskGameOver();
 	}
-	Destroy();
 }
 
 void Player::Destroy()

@@ -15,7 +15,7 @@ class Ghost :
 public:
     Ghost();
 
-    void InitializeGameObjectDatas() override;
+    void InitializeGameObjectDatas();
 
     void Update(float deltaTime) override;
 

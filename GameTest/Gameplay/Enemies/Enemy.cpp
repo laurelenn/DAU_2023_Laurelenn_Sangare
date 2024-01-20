@@ -11,6 +11,8 @@ Enemy::Enemy() : GameObject()
 
 void Enemy::InitializeGameObjectDatas()
 {
+	GameObject::InitializeGameObjectDatas();
+	m_SpriteDeath->SetAnimation(ImpactBlop);
 }
 
 void Enemy::Update(float Deltatime)
@@ -45,10 +47,13 @@ void Enemy::RandomSpeedDirection()
 
 void Enemy::ApplyDamages(float damages)
 {
-	if (this && m_LifeManager && !m_LifeManager->m_bIsDead)
+	if (this && m_LifeManager && !m_LifeManager->m_bIsDead && !m_LifeManager->m_bIsInvincible)
 	{
 		m_LifeManager->ApplyDamage(damages);
-
+		if (m_Sprite)
+		{
+			m_Sprite->StartBlinking(m_BlinkDurationOnHit, m_SpeedBlink);
+		}
 		if (m_LifeManager->m_bIsDead)
 		{
 			if (m_GameManager)

@@ -22,7 +22,7 @@ ProjectileSpawner* m_ProjectileSpawner;
 public : 
     BlockerGreen();
 
-    void InitializeGameObjectDatas() override;
+    void InitializeGameObjectDatas();
 
     void Update(float deltaTime) override;
 

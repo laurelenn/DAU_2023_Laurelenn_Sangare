@@ -55,6 +55,21 @@ void CSimpleSprite::Update(float dt)
         {
             SetFrame(anim.m_frames[frame]);
         }
+
+        UpdateBlinking(dt);
+    }
+}
+
+void CSimpleSprite::UpdateBlinking(float dt)
+{
+    if (m_bIsBlinking) {
+        m_CurrentBlinkTimer += dt/1000.f;
+
+        if (m_CurrentBlinkTimer >= m_BlinkDuration)
+        {
+            m_bIsBlinking = false;
+            m_CurrentBlinkTimer = 0.0f;
+        }
     }
 }
 
@@ -100,8 +115,16 @@ void CSimpleSprite::Draw()
     glTranslatef(x, y, 0.0f);   
     glScalef(scalex, scaley, 1.0f);    
     glRotatef(m_angle * 180 / PI, 0.0f, 0.0f, 1.0f);     
-	glColor3f(m_red, m_green, m_blue);
-    glEnable(GL_BLEND);    
+    if (m_bIsBlinking) 
+    {
+        float alphaRatio = sin(m_CurrentBlinkTimer * m_SpeedBlink); // Ajustez la fréquence selon vos besoins
+        glColor4f(m_red, m_green, m_blue, alphaRatio);
+    }
+    else 
+    {
+        glColor3f(m_red, m_green, m_blue);
+    }    
+    glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);    
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, m_texture);

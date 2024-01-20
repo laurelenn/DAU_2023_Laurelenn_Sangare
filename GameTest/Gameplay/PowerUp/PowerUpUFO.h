@@ -21,7 +21,7 @@ class PowerUpUFO :
 public:
     PowerUpUFO();
 
-    void InitializeGameObjectDatas() override;
+    void InitializeGameObjectDatas();
 
     void Update(float Deltatime) override;
 

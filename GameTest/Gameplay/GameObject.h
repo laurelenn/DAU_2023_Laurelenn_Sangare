@@ -12,7 +12,7 @@ enum AnimImpact
 {
 	ImpactBlop,
 	ImpactCircleExplode,
-	ImpactCircleStart,
+	ImpactCircleStar,
 	ImpactCircle,
 	ImpactExplosion,
 	ImpactSimple
@@ -58,20 +58,26 @@ float m_Width;
 float m_Height;
 
 CSimpleSprite* m_Sprite;
-const char* m_SpriteFilename = ".\\.\\Ressources\\Interactables\\Impacts.png";;
-int m_SpriteColumns = 5;
-int m_SpriteLines = 6;
+const char* m_SpriteFilename ;
+int m_SpriteColumns;          
+int m_SpriteLines;
 
 
+// Hit
+float m_BlinkDurationOnHit = 0.75f;
+float m_SpeedBlink = 40.f;
+
+// Death
 CSimpleSprite* m_SpriteDeath;
-const char* m_SpriteFilenameDeath;
-int m_SpriteColumnsDeath;
-int m_SpriteLinesDeath;
-float m_DeathDuration = 2.f;
-float m_ScaleDeath;
+const char* m_SpriteFilenameDeath = ".\\.\\Ressources\\Interactables\\Impacts.png";
+int m_SpriteColumnsDeath = 5;
+int m_SpriteLinesDeath = 6;
+float m_DeathDuration = 0.4f;
+float m_ScaleDeath = APP_VIRTUAL_SCALE*3.f;
+float m_DeltaZSpriteDeath = 0.0f;
 
 
-bool m_CurrentDeathTimer = 0.0f;
+float m_CurrentDeathTimer = 0.0f;
 bool m_bIsWaitingEndDeath = false;
 bool m_bIsActivated = true;
 bool m_bIsDeathEndOfMap = false;
@@ -86,7 +92,7 @@ void SetGameManager(GameManager* gameManager){ m_GameManager  = gameManager;}
 
 void Init();
 void Init(App::Vector2 InitialLocation);
-virtual void InitializeGameObjectDatas() = 0;
+virtual void InitializeGameObjectDatas();
 virtual void Update(float Deltatime);
 virtual void Render();
 void Destroy();

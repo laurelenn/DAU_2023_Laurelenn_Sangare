@@ -244,7 +244,7 @@ void MapManager::Update(float Deltatime)
 	#pragma endregion
 }
 
-void MapManager::Render()
+void MapManager::RenderBg()
 {
 
 #pragma region Bg
@@ -265,8 +265,11 @@ void MapManager::Render()
 	}
 #pragma endregion
 
+}
 
 
+void MapManager::RenderGD()
+{
 #pragma region Gameplay
 
 
@@ -285,10 +288,8 @@ void MapManager::Render()
 		m_NextGameplayMap->Render();
 	}
 #pragma endregion
-
-
-
 }
+
 
 void MapManager::RenderLD()
 {

@@ -32,6 +32,9 @@ public:
     float GetScale()  const { return m_scale;  }
     unsigned int GetFrame()  const { return m_frame; }
 	void SetColor(float r, float g, float b) { m_red = r; m_green = g; m_blue = b; }
+    float GetRed(){return m_red;}
+    float GetBlue(){return m_blue;}
+    float GetGreen(){return m_green;}
     void CreateAnimation( unsigned int id, float speed, const std::vector<int> &frames)
     {
         sAnimation anim;        
@@ -40,9 +43,15 @@ public:
         anim.m_frames = frames;
         m_animations.push_back(anim);        
     };
+    void StartBlinking(float BlinkDuration, float SpeedBlink){m_BlinkDuration = BlinkDuration, m_CurrentBlinkTimer = 0.f; m_bIsBlinking = true; m_SpeedBlink = SpeedBlink;}
+    void UpdateBlinking(float dt);
 
     bool m_OverrideScales = false;
 private:
+    float m_BlinkDuration = 1.f;
+    float m_CurrentBlinkTimer = 0.f;
+    bool m_bIsBlinking = false;
+    float m_SpeedBlink = 1.f;
     void CalculateUVs();
     GLuint m_texture;
     float m_xpos = 0.0F;

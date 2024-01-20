@@ -29,7 +29,7 @@ class Projectile :
 public :  
     Projectile(ProjectileType type, float Damage, float Scale, float Speed, const char* overridedFilename);
 
-    void InitializeGameObjectDatas() override;
+    void InitializeGameObjectDatas();
 
     void Update(float deltaTime) override;
 

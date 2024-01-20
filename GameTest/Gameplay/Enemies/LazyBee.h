@@ -5,7 +5,7 @@ class LazyBee :
 {
 public : 
     LazyBee();
-    void InitializeGameObjectDatas() override;
+    void InitializeGameObjectDatas();
 
 };
 

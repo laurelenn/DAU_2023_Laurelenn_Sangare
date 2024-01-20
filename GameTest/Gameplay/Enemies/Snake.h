@@ -15,7 +15,7 @@ class Snake :
 public:
     Snake();
 
-    void InitializeGameObjectDatas() override;
+    void InitializeGameObjectDatas();
 
     void Update(float deltaTime) override;
 

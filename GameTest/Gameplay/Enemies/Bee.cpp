@@ -21,6 +21,7 @@ Bee::Bee()
 
 void Bee::InitializeGameObjectDatas()
 {
+	Enemy::InitializeGameObjectDatas();
 	m_LifeManager = new LifeManager(30.f);
 	m_SpriteColumns = 4;
 	m_SpriteLines = 1;

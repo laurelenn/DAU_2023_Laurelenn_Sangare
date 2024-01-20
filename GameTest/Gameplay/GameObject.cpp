@@ -22,6 +22,20 @@ void GameObject::Init(App::Vector2 InitialLocation)
 	}
 }
 
+void GameObject::InitializeGameObjectDatas()
+{
+	m_SpriteDeath = App::CreateSprite(m_SpriteFilenameDeath, m_SpriteColumnsDeath, m_SpriteLinesDeath);
+	m_SpriteDeath->CreateAnimation(AnimImpact::ImpactBlop, 4.0f / 50.f, { 0,1,2,3,4, 4, 9 });
+	m_SpriteDeath->CreateAnimation(AnimImpact::ImpactCircleExplode, 4.0f / 50.f, {5,6,7,8, 8,9 });
+	m_SpriteDeath->CreateAnimation(AnimImpact::ImpactCircleStar, 4.0f / 50.f, {10,11,12,13,14, 14,9 });
+	m_SpriteDeath->CreateAnimation(AnimImpact::ImpactCircle, 4.0f / 50.f, {15,16,17,18,19,19,9 });
+	m_SpriteDeath->CreateAnimation(AnimImpact::ImpactExplosion, 5.0f / 50.f, {20,21,22,23,24,24,9 });
+	m_SpriteDeath->CreateAnimation(AnimImpact::ImpactSimple, 4.0f / 50.f, {25,26,27,28,29,29,9 });
+
+	m_SpriteDeath->SetScale(m_ScaleDeath);
+	m_SpriteDeath->SetAnimation(AnimImpact::ImpactBlop);
+}
+
 void GameObject::Update(float Deltatime) // ms
 {
 	if (m_bIsActivated && !m_bIsWaitingEndDeath)
@@ -59,25 +73,42 @@ void GameObject::Update(float Deltatime) // ms
 	}
 	else if (m_bIsWaitingEndDeath)
 	{
-		m_CurrentDeathTimer+=Deltatime;
+		m_CurrentDeathTimer+=Deltatime/1000.f;
 		if (m_SpriteDeath)
 		{
-			m_Sprite->Update(Deltatime);
-		}
+			m_SpriteDeath->Update(Deltatime);
 
-		if (m_CurrentDeathTimer >= m_DeathDuration)
+			if (m_CurrentDeathTimer >= m_DeathDuration)
+			{
+				m_bIsWaitingEndDeath = false;
+				Destroy();
+			}
+		}
+		else
 		{
 			m_bIsWaitingEndDeath = false;
 			Destroy();
 		}
+
+		
 	}
 }
 
 void GameObject::Render()
 {
-	if (m_Sprite)
+	if (!m_bIsWaitingEndDeath)
 	{
-		m_Sprite->Draw();
+		if (m_Sprite)
+		{
+			m_Sprite->Draw();
+		}
+	}
+	else
+	{
+		if (m_SpriteDeath)
+		{
+			m_SpriteDeath->Draw();
+		}
 	}
 
 	if (m_Collision && m_Collision->m_bDrawdebug && m_Collision->m_bIsActivated)
@@ -119,6 +150,11 @@ void GameObject::SetPosition(float x, float z)
 	{
 		m_Sprite->SetPosition(x, z+ m_DeltaZSprite);
 	}
+
+	if (m_SpriteDeath)
+	{
+		m_SpriteDeath->SetPosition(x, z + m_DeltaZSpriteDeath);
+	}
 	if (m_Collision)
 	{
 		m_Collision->SetPosition(x, z + m_DeltaZSprite);
@@ -143,9 +179,13 @@ bool GameObject::ReachEndMap()
 
 void GameObject::ApplyDamages(float damages)
 { 
-   	if (damages >= 0)
+   	if (damages >= 0 && !m_LifeManager->m_bIsInvincible && !m_LifeManager->m_bIsDead)
 	{
 		m_LifeManager->ApplyDamage(damages);
+		if (m_Sprite)
+		{
+			m_Sprite->StartBlinking(m_BlinkDurationOnHit, m_SpeedBlink);
+		}
 		if (m_LifeManager->m_bIsDead)
 		{
 			Death();
@@ -160,7 +200,7 @@ void GameObject::Death()
 		m_Collision->m_bIsActivated = false;
 	}
 
-	if (m_bIsDeathEndOfMap)
+	if (!m_bIsDeathEndOfMap)
 	{
 		m_bIsWaitingEndDeath = true;
 	}

@@ -20,7 +20,7 @@ CircleCollisionComponent * m_SphereCollision;
 public : 
     SlimeBlue();
 
-    void InitializeGameObjectDatas() override;
+    void InitializeGameObjectDatas();
 
     void Update(float deltaTime) override;
 

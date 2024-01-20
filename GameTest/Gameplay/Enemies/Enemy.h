@@ -21,7 +21,7 @@ int m_MalusScoreOnHit = 0;
 #pragma region FUNCTIONS
     Enemy();
 
-    void InitializeGameObjectDatas() override;
+    void InitializeGameObjectDatas();
 
     void Update(float Deltatime) override;
 

@@ -51,9 +51,15 @@ public :
 	float m_SpeedMulti = 1.f;
  private : 
 	float m_InitialSpeedMulti = 1.f;
-	float m_AdditionalSpeedMulti = 0.2f;
+	float m_AdditionalSpeedMulti = 0.3f;
 	float m_StepSpeedMulti =  1000.0;
 	float m_MaxMultiSpeed = 2.6;
+
+	//Runtime
+	bool m_bAskForGameOver = false;
+	float m_DurationBeforeGameOver = 1.f;
+	float m_CurrentDurationGameOver = 0.f;
+
 #pragma endregion
 
 
@@ -63,10 +69,19 @@ public :
 
 	void Init();
 	void Update(float DeltaTime);
+	void UpdatePreStart(float DeltaTime);
+	void UpdateStarted(float DeltaTime);
+	void UpdateGameOver(float DeltaTime);
+	void UpdateWaitingForRestart(float DeltaTime);
 	void Render();
 	void Shutdown();
 
+
+	void StartGame();
+	void AskGameOver() {m_bAskForGameOver = true; m_CurrentDurationGameOver = 0.f;};
 	void GameOver();
+	void Restart(bool m_bFirstTime);
+
 #pragma endregion
 
 };

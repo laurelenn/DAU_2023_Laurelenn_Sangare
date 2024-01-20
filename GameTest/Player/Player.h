@@ -69,7 +69,7 @@ PowerUpUFO* m_PowerUpEffectUFO = nullptr;
 public : 
 Player(float InitialLife, float Scale);
 
-void InitializeGameObjectDatas() override;
+void InitializeGameObjectDatas();
 
 void ActivatePowerUp(PowerUpType type);
 void DeactivatePowerUp(PowerUpType type);
