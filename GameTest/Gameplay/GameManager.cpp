@@ -128,6 +128,17 @@ void GameManager::Render()
 			{
 				m_SpritePreStart->Draw();
 			}
+
+			//Credits 
+
+			char textLaulau[64];
+			char textUbi[64];
+
+			sprintf(textLaulau, "Created by : (c) Laurelenn Sangare - 2023-2024");
+			sprintf(textUbi, "Thanks to : Ronan Bel, DAU Team");
+
+			App::Print(APP_VIRTUAL_WIDTH*0.05f, APP_VIRTUAL_HEIGHT /20.f, textLaulau, 1.0f, 1.0f, 1.0f, GLUT_BITMAP_HELVETICA_12);
+			App::Print(APP_VIRTUAL_WIDTH * 0.85f, APP_VIRTUAL_HEIGHT/20.f, textUbi, 1.0f, 1.0f, 1.0f, GLUT_BITMAP_HELVETICA_12);
 			break;
 
 		case(EGameState::Started):
@@ -174,6 +185,7 @@ void GameManager::Render()
 				char textDistance[64];
 				char textBonus[64];
 				char textMalus[64];
+
 				sprintf(textScore, "%d", m_Score);
 				sprintf(textDistance, "%dm", m_DistanceReached);
 				sprintf(textBonus, "%d", m_KillBonus);
@@ -184,6 +196,17 @@ void GameManager::Render()
 				App::Print(APP_VIRTUAL_WIDTH / 2.05f, APP_VIRTUAL_HEIGHT / 3.6f, textBonus, 1.0f, 1.0f, 1.0f, GLUT_BITMAP_TIMES_ROMAN_24);
 				App::Print(APP_VIRTUAL_WIDTH / 2.05f, APP_VIRTUAL_HEIGHT / 5.f, textMalus, 1.0f, 1.0f, 1.0f, GLUT_BITMAP_TIMES_ROMAN_24);
 
+
+				//Credits 
+
+				char textLaulau[64];
+				char textUbi[64];
+
+				sprintf(textLaulau, "Created by : (c) Laurelenn Sangare - 2023-2024");
+				sprintf(textUbi, "Thanks to : Ronan Bel, DAU Team");
+
+				App::Print(APP_VIRTUAL_WIDTH * 0.05f, APP_VIRTUAL_HEIGHT / 20.f, textLaulau, 1.0f, 1.0f, 1.0f, GLUT_BITMAP_HELVETICA_12);
+				App::Print(APP_VIRTUAL_WIDTH * 0.85f, APP_VIRTUAL_HEIGHT / 20.f, textUbi, 1.0f, 1.0f, 1.0f, GLUT_BITMAP_HELVETICA_12);
 			}
 			break;
 	}
