@@ -14,7 +14,7 @@ Snake::Snake()
 	m_DamageCollisionPlayer = 15.f;
 	m_SpeedX = 0.f;
 	m_SpeedZ = 60.f;
-	m_MaxZ = HEIGHT_FLOOR_1-m_Height/2.5f;
+	m_MaxZ = HEIGHT_FLOOR_1-m_Height/2.f;
 	m_MinZ = HEIGHT_FLOOR_0-m_Height / 2.f;
 }
 

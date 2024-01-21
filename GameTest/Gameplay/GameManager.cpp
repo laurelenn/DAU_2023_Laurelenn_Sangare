@@ -39,7 +39,7 @@ void GameManager::Init()
 	
 #pragma endregion
 
-	#pragma region Score
+#pragma region Score
 		m_GameTime = 0.0f;
 		m_DistanceReached = 0;
 		m_KillBonus = 0;
@@ -55,7 +55,7 @@ void GameManager::Init()
 	#pragma endregion
 
 	m_SpeedMulti = m_InitialSpeedMulti;
-	m_GameState = EGameState::Started; // To do : Move after gamre state manager
+	ChangeGameState(EGameState::Started);
 }
 
 //------------------------------------------------------------------------
@@ -126,6 +126,7 @@ void GameManager::UpdateStarted(float DeltaTime)
 
 void GameManager::UpdateGameOver(float DeltaTime)
 {
+
 }
 
 void GameManager::UpdateWaitingForRestart(float DeltaTime)
@@ -178,13 +179,48 @@ void GameManager::Shutdown()
 	}
 }
 
+void GameManager::ChangeGameState(EGameState state)
+{
+	switch (state) 
+	{
+		case (EGameState::PreStart) :
+			if (m_GameState == EGameState::WaitingForRestart)
+			{
+				m_GameState = state;
+			}
+		break;
+
+		case(EGameState::Started) : 
+			if (m_GameState == EGameState::PreStart)
+			{
+				App::PlaySound(".\\.\\Ressources\\Sounds\\Music1.wav", true);
+				m_GameState = state;
+			}
+		break;
+		case(EGameState::GameOver):
+			if (m_GameState == EGameState::Started)
+			{
+				App::StopSound(".\\.\\Ressources\\Sounds\\Music1.wav");
+				App::PlaySound(".\\.\\Ressources\\Sounds\\GameOver.wav", false);
+				m_GameState = state;
+			}
+			break;
+		case(EGameState::WaitingForRestart):
+			if (m_GameState == EGameState::GameOver)
+			{
+				m_GameState = state;
+			}
+			break;
+	}
+}
+
 void GameManager::StartGame()
 {
 }
 
 void GameManager::GameOver()
 {
-	m_GameState = EGameState::GameOver;
+	ChangeGameState(EGameState::GameOver);
 }
 
 void GameManager::Restart(bool m_bFirstTime)

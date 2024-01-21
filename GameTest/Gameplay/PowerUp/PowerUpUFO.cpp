@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "../App/app.h"
 #include "PowerUpUFO.h"
 #include "../GameManager.h"
 #include "../Enemies/Enemy.h"
@@ -35,6 +36,10 @@ void PowerUpUFO::InitializeGameObjectDatas()
 
 void PowerUpUFO::Update(float Deltatime)
 {
+	if (!App::IsSoundPlaying(".\\.\\.\\Ressources\\Sounds\\UFO.wav"))
+	{
+		App::PlaySound(".\\.\\.\\Ressources\\Sounds\\UFO.wav", false);
+	}
 	GameObject::Update(Deltatime);
 	if (this && m_GameManager && m_GameManager->m_MapManager)
 	{
@@ -104,6 +109,7 @@ void PowerUpUFO::Death()
 		m_Player->m_PowerUpEffectUFO = nullptr;
 		delete m_Player->m_PowerUpEffectUFO;
 	}
-	
+	App::StopSound(".\\.\\.\\Ressources\\Sounds\\UFO.wav");
+
 	GameObject::Death();
 }

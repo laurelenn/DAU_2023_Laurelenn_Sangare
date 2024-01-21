@@ -9,9 +9,8 @@
 
 const std::vector<GameplayDatasMap> Map_DatasGameplay::m_LD_FirstMap =
 {
-    GameplayDatasMap(Monster_Ghost, Floor_Level0, .0f, APP_VIRTUAL_WIDTH*APP_VIRTUAL_SCALE),
-    GameplayDatasMap(Monster_BlockerGreen, Floor_Level0, .0f, 1000.0f),
-    GameplayDatasMap(Monster_SlimeBlue, Floor_Level0, .0f, 1600.0f)
+    GameplayDatasMap(Monster_SlimeBlue, Floor_Level0, .0f, 2000.0f),
+    GameplayDatasMap(Monster_SlimeBlue, Floor_Level0, .0f, 2500.0f)
 };
 
 
@@ -27,7 +26,7 @@ const std::vector<GameplayDatasMap> Map_DatasGameplay::m_LD_Easy_1 =
 
 const std::vector<GameplayDatasMap> Map_DatasGameplay::m_LD_Easy_2 =
 {
-    GameplayDatasMap(Monster_BlockerGreen, Floor_Level0, 20.0f, 400.0f),
+    GameplayDatasMap(Monster_BlockerGreen, Floor_Level0, 0.0f, 400.0f),
     GameplayDatasMap(Monster_Bee, Floor_Level0, 50.0f, 500.0f),
     GameplayDatasMap(Monster_Bee, Floor_Level1, 40.0f, 750.0f),
     GameplayDatasMap(Monster_BeeLazy, Floor_Level1, 0.0f, 1100.0f),
@@ -84,9 +83,9 @@ const std::vector<GameplayDatasMap> Map_DatasGameplay::m_LD_Easy_6 =
 
 const std::vector<GameplayDatasMap> Map_DatasGameplay::m_LD_Easy_7 =
 {
-    GameplayDatasMap(Monster_BlockerGreen, Floor_Level0, 10.0f, 400.0f),
+    GameplayDatasMap(Monster_BlockerGreen, Floor_Level0, 0.0f, 400.0f),
     GameplayDatasMap(Monster_BeeLazy, Floor_Level1, 10.0f, 800.0f),
-    GameplayDatasMap(Monster_BlockerGreen, Floor_Level0, 30.0f, 1200.0f),
+    GameplayDatasMap(Monster_BlockerGreen, Floor_Level0, 0.0f, 1400.0f),
     GameplayDatasMap(Monster_Snake, Floor_Level0, 30.0f, 1100.0f),
     GameplayDatasMap(PowerUpRate, Floor_Level0, 20.0f, 1000.0f),
     GameplayDatasMap(PowerUpLife, Floor_Level1, 20.0f, 1000.0f),
@@ -97,13 +96,13 @@ const std::vector<GameplayDatasMap> Map_DatasGameplay::m_LD_Easy_7 =
 
 const std::vector<GameplayDatasMap> Map_DatasGameplay::m_LD_Easy_8 =
 {
-    GameplayDatasMap(Monster_SlimeBlue, Floor_Level0, 10.0f, 400.0f),
-    GameplayDatasMap(Obstacle_Pikes, Floor_Level0, 30.0f, 500.0f),
+    GameplayDatasMap(Monster_SlimeBlue, Floor_Level0, 0.0f, 400.0f),
+    GameplayDatasMap(Obstacle_Pikes, Floor_Level0, 0.0f, 500.0f),
     GameplayDatasMap(Monster_Ghost, Floor_Level1, 10.0f, 800.0f),
     GameplayDatasMap(Monster_Ghost, Floor_Level0, 20.0f, 900.0f),
-    GameplayDatasMap(Monster_SlimeBlue, Floor_Level0, 30.0f, 1200.0f),
-    GameplayDatasMap(Obstacle_Pikes, Floor_Level0, 30.0f, 1400.0f),
-    GameplayDatasMap(Monster_SlimeBlue, Floor_Level0, 30.0f, 1400.0f),
+    GameplayDatasMap(Monster_SlimeBlue, Floor_Level0, 0.0f, 1200.0f),
+    GameplayDatasMap(Obstacle_Pikes, Floor_Level0, 0.0f, 1400.0f),
+    GameplayDatasMap(Monster_SlimeBlue, Floor_Level0, 0.0f, 1400.0f),
 
 };
 
@@ -126,7 +125,7 @@ const std::vector<GameplayDatasMap> Map_DatasGameplay::m_LD_Easy_10 =
     GameplayDatasMap(Monster_Snake, Floor_Level0, 10.0f, 800.0f),
     GameplayDatasMap(PowerUpShield, Floor_Level1, 20.0f, 1000.0f),
     GameplayDatasMap(PowerUpRate, Floor_Level0, .0f, 1000.0f),
-    GameplayDatasMap(Monster_BlockerGreen, Floor_Level0, 20.0f, 900.0f),
+    GameplayDatasMap(Monster_BlockerGreen, Floor_Level0, 0.0f, 900.0f),
     GameplayDatasMap(Monster_Ghost, Floor_Level0, 20.0f, 300.0f),
     GameplayDatasMap(Obstacle_Pikes, Floor_Level0, 20.0f, 1100.0f)
 };
@@ -134,11 +133,11 @@ const std::vector<GameplayDatasMap> Map_DatasGameplay::m_LD_Easy_10 =
 
 const std::vector<GameplayDatasMap> Map_DatasGameplay::m_LD_Easy_11 =
 {
-    GameplayDatasMap(Obstacle_Pikes, Floor_Level0, 20.0f, 600.0f),
+    GameplayDatasMap(Obstacle_Pikes, Floor_Level0, 0.0f, 600.0f),
     GameplayDatasMap(Monster_Snake, Floor_Level0, 10.0f, 500.0f),
     GameplayDatasMap(PowerUpShield, Floor_Level0, 20.0f, 1000.0f),
-    GameplayDatasMap(Monster_BlockerGreen, Floor_Level0, 30.0f, 1400.0f),
-    GameplayDatasMap(Monster_BlockerGreen, Floor_Level0, 30.0f, 1800.0f),
+    GameplayDatasMap(Monster_BlockerGreen, Floor_Level0, 0.0f, 1400.0f),
+    GameplayDatasMap(Monster_BlockerGreen, Floor_Level0, 0.0f, 1800.0f),
     GameplayDatasMap(Monster_BeeLazy, Floor_Level0, 20.0f, 900.0f),
     GameplayDatasMap(Monster_BeeLazy, Floor_Level1, 20.0f, 1400.0f)
 };

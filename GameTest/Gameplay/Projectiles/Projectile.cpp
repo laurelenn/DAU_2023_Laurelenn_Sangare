@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "../App/app.h"
 #include "../Projectiles/Projectile.h"
 #include "../GameManager.h"
 #include "../Gameplay/Collisions/CircleCollisionComponent.h"
@@ -58,6 +59,8 @@ void Projectile::InitializeGameObjectDatas()
 			m_Sprite = App::CreateSprite(m_SpriteFilename, m_SpriteColumns, m_SpriteLines);
 			m_Sprite->CreateAnimation(0, 0.1f, { 0,1,2,3 });
 			m_SpriteDeath->SetAnimation(ImpactCircleStar);
+			m_SoundFilenameDeath = ".\\.\\Ressources\\Sounds\\PlayerLaunch.wav";
+			App::PlaySound(".\\.\\Ressources\\Sounds\\PlayerFire.wav", false);
 			break;
 
 		case ProjectileType::EnemyProjectile:
@@ -71,6 +74,8 @@ void Projectile::InitializeGameObjectDatas()
 			m_Sprite->CreateAnimation(0, 0.1, {0,1,2,3});
 			m_SpriteDeath->SetAnimation(ImpactSimple);
 			m_SpriteDeath->SetAngle(PI);
+			m_SoundFilenameDeath = ".\\.\\Ressources\\Sounds\\PlayerHit.wav";
+
 			break;
 
 		default:
@@ -82,6 +87,8 @@ void Projectile::InitializeGameObjectDatas()
 			m_Sprite->SetScale(m_Scale);
 			m_Sprite->SetAnimation(0);
 		}
+
+
 }
 
 void Projectile::Update(float deltaTime)
@@ -124,6 +131,10 @@ void Projectile::Update(float deltaTime)
 					{
 						m_HitObjects.push_back(m_GameManager->m_Player);
 						m_GameManager->m_Player->m_LifeManager->ApplyDamage(m_Damages);
+						if (m_bPlayDeathSound)
+						{
+							App::PlaySound(m_SoundFilenameDeath, false);
+						}
 						Death();
 					}
 				}
@@ -188,6 +199,10 @@ void Projectile::CheckMapCollision(GameplayMap* map)
 						{
 							m_HitObjects.push_back(object);
 							dynamic_cast<Enemy*>(object)->ApplyDamages(m_Damages);
+							if (m_bPlayDeathSound)
+							{
+								App::PlaySound(m_SoundFilenameDeath, false);
+							}
 							Death();							
 						}
 					}

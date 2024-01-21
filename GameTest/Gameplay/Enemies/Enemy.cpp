@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "../App/app.h"
 #include "Enemy.h"
 #include "../GameManager.h"
 #include <algorithm>
@@ -59,6 +60,10 @@ void Enemy::ApplyDamages(float damages)
 			if (m_GameManager)
 			{
 				m_GameManager->m_KillBonus+=m_ScoreOnKill;
+			}
+			if (m_bPlayDeathSound)
+			{
+				App::PlaySound(m_SoundFilenameDeath, false);
 			}
 			Death();
 		}

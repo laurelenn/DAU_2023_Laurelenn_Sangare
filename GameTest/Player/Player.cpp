@@ -4,6 +4,7 @@
 #include "../Gameplay/GameManager.h"
 #include "../Gameplay/Projectiles/ProjectileSpawner.h"
 #include "../Gameplay/PowerUp/PowerUpUFO.h"
+#include "../App/app.h"
 
 
 Player::Player(float InitialLife, float Scale)
@@ -15,6 +16,7 @@ Player::Player(float InitialLife, float Scale)
 	m_LifeManager = new LifeManager(InitialLife);
 	m_Scale = Scale;
 	m_TypeObject = GameObjectType::Pawn;
+	m_SoundFilenameDeath = ".\\.\\Ressources\\Sounds\\PlayerExplosion.wav";
 }
 
 
@@ -266,6 +268,8 @@ void Player::Jump()
 	m_HeightJumpCurrentLevel = m_CurrentFloorLevel + m_HeightJump;
 	m_HeightConstantSpeed = m_HeightJumpCurrentLevel*0.95f;
 	m_Sprite->SetAnimation(AnimPlayer::ANIM_JUMP);
+	App::PlaySound(".\\.\\Ressources\\Sounds\\Jump.wav", false);
+
 }
 
 void Player::UpdateJump(float Deltatime)
@@ -320,14 +324,23 @@ void Player::EndJump()
 }
 #pragma endregion
 
+void Player::ApplyDamages(float damages)
+{
+	App::PlaySound(".\\.\\Ressources\\Sounds\\PlayerHit.wav", false);
+	GameObject::ApplyDamages(damages);
+}
 
 void Player::Death()
 {
-	GameObject::Death();
 	if (m_LifeManager->m_bIsDead && m_GameManager)
 	{
 		m_GameManager->AskGameOver();
 	}
+	if (m_bPlayDeathSound)
+	{
+		App::PlaySound(m_SoundFilenameDeath, false);
+	}
+	GameObject::Death();
 }
 
 void Player::Destroy()

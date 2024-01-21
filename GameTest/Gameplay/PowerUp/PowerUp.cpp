@@ -1,6 +1,8 @@
 #include "stdafx.h"
+#include "../App/app.h"
 #include "../PowerUp/PowerUp.h"
 #include "../GameManager.h"
+
 
 PowerUp::PowerUp(PowerUpType type) : m_PowerUpType(type)
 {
@@ -12,6 +14,7 @@ PowerUp::PowerUp(PowerUpType type) : m_PowerUpType(type)
 	m_TypeObject = GameObjectType::PowerUpBonus;
 	m_SpeedX = 0.f;
 	m_SpeedZ = 0.f;
+	m_SoundFilenameDeath = ".\\.\\.\\Ressources\\Sounds\\PowerUp.wav";
 }
 
 void PowerUp::InitializeGameObjectDatas()
@@ -65,7 +68,10 @@ void PowerUp::Update(float deltaTime)
 			{
 				m_GameManager->m_Player->ActivatePowerUp(m_PowerUpType);
 				m_bAlreadyHitPlayer = true;
-				// To do : Play sound
+				if (m_bPlayDeathSound)
+				{
+					App::PlaySound(m_SoundFilenameDeath, false);
+				}
 				Death();
 			}
 		}

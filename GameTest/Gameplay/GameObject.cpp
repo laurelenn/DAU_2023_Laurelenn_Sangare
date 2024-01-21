@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include <iostream>
 #include <type_traits>
-#include "../App/app.h"
 #include "../Gameplay/Collisions/CollisionComponent.h"
 #include "../Map/GameplayMap.h"
 #include "../Gameplay/GameManager.h"
@@ -193,6 +192,10 @@ void GameObject::ApplyDamages(float damages)
 		}
 		if (m_LifeManager->m_bIsDead)
 		{
+			if (m_bPlayDeathSound)
+			{
+				App::PlaySound(m_SoundFilenameDeath, false);
+			}
 			Death();
 		}
 	}
@@ -200,11 +203,6 @@ void GameObject::ApplyDamages(float damages)
 
 void GameObject::Death()
 {
-	//if (m_bPlayDeathSound)
-	//{
-	//	m_DeathSound.PlaySound(m_SoundFilenameDeath, 0);
-	//}
-
 	if (m_Collision)
 	{
 		m_Collision->m_bIsActivated = false;

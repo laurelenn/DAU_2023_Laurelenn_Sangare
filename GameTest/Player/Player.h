@@ -83,6 +83,7 @@ void Render() override;
 void Jump();
 void EndJump();
 
+void ApplyDamages(float damages);
 void Death() override;
 void Destroy();
 #pragma endregion

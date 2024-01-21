@@ -105,7 +105,7 @@ void SetActivated(bool Activate){m_bIsActivated = Activate;}
 void SetPosition(float x, float z);
 bool ReachEndMap();
 
-void ApplyDamages(float damages);
+virtual void ApplyDamages(float damages);
 virtual void Death();
 
 #pragma endregion

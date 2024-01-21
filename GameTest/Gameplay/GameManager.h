@@ -57,7 +57,7 @@ public :
 
 	//Runtime
 	bool m_bAskForGameOver = false;
-	float m_DurationBeforeGameOver = 1.f;
+	float m_DurationBeforeGameOver = 0.75f;
 	float m_CurrentDurationGameOver = 0.f;
 
 #pragma endregion
@@ -75,7 +75,7 @@ public :
 	void UpdateWaitingForRestart(float DeltaTime);
 	void Render();
 	void Shutdown();
-
+	void ChangeGameState(EGameState state);
 
 	void StartGame();
 	void AskGameOver() {m_bAskForGameOver = true; m_CurrentDurationGameOver = 0.f;};
