@@ -49,6 +49,8 @@ public :
 	ScoreHUD* m_ScoreHUD;
 
 	float m_SpeedMulti = 1.f;
+	bool m_bCooldownSpacePressed = false;
+
  private : 
 	float m_InitialSpeedMulti = 1.f;
 	float m_AdditionalSpeedMulti = 0.3f;

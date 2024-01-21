@@ -42,8 +42,19 @@ void GameManager::Update(float deltaTime)
 
 void GameManager::UpdatePreStart(float DeltaTime)
 {
-	if (App::IsKeyPressed(VK_LBUTTON))
+	if (m_bCooldownSpacePressed)
 	{
+		m_CurrentDelaySpacePressed += DeltaTime / 1000.f;
+		if (m_CurrentDelaySpacePressed >= 0.75f)
+		{
+			m_CurrentDelaySpacePressed = 0.f;
+			m_bCooldownSpacePressed = false;
+		}
+	}
+
+	if (App::IsKeyPressed(VK_SPACE) && !m_bCooldownSpacePressed)
+	{
+		m_bCooldownSpacePressed = true;
 		ChangeGameState(Started);
 	}
 
@@ -55,6 +66,15 @@ void GameManager::UpdatePreStart(float DeltaTime)
 
 void GameManager::UpdateStarted(float DeltaTime)
 {
+	if (m_bCooldownSpacePressed)
+	{
+		m_CurrentDelaySpacePressed+=DeltaTime/1000.f;
+		if (m_CurrentDelaySpacePressed >= 0.75f)
+		{
+			m_CurrentDelaySpacePressed = 0.f;
+			m_bCooldownSpacePressed = false;
+		}
+	}
 
 	if (m_Player && m_MapManager)
 	{
@@ -106,6 +126,7 @@ void GameManager::UpdateWaitingForRestart(float DeltaTime)
 {
 	if (App::IsKeyPressed(VK_SPACE))
 	{
+		m_bCooldownSpacePressed = true;
 		AskRestart();
 	}
 

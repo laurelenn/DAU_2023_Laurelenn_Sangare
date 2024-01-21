@@ -49,7 +49,7 @@ void Player::Update(float deltaTime)
 {
 	GameObject::Update(deltaTime);
 
-	if (App::IsKeyPressed(APP_KEYBOARD_JUMP_KEY) && !m_bIsJumping && m_GameManager && m_GameManager->m_GameState == EGameState::Started)
+	if (App::IsKeyPressed(APP_KEYBOARD_JUMP_KEY) && !m_bIsJumping && m_GameManager && m_GameManager->m_GameState == EGameState::Started && !m_GameManager->m_bCooldownSpacePressed)
 	{
 		Jump();
 	}
