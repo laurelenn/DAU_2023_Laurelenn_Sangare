@@ -27,7 +27,7 @@ class GameManager
 
 public : 
 
-	EGameState m_GameState = PreStart;
+	EGameState m_GameState = EGameState::PreStart;
 
 	// Map
 	MapManager* m_MapManager = nullptr;
@@ -59,6 +59,14 @@ public :
 	bool m_bAskForGameOver = false;
 	float m_DurationBeforeGameOver = 0.75f;
 	float m_CurrentDurationGameOver = 0.f;
+	float m_DurationBeforeWaitRestart = 3.f;
+	float m_CurrentDurationWaitRestart = 0.f;
+	float m_CurrentDelaySpacePressed = 0.f;
+
+	//Sprites
+	CSimpleSprite* m_SpritePreStart;
+	CSimpleSprite* m_SpriteGameOver;
+	CSimpleSprite* m_SpriteWaitRestart;
 
 #pragma endregion
 
@@ -77,10 +85,12 @@ public :
 	void Shutdown();
 	void ChangeGameState(EGameState state);
 
+	void PreStart();
 	void StartGame();
-	void AskGameOver() {m_bAskForGameOver = true; m_CurrentDurationGameOver = 0.f;};
+	void AskGameOver();
 	void GameOver();
-	void Restart(bool m_bFirstTime);
+	void WaitRestart();
+	void AskRestart();
 
 #pragma endregion
 

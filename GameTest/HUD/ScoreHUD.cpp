@@ -39,3 +39,9 @@ void ScoreHUD::Render()
     App::Print(PosX, m_Location.z - m_Location.z / 100.f, textBuffer, 1.0f, 1.0f, 1.0f, GLUT_BITMAP_TIMES_ROMAN_24);
 
 }
+
+void ScoreHUD::Destroy()
+{
+    delete m_Sprite;
+    m_Sprite = nullptr;
+}

@@ -40,7 +40,7 @@ void Player::InitializeGameObjectDatas()
 	m_DeltaZSpriteDeath = 25.f;
 	m_SpriteDeath->SetAnimation(AnimImpact::ImpactExplosion);
 
-	m_ProjectileSpawner = new ProjectileSpawner(this, App::Vector2{}, 2.f, 3, 0.5f, false, ProjectileType::PlayerProjectile, PLAYER_SCALE*2.f, 10, 500.f);
+	m_ProjectileSpawner = new ProjectileSpawner(this, App::Vector2{}, 1.5f, 3, 0.5f, false, ProjectileType::PlayerProjectile, PLAYER_SCALE*2.f, 10, 500.f);
 }
 
 
@@ -49,7 +49,7 @@ void Player::Update(float deltaTime)
 {
 	GameObject::Update(deltaTime);
 
-	if (App::IsKeyPressed(APP_KEYBOARD_JUMP_KEY) && !m_bIsJumping)
+	if (App::IsKeyPressed(APP_KEYBOARD_JUMP_KEY) && !m_bIsJumping && m_GameManager && m_GameManager->m_GameState == EGameState::Started)
 	{
 		Jump();
 	}
@@ -61,7 +61,7 @@ void Player::Update(float deltaTime)
 
 	if (m_ProjectileSpawner)
 	{
-		if (App::IsKeyPressed(APP_KEYBOARD_FIRE_KEY))
+		if (App::IsKeyPressed(APP_KEYBOARD_FIRE_KEY ))
 		{
 			if (m_ProjectileSpawner->bCanLaunchSalvo)
 			{

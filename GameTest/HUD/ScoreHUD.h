@@ -39,7 +39,7 @@ class ScoreHUD
 	void Init();
 	void Update(int newScore);
 	void Render();
-
+	void Destroy();
 	#pragma endregion
 };
 

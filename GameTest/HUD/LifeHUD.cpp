@@ -113,3 +113,14 @@ void LifeHUD::DrawHealthBar() {
 
 }
 
+void LifeHUD::Destroy()
+{
+    delete m_SpriteBgGauge;
+    delete m_SpriteGauge;
+    delete m_SpriteBgValue;
+
+    m_SpriteBgGauge = nullptr;
+    m_SpriteGauge = nullptr;
+    m_SpriteBgValue = nullptr;
+}
+

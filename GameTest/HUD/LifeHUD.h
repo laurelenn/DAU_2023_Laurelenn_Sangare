@@ -45,6 +45,7 @@ class LifeHUD
 	void Render();
 	void DrawHealthBar();
 	float GetPosGaugeX(){return m_SpriteBgGauge ? m_Location.x + (m_SpriteBgGauge->GetWidth() * m_ScaleX) / 2.f + m_DiffXLabel : 0.f;}
+	void Destroy();
 	#pragma endregion
 
 };
