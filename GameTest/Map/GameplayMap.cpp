@@ -60,7 +60,7 @@ void GameplayMap::Init()
 			std::mt19937 gen(rd());
 			std::uniform_real_distribution<> distrib(-DataGameplay.m_DeltaPosZ, DataGameplay.m_DeltaPosZ);
 
-			double deltaZ = distrib(gen);
+			float deltaZ = (float)distrib(gen);
 
 			// Final position on spawn
 			const float PositionXPlayer = m_GameManager->m_Player->m_Location.x;

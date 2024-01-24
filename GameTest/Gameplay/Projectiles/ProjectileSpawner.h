@@ -22,7 +22,7 @@ App::Vector2 m_DeltaPos;
 // Projectile
 ProjectileType m_TypeProjectile = PlayerProjectile;
 float m_ScaleProjectile = 1.f;
-int m_DamageProjectile = 10;
+float m_DamageProjectile = 10.f;
 float m_SpeedProjectile = 20.f;
 const char* m_FilenameProjectile = "";
 
@@ -43,13 +43,13 @@ bool bIsFiring = false;
 #pragma region FUNCTION
 
 ProjectileSpawner(GameObject* owner, App::Vector2 deltaPos, float delaySalvo, int nbProjBySalvo, float delayProjectiles, bool isAutomatic,
-    ProjectileType type, float scale, int damage, float speed)
+    ProjectileType type, float scale, float damage, float speed)
     : m_Owner(owner), m_DeltaPos(deltaPos), m_DelaySalvo(delaySalvo), m_NbProjBySalvo(nbProjBySalvo), m_DelayProjectiles(delayProjectiles),
     m_bIsAutomatic(isAutomatic), m_TypeProjectile(type), m_ScaleProjectile(scale),
     m_DamageProjectile(damage), m_SpeedProjectile(speed), CurrentTimerSalvo(delaySalvo){};
     
 ProjectileSpawner(GameObject* owner, App::Vector2 deltaPos, float delaySalvo, int nbProjBySalvo, float delayProjectiles, bool isAutomatic,
-    ProjectileType type, float scale, int damage, float speed, const char* filename)
+    ProjectileType type, float scale, float damage, float speed, const char* filename)
     : m_Owner(owner), m_DeltaPos(deltaPos), m_DelaySalvo(delaySalvo), m_NbProjBySalvo(nbProjBySalvo), m_DelayProjectiles(delayProjectiles),
     m_bIsAutomatic(isAutomatic), m_TypeProjectile(type), m_ScaleProjectile(scale),
     m_DamageProjectile(damage), m_SpeedProjectile(speed), m_FilenameProjectile(filename), CurrentTimerSalvo(delaySalvo) {};

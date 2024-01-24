@@ -117,7 +117,7 @@ void CSimpleSprite::Draw()
     glRotatef(m_angle * 180 / PI, 0.0f, 0.0f, 1.0f);     
     if (m_bIsBlinking) 
     {
-        float alphaRatio = sin(m_CurrentBlinkTimer * m_SpeedBlink); // Ajustez la fréquence selon vos besoins
+        float alphaRatio = (float)sin(m_CurrentBlinkTimer * m_SpeedBlink); // Ajustez la fréquence selon vos besoins
         glColor4f(m_red, m_green, m_blue, alphaRatio);
     }
     else 

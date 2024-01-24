@@ -54,8 +54,8 @@ public :
  private : 
 	float m_InitialSpeedMulti = 1.f;
 	float m_AdditionalSpeedMulti = 0.3f;
-	float m_StepSpeedMulti =  1000.0;
-	float m_MaxMultiSpeed = 2.6;
+	float m_StepSpeedMulti =  1000.0f;
+	float m_MaxMultiSpeed = 2.6f;
 
 	//Runtime
 	bool m_bAskForGameOver = false;

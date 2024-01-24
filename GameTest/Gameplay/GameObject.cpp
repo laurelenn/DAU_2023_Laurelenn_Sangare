@@ -183,7 +183,7 @@ bool GameObject::ReachEndMap()
 
 void GameObject::ApplyDamages(float damages)
 { 
-   	if (damages >= 0 && !m_LifeManager->m_bIsInvincible && !m_LifeManager->m_bIsDead)
+   	if (damages >= 0 && !m_LifeManager->m_bIsInvincible)
 	{
 		m_LifeManager->ApplyDamage(damages);
 		if (m_Sprite)

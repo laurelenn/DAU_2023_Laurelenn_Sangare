@@ -35,7 +35,7 @@ void BlockerGreen::InitializeGameObjectDatas()
 	m_Sprite->SetScale(m_Scale);
 	m_Sprite->SetAnimation(AnimBlockerGreen::IdleBlockerGreen);
 
-	m_ProjectileSpawner = new ProjectileSpawner(this, App::Vector2{}, 1.8f, 1, 0.1f, true, ProjectileType::EnemyProjectile, m_Scale * 1.f, 2.f, -600.f);
+	m_ProjectileSpawner = new ProjectileSpawner(this, App::Vector2{}, 1.8f, 1, 0.1f, true, ProjectileType::EnemyProjectile, m_Scale * 1.f, 2, -600.f);
 	if (m_ProjectileSpawner && m_OwnerGameplayMap)
 	{
 		m_ProjectileSpawner->m_OwnerGameplayMap;

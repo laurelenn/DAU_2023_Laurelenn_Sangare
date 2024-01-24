@@ -18,7 +18,7 @@ void ScoreHUD::Update(int newScore)
 {
     if (m_Sprite)
     {
-        m_Sprite->Update(0.1);
+        m_Sprite->Update(0.1f);
     }
     m_Score = newScore;
 }

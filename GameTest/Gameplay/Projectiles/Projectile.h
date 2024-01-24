@@ -21,7 +21,7 @@ class Projectile :
         std::vector<GameObject*> m_HitObjects;
 
         public :
-        float m_Damages = 10;
+        float m_Damages = 10.f;
 #pragma endregion
 
 #pragma region FUNCTIONS

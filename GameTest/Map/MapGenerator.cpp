@@ -56,14 +56,14 @@ std::vector<GameplayDatasMap> MapGenerator::SelectGameplayMap(bool isFirstMap)
 
     if (isFirstMap)
     {
-        std::uniform_int_distribution<> distrib(0, Map_DatasGameplay::m_ArrayLD_FirstMaps.size() - 1);
+        std::uniform_int_distribution<> distrib(0, (int)Map_DatasGameplay::m_ArrayLD_FirstMaps.size() - 1);
         const int randomIndex = distrib(gen);
         selectedLD = Map_DatasGameplay::m_ArrayLD_FirstMaps[randomIndex];
 
     }
     else
     {
-        std::uniform_int_distribution<> distrib(0, Map_DatasGameplay::m_ArrayLD_Easy.size() - 1);
+        std::uniform_int_distribution<> distrib(0, (int)Map_DatasGameplay::m_ArrayLD_Easy.size() - 1);
         const int randomIndex = distrib(gen);
         selectedLD = Map_DatasGameplay::m_ArrayLD_Easy[randomIndex];
 

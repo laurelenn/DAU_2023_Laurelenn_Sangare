@@ -71,7 +71,7 @@ void Projectile::InitializeGameObjectDatas()
 			m_SpriteColumns = 1;
 			m_SpriteLines = 5;
 			m_Sprite = App::CreateSprite(m_SpriteFilename, m_SpriteColumns, m_SpriteLines);
-			m_Sprite->CreateAnimation(0, 0.1, {0,1,2,3});
+			m_Sprite->CreateAnimation(0, 0.1f, {0,1,2,3});
 			m_SpriteDeath->SetAnimation(ImpactSimple);
 			m_SpriteDeath->SetAngle(PI);
 			m_SoundFilenameDeath = ".\\.\\Ressources\\Sounds\\PlayerHit.wav";

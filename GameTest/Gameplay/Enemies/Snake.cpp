@@ -30,7 +30,7 @@ void Snake::InitializeGameObjectDatas()
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_real_distribution<> dis(2.f, 5.f);
-	float randomSpeedAnim = dis(gen);
+	float randomSpeedAnim = (float)dis(gen);
 	m_SpeedAnimIdle = randomSpeedAnim;
 
 	m_Sprite = App::CreateSprite(m_SpriteFilename, m_SpriteColumns, m_SpriteLines);
@@ -45,7 +45,7 @@ void Snake::InitializeGameObjectDatas()
 	std::random_device rd2;
 	std::mt19937 gen2(rd2());
 	std::uniform_real_distribution<> dis2(-10.f, 20.f);
-	float randomSpeedDelta = dis2(gen2);
+	float randomSpeedDelta = (float)dis2(gen2);
 	m_SpeedZ += randomSpeedDelta;
 
 	RandomSpeedDirection();
