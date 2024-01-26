@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Ghost" Collapsed="true">
+    <Position X="1" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAoBAAEAAAAAAA=</HashCode>
+      <FileName>Gameplay\Enemies\Ghost.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BackgroundMap" Collapsed="true">
+    <Position X="17" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAQAAAAAAAAAAAAAAAAgAABAAgAAABACAAAAAAE=</HashCode>
+      <FileName>Map\BackgroundMap.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bee" Collapsed="true">
+    <Position X="6.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAACAAABAAAAAAAAAAAgBAAAAAAAAAA=</HashCode>
+      <FileName>Gameplay\Enemies\Bee.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlockerGreen" Collapsed="true">
+    <Position X="9" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAQAAAAAAAAAAAAAAAAggBBAAAAAQAAA=</HashCode>
+      <FileName>Gameplay\Enemies\BlockerGreen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CapsuleCollisionComponent" Collapsed="true">
+    <Position X="5.75" Y="16.25" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAQAAAGAAAAAAAAhAAgAAgAAAAAoAAAA=</HashCode>
+      <FileName>Gameplay\Collisions\CapsuleCollisionComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CircleCollisionComponent" Collapsed="true">
+    <Position X="9.25" Y="16.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAIAQAAAAEAAAAAAAAAAgAAAAAAAAIAAgA=</HashCode>
+      <FileName>Gameplay\Collisions\CircleCollisionComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CollisionComponent" Collapsed="true">
+    <Position X="5.5" Y="14.25" Width="3" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAIMAIACAAAQAAAAAAAAAAAAAABgAAAAAAAAKAAAA=</HashCode>
+      <FileName>Gameplay\Collisions\CollisionComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enemy">
+    <Position X="7" Y="1.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAAAAAMAAAAAEAAAAAAEAAEAAABBAAAAEAAAA=</HashCode>
+      <FileName>Gameplay\Enemies\Enemy.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager">
+    <Position X="27.5" Y="0.5" Width="6.25" />
+    <Members>
+      <Method Name="AskGameOver" Hidden="true" />
+      <Method Name="AskRestart" Hidden="true" />
+      <Method Name="GameManager" Hidden="true" />
+      <Field Name="m_AdditionalSpeedMulti" Hidden="true" />
+      <Field Name="m_bAskForGameOver" Hidden="true" />
+      <Field Name="m_bCooldownSpacePressed" Hidden="true" />
+      <Field Name="m_CurrentDelaySpacePressed" Hidden="true" />
+      <Field Name="m_CurrentDurationGameOver" Hidden="true" />
+      <Field Name="m_CurrentDurationWaitRestart" Hidden="true" />
+      <Field Name="m_DistanceReached" Hidden="true" />
+      <Field Name="m_DurationBeforeGameOver" Hidden="true" />
+      <Field Name="m_DurationBeforeWaitRestart" Hidden="true" />
+      <Field Name="m_HeightMap" Hidden="true" />
+      <Field Name="m_InitialSpeedMulti" Hidden="true" />
+      <Field Name="m_KillBonus" Hidden="true" />
+      <Field Name="m_MalusScore" Hidden="true" />
+      <Field Name="m_MaxMultiSpeed" Hidden="true" />
+      <Field Name="m_SpeedMap" Hidden="true" />
+      <Field Name="m_SpeedMulti" Hidden="true" />
+      <Field Name="m_SpriteGameOver" Hidden="true" />
+      <Field Name="m_SpritePreStart" Hidden="true" />
+      <Field Name="m_SpriteWaitRestart" Hidden="true" />
+      <Field Name="m_StepSpeedMulti" Hidden="true" />
+      <Field Name="m_WidthMap" Hidden="true" />
+      <Method Name="PreStart" Hidden="true" />
+      <Method Name="UpdateGameOver" Hidden="true" />
+      <Method Name="UpdatePreStart" Hidden="true" />
+      <Method Name="UpdateStarted" Hidden="true" />
+      <Method Name="UpdateWaitingForRestart" Hidden="true" />
+      <Method Name="WaitRestart" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>oAYQwgQDkACAwAAAAE2FASAhQAAAAEAAABgCBYZJIAA=</HashCode>
+      <FileName>Gameplay\GameManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameObject">
+    <Position X="13.25" Y="0.5" Width="5.5" />
+    <Members>
+      <Method Name="~GameObject" Hidden="true" />
+      <Field Name="m_bIsActivated" Hidden="true" />
+      <Field Name="m_bIsDeathEndOfMap" Hidden="true" />
+      <Field Name="m_bIsWaitingEndDeath" Hidden="true" />
+      <Field Name="m_BlinkDurationOnHit" Hidden="true" />
+      <Field Name="m_bPlayDeathSound" Hidden="true" />
+      <Field Name="m_bUseMultiplierGameManager" Hidden="true" />
+      <Field Name="m_CurrentDeathTimer" Hidden="true" />
+      <Field Name="m_DeathDuration" Hidden="true" />
+      <Field Name="m_DeltaZSprite" Hidden="true" />
+      <Field Name="m_GameManager" Hidden="true" />
+      <Field Name="m_Height" Hidden="true" />
+      <Field Name="m_MaxZ" Hidden="true" />
+      <Field Name="m_MinZ" Hidden="true" />
+      <Field Name="m_ScaleDeath" Hidden="true" />
+      <Field Name="m_SoundFilenameDeath" Hidden="true" />
+      <Field Name="m_SpeedBlink" Hidden="true" />
+      <Field Name="m_SpeedX" Hidden="true" />
+      <Field Name="m_SpeedZ" Hidden="true" />
+      <Field Name="m_SpriteColumns" Hidden="true" />
+      <Field Name="m_SpriteColumnsDeath" Hidden="true" />
+      <Field Name="m_SpriteDeath" Hidden="true" />
+      <Field Name="m_SpriteFilename" Hidden="true" />
+      <Field Name="m_SpriteFilenameDeath" Hidden="true" />
+      <Field Name="m_SpriteLines" Hidden="true" />
+      <Field Name="m_SpriteLinesDeath" Hidden="true" />
+      <Field Name="m_Width" Hidden="true" />
+      <Method Name="ReachEndMap" Hidden="true" />
+      <Method Name="SetActivated" Hidden="true" />
+      <Method Name="SetGameManager" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>iBQAAEAAAghCKCABAhEMoAAgAMDAggigRJBCAABAAAk=</HashCode>
+      <FileName>Gameplay\GameObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameplayMap" Collapsed="true">
+    <Position X="19.75" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAQBAACAAAQAAAAAAAAAAABAAAAAABACAAAAAAA=</HashCode>
+      <FileName>Map\GameplayMap.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LazyBee" Collapsed="true">
+    <Position X="6.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Gameplay\Enemies\LazyBee.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LDMap" Collapsed="true">
+    <Position X="22.75" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAgAABAAgAEABACAAAAACA=</HashCode>
+      <FileName>Map\LDMap.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeHUD" Collapsed="true">
+    <Position X="23.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAYAAAAAAJAlAAAAAAEIABAAAABAAAAAABACACAgACA=</HashCode>
+      <FileName>HUD\LifeHUD.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeManager">
+    <Position X="22.5" Y="0.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>EBAQAAAAAAAAAACAAhAAAAAAAEAAEggAAAAAAAAgAAA=</HashCode>
+      <FileName>Gameplay\LifeManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Map">
+    <Position X="18.75" Y="13" Width="3.5" />
+    <Members>
+      <Method Name="~Map" Hidden="true" />
+      <Method Name="Destroy" Hidden="true" />
+      <Field Name="m_GameManager" Hidden="true" />
+      <Field Name="m_MinMaxPosZ" Hidden="true" />
+      <Method Name="Map" Hidden="true" />
+      <Method Name="SetGameManager" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>ABQAAEAAADAAACABQAAAAAAAAABAAkCAABAKBAAAAAA=</HashCode>
+      <FileName>Map\Map.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Map_DatasBackground">
+    <Position X="3.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Datas\Map_DatasBackground.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Map_DatasGameplay" Collapsed="true">
+    <Position X="5.25" Y="12.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgEAABACAAAAAAAAAAgAEAAAAAQKACAAAAIEAAAAA=</HashCode>
+      <FileName>Datas\Map_DatasGameplay.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapGenerator">
+    <Position X="19" Y="10.25" Width="3" />
+    <Members>
+      <Method Name="MapGenerator" Hidden="true" />
+      <Method Name="SelectBgMap" Hidden="true" />
+      <Method Name="SelectGameplayMap" Hidden="true" />
+      <Method Name="SelectLDMap" Hidden="true" />
+      <Method Name="SetGameManager" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>QBAEAEAAAAAAAAAAAAAAAQACAgAAEAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Map\MapGenerator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapManager">
+    <Position X="19.5" Y="8.5" Width="1.75" />
+    <Members>
+      <Method Name="CheckEndMap" Hidden="true" />
+      <Method Name="Destroy" Hidden="true" />
+      <Method Name="GameOver" Hidden="true" />
+      <Method Name="Init" Hidden="true" />
+      <Field Name="m_CurrentBgMap" Hidden="true" />
+      <Field Name="m_CurrentGameplayMap" Hidden="true" />
+      <Field Name="m_CurrentLDMap" Hidden="true" />
+      <Field Name="m_DiffSpeedLayers" Hidden="true" />
+      <Field Name="m_GameManager" Hidden="true" />
+      <Field Name="m_Height" Hidden="true" />
+      <Field Name="m_NextBgMap" Hidden="true" />
+      <Field Name="m_NextGameplayMap" Hidden="true" />
+      <Field Name="m_NextLDMap" Hidden="true" />
+      <Field Name="m_OldBgMap" Hidden="true" />
+      <Field Name="m_OldGameplayMap" Hidden="true" />
+      <Field Name="m_OldLDMap" Hidden="true" />
+      <Field Name="m_Scale" Hidden="true" />
+      <Field Name="m_SpeedMap" Hidden="true" />
+      <Field Name="m_Width" Hidden="true" />
+      <Method Name="MapManager" Hidden="true" />
+      <Method Name="RenderBg" Hidden="true" />
+      <Method Name="RenderGD" Hidden="true" />
+      <Method Name="RenderLD" Hidden="true" />
+      <Method Name="SetGameManager" Hidden="true" />
+      <Method Name="Update" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ABQAgEDAAgARACEBAEQBAAAAAABQAASKEAICBAAAAAA=</HashCode>
+      <FileName>Map\MapManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pike" Collapsed="true">
+    <Position X="3.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAQAAABAAAAAAAAAAAAAgBAAAAAAAAAA=</HashCode>
+      <FileName>Gameplay\Enemies\Pike.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="12" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAACEAAiAAAQAAgAAAAAGAAEBEBIMoBBAAAQBQgSA=</HashCode>
+      <FileName>Player\Player.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PowerUp" Collapsed="true">
+    <Position X="18.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAABAAAAAIAAAAAAAAAAAAAAAAAgBAAAAAEAAAA=</HashCode>
+      <FileName>Gameplay\PowerUp\PowerUp.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PowerUpUFO" Collapsed="true">
+    <Position X="20.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAQAAAAAEAAAAAQAAAAAgBAABAAQAAAA=</HashCode>
+      <FileName>Gameplay\PowerUp\PowerUpUFO.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projectile" Collapsed="true">
+    <Position X="16.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAgAAAAAAAAAAAAAAAAAAAAQAAAAAgBABBAAAAIAA=</HashCode>
+      <FileName>Gameplay\Projectiles\Projectile.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectileSpawner" Collapsed="true">
+    <Position X="14.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KAQAAAACQAAAAAMAAIAAIA4IAEQBAEAgBBCAAACAIAw=</HashCode>
+      <FileName>Gameplay\Projectiles\ProjectileSpawner.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RectangleCollisionComponent" Collapsed="true">
+    <Position X="2.75" Y="16.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAJAAAAAAAAQAAAAAAAAAAAAACAgAAAAAAAAIAIAA=</HashCode>
+      <FileName>Gameplay\Collisions\RectangleCollisionComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScoreHUD" Collapsed="true">
+    <Position X="24.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAAAAAAEMAAAgAABAAAAAABASAAAAACA=</HashCode>
+      <FileName>HUD\ScoreHUD.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SlimeBlue" Collapsed="true">
+    <Position X="11.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQgAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAAAAAAA=</HashCode>
+      <FileName>Gameplay\Enemies\SlimeBlue.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Snake" Collapsed="true">
+    <Position X="13.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAQAAAAAAAAAAAAAIAAAgBAAAAAAAAAA=</HashCode>
+      <FileName>Gameplay\Enemies\Snake.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

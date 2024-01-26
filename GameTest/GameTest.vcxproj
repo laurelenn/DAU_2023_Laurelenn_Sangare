@@ -224,6 +224,9 @@ xcopy $(SolutionDir)GameTest\Ressources $(OutputPath)Ressources /D/S/Y
     <Image Include="Ressources\Player\p1_spritesheet.png" />
     <Image Include="Ressources\Player\p1_walk.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

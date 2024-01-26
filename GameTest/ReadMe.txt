@@ -1,40 +1,21 @@
-========================================================================
-    CONSOLE APPLICATION : GameTest Project Overview
-========================================================================
-
-AppWizard has created this GameTest application for you.
-
-This file contains a summary of what you will find in each of the files that
-make up your GameTest application.
+DAU 2023 - Sangaré Laurelenn - Ubisoft Montpellier
 
 
-GameTest.vcxproj
-    This is the main project file for VC++ projects generated using an Application Wizard.
-    It contains information about the version of Visual C++ that generated the file, and
-    information about the platforms, configurations, and project features selected with the
-    Application Wizard.
 
-GameTest.vcxproj.filters
-    This is the filters file for VC++ projects generated using an Application Wizard. 
-    It contains information about the association between the files in your project 
-    and the filters. This association is used in the IDE to show grouping of files with
-    similar extensions under a specific node (for e.g. ".cpp" files are associated with the
-    "Source Files" filter).
+[CONTROLS]
+Space : Start / Jump / Restart
+Enter : Launch salvo of projectiles (watch out, cooldown !)
 
-GameTest.cpp
-    This is the main application source file.
 
-/////////////////////////////////////////////////////////////////////////////
-Other standard files:
 
-StdAfx.h, StdAfx.cpp
-    These files are used to build a precompiled header (PCH) file
-    named GameTest.pch and a precompiled types file named StdAfx.obj.
+[THANKS & CREDITS]
+Thanks to Ronan Bel, my Mentor. 
+Iman Sougrate, Guillaume Gatty, Thibaut Assandri, for having received me in Ubisoft's Montpellier Studio.
 
-/////////////////////////////////////////////////////////////////////////////
-Other notes:
 
-AppWizard uses "TODO:" comments to indicate parts of the source code you
-should add to or customize.
+Credits :  
 
-/////////////////////////////////////////////////////////////////////////////
+Sprites (ennemis, tiles, player) : Kenney Vleugels (www.kenney.nl)
+Sprites (projectiles) : Luis Zuno (@ansimuz)
+Background : blackdragon1727 (OpenGameArt)
+SFX & Music : Spring Spring & Clemens H. (aka sauer2)

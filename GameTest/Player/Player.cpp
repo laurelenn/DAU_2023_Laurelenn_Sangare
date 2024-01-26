@@ -263,10 +263,10 @@ void Player::DeactivatePowerUp(PowerUpType type)
 #pragma region JUMP
 void Player::Jump()
 {
-	m_CurrentSpeedJump = m_InitialSpeedJump;
+	m_CurrentSpeedJump = m_InitialSpeedJump*m_GameManager->m_SpeedMulti;
 	m_bIsJumping =  true;
 	m_HeightJumpCurrentLevel = m_CurrentFloorLevel + m_HeightJump;
-	m_HeightConstantSpeed = m_HeightJumpCurrentLevel*0.95f;
+	m_HeightConstantSpeed = m_HeightJumpCurrentLevel*0.95f / m_GameManager->m_SpeedMulti;
 	m_Sprite->SetAnimation(AnimPlayer::ANIM_JUMP);
 	App::PlaySound(".\\.\\Ressources\\Sounds\\Jump.wav", false);
 
@@ -287,14 +287,14 @@ void Player::UpdateJump(float Deltatime)
 		if (m_bIsJumpingDown)
 		{
 			// Vérifier le délai d'inertie
-			if (m_CurrentTimerJumpInertia < m_DelayJumpInertia)
+			if (m_CurrentTimerJumpInertia < m_DelayJumpInertia / m_GameManager->m_SpeedMulti)
 			{
 				m_CurrentTimerJumpInertia += Deltatime / 1000.f; // Incrémentation du minuteur
-				m_CurrentSpeedJump = CLAMP(m_CurrentSpeedJump *= 0.8f, 0.3f, m_InitialSpeedJump);
+				m_CurrentSpeedJump = CLAMP(m_CurrentSpeedJump *= 0.8f, 0.3f, m_InitialSpeedJump*m_GameManager->m_SpeedMulti);
 			}
 			else // Si le délai est écoulé, accélération pendant la descente
 			{
-				m_CurrentSpeedJump = CLAMP(m_CurrentSpeedJump *= 1.05f, 0.5f, m_InitialSpeedJump);
+				m_CurrentSpeedJump = CLAMP(m_CurrentSpeedJump *= 1.05f, 0.5f, m_InitialSpeedJump*m_GameManager->m_SpeedMulti);
 			}
 		}
 
@@ -315,7 +315,7 @@ void Player::EndJump()
 	m_bIsJumping = false;
 	m_bIsJumpingDown = false;
 	m_Location.z = m_CurrentFloorLevel; // Doble check to restart at good location
-	m_CurrentSpeedJump = m_InitialSpeedJump;
+	m_CurrentSpeedJump = m_InitialSpeedJump / m_GameManager->m_SpeedMulti;
 
 	if (m_Sprite)
 	{
